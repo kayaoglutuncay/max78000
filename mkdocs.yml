@@ -5,7 +5,7 @@ nav:
   - System, Power, Clocks, Reset: system-power-clocks-reset.md
   - Flash Controller: flash-controller.md
 theme:
-  name: material
+  name: readthedocs
   palette:
     # Dark Mode
     - scheme: slate
