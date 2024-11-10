@@ -1,5 +1,7 @@
 site_name: MAX78000 User Guide
 site_url: https://kayaoglutuncay.github.io/max78000/
+docs_dir: src
+site_dir: docs
 nav:
   - Home: index.md
   - Memory, Register, Mapping: memory-register-mapping-access.md

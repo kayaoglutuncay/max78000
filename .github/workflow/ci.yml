@@ -8,20 +8,12 @@ on:
       - main
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
-      - name: Configure Git
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          
       - uses: actions/setup-python@v4
         with:
           python-version: 3.x
@@ -35,59 +27,16 @@ jobs:
             pymdown-extensions \
             pygments \
             mkdocs-material-extensions
-          
-      - name: Debug Information
+
+      - name: Build documentation
         run: |
-          echo "Python version:"
-          python --version
-          echo "\nPip packages:"
-          pip freeze
-          echo "\nCurrent directory contents:"
-          ls -la
-          echo "\nMkDocs version:"
-          mkdocs --version
+          # Build the site to docs directory
+          mkdocs build --site-dir docs
           
-      - name: Validate mkdocs.yml
+      - name: Commit and push changes
         run: |
-          echo "Checking mkdocs.yml..."
-          cat mkdocs.yml
-          mkdocs build --strict
-          
-      - name: Build site
-        run: |
-          mkdocs build --verbose
-          echo "\nGenerated site contents:"
-          ls -R site/
-          
-      - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        run: |
-          # Ensure we're on a clean gh-pages branch
-          git fetch origin gh-pages || true
-          git checkout gh-pages || git checkout -b gh-pages
-          git reset --hard
-          git clean -fdx
-          
-          # Copy site contents
-          cp -r site/* .
-          rm -rf site
-          
-          # Debug: Show files about to be committed
-          echo "Files to be deployed:"
-          ls -la
-          
-          # Check for essential files
-          if [ ! -f "index.html" ]; then
-            echo "Error: index.html is missing!"
-            exit 1
-          fi
-          
-          if [ ! -d "assets" ]; then
-            echo "Warning: assets directory is missing!"
-          fi
-          
-          # Commit and push
-          git add .
-          git status
-          git commit -m "Deploy documentation updates"
-          git push origin gh-pages --force
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/
+          git commit -m "Update documentation" || echo "No changes to commit"
+          git push
