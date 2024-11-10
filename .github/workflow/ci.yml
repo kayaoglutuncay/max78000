@@ -30,21 +30,28 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          # Install mkdocs-material and all its dependencies
+          # Install mkdocs-material and required extensions
           pip install \
             mkdocs-material \
-            mkdocs-material-extensions \
-            python-markdown-math \
-            mkdocs-minify-plugin \
-            mkdocs-redirects \
-            pygments
-          
-      - name: Show installed packages
-        run: pip freeze
+            pymdown-extensions \
+            pygments \
+            mkdocs-material-extensions
+
+      - name: Verify mkdocs installation
+        run: |
+          mkdocs --version
+          python -c "import pymdownx; print('pymdownx version:', pymdownx.__version__)"
           
       - name: Build site
         run: |
           mkdocs build --verbose
+          
+      - name: List generated files
+        run: |
+          echo "Content of site directory:"
+          ls -la site/
+          echo "Checking for CSS files:"
+          ls -la site/css/
           
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
@@ -55,9 +62,11 @@ jobs:
           cp -r site/* .
           rm -rf site
           
-          # Debug: List files to verify content
+          # Verify files before commit
           echo "Files to be deployed:"
           ls -la
+          echo "CSS files:"
+          ls -la css/
           
           git add .
           git commit -m "Deploy documentation updates"
