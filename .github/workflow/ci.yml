@@ -6,7 +6,7 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:  # Enable manual triggers
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -16,10 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Fetch all history for proper timestamps
-          
-      - name: Configure Git Credentials
+      
+      - name: Configure Git
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
@@ -32,12 +30,35 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mkdocs-material==9.5.12
-          mkdocs --version
+          # Install mkdocs-material and all its dependencies
+          pip install \
+            mkdocs-material \
+            mkdocs-material-extensions \
+            python-markdown-math \
+            mkdocs-minify-plugin \
+            mkdocs-redirects \
+            pygments
           
-      - name: Test build
-        run: mkdocs build
-        
-      - name: Deploy
+      - name: Show installed packages
+        run: pip freeze
+          
+      - name: Build site
+        run: |
+          mkdocs build --verbose
+          
+      - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        run: mkdocs gh-deploy --force
+        run: |
+          git checkout gh-pages || git checkout -b gh-pages
+          git rm -rf .
+          git clean -fdx
+          cp -r site/* .
+          rm -rf site
+          
+          # Debug: List files to verify content
+          echo "Files to be deployed:"
+          ls -la
+          
+          git add .
+          git commit -m "Deploy documentation updates"
+          git push origin gh-pages --force
