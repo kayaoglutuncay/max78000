@@ -30,44 +30,64 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          # Install mkdocs-material and required extensions
           pip install \
             mkdocs-material \
             pymdown-extensions \
             pygments \
             mkdocs-material-extensions
-
-      - name: Verify mkdocs installation
+          
+      - name: Debug Information
         run: |
+          echo "Python version:"
+          python --version
+          echo "\nPip packages:"
+          pip freeze
+          echo "\nCurrent directory contents:"
+          ls -la
+          echo "\nMkDocs version:"
           mkdocs --version
-          python -c "import pymdownx; print('pymdownx version:', pymdownx.__version__)"
+          
+      - name: Validate mkdocs.yml
+        run: |
+          echo "Checking mkdocs.yml..."
+          cat mkdocs.yml
+          mkdocs build --strict
           
       - name: Build site
         run: |
           mkdocs build --verbose
-          
-      - name: List generated files
-        run: |
-          echo "Content of site directory:"
-          ls -la site/
-          echo "Checking for CSS files:"
-          ls -la site/css/
+          echo "\nGenerated site contents:"
+          ls -R site/
           
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
+          # Ensure we're on a clean gh-pages branch
+          git fetch origin gh-pages || true
           git checkout gh-pages || git checkout -b gh-pages
-          git rm -rf .
+          git reset --hard
           git clean -fdx
+          
+          # Copy site contents
           cp -r site/* .
           rm -rf site
           
-          # Verify files before commit
+          # Debug: Show files about to be committed
           echo "Files to be deployed:"
           ls -la
-          echo "CSS files:"
-          ls -la css/
           
+          # Check for essential files
+          if [ ! -f "index.html" ]; then
+            echo "Error: index.html is missing!"
+            exit 1
+          fi
+          
+          if [ ! -d "assets" ]; then
+            echo "Warning: assets directory is missing!"
+          fi
+          
+          # Commit and push
           git add .
+          git status
           git commit -m "Deploy documentation updates"
           git push origin gh-pages --force
