@@ -33,10 +33,13 @@ jobs:
           # Build the site to docs directory
           mkdocs build --site-dir docs
           
+          # Create .nojekyll file
+          touch docs/.nojekyll
+          
       - name: Commit and push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add docs/
+          git add docs/ docs/.nojekyll
           git commit -m "Update documentation" || echo "No changes to commit"
           git push
