@@ -170,6 +170,8 @@ Reading the USN requires unlocking the information block. Unlocking the informat
 To re-lock the information block to prevent access, write any 32-bit word to [FLC_ACTRL](flash-controller.md#flash-controller-access-control-register).
 
 ### SRAM Space
+<a name="sram-space"></a>
+
 The SRAM area of memory is intended to contain the primary SRAM data memory of the device and is defined from byte address range 0x2000 0000 to 0x3FFF FFFF (0.5GB maximum). This memory can be used for general-purpose variable and data storage, code execution, the CM4 stack, and the RV32 stack.
 The MAX78000 CM4's data memory mapping is illustrated in Figure 3-1. The MAX78000 RV32's data memory mapping is illustrated in Figure 3-4.
 

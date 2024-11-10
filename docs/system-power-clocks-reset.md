@@ -2451,4 +2451,111 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     </div>
     </td>
   </tr>
+  <tr>
+    <td>8</td>
+    <td>lpmclksel</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>Low Power Mode APB Clock Select</strong><br>
+    This field selects the clock source for the RV32 (CPU1) and other APB peripherals during <em>LPM</em>.<br>
+    <div style="margin-left: 20px">
+    <p>0: PCLK is used as the RV32 (CPU1) and APB system clock during <em>LPM</em>.</p>
+    <p>1: ISO is used as the RV32 (CPU1) and APB system clock during <em>LPM</em>.</p>
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>7:4</td>
+    <td>-</td>
+    <td>DNM</td>
+    <td>0</td>
+    <td><strong>Reserved, Do not modify</strong><br>
+    <em>Note: This field must be set to 0 to maintain future compatibility.</em>.<br>
+    </td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>ramret3</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>System RAM 3 Data Retention Enable for BACKUP</strong><br>
+    Set this field to 1 to enable data retention for <em>sysram3</em>. See [SRAM Space](memory-register-mapping-access#sram-space) for the system RAM configuration.<br>
+    <div style="margin-left: 20px">
+    <p>0: Disable data retention for <em>sysram3</em> address space in <em>BACKUP</em>.</p>
+    <p>1: Enable data retention for <em>sysram3</em> address space in <em>BACKUP</em>.</p>
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>ramret2</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>System RAM 2 Data Retention Enable for BACKUP</strong><br>
+    Set this field to 1 to enable data retention for <em>sysram2</em>. See [SRAM Space](memory-register-mapping-access#sram-space) for the system RAM configuration.<br>
+    <div style="margin-left: 20px">
+    <p>0: Disable data retention for <em>sysram2</em> address space in <em>BACKUP</em>.</p>
+    <p>1: Enable data retention for <em>sysram2</em> address space in <em>BACKUP</em>.</p>
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>ramret1</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>System RAM 1 Data Retention Enable for BACKUP</strong><br>
+    Set this field to 1 to enable data retention for <em>sysram1</em>. See [SRAM Space](memory-register-mapping-access#sram-space) for the system RAM configuration.<br>
+    <div style="margin-left: 20px">
+    <p>0: Disable data retention for <em>sysram1</em> address space in <em>BACKUP</em>.</p>
+    <p>1: Enable data retention for <em>sysram1</em> address space in <em>BACKUP</em>.</p>
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>ramret0</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>System RAM 0 Data Retention Enable for BACKUP</strong><br>
+    Set this field to 1 to enable data retention for <em>sysram0</em>. See [SRAM Space](memory-register-mapping-access.md#sram-space) for the system RAM configuration.<br>
+    <div style="margin-left: 20px">
+    <p>0: Disable data retention for <em>sysram0</em> address space in <em>BACKUP</em>.</p>
+    <p>1: Enable data retention for <em>sysram0</em> address space in <em>BACKUP</em>.</p>
+    </div>
+    </td>
+  </tr>
+</table>
+
+*Table 4-41: GPIO0 Low Power Wakeup Status Flags*
+<a name="low-power-gpio0-wakeup-status-flag"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <td colspan="3">GPIO0 Low Power Wakeup Status Flags</td>
+    <td colspan="1">PWRSEQ_LPWKST0</td>
+    <td>[0x0004]</td>
+  </tr>
+  <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:17</td>
+    <td>-</td>
+    <td>R/W</td>
+    <td>-</td>
+    <td><strong>Reserved</strong></td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>rdy</td>
+    <td>R</td>
+    <td>-</td>
+    <td><strong>Cache Size</strong><br>This field returns the size of the cache RAM in 1KB units.<br>
+margin-left: 20px">
+16
 </table>
