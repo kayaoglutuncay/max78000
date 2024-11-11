@@ -548,7 +548,7 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
 
 ### ICC0 Register Details
 *Table 4-7: ICC0 Cache Information Register*
-<a name="icc0-cache-information-register"></a>
+<a name="cache-id-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
    <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
@@ -575,26 +575,32 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>id</td>
        <td>R</td>
        <td>-</td>
-       <td><strong>Cache ID</strong><br>This field returns the ID for the cache instance.</td>
+       <td><strong>Cache ID</strong><br>
+       This field returns the ID for the cache instance.
+       </td>
    </tr>
       <tr>
        <td>9:6</td>
        <td>partnum</td>
        <td>R</td>
        <td>-</td>
-       <td><strong>Cache Part Number</strong><br>This field returns the part number indicator for the cache instance.</td>
+       <td><strong>Cache Part Number</strong><br>
+       This field returns the part number indicator for the cache instance.
+       </td>
    </tr>
          <tr>
        <td>5:0</td>
        <td>relnum</td>
        <td>R</td>
        <td>-</td>
-       <td><strong>Cache Release Number</strong><br>This field returns the release number for the cache instance.</td>
+       <td><strong>Cache Release Number</strong>
+       <br>This field returns the release number for the cache instance.
+       </td>
    </tr>
 </table>
 
 *Table 4-8: ICC0 Memory Size Register*
-<a name="icc0-memory-size-register"></a>
+<a name="cache-memory-size-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
    <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
@@ -614,19 +620,24 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>mem</td>
        <td>R</td>
        <td>-</td>
-       <td><strong>Addressable Memory Size</strong><br>This field indicates the size of addressable memory by the cache controller instance in 128KB units.</td>
+       <td><strong>Addressable Memory Size</strong><br>
+       This field indicates the size of addressable memory by the cache controller instance in 128KB units.
+       </td>
    </tr>
    <tr>
        <td>15:0</td>
        <td>cch</td>
        <td>R</td>
        <td>-</td>
-       <td><strong>Cache Size</strong><br>This field returns the size of the cache RAM in 1KB units. <br> <div style="margin-left: 20px">16: 16KB Cache RAM</td>
+       <td><strong>Cache Size</strong><br>This field returns the size of the cache RAM in 1KB units.<br> 
+       <div style="margin-left: 20px">
+       16: 16KB Cache RAM
+       </td>
    </tr>
 </table>
 
 *Table 4-9: ICC0 Cache Control Register*
-<a name="icc0-cache-control-register"></a>
+<a name="instruction-cache-control-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
    <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
@@ -655,10 +666,10 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>-</td>
        <td><strong>Ready</strong><br>This field is cleared by hardware anytime the cache as a whole is invalidated (including a POR). Hardware automatically sets this field to 1 when the invalidate operation is complete, and the cache is ready.<br>
         <div style="margin-left: 20px">
-            <p>0: Cache invalidation in process.</p>
-            <p>1: Cache is ready.</p>
+            0: Cache invalidation in process.<br>
+            1: Cache is ready.
         </div>
-        *Note: While this field reads 0, the cache is bypassed, and reads come directly from the line fill buffer.*
+        <em>Note: While this field reads 0, the cache is bypassed, and reads come directly from the line fill buffer.</em>
    </tr>
       <tr>
        <td>15:1</td>
@@ -674,14 +685,14 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>0</td>
        <td><strong>Cache Enable</strong><br>Set this field to 1 to enable the cache. Setting this field to 0 invalidates the cache contents, and the line fill buffer handles all reads. <br>         
        <div style="margin-left: 20px">
-            <p>0: Disable</p>
-            <p>1: Enable</p>
+            0: Disable<br>
+            1: Enable
         </div>
    </tr>
 </table>
 
 *Table 4-10: ICC0 Invalidate Register*
-<a name="table4-10-icc0-invalidate-register"></a>
+<a name="instruction-cache-controller-invalidate-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
@@ -701,7 +712,9 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
     <td>invalid</td>
     <td>W</td>
     <td>-</td>
-    <td><strong>Invalidate</strong><br>Writing any value to this register invalidates the cache.</td>
+    <td><strong>Invalidate</strong><br>
+    Writing any value to this register invalidates the cache.
+    </td>
   </tr>
 </table>
 
@@ -733,7 +746,7 @@ The following SRAM memories can be zeroized:
     - CNNx16_n_TEST.sramz set to 1 to zero, read CNNx16_n_TEST.sallzdone until 1 for completion
 
 ## Miscellaneous Control Registers (MCR)
-See [Table 3-3]() for the base address of this peripheral/module. See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
+See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the base address of this peripheral/module. See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
 
 *Table 4-11: Miscellaneous Control Register Summary*
 <a name="table4-11-miscellaneous-control-register-summary"></a>
@@ -788,7 +801,7 @@ See [Table 3-3]() for the base address of this peripheral/module. See Table 1-1 
 ### Miscellaneous Control Register Details
 
 *Table 4-12: Error Correction Coding Enable Register*
-<a name="table4-12-error-correction-coding-enable-register"></a>
+<a name="error-correction-coding-enable-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
@@ -815,17 +828,17 @@ See [Table 3-3]() for the base address of this peripheral/module. See Table 1-1 
     <td>ram0</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>System RAM 0 ECC Enable</strong><br>Set this field to 1 to enable ECC for *sysram0*.<br>
+    <td><strong>System RAM 0 ECC Enable</strong><br>Set this field to 1 to enable ECC for <em>sysram0</em>.<br>
         <div style="margin-left: 20px">
-            <p>0: Disabled</p>
-            <p>1: Enabled</p>
+            0: Disabled<br>
+            1: Enabled
         </div>
     </td>
   </tr>
 </table>
 
 *Table 4-13: IPO Manual Register*
-<a name="table4-13-ipo-manual-register"></a>
+<a name="ipo-manual-trim-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
@@ -852,11 +865,10 @@ See [Table 3-3]() for the base address of this peripheral/module. See Table 1-1 
     <td>trim_range</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>Trim Range Select</strong><br>If this bit is set to 1, the value loaded into the MCR_IPO_MTRIM.mtrim field must be greater than the trim setting in the TRIMSIR_IPOLO.ipo_limitlo field.
-If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field must be less than the trim setting in the TRIMSIR_CTRL.ipo_limithi field.
+    <td><strong>Trim Range Select</strong><br>If this bit is set to 1, the value loaded into the MCR_IPO_MTRIM.mtrim field must be greater than the trim setting in the TRIMSIR_IPOLO.ipo_limitlo field. If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field must be less than the trim setting in the TRIMSIR_CTRL.ipo_limithi field.
         <div style="margin-left: 20px">
-            <p>0: MCR_IPO_MTRIM.mtrim < TRIMSIR_IPOLO.ipo_limitlo</p>
-            <p>1: MCR_IPO_MTRIM.mtrim > TRIMSIR_CTRL.ipo_limithi</p>
+            0: MCR_IPO_MTRIM.mtrim < TRIMSIR_IPOLO.ipo_limitlo<br>
+            1: MCR_IPO_MTRIM.mtrim > TRIMSIR_CTRL.ipo_limithi
         </div>   
     </td>
   </tr>
@@ -874,7 +886,7 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
 </table>
 
 *Table 4-14: Output Enable Register*
-<a name="output-enable-register"></a>
+<a name="miscellaneous-output-enable-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
@@ -903,8 +915,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>0</td>
     <td><strong>Power Down Output Enable on P3.0</strong><br>Set this field to 1 to enable the power down output, P3.0 AF1 (PDOWN). PDOWN is active in BACKUP and STANDBY.<br> 
     <div style="margin-left: 20px">
-    <p>0: PDOWN output not enabled on P3.0</p>
-    <p>1: PDOWN output is enabled on P3.0</p>
+    0: PDOWN output not enabled on P3.0<br>
+    1: PDOWN output is enabled on P3.0
     </div>
     </td>
   </tr>
@@ -915,15 +927,15 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>0</td>
     <td><strong>Square Wave Output Enable on P3.1 (SQWOUT)</strong><br>Set this field to 1 to enable the square wave output on P3.1 AF1 (SQWOUT).<br> 
     <div style="margin-left: 20px">
-    <p>0: Square wave output not enabled on P3.1.</p>
-    <p>1: Square wave output enabled on P3.1.</p>
+    0: Square wave output not enabled on P3.1.<br>
+    1: Square wave output enabled on P3.1.
     </div>
     </td>
   </tr>
 </table>
 
 *Table 4-15: Comparator 0 Control Register*
-<a name="table4-15-comparator0-control-register"></a>
+<a name="comparator-control-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
@@ -952,8 +964,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>0</td>
     <td><strong>Comparator 0 Interrupt Flag</strong><br>This field is set to 1 by hardware when the comparator output changes to the active state as set using the MCR_CMP_CTRL.pol field. Write 1 to clear this flag.<br> 
     <div style="margin-left: 20px">
-    <p>0: No interrupt</p>
-    <p>1: Interrupt occurred</p>
+    0: No interrupt<br>
+    1: Interrupt occurred
     </div>
     </td>
   </tr>
@@ -964,8 +976,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>*</td>
     <td><strong>Comparator 0 Output</strong><br>This field is the comparator output state.<br> 
     <div style="margin-left: 20px">
-    <p>0: Output low</p>
-    <p>1: Output high</p>
+    0: Output low<br>
+    1: Output high
     </div>
     </td>
 </tr>
@@ -984,8 +996,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>0</td>
     <td><strong>Comparator 0 Interrupt Enable</strong><br>Set this field to 1 to enable the interrupt for comparator 0.<br> 
     <div style="margin-left: 20px">
-    <p>0: Interrupt disabled</p>
-    <p>1: Interrupt enabled</p>
+    0: Interrupt disabled<br>
+    1: Interrupt enabled
     </div>
     </td>
 </tr>
@@ -996,8 +1008,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>0</td>
     <td><strong>Comparator 0 Interrupt Polarity Select</strong><br>Set this field to select the polarity of the output change that generates a comparator 3 interrupt.<br> 
     <div style="margin-left: 20px">
-    <p>0: Interrupt occurs from a transition from low to high</p>
-    <p>1: Interrupt occurs from a transition from high to low</p>
+    0: Interrupt occurs from a transition from low to high<br>
+    1: Interrupt occurs from a transition from high to low
     </div>
     </td>
 </tr>
@@ -1016,15 +1028,15 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>0</td>
     <td><strong>Comparator 0 Enable</strong><br>Set this field to 1 to enable the comparator.<br> 
     <div style="margin-left: 20px">
-    <p>0: Comparator disabled</p>
-    <p>1: Comparator enable</p>
+    0: Comparator disabled<br>
+    1: Comparator enable
     </div>
     </td>
 </tr>
 </table>
 
 *Table 4-16: Miscellaneous Control Register*
-<a name="table4-16-miscellaneous-control-register"></a>
+<a name="miscellaneous-control-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
@@ -1053,8 +1065,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>0</td>
     <td><strong>SIMO System Reset Disable</strong><br>If this field is set, the SIMO is only reset by a POR. When this bit is set, the VSET* stays unchanged when exiting all low-power modes.<br> 
     <div style="margin-left: 20px">
-    <p>0: The SIMO is reset by all system resets.</p>
-    <p>1: The SIMO is only reset by a Power-On Reset.</p>
+    0: The SIMO is reset by all system resets.<br>
+    1: The SIMO is only reset by a Power-On Reset.
     </div>
     </td>
   </tr>
@@ -1065,8 +1077,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>0</td>
     <td><strong>SIMO System Reset Disable</strong><br>If this field is set, the SIMO is only reset by a POR. When this bit is set, the VSET* stays unchanged when exiting all low-power modes.<br> 
     <div style="margin-left: 20px">
-    <p>0: The SIMO is reset by all system resets.</p>
-    <p>1: The SIMO is only reset by a Power-On Reset.</p>
+    0: The SIMO is reset by all system resets.<br>
+    1: The SIMO is only reset by a Power-On Reset.
     </div>
     </td>
 </tr>
@@ -1077,8 +1089,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>0</td>
     <td><strong>SIMO Clock Scaling Enable</strong><br>Set this field to 1 to enable dynamic clock scaling to the SIMO based on load current. When enabled, the SIMO clock slows down in low-power modes, reducing current consumption.<br> 
     <div style="margin-left: 20px">
-    <p>0: SIMO clock scaling disabled</p>
-    <p>1: SIMO clock scaling enabled</p>
+    0: SIMO clock scaling disabled<br>
+    1: SIMO clock scaling enabled
     </div>
     </td>
 </tr>
@@ -1097,8 +1109,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>0</td>
     <td><strong>ERTCO Enable for *LPM* and *UPM*</strong><br>Set this field to 1 to enable the ERTCO in *LPM* and *UPM*.<br> 
     <div style="margin-left: 20px">
-    <p>0: ERTCO disabled</p>
-    <p>1: ERTCO enabled</p>
+    0: ERTCO disabled<br>
+    1: ERTCO enabled
     </div>
     </td>
 </tr>
@@ -1109,8 +1121,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>0</td>
     <td><strong>INRO Enable</strong><br>Set this field to 1 to enable the INRO in *LPM* and *UPM*.<br> 
     <div style="margin-left: 20px">
-    <p>0: INRO disabled</p>
-    <p>1: INRO enabled</p>
+    0: INRO disabled<br>
+    1: INRO enabled
     </div>
     </td>
 </tr>
@@ -1127,7 +1139,7 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
 #### GPIO 3 Control
 
 *Table 4-17: GPIO3 Pin Control Register*
-<a name="table4-17-gpio3-pin-control-register"></a>
+<a name="gpio3-pin-control-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
@@ -1156,8 +1168,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>See Description</td>
     <td><strong>GPIO3 Pin 1 Input Status</strong><br>Read this field to determine the input status of P3.1.<br> 
       <div style="margin-left: 20px">
-        <p>0: Input Low</p>
-        <p>1: Input High</p>
+        0: Input Low<br>
+        1: Input High
       </div>
     </td>
   </tr>
@@ -1168,8 +1180,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>0</td>
     <td><strong>GPIO3 Pin 1 Pull-up Enable</strong><br>Set this bit to 1 to enable the pullup resistor for P3.1.<br> 
       <div style="margin-left: 20px">
-        <p>0: Pull-up Disabled</p>
-        <p>1: Pull-up Enabled</p>
+        0: Pull-up Disabled<br>
+        1: Pull-up Enabled
       </div>
     </td>
 </tr>
@@ -1180,8 +1192,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>0</td>
     <td><strong>GPIO3 Pin 1 Output Enable</strong><br>Set this bit to 1 to enable P3.1 for output mode.<br> 
       <div style="margin-left: 20px">
-        <p>0: Input mode.</p>
-        <p>1: Output mode enabled.</p>
+        0: Input mode.<br>
+        1: Output mode enabled.
       </div>
     </td>
 </tr>
@@ -1192,8 +1204,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>0</td>
     <td><strong>GPIO3 Pin 1 Data Output</strong><br>If *p31_oe* is set to 1, this field is used to control the output state of P3.1.<br> 
       <div style="margin-left: 20px">
-        <p>0: Output low if *p31_oe* is 1</p>
-        <p>1: Output high if *p31_oe* is 1.</p>
+        0: Output low if *p31_oe* is 1<br>
+        1: Output high if *p31_oe* is 1.
       </div>
     </td>
 </tr>
@@ -1204,8 +1216,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>See Description</td>
     <td><strong>GPIO3 Pin 0 Input Status</strong><br>Read this field to determine the input status of P3.0.<br> 
       <div style="margin-left: 20px">
-        <p>0: Input Low</p>
-        <p>1: Input High</p>
+        0: Input Low<br>
+        1: Input High
       </div>
     </td>
 </tr>
@@ -1216,8 +1228,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>0</td>
     <td><strong>GPIO3 Pin 0 Pull-up Enable</strong><br>Set this bit to 1 to enable the pullup resistor for P3.0.<br> 
       <div style="margin-left: 20px">
-        <p>0: Pull-up Disabled</p>
-        <p>1: Pull-up Enabled</p>
+        0: Pull-up Disabled<br>
+        1: Pull-up Enabled
       </div>
     </td>
 </tr>
@@ -1228,8 +1240,8 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>0</td>
     <td><strong>GPIO3 Pin 0 Output Enable</strong><br>Set this bit to 1 to enable P3.0 for output mode.<br> 
       <div style="margin-left: 20px">
-        <p>0: Input mode</p>
-        <p>1: Output mode enabled.</p>
+        0: Input mode<br>
+        1: Output mode enabled.
       </div>
     </td>
 </tr>
@@ -1238,10 +1250,10 @@ If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field mus
     <td>p30_do</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>GPIO3 Pin 0 Data Output</strong><br>If *p30_oe* is set to 1, this field is used to control the output state of P3.0.<br> 
+    <td><strong>GPIO3 Pin 0 Data Output</strong><br>If <em>p30_oe</em> is set to 1, this field is used to control the output state of P3.0.<br> 
       <div style="margin-left: 20px">
-        <p>0: Output low if *p30_oe* is 1</p>
-        <p>1: Output high if *p30_oe* is 1.</p>
+        0: Output low if <em>p30_oe</em> is 1<br>
+        1: Output high if <em>p30_oe</em> is 1.
       </div>
     </td>
 </tr>
@@ -1467,8 +1479,8 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
     <td>1</td>
     <td><strong>Regulator Output A Range</strong><br>This field selects the regulator output range for V<sub>REGO_A</sub>.<br> 
     <div style="margin-left: 20px">
-    <p>0: 0.5V to 1.77V</p>
-    <p>1: 0.6V to 1.87V</p>
+    0: 0.5V to 1.77V<br>
+    1: 0.6V to 1.87V
     </div></td>
   </tr>
     <tr>
@@ -1484,8 +1496,8 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
     Default: 0x78 = <a href="#buck-voltage-regulator-a-control-register">SIMO_VREGO_A</a>.<em>rangea</em> = 0, Output Voltage = 1.7V; <a href="#buck-voltage-regulator-a-control-register">SIMO_VREGO_A</a>.<em>rangea</em> = 1, Output Voltage = 1.8V<br>
     *Warning: When this regulator is connected as shown in <a href="#table4-18-simo-power-supply-device-pin-connectivity">Table 4-18: SIMO Power Supply Device Pin Connectivity</a>, the following apply:*
    <div style="margin-left: 20px">
-    <p>1. The maximum setting for this regulator must be followed for V<sub>DDA</sub> as indicated in the device data sheet.</p>
-    <p>2. Setting the regulator to a voltage below the power-fail reset voltage for V<sub>DDA</sub> initiates the power monitor reset action.</p>
+    1. The maximum setting for this regulator must be followed for V<sub>DDA</sub> as indicated in the device data sheet.<br>
+    2. Setting the regulator to a voltage below the power-fail reset voltage for V<sub>DDA</sub> initiates the power monitor reset action.
     </div>
     </td>
   </tr>
@@ -1521,8 +1533,8 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
     <td>1</td>
     <td><strong>Regulator Output B Range</strong><br>This field selects the regulator output range for V<sub>REGO_B</sub>.<br> 
     <div style="margin-left: 20px">
-    <p>0: 0.5V to 1.77V</p>
-    <p>1: 0.6V to 1.87V</p>
+    0: 0.5V to 1.77V<br>
+    1: 0.6V to 1.87V
     </div></td>
   </tr>
     <tr>
@@ -1539,8 +1551,8 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
     Default: 0x32 = <a href="#buck-voltage-regulator-b-control-register">SIMO_VREGO_B</a>.<em>rangeb</em>, Output Voltage = 1.0V; <a href="#buck-voltage-regulator-b-control-register">SIMO_VREGO_B</a>.<em>rangeb</em> = 1, Output Voltage = 1.1V
     *Warning: When this regulator is connected as shown in <a href="#table4-18-simo-power-supply-device-pin-connectivity">Table 4-18: SIMO Power Supply Device Pin Connectivity</a>, the following apply:*
    <div style="margin-left: 20px">
-    <p>1. The maximum setting for this regulator must be followed for V<sub>COREB</sub> as indicated in the device data sheet.</p>
-    <p>2. Setting the regulator to a voltage below the power-fail reset voltage for V<sub>COREB</sub> initiates the power monitor reset action.</p>
+    1. The maximum setting for this regulator must be followed for V<sub>COREB</sub> as indicated in the device data sheet.<br>
+    2. Setting the regulator to a voltage below the power-fail reset voltage for V<sub>COREB</sub> initiates the power monitor reset action.
     </div>
     </td>
   </tr>
@@ -1576,8 +1588,8 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
     <td>1</td>
     <td><strong>Regulator Output B Range</strong><br>This field selects the regulator output range for V<sub>REGO_C</sub>.<br> 
     <div style="margin-left: 20px">
-    <p>0: 0.5V to 1.77V</p>
-    <p>1: 0.6V to 1.87V</p>
+    0: 0.5V to 1.77V<br>
+    1: 0.6V to 1.87V
     </div></td>
   </tr>
     <tr>
@@ -1594,8 +1606,8 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
     Default: 0x32 = <a href="#buck-voltage-regulator-c-control-register">SIMO_VREGO_C</a>.<em>rangec</em>, Output Voltage = 1.0V; <a href="#buck-voltage-regulator-c-control-register">SIMO_VREGO_C</a>.<em>rangec</em> = 1, Output Voltage = 1.1V
     *Warning: When this regulator is connected as shown in <a href="#table4-18-simo-power-supply-device-pin-connectivity">Table 4-18: SIMO Power Supply Device Pin Connectivity</a>, the following apply:*
    <div style="margin-left: 20px">
-    <p>1. The maximum setting for this regulator must be followed for V<sub>COREC</sub> as indicated in the device data sheet.</p>
-    <p>2. Setting the regulator to a voltage below the power-fail reset voltage for V<sub>COREC</sub> initiates the power monitor reset action.</p>
+    1. The maximum setting for this regulator must be followed for V<sub>COREC</sub> as indicated in the device data sheet.<br>
+    2. Setting the regulator to a voltage below the power-fail reset voltage for V<sub>COREC</sub> initiates the power monitor reset action.
     </div>
     </td>
   </tr>
@@ -1926,8 +1938,8 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
     <td>0</td>
     <td><strong>V<sub>REGO_A</sub> Output Ready</strong><br>When <a href="#buck-voltage-regulator-a-control-register">SIMO_VREGO_A</a>.<em>vseta</em> changes, this bit is set when the output voltage has reached its regulated value. It is not cleared if the output voltage drops below its set value.<br> 
     <div style="margin-left: 20px">
-    <p>0: Not ready</p>
-    <p>1: Ready</p>
+    0: Not ready<br>
+    1: Ready
     </div>
     </td>
 </tr>
@@ -1938,8 +1950,8 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
     <td>0</td>
     <td><strong>V<sub>REGO_B</sub> Output Ready</strong><br>When <a href="#buck-voltage-regulator-b-control-register">SIMO_VREGO_B</a>.<em>vsetb</em> changes, this bit is set when the output voltage has reached its regulated value. It is not cleared if the output voltage drops below its set value.<br> 
     <div style="margin-left: 20px">
-    <p>0: Not ready</p>
-    <p>1: Ready</p>
+    0: Not ready<br>
+    1: Ready
     </div>
     </td>
 </tr>
@@ -1950,8 +1962,8 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
     <td>0</td>
     <td><strong>V<sub>REGO_C</sub> Output Ready</strong><br>When <a href="#buck-voltage-regulator-c-control-register">SIMO_VREGO_C</a>.<em>vsetb</em> changes, this bit is set when the output voltage has reached its regulated value. It is not cleared if the output voltage drops below its set value.<br> 
     <div style="margin-left: 20px">
-    <p>0: Not ready</p>
-    <p>1: Ready</p>
+    0: Not ready<br>
+    1: Ready
     </div>
     </td>
 </tr>
@@ -2077,7 +2089,7 @@ This set of general control registers provides reset and clock control for the l
 - LPCOMP1, LPCOMP2, and LPCOMP3
 - GPIO2
 
-See [Table 3-3]() for the base address of this peripheral/module. See [Table 1-1]() for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
+See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the base address of this peripheral/module. See [Table 1-1]() for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
 
 *Table 4-36: Low-Power Control Register Summary*
 <a name="table4-36-low-power-control-register-summary"></a>
@@ -2215,8 +2227,8 @@ See [Table 3-3]() for the base address of this peripheral/module. See [Table 1-1
     Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
     <p><em>Note: This field disables clocks to LPCOMP1, LPCOMP2, and LPCOMP3.</em></p>
     <div style="margin-left: 20px">
-    <p>0: Enabled</p>
-    <p>1: Disabled</p>
+    0: Enabled<br>
+    1: Disabled
     </div>
     </td>
   </tr>
@@ -2235,8 +2247,8 @@ See [Table 3-3]() for the base address of this peripheral/module. See [Table 1-1
     <td><strong>UART3 (LPUART0) Clock Disable</strong><br>
     Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
     <div style="margin-left: 20px">
-    <p>0: Enabled</p>
-    <p>1: Disabled</p>
+    0: Enabled<br>
+    1: Disabled
     </div>
     </td>
   </tr>
@@ -2248,8 +2260,8 @@ See [Table 3-3]() for the base address of this peripheral/module. See [Table 1-1
     <td><strong>TMR5 (LPTMR1) Clock Disable</strong><br>
     Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
     <div style="margin-left: 20px">
-    <p>0: Enabled</p>
-    <p>1: Disabled</p>
+    0: Enabled<br>
+    1: Disabled
     </div>
     </td>
   </tr>
@@ -2261,8 +2273,8 @@ See [Table 3-3]() for the base address of this peripheral/module. See [Table 1-1
     <td><strong>TMR4 (LPTMR0) Clock Disable</strong><br>
     Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
     <div style="margin-left: 20px">
-    <p>0: Enabled</p>
-    <p>1: Disabled</p>
+    0: Enabled<br>
+    1: Disabled
     </div>
     </td>
   </tr>
@@ -2274,8 +2286,8 @@ See [Table 3-3]() for the base address of this peripheral/module. See [Table 1-1
     <td><strong>WDT1 (LPWDT0) Clock Disable</strong><br>
     Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
     <div style="margin-left: 20px">
-    <p>0: Enabled</p>
-    <p>1: Disabled</p>
+    0: Enabled<br>
+    1: Disabled
     </div>
     </td>
   </tr>
@@ -2287,8 +2299,8 @@ See [Table 3-3]() for the base address of this peripheral/module. See [Table 1-1
     <td><strong>GPIO2 Clock Disable</strong><br>
     Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
     <div style="margin-left: 20px">
-    <p>0: Enabled</p>
-    <p>1: Disabled</p>
+    0: Enabled<br>
+    1: Disabled
     </div>
     </td>
   </tr>
@@ -2314,7 +2326,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
   <tr>
     <td>[0x0004]</td>
     <td><a href="#low-power-gpio0-wakeup-status-flag">PWRSEQ_LPWKST0</td>
-    <td>Low Power GPIO0 Wakeup Status Flags/td>
+    <td>Low Power GPIO0 Wakeup Status Flags</td>
   </tr>
   <tr>
     <td>[0x0008]</td>
@@ -2425,8 +2437,8 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td><strong>Band Gap Disable for <em>LPM</em> and <em>BACKUP</em> Mode</strong><br>
     Setting this field to 1 (default) disables the Bandgap during LPM and BACKUP mode.<br>
     <div style="margin-left: 20px">
-    <p>0: System Bandgap is on in <em>LPM</em> and <em>BACKUP</em> modes</p>
-    <p>1: System Bandgap is off in <em>LPM</em> and <em>BACKUP</em> modes.</p>
+    0: System Bandgap is on in <em>LPM</em> and <em>BACKUP</em> modes.<br>
+    1: System Bandgap is off in <em>LPM</em> and <em>BACKUP</em> modes.
     </div>
     </td>
   </tr>
@@ -2446,8 +2458,8 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td><strong>Low Power Mode Clock Select</strong><br>
     If the ISO is selected (default), fast <em>LPM</em> entry is enabled. Setting the clock to INRO disables fast <em>LPM</em> entry.<br>
     <div style="margin-left: 20px">
-    <p>0: ISO used for entering <em>LPM</em> (Fast Mode Enable).</p>
-    <p>1: INRO used for <em>LPM</em> entry (Fast Mode Disabled).</p>
+    0: ISO used for entering <em>LPM</em> (Fast Mode Enable).<br>
+    1: INRO used for <em>LPM</em> entry (Fast Mode Disabled).
     </div>
     </td>
   </tr>
@@ -2459,8 +2471,8 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td><strong>Low Power Mode APB Clock Select</strong><br>
     This field selects the clock source for the RV32 (CPU1) and other APB peripherals during <em>LPM</em>.<br>
     <div style="margin-left: 20px">
-    <p>0: PCLK is used as the RV32 (CPU1) and APB system clock during <em>LPM</em>.</p>
-    <p>1: ISO is used as the RV32 (CPU1) and APB system clock during <em>LPM</em>.</p>
+    0: PCLK is used as the RV32 (CPU1) and APB system clock during <em>LPM</em>.<br>
+    1: ISO is used as the RV32 (CPU1) and APB system clock during <em>LPM</em>.
     </div>
     </td>
   </tr>
@@ -2479,10 +2491,10 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>R/W</td>
     <td>0</td>
     <td><strong>System RAM 3 Data Retention Enable for BACKUP</strong><br>
-    Set this field to 1 to enable data retention for <em>sysram3</em>. See [SRAM Space](memory-register-mapping-access#sram-space) for the system RAM configuration.<br>
+    Set this field to 1 to enable data retention for <em>sysram3</em>. See <a href="../memory-register-mapping-access#sram-space">SRAM Space</a> for the system RAM configuration.<br>
     <div style="margin-left: 20px">
-    <p>0: Disable data retention for <em>sysram3</em> address space in <em>BACKUP</em>.</p>
-    <p>1: Enable data retention for <em>sysram3</em> address space in <em>BACKUP</em>.</p>
+    0: Disable data retention for <em>sysram3</em> address space in <em>BACKUP</em>.<br>
+    1: Enable data retention for <em>sysram3</em> address space in <em>BACKUP</em>.
     </div>
     </td>
   </tr>
@@ -2492,10 +2504,10 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>R/W</td>
     <td>0</td>
     <td><strong>System RAM 2 Data Retention Enable for BACKUP</strong><br>
-    Set this field to 1 to enable data retention for <em>sysram2</em>. See [SRAM Space](memory-register-mapping-access#sram-space) for the system RAM configuration.<br>
+    Set this field to 1 to enable data retention for <em>sysram2</em>. See <a href="../memory-register-mapping-access#sram-space">SRAM Space</a> for the system RAM configuration.<br>
     <div style="margin-left: 20px">
-    <p>0: Disable data retention for <em>sysram2</em> address space in <em>BACKUP</em>.</p>
-    <p>1: Enable data retention for <em>sysram2</em> address space in <em>BACKUP</em>.</p>
+    0: Disable data retention for <em>sysram2</em> address space in <em>BACKUP</em>.<br>
+    1: Enable data retention for <em>sysram2</em> address space in <em>BACKUP</em>.
     </div>
     </td>
   </tr>
@@ -2505,10 +2517,10 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>R/W</td>
     <td>0</td>
     <td><strong>System RAM 1 Data Retention Enable for BACKUP</strong><br>
-    Set this field to 1 to enable data retention for <em>sysram1</em>. See [SRAM Space](memory-register-mapping-access#sram-space) for the system RAM configuration.<br>
+    Set this field to 1 to enable data retention for <em>sysram1</em>. See <a href="../memory-register-mapping-access#sram-space">SRAM Space</a> for the system RAM configuration.<br>
     <div style="margin-left: 20px">
-    <p>0: Disable data retention for <em>sysram1</em> address space in <em>BACKUP</em>.</p>
-    <p>1: Enable data retention for <em>sysram1</em> address space in <em>BACKUP</em>.</p>
+    0: Disable data retention for <em>sysram1</em> address space in <em>BACKUP</em>.<br>
+    1: Enable data retention for <em>sysram1</em> address space in <em>BACKUP</em>.
     </div>
     </td>
   </tr>
@@ -2518,10 +2530,10 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>R/W</td>
     <td>0</td>
     <td><strong>System RAM 0 Data Retention Enable for BACKUP</strong><br>
-    Set this field to 1 to enable data retention for <em>sysram0</em>. See [SRAM Space](memory-register-mapping-access.md#sram-space) for the system RAM configuration.<br>
+    Set this field to 1 to enable data retention for <em>sysram0</em>. See See <a href="../memory-register-mapping-access#sram-space">SRAM Space</a> for the system RAM configuration.<br>
     <div style="margin-left: 20px">
-    <p>0: Disable data retention for <em>sysram0</em> address space in <em>BACKUP</em>.</p>
-    <p>1: Enable data retention for <em>sysram0</em> address space in <em>BACKUP</em>.</p>
+    0: Disable data retention for <em>sysram0</em> address space in <em>BACKUP</em>.<br>
+    1: Enable data retention for <em>sysram0</em> address space in <em>BACKUP</em>.
     </div>
     </td>
   </tr>
@@ -2544,18 +2556,970 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <th>Description</th>
   </tr>
   <tr>
-    <td>31:17</td>
-    <td>-</td>
+    <td>31:0</td>
+    <td>wakest</td>
+    <td>R/W1C</td>
+    <td>0</td>
+    <td><strong>GPIO0 Pin Wakeup Status Flag</strong><br>
+    Whenever a GPIO0 pin, in any power mode, transitions from low-to-high or high-to-low, the pin’s corresponding bit in this register is set. The device transitions from a low-power mode to <em>ACTIVE</em> if the corresponding GPIO pin’s interrupt enable bit is set in the <a href="#low-power-gpio0-wakeup-enable-register">PWRSEQ_LPWKEN0</a> register.<br>
+    <p><em>Note: Clear this register before entering any low-power mode.</em></p>
+    </td>
+  </tr>
+</table>
+
+*Table 4-42: GPIO0 Low Power Wakeup Enable Registers*
+<a name="low-power-gpio0-wakeup-enable-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <td colspan="3">GPIO0 Low Power Wakeup Enable</td>
+    <td colspan="1">PWRSEQ_LPWKEN0</td>
+    <td>[0x0008]</td>
+  </tr>
+  <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:0</td>
+    <td>en</td>
     <td>R/W</td>
+    <td>0</td>
+    <td><strong>GPIO0 Pin Wakeup Interrupt Enable</strong><br>
+    Setting a GPIO0 pin’s bit in this register causes an interrupt to be generated to wake up the device from any low-power mode to <em>ACTIVE</em>. A wake-up event sets the corresponding GPIO0’s bit in the <a href="#low-power-gpio0-wakeup-status-flag">PWRSEQ_LPWKST0</a> register, enabling the determination of which GPIO0 pin triggered the wake-up event. Bits corresponding to unimplemented GPIO are ignored.<br>
+    <p><em>Note: To enable the MAX78000 to wake up from a low-power mode on a GPIO pin transition, first set the GPIO wake-up enable register bit GCR_PM.gpio_we to 1.</em></p>
+    </td>
+  </tr>
+</table>
+
+*Table 4-43: GPIO1 Low Power Wakeup Status Flags*
+<a name="low-power-gpio1-wakeup-status-flags"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <td colspan="3">GPIO1 Low Power Wakeup Status Flags</td>
+    <td colspan="1">PWRSEQ_LPWKST1</td>
+    <td>[0x000C]</td>
+  </tr>
+  <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:10</td>
     <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong><br>Bits corresponding to unimplemented GPIO are ignored.</td>
+  </tr>
+  <tr>
+    <td>9:0</td>
+    <td>st</td>
+    <td>R/W1C</td>
+    <td>0</td>
+    <td><strong>GPIO1 Pin Wakeup Status Flag</strong><br>
+    Whenever a GPIO1 pin, in any power mode, transitions from low-to-high or high-to-low, the pin’s corresponding bit in this register is set. The device wakes from a low-power mode to <em>ACTIVE</em> if the corresponding interrupt enable bit is set in <a href="#low-power-gpio1-wakeup-status-flags">PWRSEQ_LPWKEN1</a>.<br>
+    <p><em>Note: Clear this register before entering any low-power mode.</em></p>
+    </td>
+  </tr>
+</table>
+
+*Table 4-44: GPIO1 Low Power Wakeup Enable Registers*
+<a name="low-power-gpio1-wakeup-status-flags"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <td colspan="3">GPIO1 Low Power Wakeup Enable</td>
+    <td colspan="1">PWRSEQ_LPWKEN1</td>
+    <td>[0x0010]</td>
+  </tr>
+  <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:10</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong><br>Bits corresponding to unimplemented GPIO are ignored.</td>
+  </tr>
+  <tr>
+    <td>9:0</td>
+    <td>en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>GPIO1 Pin Wakeup Interrupt Enable</strong><br>
+    Setting a GPIO1 pin’s bit in this register causes an interrupt to be generated that wakes up the device from any low-power mode to <em>ACTIVE</em>. A wake-up event sets the corresponding GPIO1’s bit in the <a href="#low-power-gpio1-wakeup-status-flags">PWRSEQ_LPWKST1</a> register, enabling the determination of which GPIO1 pin triggered the wake-up event. Bits corresponding to unimplemented GPIO are ignored.<br>
+    <p><em>Note: To enable the MAX78000 to wake up from a low-power mode on a GPIO pin transition, first set the GPIO wake-up enable register bit GCR_PM.gpio_we to 1.</em></p>
+    </td>
+  </tr>
+</table>
+
+*Table 4-45: GPIO2 Low Power Wakeup Status Flags*
+<a name="low-power-gpio2-wakeup-status-flags"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <td colspan="3">GPIO2 Low Power Wakeup Status Flags</td>
+    <td colspan="1">PWRSEQ_LPWKST2</td>
+    <td>[0x0014]</td>
+  </tr>
+  <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:8</td>
+    <td>-</td>
+    <td>R/W1C</td>
+    <td>0</td>
+    <td><strong>Reserved</strong><br>Bits corresponding to unimplemented GPIO are ignored.</td>
+  </tr>
+  <tr>
+    <td>7:0</td>
+    <td>wakest</td>
+    <td>R/W1C</td>
+    <td>0</td>
+    <td><strong>GPIO2 Pin Wakeup Status Flag</strong><br>
+    Whenever a GPIO2 pin, in any power mode, transitions from low-to-high or high-to-low, the pin's corresponding bit in this register is set. The device wakes from a low-power mode to <em>ACTIVE</em> if the corresponding interrupt enable bit is set in <a href="#low-power-gpio2-wakeup-enable-registers">PWRSEQ_LPWKEN2</a>.<br>
+    <p><em>Note: Clear this register before entering any low-power mode.</em></p>
+    </td>
+  </tr>
+</table>
+
+*Table 4-46: GPIO2 Low Power Wakeup Enable Registers*
+<a name="low-power-gpio2-wakeup-enable-registers"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <td colspan="3">GPIO2 Low Power Wakeup Enable</td>
+    <td colspan="1">PWRSEQ_LPWKEN2</td>
+    <td>[0x0018]</td>
+  </tr>
+  <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:8</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong><br>Bits corresponding to unimplemented GPIO are ignored.</td>
+  </tr>
+  <tr>
+    <td>7:0</td>
+    <td>en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>GPIO2 Pin Wakeup Interrupt Enable</strong><br>
+    Setting a GPIO2 pin’s bit in this register causes an interrupt to be generated that wakes up the device from any low-power mode to <em>ACTIVE</em>. A wake-up event sets the corresponding GPIO2’s bit in the <a href="#low-power-gpio2-wakeup-status-flags">PWRSEQ_LPWKST2</a> register, enabling the determination of which GPIO2 pin triggered the wake-up event.<br>
+    <p><em>Note: To enable the MAX78000 to wake up from a low-power mode on a GPIO pin transition, first set the GPIO wake-up enable register bit GCR_PM.gpio_we to 1.</em></p>
+    </td>
+  </tr>
+</table>
+
+*Table 4-47: GPIO3 Low Power Wakeup Status Flags*
+<a name="low-power-gpio3-wakeup-status-flags"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <td colspan="3">GPIO3 Low Power Wakeup Status Flags</td>
+    <td colspan="1">PWRSEQ_LPWKST3</td>
+    <td>[0x001C]</td>
+  </tr>
+  <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:2</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
     <td><strong>Reserved</strong></td>
   </tr>
   <tr>
-    <td>16</td>
-    <td>rdy</td>
-    <td>R</td>
-    <td>-</td>
-    <td><strong>Cache Size</strong><br>This field returns the size of the cache RAM in 1KB units.<br>
-margin-left: 20px">
-16
+    <td>1:0</td>
+    <td>wakest</td>
+    <td>R/W1C</td>
+    <td>0</td>
+    <td><strong>GPIO3 Pin Wakeup Status Flag</strong><br>
+    Whenever a GPIO3 pin, in any power mode, transitions from low-to-high or high-to-low, the corresponding bit in this register is set. Bits corresponding to unimplemented GPIO are ignored.<br>
+    The device wakes from a low-power mode to <em>ACTIVE</em> if the corresponding interrupt enable bit is set in <a href="#low-power-gpio3-wakeup-enable-register">PWRSEQ_LPWKEN3</a>.<br>
+    <p><em>Note: Clear this register before entering any low-power mode.</em></p>
+    </td>
+  </tr>
 </table>
+
+*Table 4-48: GPIO3 Low Power Wakeup Enable Registers*
+<a name="low-power-gpio3-wakeup-enable-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <td colspan="3">GPIO3 Low Power Wakeup Enable</td>
+    <td colspan="1">PWRSEQ_LPWKEN3</td>
+    <td>[0x0020]</td>
+  </tr>
+  <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:2</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+  </tr>
+  <tr>
+    <td>1:0</td>
+    <td>en</td>
+    <td>R/W1C</td>
+    <td>0</td>
+    <td><strong>GPIO3 Pin Wakeup Interrupt Enable</strong><br>
+    Setting a GPIO3 pin’s bit in this register causes an interrupt to be generated that wakes up the device from any low-power mode to <em>ACTIVE</em>. A wake-up event sets the corresponding GPIO3’s bit in the <a href="#low-power-gpio3-wakeup-status-flags">PWRSEQ_LPWKST3</a> register, enabling the determination of which GPIO3 pin triggered the wake-up event. Bits corresponding to unimplemented GPIO are ignored.<br>
+    <p><em>Note: To enable the MAX78000 to wake up from a low-power mode on a GPIO pin transition, first set the GPIO wake-up enable register bit GCR_PM.gpio_we = 1.</em></p>
+    </td>
+  </tr>
+</table>
+
+*Table 4-49: Low Power Peripheral Wakeup Status Flags*
+<a name="low-power-peripheral-wakeup-status-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <td colspan="3">Low Power Peripheral Wakeup Status Flags</td>
+    <td colspan="1">PWRSEQ_LPPWST</td>
+    <td>[0x0030]</td>
+  </tr>
+  <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:18</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>reset</td>
+    <td>R/W1C</td>
+    <td>0</td>
+    <td><strong>Reset Detected Wakeup Flag</strong><br>
+      This field is set when an external reset caused the wake-up event.
+    </td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>backup</td>
+    <td>R/W1C</td>
+    <td>0</td>
+    <td><strong>BACKUP Mode Wakeup Flag</strong><br>
+      This field is set when the device wakes up from <em>BACKUP</em>.
+    </td>
+  </tr>
+  <tr>
+    <td>15:5</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>comp0</td>
+    <td>R/W1C</td>
+    <td>0</td>
+    <td><strong>Comparator 0 Wakeup Flag</strong><br>
+      This field is set if the wake-up event was the result of a comparator 0 trigger event.
+    </td>
+  </tr>
+  <tr>
+    <td>3:0</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+  </tr>
+</table>
+
+*Table 4-50: Low Power Peripheral Wakeup Enable Registers*
+<a name="low-power-peripheral-wakeup-enable-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <td colspan="3">Low Power Peripheral Wakeup Enable</td>
+    <td colspan="1">PWRSEQ_LPPWEN</td>
+    <td>[0x0034]</td>
+  </tr>
+  <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:27</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+  </tr>
+  <tr>
+    <td>26</td>
+    <td>lpcomp</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Low Power Comparator Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the LPCOMPn interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>25</td>
+    <td>spi1</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>SPI1 Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the SPI1 interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>24</td>
+    <td>i2s</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>I2S Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the I2S interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>23</td>
+    <td>i2c2</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>I2C2 Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the I2C2 interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>22</td>
+    <td>i2c1</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>I2C1 Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the I2C1 interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>21</td>
+    <td>i2c0</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>I2C0 Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the I2C0 interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>20</td>
+    <td>uart3</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>LPUART0 (UART3) Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from LPUART0 (UART3) interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>19</td>
+    <td>uart2</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>UART2 Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the UART2 interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td>uart1</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>UART1 Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the UART1 interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>uart0</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>UART0 Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the UART0 interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>tmr5</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>LPTMR1 (TMR5) Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the LPTMR1 (TMR5) interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>tmr4</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>LPTMR1 (TMR4) Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the LPTMR1 (TMR4) interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>tmr3</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>TMR3 Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the TMR3 interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>tmr2</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>TMR2 Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the TMR2 interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>tmr1</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>TMR1 Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the TMR1 interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>tmr0</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>TMR0 Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the TMR0 interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>cpu1</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CPU1 (RV32) Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the RV32 interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>wdt1</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>WDT1 (LPWDT0) Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the WDT1 (LPWDT0) interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>wdt0</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>WDT0 Interrupt Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from the WDT0 interrupt.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>7:5</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Comparator 0 Wakeup Enable</strong><br>
+      Set this field to 1 to enable wake-up events from Comparator 0. Comparator 0 can wake the device up from <em>SLEEP</em>, <em>LPM</em>, <em>UPM</em>, <em>STANDBY</em>, and <em>BACKUP</em>.
+    <div style="margin-left: 20px">
+    0: Disable wake-up on interrupt<br>
+    1: Enable wake-up on interrupt
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>3:0</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+  </tr>
+</table>
+
+*Table 4-51: Low Power General Purpose 0 Register*
+<a name="general-purpose-register0"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+       <td colspan="3">Low Power General Purpose 0</td>
+       <td colspan="1">PWRSEQ_GP0</td>
+       <td>[0x0048]</td>
+   </tr>
+   <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+   </tr>
+   <tr>
+       <td>31:0</td>
+       <td>-</td>
+       <td>R/W</td>
+       <td>0x1000 0000</td>
+       <td><strong>General Purpose Field</strong><br>
+       This register can be used as a general-purpose register by software and retains the contents during <em>SLEEP</em>, <em>LPM</em>, <em>UPM</em>, <em>STANDBY</em>, and <em>BACKUP</em>.</td>
+   </tr>
+</table>
+
+*Table 4-52: Low Power General Purpose 1 Register*
+<a name="general-purpose-register1"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+       <td colspan="3">Low Power General Purpose 1</td>
+       <td colspan="1">PWRSEQ_GP1</td>
+       <td>[0x004C]</td>
+   </tr>
+   <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+   </tr>
+   <tr>
+       <td>31:0</td>
+       <td>-</td>
+       <td>R/W</td>
+       <td>0x1000 0000</td>
+       <td><strong>General Purpose Field</strong><br>
+       This register can be used as a general-purpose register by software and retains the contents during <em>SLEEP</em>, <em>LPM</em>, <em>UPM</em>, <em>STANDBY</em>, and <em>BACKUP</em>.</td>
+   </tr>
+</table>
+
+## Trim System Initialization Registers (TRIMSIR)
+
+See <a href=../memory-register-mapping-access#apb-peripheral-base-address-map>Table 3-3</a> for the base address of this peripheral/module. See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
+
+*Note: The TRIMSIR registers are reset only on a POR. System reset, soft reset, and peripheral reset do not affect the TRIMSIR register values.*
+
+*Table 4-53: Trim System Initialization Register Summary*
+<a name= "table4-53-trim-system-initialization-register-summary"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <td>Offset</td>
+    <td>Register</td>
+    <td>Name</td>
+  </tr>
+  <tr>
+    <td>[0x0008]</td>
+    <td><a href="#rtc-trim-system-initialization-register">TRIMSIR_RTC</td>
+    <td>RTC Trim System Initialization Register</td>
+  </tr>
+  <tr>
+    <td>[0x0034]</td>
+    <td><a href="#system-initialization-register">TRIMSIR_SIMO</td>
+    <td>System Initialization Register</td>
+  </tr>
+  <tr>
+    <td>[0x003C]</td>
+    <td><a href="#system-initialization-function-register">TRIMSIR_IPOLO</td>
+    <td>System Initialization Function Status Register</td>
+  </tr>
+  <tr>
+    <td>[0x0040]</td>
+    <td><a href="#control-trim-system-initialization-register">TRIMSIR_CTRL</td>
+    <td>Control Trim System Initialization Register</td>
+  </tr>
+  <tr>
+    <td>[0x0044]</td>
+    <td><a href="#inro-trim-system-initialization-register">TRIMSIR_INRO</td>
+    <td>INRO Trim System Initialization Register</td>
+  </tr>
+</table>
+
+### TRIM System Initialization Register Details
+
+*Table 4-54: RTC Trim System Initialization Register*
+<a name="rtc-trim-system-initialization-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+       <td colspan="3">RTC Trim System Initialization</td>
+       <td colspan="1">TRIMSIR_RTC</td>
+       <td>[0x0008]</td>
+   </tr>
+   <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+   </tr>
+   <tr>
+       <td>31:0</td>
+       <td>lock</td>
+       <td>RO</td>
+       <td>*</td>
+       <td><strong>Lock</strong><br>This register is read-only if this field is set to 1, and the RTC X1 and RTC X2 fields cannot be modified.</td>
+   </tr>
+   <tr>
+       <td>30:26</td>
+       <td>-</td>
+       <td>RO</td>
+       <td>0</td>
+       <td><strong>Reserved</strong></td>
+   </tr>
+   <tr>
+       <td>25:21</td>
+       <td>x2trim</td>
+       <td>R/W*</td>
+       <td>0</td>
+       <td><strong>RTC X2 Trim</strong><br>The X2 trim setting for the RTC.<br>
+       <p><em>Note: If <a href="#rtc-trim-system-initialization-register">TRIMSIR_RTC</a>.lock is set to 1, this field is read-only.</em></p>
+       </td>
+   </tr>
+   <tr>
+       <td>20:16</td>
+       <td>x1trim</td>
+       <td>R/W*</td>
+       <td>0</td>
+       <td><strong>RTC X1 Trim</strong><br>The X1 trim setting for the RTC.<br>
+       <p><em>Note: If <a href="#rtc-trim-system-initialization-register">TRIMSIR_RTC</a>.lock is set to 1, this field is read-only.</em></p>
+       </td>
+   </tr>
+   <tr>
+       <td>15:0</td>
+       <td>-</td>
+       <td>RO</td>
+       <td>0</td>
+       <td><strong>Reserved</strong></td>
+   </tr>
+</table>
+
+*Table 4-55: SIMO Trim System Initialization Register*
+<a name="system-initialization-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+       <td colspan="3">SIMO System Initialization</td>
+       <td colspan="1">TRIMSIR_SIMO</td>
+       <td>[0x0034]</td>
+   </tr>
+   <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+   </tr>
+   <tr>
+       <td>31:3</td>
+       <td>-</td>
+       <td>RO</td>
+       <td>0</td>
+       <td><strong>Reserved</strong></td>
+   </tr>
+   <tr>
+       <td>2:0</td>
+       <td>clkdiv</td>
+       <td>R/W</td>
+       <td>1</td>
+       <td><strong>SIMO Clock Divide</strong><br>This field selects the SIMO clock divisor. The SIMO uses the INRO as its input clock.<br>
+       <div style="margin-left: 20px">
+           0: INRO/1<br>
+           1: INRO/16<br>
+           2: Reserved for Future Use<br>
+           3: INRO/32<br>
+           4: Reserved for Future Use<br>
+           5: INRO/64<br>
+           6: Reserved for Future Use<br>
+           7: INRO/128
+       </div>
+       </td>
+   </tr>
+</table>
+
+*Table 4-56: IPO Low Trim System Initialization Register*
+<a name="system-initialization-function-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+       <td colspan="3">IPO Trim Low System Initialization</td>
+       <td colspan="1">TRIMSIR_IPOLO</td>
+       <td>[0x003C]</td>
+   </tr>
+   <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+   </tr>
+   <tr>
+       <td>31:8</td>
+       <td>-</td>
+       <td>RO</td>
+       <td>0</td>
+       <td><strong>Reserved</strong></td>
+   </tr>
+   <tr>
+       <td>7:0</td>
+       <td>ipo_limitlo</td>
+       <td>RO</td>
+       <td>See Description</td>
+       <td><strong>IPO Low Trim Limit</strong><br>This field contains the low trim limit for the IPO. </td>
+   </tr>
+</table>
+
+*Table 4-57: Control Trim System Initialization Register*
+<a name="control-trim-system-initialization-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+       <td colspan="3">Control System Initialization</td>
+       <td colspan="1">TRIMSIR_CTRL</td>
+       <td>[0x0040]</td>
+   </tr>
+   <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+   </tr>
+   <tr>
+       <td>31:29</td>
+       <td>inro_trim</td>
+       <td>R/W</td>
+       <td>See Description</td>
+       <td><strong>INRO Clock Trim</strong><br>This field contains the trim for the INRO when set to 8KHz.</td>
+   </tr>
+   <tr>
+       <td>28:26</td>
+       <td>-</td>
+       <td>RO</td>
+       <td>0</td>
+       <td><strong>Reserved</strong></td>
+   </tr>
+   <tr>
+       <td>25:24</td>
+       <td>inro_sel</td>
+       <td>R/W</td>
+       <td>2</td>
+       <td><strong>INRO Clock Select</strong><br>This field selects the INRO frequency.<br>
+       <div style="margin-left: 20px">
+       0: 8KHz<br>
+       1: 16KHz<br>
+       2: 30KHz (Power-On Reset default)<br>
+       3: Reserved for Future Use
+       </div>       
+       </td>
+   </tr>
+   <tr>
+       <td>23:15</td>
+       <td>ipo_limithi</td>
+       <td>R/W</td>
+       <td>0x1FF</td>
+       <td><strong>IPO High Trim Limit</strong><br>This field contains the high limit for the IPO. </td>
+   </tr>
+    <tr>
+       <td>14:8</td>
+       <td>vdda_limithi</td>
+       <td>R/W</td>
+       <td>0x78</td>
+       <td><strong>V<sub>DDA</sub> High Trim Limit</strong><br>
+       This field is the high trim limit for V<sub>DDA</sub>.</td>
+   </tr>
+   <tr>
+       <td>7</td>
+       <td>-</td>
+       <td>RO</td>
+       <td>0</td>
+       <td><strong>Reserved</strong></td>
+   </tr>
+   <tr>
+       <td>6:0</td>
+       <td>vdda_limitlo</td>
+       <td>R/W</td>
+       <td>0x64</td>
+       <td><strong>V<sub>DDA</sub> Low Trim Limit</strong><br>
+       This field is the low trim limit for V<sub>DDA</sub>.</td>
+   </tr>
+</table>
+
+*Table 4-58: INRO Trim System Initialization Register*
+<a name="inro-trim-system-initialization-registerr"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+       <td colspan="3">INRO System Initialization</td>
+       <td colspan="1">TRIMSIR_INRO</td>
+       <td>[0x0044]</td>
+   </tr>
+   <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+   </tr>
+   <tr>
+       <td>31:8</td>
+       <td>-</td>
+       <td>RO</td>
+       <td>0</td>
+       <td><strong>Reserved</strong></td>
+   </tr>
+   <tr>
+       <td>7:6</td>
+       <td>lpclksel</td>
+       <td>R/W</td>
+       <td>2</td>
+       <td><strong>INRO Low Power Mode Clock Select</strong><br>
+       This field selects the INRO clock frequency for <em>LPM</em> operation.<br>
+      <div style="margin-left: 20px">
+       0: 8KHz<br>
+       1: 16KHz<br>
+       2: 30KHz (POR default)<br>
+       3: Reserved for Future Use
+       </div>
+       </td>
+   </tr>
+   <tr>
+       <td>5:3</td>
+       <td>trim30k</td>
+       <td>R/W</td>
+       <td>0</td>
+       <td><strong>INRO 30KHz Trim</strong><br>This field contains the trim for the INRO when set to 30KHz. </td>
+   </tr>
+   <tr>
+       <td>2:0</td>
+       <td>trim16k</td>
+       <td>R/W</td>
+       <td>0</td>
+       <td><strong>INRO 16KHz Trim</strong><br>This field contains the trim for the INRO when set to 16KHz.</td>
+   </tr>
+</table>
+
+## Global Control Registers (GCR)
