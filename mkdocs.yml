@@ -4,6 +4,7 @@ docs_dir: src
 site_dir: docs
 nav:
   - Home: index.md
+  - Overview: overview.md
   - Memory, Register, Mapping: memory-register-mapping-access.md
   - System, Power, Clocks, Reset: system-power-clocks-reset.md
   - Flash Controller: flash-controller.md
@@ -26,7 +27,7 @@ theme:
       primary: blue
       accent: deep orange
   font:
-    text: Merriweather Sans
+    text: Inter
     code: Red Hat Mono
 markdown_extensions:
   - admonition
