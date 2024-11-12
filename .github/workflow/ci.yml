@@ -3,22 +3,31 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'src/**'         # Triggers on changes to source markdown files
+      - 'mkdocs.yml'     # Triggers on config changes
+      - 'docs/**/*.css'  # Triggers on CSS changes
   pull_request:
     branches:
       - main
-  workflow_dispatch:
+  workflow_dispatch:     # Allows manual trigger
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+        with:
+          fetch-depth: 0  # Fetch all history for proper timestamps
+     
       - uses: actions/setup-python@v4
         with:
           python-version: 3.x
           cache: 'pip'
-          
+         
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -30,16 +39,27 @@ jobs:
 
       - name: Build documentation
         run: |
+          # Remove existing docs directory to ensure clean build
+          rm -rf docs
+          
           # Build the site to docs directory
           mkdocs build --site-dir docs
-          
+         
           # Create .nojekyll file
           touch docs/.nojekyll
-          
+         
       - name: Commit and push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add docs/ docs/.nojekyll
-          git commit -m "Update documentation" || echo "No changes to commit"
-          git push
+          
+          # Stage all changes in docs directory
+          git add docs/
+          
+          # Check if there are any changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-update documentation"
+            git push
+          fi
