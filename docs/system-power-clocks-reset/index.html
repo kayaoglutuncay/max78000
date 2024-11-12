@@ -67,7 +67,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple">
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -125,7 +125,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
@@ -1705,8 +1705,8 @@
 <p>Oscillator settings are <em>not</em> reset during:
 - Soft Reset
 - Peripheral Reset</p>
-<p><em>Table 4-2</em> shows each oscillator’s enabled state for each type of reset source in the MAX78000.
-<em>Note: A Watchdog Timer Reset performs a System Reset.</em></p>
+<p><a href="#reset-sources-effect-oscillator-system-clock"><em>Table 4-2</em></a> shows each oscillator’s enabled state for each type of reset source in the MAX78000.</p>
+<p><em>Note: A Watchdog Timer Reset performs a System Reset.</em></p>
 <p><em>Table 4-2: Reset Sources and Effect on Oscillator and System Clock</em>
 <a name="reset-sources-effect-oscillator-system-clock"></a></p>
 <table border="1" cellpadding="5" cellspacing="0">
@@ -1716,10 +1716,10 @@
     </tr>
     <tr>
         <th style="background-color: #e0e0e0; font-weight: bold; text-align: center">Oscillator</th>
-        <th>POR</th>
-        <th>System</th>
-        <th>Soft</th>
-        <th>Peripheral</th>
+        <th style="background-color: #e0e0e0; font-weight: bold; text-align: center">POR</th>
+        <th style="background-color: #e0e0e0; font-weight: bold; text-align: center">System</th>
+        <th style="background-color: #e0e0e0; font-weight: bold; text-align: center">Soft</th>
+        <th style="background-color: #e0e0e0; font-weight: bold; text-align: center">Peripheral</th>
     </tr>
     <tr>
         <td style="background-color: #e0e0e0; font-weight: bold; text-align: center">IPO</td>
@@ -1765,8 +1765,10 @@
     </tr>
 </table>
 
-<p>Figure 4-1: MAX78000 Clock Block Diagram shows a high-level diagram of the MAX78000 clock tree.
-<em>Figure 4-1: MAX78000 Clock Block Diagram</em></p>
+<p><a href="#figure4-1">Figure 4-1: MAX78000 Clock Block Diagram</a> shows a high-level diagram of the MAX78000 clock tree.</p>
+<p><em>Figure 4-1: MAX78000 Clock Block Diagram</em>
+<a name="figure4-1"></a></p>
+<p><img alt="Figure 4-1" src="../assets/images/figure4-1.svg" /></p>
 <h2 id="operating-modes">Operating Modes</h2>
 <p>The MAX78000 includes multiple operating modes and the ability to fine-tune power options to optimize performance and power. The system supports the following operating modes:</p>
 <ul>
@@ -1797,7 +1799,9 @@ The device status is as follows:</p>
 <p>Entering SLEEP requires both the CM4 and RV32 to cooperate to enter SLEEP. Synchronization is necessary for deterministic entry into SLEEP. Two methods are described below, allowing either core to request entry into SLEEP. Both methods use the semaphore peripheral interrupt to communicate between the cores.</p>
 <p>If the RV32 is driving entry to SLEEP, the RV32 notifies the CM4 of a request to enter SLEEP using Multiprocessor Communications. The CM4 receives the notification and then sends confirmation through the semaphore peripheral to the RV32. The CM4 should then enter SLEEP by setting the SCR.sleepdeep field to 0 and performing a WFI or WFE instruction. The RV32 should then enter SLEEP by performing a WFI instruction or by setting GCR_PM.mode to 1, followed by two NOP instructions.</p>
 <p>Alternatively, the CM4 can initiate the request to enter SLEEP by sending the request to the RV32 using Multiprocessor Communications. The RV32 confirms the request through Multiprocessor Communications and performs a WFI instruction followed by two NOP instructions. The CM4 should then enter SLEEP by setting SCR.sleepdeep to 0 and performing a WFI or WFE instruction or by setting GCR_PM.mode to 1.</p>
-<p><em>Figure 4-2: SLEEP Mode Clock Control</em></p>
+<p><em>Figure 4-2: SLEEP Mode Clock Control</em>
+<a name="figure4-2"></a></p>
+<p><img alt="Figure 4-2" src="../assets/images/figure4-2.svg" /></p>
 <h4 id="lpm">LPM</h4>
 <p>This mode is suitable for running the RV32 processor to collect and move data from enabled peripherals. The device status is a follows:</p>
 <ul>
@@ -1826,11 +1830,15 @@ The device status is as follows:</p>
 <h5 id="entering-lpm">Entering LPM</h5>
 <p>Entry into LPM should be managed between the two cores using Multiprocessor Communications to ensure both cores are in a known state when entering LPM.</p>
 <p>When the CM4 puts itself into deep sleep, the device automatically enters LPM, and hardware sets the GCR_PM.mode to LPM. To place the CM4 in LPM mode in software, perform the following instructions.</p>
-<p>SCR.sleepdeep = 1;  // deep sleep mode enabled
-WFI (or WFE);   // Enter deep sleep mode</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>SCR.sleepdeep = 1;  // deep sleep mode enabled
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>WFI (or WFE);   // Enter deep sleep mode
+</span></code></pre></div>
 <p>If the RV32 requests the CM4 to enter LPM mode through Multiprocessor Communications and the CM4 enters SLEEP instead, by setting SCR.sleepdeep to 0 and performing a WFI or WFE instruction, the RV32 can put the device into LPM by directly setting the GCR_PM.mode field to LPM (8).</p>
 <p><em>Note: The device immediately enters LPM when the GCR_PM.mode field is set to LPM. If the CM4 is not in a known state, issues may occur when exiting LPM.</em></p>
-<p><em>Figure 4-3: LPM Clock and State Retention Diagram</em></p>
+<p><em>Figure 4-3: LPM Clock and State Retention Diagram</em>
+<a name="figure4-3"></a></p>
+<p><img alt="Figure 4-3" src="../assets/images/figure4-3.svg" /></p>
 <h4 id="upm">UPM</h4>
 <p>This mode is used for extremely low power consumption while using a minimal set of peripherals to provide wake-up capability. The device status during UPM is:</p>
 <ul>
@@ -1865,7 +1873,9 @@ WFI (or WFE);   // Enter deep sleep mode</p>
 <p>Entering UPM mode requires both the CM4 and RV32 to cooperate to enter UPM mode. Synchronization is necessary for deterministic entry into UPM. Two methods are described below, allowing either core to request entry into UPM and ensuring deterministic entry. Both methods use the Semaphore peripheral interrupt to communicate between the cores.</p>
 <p>If the RV32 is driving entry to UPM, the RV32 notifies the CM4 of a request to enter UPM using Multiprocessor Communications. The CM4 receives the notification and then sends a confirmation through the semaphore peripheral to the RV32. The CM4 should then enter SLEEP by setting SCR.sleepdeep to 0 and performing a WFI or WFE instruction. The RV32 sets the GCR_PM.mode to UPM, followed by two NOP instructions, and the device immediately enters UPM.</p>
 <p>Alternatively, the CM4 can initiate the request to enter UPM by sending the request to the RV32 using Multiprocessor Communications. The RV32 confirms the request through Multiprocessor Communications and performs a WFI instruction, followed by two NOP instructions. The CM4 then sets the GCR_PM.mode to UPM, and the device immediately enters UPM.</p>
-<p><em>Figure 4-4: UPM Clock and State Retention Block Diagram</em></p>
+<p><em>Figure 4-4: UPM Clock and State Retention Block Diagram</em>
+<a name="figure4-4"></a></p>
+<p><img alt="Figure 4-4" src="../assets/images/figure4-4.svg" /></p>
 <h4 id="standby">STANDBY</h4>
 <p>This mode is used to maintain the system operation while keeping time with the RTC. The device status is as follows:</p>
 <ul>
@@ -1891,7 +1901,9 @@ WFI (or WFE);   // Enter deep sleep mode</p>
 <p>Entering STANDBY requires both the CM4 and RV32 to enter STANDBY mode. Synchronization is necessary for deterministic entry into STANDBY. Two methods are described below, allowing either core to request entry into STANDBY and ensuring deterministic entry. Both methods use the semaphore peripheral interrupt to communicate between the cores.</p>
 <p>If the RV32 is driving entry to STANDBY, the RV32 notifies the CM4 of a request to enter STANDBY using Multiprocessor Communications. The CM4 receives the notification and then sends a confirmation through the semaphore peripheral to the RV32. The CM4 should then enter SLEEP by setting SCR.sleepdeep to 0 and performing a WFI or WFE instruction. The RV32 sets the GCR_PM.mode to STANDBY, followed by two NOP instructions, and the device immediately enters into STANDBY.</p>
 <p>Alternatively, the CM4 can initiate the request to enter STANDBY by sending the request to the RV32 using Multiprocessor Communications. The RV32 confirms the request through Multiprocessor Communications and performs a WFI instruction followed by two NOP instructions. The CM4 then sets the GCR_PM.mode to STANDBY, and the device immediately enters STANDBY.</p>
-<p><em>Figure 4-5: STANDBY Mode Clock and State Retention Block Diagram</em></p>
+<p><em>Figure 4-5: STANDBY Mode Clock and State Retention Block Diagram</em>
+<a name="figure4-5"></a></p>
+<p><img alt="Figure 4-5" src="../assets/images/figure4-5.svg" /></p>
 <h4 id="backup">BACKUP</h4>
 <p>This mode is used to maintain the System RAM. The device status is as follows:</p>
 <ul>
@@ -1911,11 +1923,26 @@ WFI (or WFE);   // Enter deep sleep mode</p>
 </ul>
 </li>
 </ul>
-<p><em>Table 4-3 System RAM Retention in BACKUP Mode</em></p>
+<p><em>Table 4-3 System RAM Retention in BACKUP Mode</em>
+<a name="table4-3-system-ram-detention-in-backup-mode"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+       <th>RAM Block #</th>
+       <th>Size</th>
+       <th>State Retention Control</th>
+   </tr>
+   <tr><td>sysram0</td><td>32KB + ECC if enabled</td><td>PWRSEQ_LPCN.ramret0</td></tr>
+   <tr><td>sysram1</td><td>32KB</td><td>PWRSEQ_LPCN.ramret1</td></tr>
+   <tr><td>sysram2</td><td>48KB</td><td>PWRSEQ_LPCN.ramret2</td></tr>
+   <tr><td>sysram3</td><td>16KB</td><td>PWRSEQ_LPCN.ramret3</td></tr>
+</table>
+
 <h5 id="entering-backup">Entering BACKUP</h5>
 <p>Entering BACKUP mode does not require synchronization between the RV32 and CM4 cores. However, it is recommended that Multiprocessor Communications are used to ensure both cores are aware of entry into BACKUP and complete any memory transactions before entry.</p>
 <p>Either core can set GCR_PM.mode to BACKUP, and the device immediately enters BACKUP.</p>
-<p><em>Figure 4-6: BACKUP Mode Clock and State Retention Block Diagram</em></p>
+<p><em>Figure 4-6: BACKUP Mode Clock and State Retention Block Diagram</em>
+<a name="figure4-6"></a></p>
+<p><img alt="Figure 4-6" src="../assets/images/figure4-6.svg" /></p>
 <h4 id="pdm">PDM</h4>
 <p>This mode is used during product level distribution and storage. The device status is as follows:</p>
 <ul>
@@ -1929,81 +1956,270 @@ WFI (or WFE);   // Enter deep sleep mode</p>
 <h5 id="entering-pdm">Entering PDM</h5>
 <p>Entering PDM does not require synchronization between the RV32 and CM4 cores. However, it is recommended that Multiprocessor Communications is used to ensure both cores are aware of entry into PDM and complete any flash memory transactions.</p>
 <p>Either core can set GCR_PM.mode to PDM, and the device immediately enters PDM.</p>
-<p><em>Figure 4-7: PDM Clock and State Retention Block Diagram</em></p>
+<p><em>Figure 4-7: PDM Clock and State Retention Block Diagram</em>
+<a name="figure4-7"></a></p>
+<p><img alt="Figure 4-7" src="../assets/images/figure4-7.svg" /></p>
 <h2 id="wake-up-sources-for-each-operating-mode">Wake-Up Sources for Each Operating Mode</h2>
 <p>In all operating modes other than ACTIVE, wake-up sources are required to re-enter ACTIVE operation. <a href="#table4-4-wakeup-sources-for-each-operating-mode-in-78000">Table 4-4</a> shows available wake-up sources for each operating mode of the MAX78000.</p>
 <p><em>Note: Each wake-up source must be enabled individually except for External Reset, which is hardware controlled.</em></p>
 <p><em>Table 4-4: Wake-Up Sources for Each Operating Mode in the MAX78000</em>
 <a name="table4-4-wakeup-sources-for-each-operating-mode-in-78000"></a></p>
-<table>
-    <tr>
-        <th>Operating Mode</th>
-        <th>Any Peripheral Interrupts</th>
-        <th>External Reset</th>
-        <th>RV32</th>
-        <th>CNN</th>
-        <th>CNN FIFO</th>
-        <th>SPI1</th>
-        <th>SPI0</th>
-        <th>Any Peripheral Interrupts</th>
-        <th>I2C</th>
-        <th>I2C2</th>
-        <th>I2C1</th>
-        <th>I2C0</th>
-        <th>LPUART0 (UART3)</th>
-        <th>UART2</th>
-        <th>UART1</th>
-        <th>UART0</th>
-        <th>LPUART0 (TMR5)</th>
-        <th>LPUART0 (TMR4)</th>
-        <th>TMR3</th>
-        <th>TMR2</th>
-        <th>TMR1</th>
-        <th>TMR0</th>
-        <th>LPWDT0 (WDT1)</th>
-        <th>WDT0</th>
-        <th>LPCOMP3</th>
-        <th>LPCOMP2</th>
-        <th>LPCOMP1</th>
-        <th>COMP0</th>
-        <th>RTC</th>
-        <th>WUT</th>
-        <th>GPIO3</th>
-        <th>GPIO2</th>
-        <th>GPIO1</th>
-        <th>GPIO0</th>
-    </tr>
-    <tr>
-        <td>SLEEP</td>
-        <td>x</td><td>x</td><td>x</td><td>x</td><td></td><td></td><td></td><td></td>
-        <td></td><td></td><td></td><td>x</td><td></td><td></td><td></td><td></td>
-        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-        <td></td><td></td><td></td><td>x</td><td></td><td></td><td>x</td>
-    </tr>
-    <tr>
-        <td>LPM</td>
-        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-        <td></td><td></td><td></td><td></td><td></td>
-    </tr>
-    <tr>
-        <td>UPM</td>
-        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-    </tr>
-    <tr>
-        <td>STANDBY</td>
-        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-    </tr>
-    <tr>
-        <td>BACKUP</td>
-        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-    </tr>
-    <tr>
-        <td>PDM</td>
-        <td></td><td></td>
-    </tr>
+<table border="1" cellpadding="5" cellspacing="0">
+   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+       <th>Operating Mode</th>
+       <th>Any Peripheral Interrupts</th>
+       <th>External Reset</th>
+       <th>RV32</th>
+       <th>CNN</th>
+       <th>CNN FIFO</th>
+       <th>SPI1</th>
+       <th>SPI0</th>
+       <th>I2S</th>
+       <th>I2C2</th>
+       <th>I2C1</th>
+       <th>I2C0</th>
+       <th>LPUART0 (UART3)</th>
+       <th>UART2</th>
+       <th>UART1</th>
+       <th>UART0</th>
+       <th>LPTMR1 (TMR5)</th>
+       <th>LPTMR0 (TMR4)</th>
+       <th>TMR3</th>
+       <th>TMR2</th>
+       <th>TMR1</th>
+       <th>TMR0</th>
+       <th>LPWDT0 (WDT1)</th>
+       <th>WDT0</th>
+       <th>LPCOMP3</th>
+       <th>LPCMOP2</th>
+       <th>LPCMOP1</th>
+       <th>COMP0</th>
+       <th>RTC</th>
+       <th>WUT</th>
+       <th>GPIO3</th>
+       <th>GPIO2</th>
+       <th>GPIO1</th>
+       <th>GPIO0</th>
+   </tr>
+   <tr>
+    <td>SLEEP</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>LPM</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>UPM</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>STANDBY</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>BACKUP</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>PDM</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td colspan="34" style="text-align: left;"><em>Note: The CNN and CNN FIFO cannot wake the CM4 from LPM.</em></td>
+</tr>
 </table>
 
 <h2 id="device-resets">Device Resets</h2>
@@ -2088,12 +2304,12 @@ WFI (or WFE);   // Enter deep sleep mode</p>
 <p><em>Table 4-7: ICC0 Cache Information Register</em>
 <a name="cache-id-register"></a></p>
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">ICC0 Cache Information</td>
        <td colspan="1">ICCn_INFO</td>
        <td>[0x0000]</td>
    </tr>
-   <tr>
+   <tr class="header-row">
        <th>Bits</th>
        <th>Name</th>
        <th>Access</th>
@@ -2139,12 +2355,12 @@ WFI (or WFE);   // Enter deep sleep mode</p>
 <p><em>Table 4-8: ICC0 Memory Size Register</em>
 <a name="cache-memory-size-register"></a></p>
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">ICC0 Memory Size</td>
        <td colspan="1">ICCn_SZ</td>
        <td>[0x0004]</td>
    </tr>
-   <tr>
+   <tr class="header-row">
        <th>Bits</th>
        <th>Name</th>
        <th>Access</th>
@@ -2175,12 +2391,12 @@ WFI (or WFE);   // Enter deep sleep mode</p>
 <p><em>Table 4-9: ICC0 Cache Control Register</em>
 <a name="instruction-cache-control-register"></a></p>
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">ICC0 Cache Control</td>
        <td colspan="1">ICCn_CTRL</td>
        <td>[0x0100]</td>
    </tr>
-   <tr>
+   <tr class="header-row">
        <th>Bits</th>
        <th>Name</th>
        <th>Access</th>
@@ -4994,6 +5210,82 @@ WFI (or WFE);   // Enter deep sleep mode</p>
 </table>
 
 <h2 id="global-control-registers-gcr">Global Control Registers (GCR)</h2>
+<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the base address of this peripheral/module. See <a href="../#table1-1-field-access-definitions">Table 1-1</a> for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
+<p><em>Note: The GCR are only reset on a system reset or POR. A soft reset or peripheral reset does not affect these registers.</em></p>
+<p><em>Table 4-59: Global Control Register Summary</em>
+<a name= "table4-59-global-control-register-summary"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <td>Offset</td>
+    <td>Register</td>
+    <td>Name</td>
+  </tr>
+  <tr>
+    <td>[0x0000]</td>
+    <td><a href="#low-power-control-register">PWRSEQ_LPCN</td>
+    <td>Low Power Control Register</td>
+  </tr>
+  <tr>
+    <td>[0x0004]</td>
+    <td><a href="#low-power-gpio0-wakeup-status-flag">PWRSEQ_LPWKST0</td>
+    <td>Low Power GPIO0 Wakeup Status Flags</td>
+  </tr>
+  <tr>
+    <td>[0x0008]</td>
+    <td><a href="#low-power-gpio0-wakeup-enable-register">PWRSEQ_LPWKEN0</td>
+    <td>Low Power GPIO0 Wakeup Enable Register</td>
+  </tr>
+  <tr>
+    <td>[0x000C]</td>
+    <td><a href="#low-power-gpio1-wakeup-status-flags">PWRSEQ_LPWKST1</td>
+    <td>Low Power GPIO1 Wakeup Status Flags</td>
+  </tr>
+  <tr>
+    <td>[0x0010]</td>
+    <td><a href="#low-power-gpio1-wakeup-status-flags">PWRSEQ_LPWKEN1</td>
+    <td>Low Power GPIO1 Wakeup Enable Register</td>
+  </tr>
+  <tr>
+    <td>[0x0014]</td>
+    <td><a href="#low-power-gpio2-wakeup-status-flags">PWRSEQ_LPWKST2</td>
+    <td>Low Power GPIO2 Wakeup Status Flags</td>
+  </tr>
+  <tr>
+    <td>[0x0018]</td>
+    <td><a href="#low-power-gpio2-wakeup-enable-registers">PWRSEQ_LPWKEN2</td>
+    <td>Low Power GPIO2 Wakeup Enable Registers</td>
+  </tr>
+  <tr>
+    <td>[0x001C]</td>
+    <td><a href="#low-power-gpio3-wakeup-status-flags">PWRSEQ_LPWKST3</td>
+    <td>Low Power GPIO3 Wakeup Status Flags</td>
+  </tr>
+  <tr>
+    <td>[0x0020]</td>
+    <td><a href="#low-power-gpio3-wakeup-enable-register">PWRSEQ_LPWKEN3</td>
+    <td>Low Power GPIO3 Wakeup Enable Register</td>
+  </tr>
+  <tr>
+    <td>[0x0030]</td>
+    <td><a href="#low-power-peripheral-wakeup-status-register">PWRSEQ_LPPWST</td>
+    <td>Low Power Peripheral Wakeup Status Register</td>
+  </tr>
+  <tr>
+    <td>[0x0034]</td>
+    <td><a href="#low-power-peripheral-wakeup-enable-register">PWRSEQ_LPPWEN</td>
+    <td>Low Power Peripheral Wakeup Enable Register</td>
+  </tr>
+  <tr>
+    <td>[0x0048]</td>
+    <td><a href="#general-purpose-register0">PWRSEQ_GP0</td>
+    <td>General Purpose Register 0</td>
+  </tr>
+    <tr>
+    <td>[0x004C]</td>
+    <td><a href="#general-purpose-register1">PWRSEQ_GP1</td>
+    <td>General Purpose Register 1</td>
+  </tr>
+</table>
 
 
 
