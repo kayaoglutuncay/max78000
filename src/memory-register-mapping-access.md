@@ -7,12 +7,22 @@ However, it is important to note that the architectural definition does not requ
 *Figure 3-1: CM4 Code Memory Mapping*
 <a name="figure3-1-cm4-code-memory-mapping"></a>
 
-![Figure 3-1](assets/images/figure3-1.png)
+![Figure 3-1](assets/images/figure3-1.svg)
 
 *Figure 3-2: RISC-V IBUS Code Memory Mapping*
 <a name="figure3-2-risc-v-ibus-code-memory-mapping"></a>
 
-![Figure 3-2](assets/images/figure3-2.png)
+![Figure 3-2](assets/images/figure3-2.svg)
+
+*Figure 3-3: CM4 Peripheral and Data Memory Mapping*
+<a name="figure3-3-cm4-peripheral-and-data-memory-mapping"></a>
+
+![Figure 3-3](assets/images/figure3-3.svg)
+
+*Figure 3-4: RV32 Peripheral and Data Memory Mapping*
+<a name="figure3-4-rv32-peripheral-and-data-memory-mapping"></a>
+
+![Figure 3-4](assets/images/figure3-4.svg)
 
 ## Standard Memory Regions
 Several standard memory regions are defined for the Arm Cortex-M4 (CPU0) and RISC-V (CPU1) architectures; many of these are optional for the system integrator. At a minimum, the MAX78000 must contain some code and data memory for application software, stack, and variable space for CPU0.
@@ -37,128 +47,8 @@ The information block is a separate area of the internal flash memory and is 16,
 *Figure 3-5: Unique Serial Number Format*
 <a name="unique-serial-number-format"></a>
 
-<table border="1" cellpadding="5" cellspacing="0">
-   <tr>
-       <td colspan="2"></td>
-       <td style="background-color: #e0e0e0; font-weight: bold; text-align: center" colspan="32">Bit Position</td>
-   </tr>
-   <tr>
-       <td colspan="2"></td>
-       <td>31</td>
-       <td>30</td>
-       <td>29</td>
-       <td>28</td>
-       <td>27</td>
-       <td>26</td>
-       <td>25</td>
-       <td>24</td>
-       <td>23</td>
-       <td>22</td>
-       <td>21</td>
-       <td>20</td>
-       <td>19</td>
-       <td>18</td>
-       <td>17</td>
-       <td>16</td>
-       <td>15</td>
-       <td>14</td>
-       <td>13</td>
-       <td>12</td>
-       <td>11</td>
-       <td>10</td>
-       <td>9</td>
-       <td>8</td>
-       <td>7</td>
-       <td>6</td>
-       <td>5</td>
-       <td>4</td>
-       <td>3</td>
-       <td>2</td>
-       <td>1</td>
-       <td>0</td>
-   </tr>
-   <tr>
-       <td colspan="1"></td>
-       <td><strong>0x10800000</strong></td>
-       <td align="center" colspan="17">USN bits 16-0</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-   </tr>
-   <tr>
-       <td colspan="1"></td>
-       <td><strong>0x10800004</strong></td>
-       <td colspan="1">x</td>
-       <td align="center" colspan="31">USN bits 47-17</td>
-   </tr>
-   <tr>
-       <td colspan="1"></td>
-       <td><strong>0x10800000</strong></td>
-       <td align="center" colspan="17">USN bits 64-48</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-   </tr>
-   <tr>
-       <td colspan="1"></td>
-       <td><strong>0x1080000C</strong></td>
-       <td colspan="1">x</td>
-       <td align="center" colspan="31">USN bits 95-65</td>
-    </tr>
-    <tr>
-       <td colspan="1"></td>
-       <td><strong>0x10800010</strong></td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td colspan="8">USN bits 103-96</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-       <td>x</td>
-   </tr>
-</table>
+![Figure 3-5](assets/images/figure3-5.svg)
+
 
 Reading the USN requires unlocking the information block. Unlocking the information block does not enable write access to the block but allows the contents of the USN to be read from the block. Unlock the information block using the following steps:
 
@@ -316,55 +206,63 @@ The SPI0 AHB slave has access to all non-core memory areas accessible by the sys
 <a name="apb-peripheral-base-address-map"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-    <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
-        <th>Peripheral Register Name</th>
-        <th>Register Prefix</th>
-        <th>APB Base Address</th>
-        <th>APB End Address</th>
-    </tr>
-    <tr><td>Global Control</td><td>GCR_</td><td>0x4000 0000</td><td>0x4000 03FF</td></tr>
-    <tr><td>System Interface</td><td>SIR_</td><td>0x4000 0400</td><td></td></tr>
-    <tr><td>Watchdog Timer 0</td><td>WDT0_</td><td>0x4000 3000</td><td>0x4000 33FF</td></tr>
-    <tr><td>Dynamic Voltage Scaling Controller</td><td>DVS_</td><td>0x4000 3C00</td><td>0x4000 3C3F</td></tr>
-    <tr><td>Single Input Multiple Output</td><td>SIMO_</td><td>0x4000 4400</td><td>0x4000 47FF</td></tr>
-    <tr><td>Trim System Initialization</td><td>TRIMSIR_</td><td>0x4000 5400</td><td>0x4000 57FF</td></tr>
-    <tr><td>General Control Function</td><td>GCFR_</td><td>0x4000 5800</td><td>0x4000 5BFF</td></tr>
-    <tr><td>Real time Clock</td><td>RTC_</td><td>0x4000 6000</td><td>0x4000 63FF</td></tr>
-    <tr><td>Wakeup Timer</td><td>WUT_</td><td>0x4000 6400</td><td>0x4000 67FF</td></tr>
-    <tr><td>Power Sequencer</td><td>PWRSEQ_</td><td>0x4000 6800</td><td>0x4000 6BFF</td></tr>
-    <tr><td>Miscellaneous Control</td><td>MCR_</td><td>0x4000 6C00</td><td>0x4000 6FFF</td></tr>
-    <tr><td>AES</td><td>AES_</td><td>0x4000 7400</td><td>0x4000 77FF</td></tr>
-    <tr><td>AES Key</td><td>AESKEY_</td><td>0x4000 7800</td><td>0x4000 7BFF</td></tr>
-    <tr><td>GPIO Port 0</td><td>GPIO0_</td><td>0x4000 8000</td><td>0x4000 8FFF</td></tr>
-    <tr><td>GPIO Port 1</td><td>GPIO1_</td><td>0x4000 9000</td><td>0x4000 9FFF</td></tr>
-    <tr><td>Parallel Camera Interface</td><td>PCIF_</td><td>0x4000 E000</td><td>0x4000 EFFF</td></tr>
-    <tr><td>CRC</td><td>CRC_</td><td>0x4000 F000</td><td>0x4000 FFFF</td></tr>
-    <tr><td>Timer 0</td><td>TMR0_</td><td>0x4001 0000</td><td>0x4001 0FFF</td></tr>
-    <tr><td>Timer 1</td><td>TMR1_</td><td>0x4001 1000</td><td>0x4001 1FFF</td></tr>
-    <tr><td>Timer 2</td><td>TMR2_</td><td>0x4001 2000</td><td>0x4001 2FFF</td></tr>
-    <tr><td>Timer 3</td><td>TMR3_</td><td>0x4001 3000</td><td>0x4001 3FFF</td></tr>
-    <tr><td>I2C 0</td><td>I2C0_</td><td>0x4001 D000</td><td>0x4001 DFFF</td></tr>
-    <tr><td>I2C 1</td><td>I2C1_</td><td>0x4001 E000</td><td>0x4001 EFFF</td></tr>
-    <tr><td>I2C 2</td><td>I2C2_</td><td>0x4001 F000</td><td>0x4001 FFFF</td></tr>
-    <tr><td>Standard DMA</td><td>DMA_</td><td>0x4002 8000</td><td>0x4002 8FFF</td></tr>
-    <tr><td>Flash Controller 0</td><td>FLC0_</td><td>0x4002 9000</td><td>0x4002 93FF</td></tr>
-    <tr><td>Instruction-Cache Controller 0 (CM4)</td><td>ICC0_</td><td>0x4002 A000</td><td>0x4002 A7FF</td></tr>
-    <tr><td>Instruction Cache Controller 1 (RV32)</td><td>ICC1_</td><td>0x4002 A800</td><td>0x4002 AFFF</td></tr>
-    <tr><td>ADC</td><td>ADC_</td><td>0x4003 4000</td><td>0x4003 4FFF</td></tr>
-    <tr><td>Pulse Train Engine</td><td>PT_</td><td>0x4003 C000</td><td>0x4003 C09F</td></tr>
-    <tr><td>1-Wire Master</td><td>OWM0_</td><td>0x4003 D000</td><td>0x4003 DFFF</td></tr>
-    <tr><td>Semaphore</td><td>SEMA_</td><td>0x4003 E000</td><td>0x4003 EFFF</td></tr>
-    <tr><td>UART 0</td><td>UART0_</td><td>0x4004 2000</td><td>0x4004 2FFF</td></tr>
-    <tr><td>UART 1</td><td>UART1_</td><td>0x4004 3000</td><td>0x4004 3FFF</td></tr>
-    <tr><td>UART 2</td><td>UART2_</td><td>0x4004 4000</td><td>0x4004 4FFF</td></tr>
-    <tr><td>SPI1</td><td>SPI1_</td><td>0x4004 6000</td><td>0x4004 7FFF</td></tr>
-    <tr><td>TRNG</td><td>TRNG_</td><td>0x4004 D000</td><td>0x4004 DFFF</td></tr>
-    <tr><td>I2S</td><td>I2S_</td><td>0x4006 0000</td><td>0x4006 0FFF</td></tr>
-    <tr><td>Low Power General Control</td><td>LPGCR_</td><td>0x4008 0000</td><td>0x4008 03FF</td></tr>
-    <tr><td>GPIO Port 2</td><td>GPIO2_</td><td>0x4008 0400</td><td>0x4008 05FF</td></tr>
-    <tr><td>Low Power Watchdog Timer 0 (WDT1)</td><td>WDT1_</td><td>0x4008 0800</td><td>0x4008 0BFF</td></tr>
-    <tr><td>Low Power Timer 4</td><td>TMR4_</td><td>0x4008 0C00</td><td>0x4008 0FFF</td></tr>
-    <tr><td>Function Control</td><td>FCR_</td><td>0x4000 0800</td><td>0x4000 0BFF</td></tr>
+   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+       <th>Peripheral Register Name</th>
+       <th>Register Prefix</th>
+       <th>APB Base Address</th>
+       <th>APB End Address</th>
+   </tr>
+   <tr><td>Global Control</td><td>GCR_</td><td>0x4000 0000</td><td>0x4000 03FF</td></tr>
+   <tr><td>System Interface</td><td>SIR_</td><td>0x4000 0400</td><td>0x4000 07FF</td></tr>
+   <tr><td>Function Control</td><td>FCR_</td><td>0x4000 0800</td><td>0x4000 0BFF</td></tr>
+   <tr><td>Watchdog Timer 0</td><td>WDT0_</td><td>0x4000 3000</td><td>0x4000 33FF</td></tr>
+   <tr><td>Dynamic Voltage Scaling Controller</td><td>DVS_</td><td>0x4000 3C00</td><td>0x4000 3C3F</td></tr>
+   <tr><td>Single Input Multiple Output</td><td>SIMO_</td><td>0x4000 4400</td><td>0x4000 47FF</td></tr>
+   <tr><td>Trim System Initialization</td><td>TRIMSIR_</td><td>0x4000 5400</td><td>0x4000 57FF</td></tr>
+   <tr><td>General Control Function</td><td>GCFR_</td><td>0x4000 5800</td><td>0x4000 5BFF</td></tr>
+   <tr><td>Real time Clock</td><td>RTC_</td><td>0x4000 6000</td><td>0x4000 63FF</td></tr>
+   <tr><td>Wakeup Timer</td><td>WUT_</td><td>0x4000 6400</td><td>0x4000 67FF</td></tr>
+   <tr><td>Power Sequencer</td><td>PWRSEQ_</td><td>0x4000 6800</td><td>0x4000 6BFF</td></tr>
+   <tr><td>Miscellaneous Control</td><td>MCR_</td><td>0x4000 6C00</td><td>0x4000 6FFF</td></tr>
+   <tr><td>AES</td><td>AES_</td><td>0x4000 7400</td><td>0x4000 77FF</td></tr>
+   <tr><td>AES Key</td><td>AESKEY_</td><td>0x4000 7800</td><td>0x4000 7BFF</td></tr>
+   <tr><td>GPIO Port 0</td><td>GPIO0_</td><td>0x4000 8000</td><td>0x4000 8FFF</td></tr>
+   <tr><td>GPIO Port 1</td><td>GPIO1_</td><td>0x4000 9000</td><td>0x4000 9FFF</td></tr>
+   <tr><td>Parallel Camera Interface</td><td>PCIF_</td><td>0x4000 E000</td><td>0x4000 EFFF</td></tr>
+   <tr><td>CRC</td><td>CRC_</td><td>0x4000 F000</td><td>0x4000 FFFF</td></tr>
+   <tr><td>Timer 0</td><td>TMR0_</td><td>0x4001 0000</td><td>0x4001 0FFF</td></tr>
+   <tr><td>Timer 1</td><td>TMR1_</td><td>0x4001 1000</td><td>0x4001 1FFF</td></tr>
+   <tr><td>Timer 2</td><td>TMR2_</td><td>0x4001 2000</td><td>0x4001 2FFF</td></tr>
+   <tr><td>Timer 3</td><td>TMR3_</td><td>0x4001 3000</td><td>0x4001 3FFF</td></tr>
+   <tr><td>I2C 0</td><td>I2C0_</td><td>0x4001 D000</td><td>0x4001 DFFF</td></tr>
+   <tr><td>I2C 1</td><td>I2C1_</td><td>0x4001 E000</td><td>0x4001 EFFF</td></tr>
+   <tr><td>I2C 2</td><td>I2C2_</td><td>0x4001 F000</td><td>0x4001 FFFF</td></tr>
+   <tr><td>Standard DMA</td><td>DMA_</td><td>0x4002 8000</td><td>0x4002 8FFF</td></tr>
+   <tr><td>Flash Controller 0</td><td>FLC0_</td><td>0x4002 9000</td><td>0x4002 93FF</td></tr>
+   <tr><td>Instruction-Cache Controller 0 (CM4)</td><td>ICC0_</td><td>0x4002 A000</td><td>0x4002 A7FF</td></tr>
+   <tr><td>Instruction Cache Controller 1 (RV32)</td><td>ICC1_</td><td>0x4002 A800</td><td>0x4002 AFFF</td></tr>
+   <tr><td>ADC</td><td>ADC_</td><td>0x4003 4000</td><td>0x4003 4FFF</td></tr>
+   <tr><td>Pulse Train Engine</td><td>PT_</td><td>0x4003 C000</td><td>0x4003 C09F</td></tr>
+   <tr><td>1-Wire Master</td><td>OWM0_</td><td>0x4003 D000</td><td>0x4003 DFFF</td></tr>
+   <tr><td>Semaphore</td><td>SEMA_</td><td>0x4003 E000</td><td>0x4003 EFFF</td></tr>
+   <tr><td>UART 0</td><td>UART0_</td><td>0x4004 2000</td><td>0x4004 2FFF</td></tr>
+   <tr><td>UART 1</td><td>UART1_</td><td>0x4004 3000</td><td>0x4004 3FFF</td></tr>
+   <tr><td>UART 2</td><td>UART2_</td><td>0x4004 4000</td><td>0x4004 4FFF</td></tr>
+   <tr><td>SPI1</td><td>SPI1_</td><td>0x4004 6000</td><td>0x4004 7FFF</td></tr>
+   <tr><td>TRNG</td><td>TRNG_</td><td>0x4004 D000</td><td>0x4004 DFFF</td></tr>
+   <tr><td>I2S</td><td>I2S_</td><td>0x4006 0000</td><td>0x4006 0FFF</td></tr>
+   <tr><td>Low Power General Control</td><td>LPGCR_</td><td>0x4008 0000</td><td>0x4008 03FF</td></tr>
+   <tr><td>GPIO Port 2</td><td>GPIO2_</td><td>0x4008 0400</td><td>0x4008 05FF</td></tr>
+   <tr><td>Low Power Watchdog Timer 0 (WDT1)</td><td>WDT1_</td><td>0x4008 0800</td><td>0x4008 0BFF</td></tr>
+   <tr><td>Low Power Timer 4</td><td>TMR4_</td><td>0x4008 0C00</td><td>0x4008 0FFF</td></tr>
+   <tr><td>Low Power Timer 5</td><td>TMR5_</td><td>0x4008 1000</td><td>0x4008 13FF</td></tr>
+   <tr><td>Low Power UART 0 (UART3)</td><td>UART3_</td><td>0x4008 1400</td><td>0x4008 17FF</td></tr>
+   <tr><td>Low Power Comparator</td><td>LPCMP_</td><td>0x4008 8000</td><td>0x4008 83FF</td></tr>
+   <tr><td>CNN Global Control</td><td>CNN_</td><td>0x5000 0000</td><td>0x500F FFFF</td></tr>
+   <tr><td>CNNx16 Quadrant 0</td><td>CNNx16_0_</td><td>0x5010 0000</td><td>0x504F FFFF</td></tr>
+   <tr><td>CNNx16 Quadrant 1</td><td>CNNx16_1_</td><td>0x5050 0000</td><td>0x508F FFFF</td></tr>
+   <tr><td>CNNx16 Quadrant 2</td><td>CNNx16_2_</td><td>0x5090 0000</td><td>0x50CF FFFF</td></tr>
+   <tr><td>CNNx16 Quadrant 3</td><td>CNNx16_3_</td><td>0x50D0 0000</td><td>0x510F FFFF</td></tr>
 </table>
 
 

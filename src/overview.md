@@ -12,4 +12,4 @@ The high-level block diagram for the MAX78000 is shown in [Figure 2-1](#figure2-
 *Figure 2-1: MAX78000 Block Diagram*
 <a name="figure2-1"></a>
 
-![Figure 2-1](assets/images/figure2-1.png)
+![Figure 2-1](assets/images/MAX78000-block-diagram.svg)

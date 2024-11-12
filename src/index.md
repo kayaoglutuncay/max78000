@@ -7,7 +7,7 @@ The MAX78000 data sheet and errata are available from the Analog Devices website
 ## Document Conventions
 ### Number Notations
 <table border="1" cellpadding="5" cellspacing="0">
-    <tr style="background-color: #e0e0e0">
+    <tr class="header-row">
         <td><strong>Notation</strong></td>
         <td><strong>Description</strong></td>
     </tr>
@@ -44,7 +44,7 @@ All the fields that are accessible by user software have distinct access capabil
 <a name= "table1-1-field-access-definitions"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-    <tr style="background-color: #e0e0e0; text-align: center">
+    <tr class="header-row">
         <td><strong>Access Type</strong></td>
         <td><strong>Description</strong></td>
     </tr>
@@ -103,7 +103,7 @@ Each peripheral includes a table listing all of the peripheral's registers. The 
 <a name= "table1-2-example-registers"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr class="header-row">
     <td><strong>Offset</strong></td>
     <td><strong>Register Name</strong></td>
     <td><strong>Description</strong></td>
@@ -122,7 +122,7 @@ Each register in a peripheral includes a detailed register table, as shown in [T
 <a name= "table1-3-example-name0-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr class="header-row">
     <td colspan="3">Name 0</td>
     <td colspan="1">REG_NAME0</td>
     <td>[0x0000]</td>
