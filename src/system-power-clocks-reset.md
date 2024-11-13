@@ -686,9 +686,236 @@ The contents of the always-on domain (AoD) are reset only on power-cycling VCORE
 
 The on-chip peripherals can also be reset to their POR default state using the two reset registers, GCR_RST0 and GCR_RST1.
 
-[Table 4-5]() shows the effects of each reset type on each of the operating modes.
+[Table 4-5](#table4-5-reset-and-low-power-mode-effects) shows the effects of each reset type on each of the operating modes.
 
 *Table 4-5: Reset and Low-Power Mode Effects*
+<a name="table4-5-reset-and-low-power-mode-effects"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center;">
+        <th></th>
+        <th>Peripheral<sup>4</sup></th>
+        <th>Reset Soft<sup>4</sup></th>
+        <th>Reset System<sup>4</sup></th>
+        <th>Reset POR</th>
+        <th>ACTIVE</th>
+        <th>SLEEP</th>
+        <th>LPM</th>
+        <th>UPM</th>
+        <th>BACKUP<sup>3</sup></th>
+        <th>PDM</th>
+    </tr>
+    <tr>
+        <td>IPO</td>
+        <td>-</td>
+        <td>-</td>
+        <td>Off</td>
+        <td>Off</td>
+        <td>R</td>
+        <td>-</td>
+        <td>FW</td>
+        <td>Off</td>
+        <td>Off</td>
+        <td>Off</td>
+    </tr>
+    <tr>
+        <td>ISO</td>
+        <td>-</td>
+        <td>-</td>
+        <td>On</td>
+        <td>Off</td>
+        <td>R</td>
+        <td>-</td>
+        <td>FW</td>
+        <td>Off</td>
+        <td>Off</td>
+        <td>Off</td>
+    </tr>
+    <tr>
+        <td>ERTCO</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>Off</td>
+        <td>FW</td>
+        <td>FW</td>
+        <td>FW</td>
+        <td>FW</td>
+        <td>FW</td>
+        <td>Off</td>
+    </tr>
+    <tr>
+        <td>IBRO</td>
+        <td>-</td>
+        <td>-</td>
+        <td>Off</td>
+        <td>Off</td>
+        <td>R</td>
+        <td>-</td>
+        <td>FW</td>
+        <td>FW</td>
+        <td>Off</td>
+        <td>Off</td>
+    </tr>
+    <tr>
+        <td>ERFO</td>
+        <td>-</td>
+        <td>-</td>
+        <td>Off</td>
+        <td>Off</td>
+        <td>R</td>
+        <td>-</td>
+        <td>Off</td>
+        <td>Off</td>
+        <td>Off</td>
+        <td>Off</td>
+    </tr>
+    <tr>
+        <td>INRO</td>
+        <td>On</td>
+        <td>On</td>
+        <td>On</td>
+        <td>On</td>
+        <td>On</td>
+        <td>On</td>
+        <td>On</td>
+        <td>On</td>
+        <td>On</td>
+        <td>Off</td>
+    </tr>
+    <tr>
+        <td>SYS_CLK</td>
+        <td>On</td>
+        <td>On</td>
+        <td>On<sup>2</sup></td>
+        <td>On<sup>2</sup></td>
+        <td>On</td>
+        <td>On</td>
+        <td>Off</td>
+        <td>Off</td>
+        <td>Off</td>
+        <td>Off</td>
+    </tr>
+    <tr>
+        <td>CPU Clock</td>
+        <td>On</td>
+        <td>On</td>
+        <td>On</td>
+        <td>On</td>
+        <td>On</td>
+        <td>Off</td>
+        <td>Off</td>
+        <td>Off</td>
+        <td>Off</td>
+        <td>Off</td>
+    </tr>
+    <tr>
+        <td>RTC</td>
+        <td></td>
+        <td></td>
+        <td>Reset</td>
+        <td>FW</td>
+        <td>FW</td>
+        <td>FW</td>
+        <td>FW</td>
+        <td>FW</td>
+        <td>Off</td>
+        <td>Off</td>
+    </tr>
+    <tr>
+        <td>WDT0, WDT1</td>
+        <td>-</td>
+        <td>Reset</td>
+        <td>Reset</td>
+        <td>Reset</td>
+        <td>FW</td>
+        <td>Off</td>
+        <td>Off</td>
+        <td>Off</td>
+        <td>Off</td>
+        <td>Off</td>
+    </tr>
+    <tr>
+        <td>GPIO0-GPIO2</td>
+        <td>-</td>
+        <td>Reset</td>
+        <td>Reset</td>
+        <td>Reset</td>
+        <td>R</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>GPIO3</td>
+        <td>-</td>
+        <td>N/A</td>
+        <td>Reset</td>
+        <td>Reset</td>
+        <td>FW</td>
+        <td>FW</td>
+        <td>FW</td>
+        <td>FW</td>
+        <td>FW</td>
+        <td>FW</td>
+    </tr>
+    <tr>
+        <td>All Other Peripherals</td>
+        <td>Reset</td>
+        <td>Reset</td>
+        <td>Reset</td>
+        <td>Reset</td>
+        <td>R</td>
+        <td>-</td>
+        <td>R</td>
+        <td>R</td>
+        <td>Off</td>
+        <td>Off</td>
+    </tr>
+    <tr>
+        <td>Always-On Domain</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>Reset</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>RAM Retention</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>Reset</td>
+        <td>-</td>
+        <td>-</td>
+        <td>On</td>
+        <td>On</td>
+        <td>FW</td>
+        <td>Off</td>
+    </tr>
+  <tr>
+  <td colspan="11">
+    Table key: <br>
+    FW = Controlled by firmware <br>
+    On = Enabled by hardware (Cannot be disabled) <br>
+    Off = Disabled by hardware (Cannot be enabled) <br>
+    - = No Effect <br>
+    R = Restored to previous ACTIVE setting when exiting LPM and UPM, restored to system reset state when exiting BACKUP or STORAGE. <br>
+    1: The always-on domain (AoD) is only reset on power-cycling V<sub>COREA</sub>, V<sub>COREB</sub>, V<sub>DDA</sub>, V<sub>DDIOH</sub>, or V<sub>REGI</sub>.<br>
+    2: On a system reset or POR, the ISO is automatically set as the SYS_OSC. <br>
+    3: A system reset occurs when returning from BACKUP or PDM low-power mode. <br>
+    4: Peripheral, soft, and system resets are initiated by software through the GCR_RST0 register. System reset can also be triggered by the RSTN device pin or a Watchdog reset.
+  </td>
+</tr>
+</table>
+
 
 ### Peripheral Reset
 Peripheral reset resets all peripherals. The CPU retains its state. The GPIO, watchdog timers, AoD, RAM retention, and general control registers (GCR), including the clock configuration, are unaffected.
@@ -948,7 +1175,7 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
 This device has many features for managing the on-chip RAM. The on-chip RAM includes the data RAM, the unified cache controllers (ICC0 and ICC1), the CNN RAM, and the peripheral FIFOs.
 
 ### On-Chip Cache Management
-The MAX78000 includes two unified internal cache controllers for code and data fetches from the flash memory. The caches can be enabled, disabled, zeroized, and flushed. See section [Unified Internal Cache Controller]() for details.
+The MAX78000 includes two unified internal cache controllers for code and data fetches from the flash memory. The caches can be enabled, disabled, zeroized, and flushed. See section [Unified Internal Cache Controller](#unified-internal-cache-controllers) for details.
 
 ### RAM Zeroization
 The GCR memory zeroize register, GCR_MEMZ, allows clearing memory for software or security reasons. Zeroization writes all zeros to the specified memory.
