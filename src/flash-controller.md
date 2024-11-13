@@ -19,7 +19,7 @@ The flash is organized as an array of 2,048 words by 128 bits, or 8,192 bytes pe
 
 <table border="1" cellpadding="5" cellspacing="0">
   <thead>
-    <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <tr>
       <th>Instance</th>
       <th>Page Number</th>
       <th>Size (per page)</th>
@@ -110,7 +110,7 @@ The FLC supports write widths of 128-bits only. The target address bits [FLC_ADD
 <table border="1" cellpadding="5" cellspacing="0">
    <tr>
        <td colspan="1"></td>
-       <td style="background-color: #e0e0e0; font-weight: bold; text-align: center" colspan="32">FLC_ADDR[31:0]</td>
+       <td colspan="32">FLC_ADDR[31:0]</td>
    </tr>
    <tr>
        <td><strong>Bit Number</strong></td>
@@ -345,7 +345,7 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
 <a name="flash-controller-address-pointer"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">Flash Controller Address Pointer</td>
        <td colspan="1">FLC_ADDR</td>
        <td>[0x0000]</td>
@@ -370,7 +370,7 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
 <a name="flash-controller-clock-divisor-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">Flash Controller Clock Divisor</td>
        <td colspan="1">FLC_CLKDIV</td>
        <td>[0x0004]</td>
@@ -402,7 +402,7 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
 <a name="flash-controller-clock-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">Flash Controller Control</td>
        <td colspan="1">FLC_CTRL</td>
        <td>[0x0008]</td>
@@ -419,8 +419,9 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>unlock</td>
        <td>R/W</td>
        <td>0</td>
-       <td><strong>Flash Unlock</strong><br>Write the unlock code, 2, before any flash write or erase operation to unlock the flash. Writing any other value to this field locks the internal flash.<br> <div style="margin-left: 20px">
-       <p>2: Flash unlock code</p>
+       <td><strong>Flash Unlock</strong><br>Write the unlock code, 2, before any flash write or erase operation to unlock the flash. Writing any other value to this field locks the internal flash. <br> 
+       <div style="margin-left: 20px">
+       2: Flash unlock code
        </div>
        </td>
    </tr>
@@ -439,8 +440,8 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
     <td>
         <strong>Low Voltage Enable</strong><br>Set this field to 1 to enable low voltage operation for the flash memory.
         <div style="margin-left: 20px">
-            <p>0: Low voltage operation disabled (Default).</p>
-            <p>1: Low voltage operation enabled.</p>
+            0: Low voltage operation disabled (Default).<br>
+            1: Low voltage operation enabled.
         </div>
     </td>
    </tr>
@@ -453,8 +454,8 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
         <strong>Flash Busy Flag</strong><br>When this field is set, writes to all flash registers, except the FLC_INTR register, are ignored by the flash controller. This bit is cleared by hardware once the flash becomes accessible.
         <p><em>Note:If the flash controller is busy (FLC_CTRL.pend = 1), reads, writes, and erase operations are not allowed and result in an access failure (FLC_INTR.af = 1).</em></p>
         <div style="margin-left: 20px">
-            <p>0: Low voltage operation disabled (Default).</p>
-            <p>1: Low voltage operation enabled.</p>
+            0: Low voltage operation disabled (Default).<br>
+            1: Low voltage operation enabled.
         </div>
     </td>
    </tr>
@@ -475,9 +476,9 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
     <td>
         <strong>Erase Code</strong><br>Before an erase operation, this field must be set to 0x55 for a page erase or 0xAA for a mass erase. The flash must be unlocked before setting the erase code. This field is automatically cleared after the erase operation is complete.
         <div style="margin-left: 20px">
-            <p>0x00: Erase disabled.</p>
-            <p>0x55: Page erase code.</p>
-            <p>0xAA: Mass erase code.</p>
+            0x00: Erase disabled.<br>
+            0x55: Page erase code.<br>
+            0xAA: Mass erase code.
         </div>
     </td>
    </tr>
@@ -499,8 +500,8 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
         <strong>Page Erase</strong><br>Write a 1 to this field to initiate a page erase at the address in FLC_ADDR.addr. The flash must be unlocked before attempting a page erase. See FLC_CTRL.unlock for details.
         <p>The flash controller hardware clears this bit when a page erase operation is complete.</p>
         <div style="margin-left: 20px">
-            <p>0: Normal operation.</p>
-            <p>1: Write a 1 to initiate a page erase. If this field reads 1, a page erase operation is in progress.</p>
+        0: Normal operation.<br>
+        1: Write a 1 to initiate a page erase. If this field reads 1, a page erase operation is in progress.
         </div>
     </td>
    </tr>
@@ -512,8 +513,8 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
     <td>
         <strong>Mass Erase</strong><br>Write a 1 to this field to initiate a mass erase of the internal flash memory. The flash must be unlocked before attempting a mass erase. See FLC_CTRL.unlock for details. The flash controller hardware clears this bit when the mass erase operation completes.
         <div style="margin-left: 20px">
-            <p>0: Normal operation.</p>
-            <p>1: Initiate mass erase.</p>
+            0: Normal operation.<br>
+            1: Initiate mass erase.
         </div>
     </td>
    </tr>
@@ -525,10 +526,10 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
     <td>
         <strong>Write</strong><br>If this field reads 0, no write operation is pending for the flash. To initiate a write operation, set this bit to 1, and the flash controller writes to the address set in the FLC_ADDR register.
         <div style="margin-left: 20px">
-            <p>0: Normal operation.</p>
-            <p>1: Write 1 to initiate a write operation. If this field reads 1, a write operation is in progress.</p>
+            0: Normal operation.<br>
+            1: Write 1 to initiate a write operation. If this field reads 1, a write operation is in progress.
         </div>
-        <em>Note: This field is protected and cannot be set to 0 by application software.</em>
+        <p><em>Note: This field is protected and cannot be set to 0 by application software.</em></p>
     </td>
    </tr>
 </table>
@@ -537,7 +538,7 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
 <a name="flash-controller-interrupt-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">Flash Controller Interrupt</td>
        <td colspan="1">FLC_INTR</td>
        <td>[0x0024]</td>
@@ -562,8 +563,10 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>R/W</td>
        <td>0</td>
        <td><strong>Flash Access Fail Interrupt Enable</strong><br>Set this bit to 1 to enable interrupts on flash access failures.
-       <p>0: Disabled</p>
-       <p>1: Enabled</p>
+        <div style="margin-left: 20px">
+        0: Disabled<br>
+        1: Enabled
+        </div>
        </td>
    </tr>
        <tr>
@@ -572,8 +575,10 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>R/W</td>
        <td>0</td>
        <td><strong>Flash Operation Complete Interrupt Enable</strong><br>Set this bit to 1 to enable interrupts on flash operations complete.
-       <p>0: Disabled</p>
-       <p>1: Enabled</p>
+        <div style="margin-left: 20px">
+        0: Disabled<br>
+        1: Enabled
+        </div>
        </td>
    </tr>
       <tr>
@@ -588,9 +593,11 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>af</td>
        <td>R/W0C</td>
        <td>0</td>
-       <td><strong>Flash Access Fail Interrupt Flag</strong><br>This bit is set when an attempt is made to write or erase the flash while the flash is busy or locked. Only hardware can set this bit to 1. Writing a 1 to this bit has no effect. This bit is cleared by writing a 0.
-       <p>0: No access failure has occurred.</p>
-       <p>1: Access failure occurred.</p>
+       <td><strong>Flash Access Fail Interrupt Flag</strong><br>This bit is set when an attempt is made to write or erase the flash while the flash is busy or locked. Only hardware can set this bit to 1. Writing a 1 to this bit has no effect. This bit is cleared by writing a 0. <br>
+        <div style="margin-left: 20px">
+        0: No access failure has occurred.<br>
+        1: Access failure occurred.
+        </div>
        </td>
    </tr>
    <tr>
@@ -598,9 +605,12 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>done</td>
        <td>R/W0C</td>
        <td>0</td>
-       <td><strong>Flash Operation Complete Interrupt Flag</strong><br>This flag is automatically set by hardware after a flash write or erase operation completes.
-       <p>0: Operation not complete or not in process.</p>
-       <p>1: Flash operation complete.</p>
+       <td><strong>Flash Operation Complete Interrupt Flag</strong><br>
+       This flag is automatically set by hardware after a flash write or erase operation completes. <br>
+        <div style="margin-left: 20px">
+        0: Operation not complete or not in process.<br>
+        1: Flash operation complete.
+        </div>
        </td>
    </tr>
 </table>
@@ -609,7 +619,7 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
 <a name="flash-controller-data0-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">Flash Controller Data 0</td>
        <td colspan="1">FLC_DATA0</td>
        <td>[0x0030]</td>
@@ -626,14 +636,16 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>data</td>
        <td>R/W</td>
        <td>0</td>
-       <td><strong>Flash Data 0</strong><br>Flash data for bits 31:0.</td>
+       <td><strong>Flash Data 0</strong><br>
+       Flash data for bits 31:0.
+       </td>
 </table>
 
 *Table 7-9: Flash Controller Data Register 1*
 <a name="flash-controller-data-register1"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">Flash Controller Data 1</td>
        <td colspan="1">FLC_DATA1</td>
        <td>[0x0030]</td>
@@ -650,14 +662,16 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>data</td>
        <td>R/W</td>
        <td>0</td>
-       <td><strong>Flash Data 1</strong><br>Flash data for bits 63:32.</td>
+       <td><strong>Flash Data 1</strong><br>
+       Flash data for bits 63:32.
+       </td>
 </table>
 
 *Table 7-10: Flash Controller Data Register 2*
 <a name="flash-controller-data-register2"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">Flash Controller Data 2</td>
        <td colspan="1">FLC_DATA2</td>
        <td>[0x0030]</td>
@@ -674,14 +688,16 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>data</td>
        <td>R/W</td>
        <td>0</td>
-       <td><strong>Flash Data 2</strong><br>Flash data for bits 95:64.</td>
+       <td><strong>Flash Data 2</strong><br>
+       Flash data for bits 95:64.
+       </td>
 </table>
 
 *Table 7-11: Flash Controller Data Register 3*
 <a name="flash-controller-data-register3"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">Flash Controller Data 3</td>
        <td colspan="1">FLC_DATA3</td>
        <td>[0x0030]</td>
@@ -698,14 +714,16 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>data</td>
        <td>R/W</td>
        <td>0</td>
-       <td><strong>Flash Data 3</strong><br>Flash data for bits 127:96.</td>
+       <td><strong>Flash Data 3</strong><br>
+       Flash data for bits 127:96.
+       </td>
 </table>
 
 *Table 7-12: Flash Controller Access Control Register*
 <a name="flash-controller-access-control-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">Flash Controller Access Control</td>
        <td colspan="1">FLC_ACTRL</td>
        <td>[0x0040]</td>
@@ -722,14 +740,16 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>actrl</td>
        <td>R/W</td>
        <td>0</td>
-       <td><strong>Access Control</strong><br>When this register is written with the access control sequence, the information block can be accessed. See Information Block Flash Memory for details.</td>
+       <td><strong>Access Control</strong><br>
+       When this register is written with the access control sequence, the information block can be accessed. See Information Block Flash Memory for details.
+       </td>
 </table>
 
 *Table 7-13: Flash Write/Lock 0 Register*
 <a name="flash-write-lock0-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">Flash Write/Lock 0</td>
        <td colspan="1">FLC_WELR0</td>
        <td>[0x0080]</td>
@@ -746,9 +766,12 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>welr0</td>
        <td>R/W1C</td>
        <td>0xFFFF FFFF</td>
-       <td><strong>Flash Write/Lock Bit</strong><br>Each bit in this register maps to a page of the internal flash. FLC_WELR0[0] maps to page 0 of the flash, and FLC_WELR0[31] maps to page 31. Each flash page is 8,192 bytes. Write a 1 to a bit position in this register, and the corresponding page of flash is immediately locked. The page protection can only be unlocked by an external reset or a POR.
-       <p>0: The corresponding page of flash is write protected.</p>
-       <p>1: The corresponding page of flash is not write protected.</p>
+       <td><strong>Flash Write/Lock Bit</strong><br>
+       Each bit in this register maps to a page of the internal flash. FLC_WELR0[0] maps to page 0 of the flash, and FLC_WELR0[31] maps to page 31. Each flash page is 8,192 bytes. Write a 1 to a bit position in this register, and the corresponding page of flash is immediately locked. The page protection can only be unlocked by an external reset or a POR. <br>
+        <div style="margin-left: 20px">
+        0: The corresponding page of flash is write protected.<br>
+        1: The corresponding page of flash is not write protected.
+        </div>
        </td>
 </table>
 
@@ -756,7 +779,7 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
 <a name="flash-write-lock1-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">Flash Write/Lock 1</td>
        <td colspan="1">FLC_WELR1</td>
        <td>[0x0088]</td>
@@ -773,9 +796,12 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>welr1</td>
        <td>R/W1C</td>
        <td>0xFFFF FFFF</td>
-       <td><strong>Flash Write/Lock Bit</strong><br>Each bit in this register maps to a page of the internal flash. FLC_WELR1[0] maps to page 32 of the flash, and FLC_WELR1[31] maps to page 63 of flash. Each flash page is 8,192 bytes. Write a 1 to a bit position in this register, and the corresponding page of flash is immediately locked. The page protection can only be unlocked by an external reset or a POR.
-       <p>0: The corresponding flash page is write protected.</p>
-       <p>1: The corresponding flash page is not write protected.</p>
+       <td><strong>Flash Write/Lock Bit</strong><br>
+       Each bit in this register maps to a page of the internal flash. FLC_WELR1[0] maps to page 32 of the flash, and FLC_WELR1[31] maps to page 63 of flash. Each flash page is 8,192 bytes. Write a 1 to a bit position in this register, and the corresponding page of flash is immediately locked. The page protection can only be unlocked by an external reset or a POR. <br>
+        <div style="margin-left: 20px">
+        0: The corresponding flash page is write protected.<br>
+        1: The corresponding flash page is not write protected.
+        </div>
        </td>
 </table>
 
@@ -783,7 +809,7 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
 <a name="flash-read-lock0-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">Flash Read Lock 0</td>
        <td colspan="1">FLC_RLR0</td>
        <td>[0x0090]</td>
@@ -800,9 +826,12 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>rlr0</td>
        <td>R/W1C</td>
        <td>0xFFFF FFFF</td>
-       <td><strong>Read Lock Bit</strong><br>Each bit in this register maps to a page of the internal flash. FLC_RLR0[0] maps to page 0 of the flash, and FLC_RLR0[31] maps to page 31 of flash. Each flash page is 8,192 bytes. Write a 1 to a bit position in this register, and the corresponding page of flash is immediately read protected. The page’s read protection can only be unlocked by an external reset or a POR.
-       <p>0: The corresponding flash page is read protected.</p>
-       <p>1: The corresponding flash page is not read protected.</p>
+       <td><strong>Read Lock Bit</strong><br>
+       Each bit in this register maps to a page of the internal flash. FLC_RLR0[0] maps to page 0 of the flash, and FLC_RLR0[31] maps to page 31 of flash. Each flash page is 8,192 bytes. Write a 1 to a bit position in this register, and the corresponding page of flash is immediately read protected. The page’s read protection can only be unlocked by an external reset or a POR. <br>
+        <div style="margin-left: 20px">
+        0: The corresponding flash page is read protected.<br>
+        1: The corresponding flash page is not read protected.
+        </div>
        </td>
 </table>
 
@@ -810,7 +839,7 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
 <a name="flash-read-lock1-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">Flash Read Lock 1</td>
        <td colspan="1">FLC_RLR1</td>
        <td>[0x0098]</td>
@@ -827,8 +856,11 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
        <td>rlr1</td>
        <td>R/W1C</td>
        <td>0xFFFF FFFF</td>
-       <td><strong>Read Lock Bit</strong><br>Each bit in this register maps to a page of the internal flash. FLC_RLR1[0] maps to page 32 of the flash, and FLC_RLR1[31] maps to page 63 of flash. Each flash page is 8,192 bytes. Write a 1 to a bit position in this register, and the corresponding page of flash is immediately read protected. The page’s read protection can only be unlocked by an external reset or a POR.
-       <p>0: The corresponding flash page is read protected.</p>
-       <p>1: The corresponding flash page is not read protected.</p>
+       <td><strong>Read Lock Bit</strong><br>
+       Each bit in this register maps to a page of the internal flash. FLC_RLR1[0] maps to page 32 of the flash, and FLC_RLR1[31] maps to page 63 of flash. Each flash page is 8,192 bytes. Write a 1 to a bit position in this register, and the corresponding page of flash is immediately read protected. The page’s read protection can only be unlocked by an external reset or a POR. <br>
+        <div style="margin-left: 20px">
+        0: The corresponding flash page is read protected. <br>
+        1: The corresponding flash page is not read protected.
+        </div>
        </td>
 </table>

@@ -77,7 +77,7 @@ Code stored in the SRAM is accessed directly for execution (using the system bus
 <a name="system-sram-configuration"></a>
 
 <table>
-    <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <tr>
         <th>System RAM Block #</th>
         <th>Size</th>
         <th>Start Address</th>
@@ -178,7 +178,7 @@ The SPI0 AHB slave has access to all non-core memory areas accessible by the sys
 <a name="ahb-slave-base-address-map"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-    <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <tr>
         <th>AHB Slave Register Name</th>
         <th>Register Prefix</th>
         <th>AHB Base Address</th>
@@ -206,7 +206,7 @@ The SPI0 AHB slave has access to all non-core memory areas accessible by the sys
 <a name="apb-peripheral-base-address-map"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <th>Peripheral Register Name</th>
        <th>Register Prefix</th>
        <th>APB Base Address</th>

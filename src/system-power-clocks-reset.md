@@ -63,7 +63,7 @@ The MAX78000 supports multiple clock sources as the SYS_OSC. The selected SYS_OS
 <a name="available-system-oscillators"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-    <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <tr>
         <th>Oscillator/Clock</th>
         <th>Description</th>
         <th>Nominal Frequency</th>
@@ -140,54 +140,54 @@ Oscillator settings are *not* reset during:
 <a name="reset-sources-effect-oscillator-system-clock"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-    <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+    <tr>
         <th></th>
         <th colspan="4" align="center">Reset Source</th>
     </tr>
     <tr>
-        <th style="background-color: #e0e0e0; font-weight: bold; text-align: center">Oscillator</th>
-        <th style="background-color: #e0e0e0; font-weight: bold; text-align: center">POR</th>
-        <th style="background-color: #e0e0e0; font-weight: bold; text-align: center">System</th>
-        <th style="background-color: #e0e0e0; font-weight: bold; text-align: center">Soft</th>
-        <th style="background-color: #e0e0e0; font-weight: bold; text-align: center">Peripheral</th>
+        <th>Oscillator</th>
+        <th>POR</th>
+        <th>System</th>
+        <th>Soft</th>
+        <th>Peripheral</th>
     </tr>
     <tr>
-        <td style="background-color: #e0e0e0; font-weight: bold; text-align: center">IPO</td>
+        <td>IPO</td>
         <td>Disabled</td>
         <td>Disabled</td>
         <td>Retains State</td>
         <td>Retains State</td>
     </tr>
     <tr>
-        <td style="background-color: #e0e0e0; font-weight: bold; text-align: center">ISO</td>
+        <td>ISO</td>
         <td>Enabled</td>
         <td>Enabled</td>
         <td>Retains State</td>
         <td>Retains State</td>
     </tr>
     <tr>
-        <td style="background-color: #e0e0e0; font-weight: bold; text-align: center">IBRO</td>
+        <td>IBRO</td>
         <td>Enabled</td>
         <td>Enabled</td>
         <td>Enabled</td>
         <td>Enabled</td>
     </tr>
     <tr>
-        <td style="background-color: #e0e0e0; font-weight: bold; text-align: center">INRO</td>
+        <td>INRO</td>
         <td>Enabled</td>
         <td>Enabled</td>
         <td>Enabled</td>
         <td>Enabled</td>
     </tr>
     <tr>
-        <td style="background-color: #e0e0e0; font-weight: bold; text-align: center">ERTCO</td>
+        <td>ERTCO</td>
         <td>Disabled</td>
         <td>Disabled</td>
         <td>Retains State</td>
         <td>Retains State</td>
     </tr>
     <tr>
-        <td style="background-color: #e0e0e0; font-weight: bold; text-align: center">System Clock<br>(SYS_OSC) Source</td>
+        <td>System Clock<br>(SYS_OSC) Source</td>
         <td>ISO</td>
         <td>ISO</td>
         <td>Retains State</td>
@@ -365,7 +365,7 @@ This mode is used to maintain the System RAM. The device status is as follows:
 <a name="table4-3-system-ram-detention-in-backup-mode"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <th>RAM Block #</th>
        <th>Size</th>
        <th>State Retention Control</th>
@@ -415,7 +415,7 @@ In all operating modes other than ACTIVE, wake-up sources are required to re-ent
 <a name="table4-4-wakeup-sources-for-each-operating-mode-in-78000"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <th>Operating Mode</th>
        <th>Any Peripheral Interrupts</th>
        <th>External Reset</th>
@@ -692,7 +692,7 @@ The on-chip peripherals can also be reset to their POR default state using the t
 <a name="table4-5-reset-and-low-power-mode-effects"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-    <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center;">
+    <tr>
         <th></th>
         <th>Peripheral<sup>4</sup></th>
         <th>Reset Soft<sup>4</sup></th>
@@ -972,7 +972,7 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
 <a name="table4-6-instruction-cache-controller-register-summary"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <th>Offset</th>
     <th>Register</th>
     <th>Name</th>
@@ -1148,7 +1148,7 @@ See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for 
 <a name="instruction-cache-controller-invalidate-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">ICC0 Invalidate</td>
     <td colspan="1">ICCn_INVALIDATE</td>
     <td>[0x0700]</td>
@@ -1205,7 +1205,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="table4-11-miscellaneous-control-register-summary"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <th>Offset</th>
     <th>Register Name</th>
     <th>Access</th>
@@ -1257,7 +1257,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="error-correction-coding-enable-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">Error Correction Coding Enable</td>
     <td colspan="1">MCR_ECCEN</td>
     <td>[0x0000]</td>
@@ -1294,7 +1294,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="ipo-manual-trim-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">IPO Manual Trim</td>
     <td colspan="1">MCR_IPO_MTRIM</td>
     <td>[0x0004]</td>
@@ -1342,7 +1342,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="miscellaneous-output-enable-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">Output Enable</td>
     <td colspan="1">MCR_OUTEN</td>
     <td>[0x0008]</td>
@@ -1391,7 +1391,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="comparator-control-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">Comparator 0 Control</td>
     <td colspan="1">MCR_CMP_CTRL</td>
     <td>[0x000C]</td>
@@ -1492,7 +1492,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="miscellaneous-control-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">Miscellaneous Control</td>
     <td colspan="1">MCR_CTRL</td>
     <td>[0x0010]</td>
@@ -1595,7 +1595,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="gpio3-pin-control-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">GPIO3 Pin Control</td>
     <td colspan="1">MCR_GPIO3_CTRL</td>
     <td>[0x0020]</td>
@@ -1733,7 +1733,7 @@ Refer to the device data sheet electrical characteristics for the trigger thresh
 <a name="table4-18-simo-power-supply-device-pin-connectivity"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-<tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+<tr>
   <td>SIMO Supply Output Pin</td>
   <td>Connection</td>
   <td>Device Power Supply Input Pin</td>
@@ -1796,7 +1796,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="table4-19-simo-controller-register-summary"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <th>Offset</th>
     <th>Register Name</th>
     <th>Access</th>
@@ -1906,7 +1906,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="buck-voltage-regulator-a-control-register"></a> <!--This creates a link for the table.-->
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">SIMO Buck Voltage Regulator A Control</td>
     <td colspan="1">SIMO_VREGO_A</td>
     <td>[0x0004]</td>
@@ -1960,7 +1960,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="buck-voltage-regulator-b-control-register"></a> <!--This creates a link for the table.-->
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">SIMO Buck Voltage Regulator B Control</td>
     <td colspan="1">SIMO_VREGO_B</td>
     <td>[0x0008]</td>
@@ -2015,7 +2015,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="buck-voltage-regulator-c-control-register"></a> <!--This creates a link for the table.-->
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">SIMO Buck Voltage Regulator C Control</td>
     <td colspan="1">SIMO_VREGO_C</td>
     <td>[0x000C]</td>
@@ -2070,7 +2070,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="simo-ipka"></a> <!--This creates a link for the table.-->
 
 <table border="1" cellpadding="5" cellspacing="0">
-<tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+<tr>
     <td colspan="3">SIMO High Side FET Peak Current V<sub>REGO_A</sub> V<sub>REGO_B</sub></td>
     <td colspan="1">SIMO_IPKA</td>
     <td>[0x0014]</td>
@@ -2109,7 +2109,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="simo-ipkb"></a> <!--This creates a link for the table.-->
 
 <table border="1" cellpadding="5" cellspacing="0">
-<tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+<tr>
     <td colspan="3">SIMO High Side FET Peak Current V<sub>REGO_C</sub> V<sub>REGO_D</sub></td>
     <td colspan="1">SIMO_IPKB</td>
     <td>[0x0018]</td>
@@ -2141,7 +2141,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="simo-maxton"></a> <!--This creates a link for the table.-->
 
 <table border="1" cellpadding="5" cellspacing="0">
-<tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+<tr>
     <td colspan="3">SIMO Maximum High Side FET On Time</td>
     <td colspan="1">SIMO_MAXTON</td>
     <td>[0x001C]</td>
@@ -2173,7 +2173,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="simo-iload-a"></a> <!--This creates a link for the table.-->
 
 <table border="1" cellpadding="5" cellspacing="0">
-<tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+<tr>
     <td colspan="3">SIMO Buck Cycle Count VREGO_A</td>
     <td colspan="1">SIMO_ILOAD_A</td>
     <td>[0x0020]</td>
@@ -2205,7 +2205,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="simo-iload-b"></a> <!--This creates a link for the table.-->
 
 <table border="1" cellpadding="5" cellspacing="0">
-<tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+<tr>
     <td colspan="3">SIMO Buck Cycle Count VREGO_B</td>
     <td colspan="1">SIMO_ILOAD_B</td>
     <td>[0x0024]</td>
@@ -2237,7 +2237,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="simo-iload-c"></a> <!--This creates a link for the table.-->
 
 <table border="1" cellpadding="5" cellspacing="0">
-<tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+<tr>
     <td colspan="3">SIMO Buck Cycle Count VREGO_C</td>
     <td colspan="1">SIMO_ILOAD_C</td>
     <td>[0x0028]</td>
@@ -2269,7 +2269,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="simo-buck-alert-thr-a"></a> <!--This creates a link for the table.-->
 
 <table border="1" cellpadding="5" cellspacing="0">
-<tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+<tr>
     <td colspan="3">SIMO Buck Cycle Count Alert VREGO_A</td>
     <td colspan="1">SIMO_BUCK_ALERT_THR_A</td>
     <td>[0x0030]</td>
@@ -2301,7 +2301,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="simo-buck-alert-thr-b"></a> <!--This creates a link for the table.-->
 
 <table border="1" cellpadding="5" cellspacing="0">
-<tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+<tr>
     <td colspan="3">SIMO Buck Cycle Count Alert VREGO_B</td>
     <td colspan="1">SIMO_BUCK_ALERT_THR_B</td>
     <td>[0x0034]</td>
@@ -2333,7 +2333,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="simo-buck-alert-thr-c"></a> <!--This creates a link for the table.-->
 
 <table border="1" cellpadding="5" cellspacing="0">
-<tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+<tr>
     <td colspan="3">SIMO Buck Cycle Count Alert VREGO_C</td>
     <td colspan="1">SIMO_BUCK_ALERT_THR_C</td>
     <td>[0x0038]</td>
@@ -2365,7 +2365,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="simo-buck-out-ready"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">SIMO Buck Regulator Output Ready</td>
     <td colspan="1">SIMO_BUCK_OUT_READY</td>
     <td>[0x0040]</td>
@@ -2433,7 +2433,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="simo-zero-cross-cal-a"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">SIMO Zero Cross Calibration V<sub>REGO_A</sub></td>
     <td colspan="1">SIMO_ZERO_CROSS_CAL_A</td>
     <td>[0x0044]</td>
@@ -2465,7 +2465,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="simo-zero-cross-cal-b"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">SIMO Zero Cross Calibration V<sub>REGO_B</sub></td>
     <td colspan="1">SIMO_ZERO_CROSS_CAL_B</td>
     <td>[0x0048]</td>
@@ -2497,7 +2497,7 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
 <a name="simo-zero-cross-cal-c"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">SIMO Zero Cross Calibration V<sub>REGO_C</sub></td>
     <td colspan="1">SIMO_ZERO_CROSS_CAL_C</td>
     <td>[0x004C]</td>
@@ -2548,7 +2548,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="table4-36-low-power-control-register-summary"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td>Offset</td>
     <td>Register</td>
     <td>Name</td>
@@ -2571,7 +2571,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="reset-control-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">Low-Power Reset Control</td>
     <td colspan="1">LPGCR_RST</td>
     <td>[0x0004]</td>
@@ -2652,7 +2652,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="table4-38-clock-disable-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">Clock Disable</td>
     <td colspan="1">LPGCR_PCLKDIS</td>
     <td>[0x008]</td>
@@ -2766,7 +2766,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name= "table4-39-power-sequencer-register-summary"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td>Offset</td>
     <td>Register</td>
     <td>Name</td>
@@ -2843,7 +2843,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="low-power-control-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">Low Power Control</td>
     <td colspan="1">PWRSEQ_LPCN</td>
     <td>[0x0000]</td>
@@ -2996,7 +2996,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="low-power-gpio0-wakeup-status-flag"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">GPIO0 Low Power Wakeup Status Flags</td>
     <td colspan="1">PWRSEQ_LPWKST0</td>
     <td>[0x0004]</td>
@@ -3024,7 +3024,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="low-power-gpio0-wakeup-enable-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">GPIO0 Low Power Wakeup Enable</td>
     <td colspan="1">PWRSEQ_LPWKEN0</td>
     <td>[0x0008]</td>
@@ -3052,7 +3052,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="low-power-gpio1-wakeup-status-flags"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">GPIO1 Low Power Wakeup Status Flags</td>
     <td colspan="1">PWRSEQ_LPWKST1</td>
     <td>[0x000C]</td>
@@ -3087,7 +3087,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="low-power-gpio1-wakeup-status-flags"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">GPIO1 Low Power Wakeup Enable</td>
     <td colspan="1">PWRSEQ_LPWKEN1</td>
     <td>[0x0010]</td>
@@ -3122,7 +3122,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="low-power-gpio2-wakeup-status-flags"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">GPIO2 Low Power Wakeup Status Flags</td>
     <td colspan="1">PWRSEQ_LPWKST2</td>
     <td>[0x0014]</td>
@@ -3157,7 +3157,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="low-power-gpio2-wakeup-enable-registers"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">GPIO2 Low Power Wakeup Enable</td>
     <td colspan="1">PWRSEQ_LPWKEN2</td>
     <td>[0x0018]</td>
@@ -3192,7 +3192,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="low-power-gpio3-wakeup-status-flags"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">GPIO3 Low Power Wakeup Status Flags</td>
     <td colspan="1">PWRSEQ_LPWKST3</td>
     <td>[0x001C]</td>
@@ -3228,7 +3228,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="low-power-gpio3-wakeup-enable-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">GPIO3 Low Power Wakeup Enable</td>
     <td colspan="1">PWRSEQ_LPWKEN3</td>
     <td>[0x0020]</td>
@@ -3263,7 +3263,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="low-power-peripheral-wakeup-status-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">Low Power Peripheral Wakeup Status Flags</td>
     <td colspan="1">PWRSEQ_LPPWST</td>
     <td>[0x0030]</td>
@@ -3329,7 +3329,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="low-power-peripheral-wakeup-enable-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td colspan="3">Low Power Peripheral Wakeup Enable</td>
     <td colspan="1">PWRSEQ_LPPWEN</td>
     <td>[0x0034]</td>
@@ -3621,7 +3621,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="general-purpose-register0"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">Low Power General Purpose 0</td>
        <td colspan="1">PWRSEQ_GP0</td>
        <td>[0x0048]</td>
@@ -3647,7 +3647,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 <a name="general-purpose-register1"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">Low Power General Purpose 1</td>
        <td colspan="1">PWRSEQ_GP1</td>
        <td>[0x004C]</td>
@@ -3679,7 +3679,7 @@ See <a href=../memory-register-mapping-access#apb-peripheral-base-address-map>Ta
 <a name= "table4-53-trim-system-initialization-register-summary"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td>Offset</td>
     <td>Register</td>
     <td>Name</td>
@@ -3717,7 +3717,7 @@ See <a href=../memory-register-mapping-access#apb-peripheral-base-address-map>Ta
 <a name="rtc-trim-system-initialization-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">RTC Trim System Initialization</td>
        <td colspan="1">TRIMSIR_RTC</td>
        <td>[0x0008]</td>
@@ -3774,7 +3774,7 @@ See <a href=../memory-register-mapping-access#apb-peripheral-base-address-map>Ta
 <a name="system-initialization-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">SIMO System Initialization</td>
        <td colspan="1">TRIMSIR_SIMO</td>
        <td>[0x0034]</td>
@@ -3817,7 +3817,7 @@ See <a href=../memory-register-mapping-access#apb-peripheral-base-address-map>Ta
 <a name="system-initialization-function-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">IPO Trim Low System Initialization</td>
        <td colspan="1">TRIMSIR_IPOLO</td>
        <td>[0x003C]</td>
@@ -3849,7 +3849,7 @@ See <a href=../memory-register-mapping-access#apb-peripheral-base-address-map>Ta
 <a name="control-trim-system-initialization-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">Control System Initialization</td>
        <td colspan="1">TRIMSIR_CTRL</td>
        <td>[0x0040]</td>
@@ -3925,7 +3925,7 @@ See <a href=../memory-register-mapping-access#apb-peripheral-base-address-map>Ta
 <a name="inro-trim-system-initialization-registerr"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+   <tr>
        <td colspan="3">INRO System Initialization</td>
        <td colspan="1">TRIMSIR_INRO</td>
        <td>[0x0044]</td>
@@ -3986,7 +3986,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 
 
 <table border="1" cellpadding="5" cellspacing="0">
-  <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center">
+  <tr>
     <td>Offset</td>
     <td>Register</td>
     <td>Name</td>
