@@ -6,36 +6,3 @@
       margin-right: auto;
   }
 }
-
-/* Base table styles */
-tr.header-row {
-font-weight: bold;
-text-align: center;
-background-color: #b0b0b0;
-color: #333;
-}
-
-/* Dark mode styles using prefers-color-scheme */
-@media (prefers-color-scheme: dark) {
-tr.header-row {
-  background-color: #2d2d2d;
-  color: #ffffff;
-}
-
-/* Dark mode hover effect for table rows */
-tr:hover {
-  background-color: #b0b0b0; /* Light gray for dark mode hover */
-  color: inherit; /* Maintain the original text color */
-}
-}
-
-/* Optional: Add transition for smooth mode switching */
-tr.header-row {
-transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Light mode hover effect for table rows */
-tr:hover {
-background-color: darkpurple; /* Use your preferred shade of dark purple */
-color: inherit; /* Keep the text color as it is */
-}
