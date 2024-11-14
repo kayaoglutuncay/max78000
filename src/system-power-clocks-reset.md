@@ -3984,7 +3984,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 *Table 4-59: Global Control Register Summary*
 <a name= "table4-59-global-control-register-summary"></a>
 
-
 <table border="1" cellpadding="5" cellspacing="0">
   <tr>
     <td>Offset</td>
@@ -3993,67 +3992,3088 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
   </tr>
   <tr>
     <td>[0x0000]</td>
-    <td><a href="#low-power-control-register">PWRSEQ_LPCN</td>
-    <td>Low Power Control Register</td>
+    <td><a href="#system-control-register">GCR_SYSCTRL</td>
+    <td>System Control Register</td>
   </tr>
   <tr>
     <td>[0x0004]</td>
-    <td><a href="#low-power-gpio0-wakeup-status-flag">PWRSEQ_LPWKST0</td>
-    <td>Low Power GPIO0 Wakeup Status Flags</td>
+    <td><a href="#reset-register0">GCR_RST0</td>
+    <td>Reset Register 0</td>
   </tr>
   <tr>
     <td>[0x0008]</td>
-    <td><a href="#low-power-gpio0-wakeup-enable-register">PWRSEQ_LPWKEN0</td>
-    <td>Low Power GPIO0 Wakeup Enable Register</td>
+    <td><a href="#clock-control-register">GCR_CLKCTRL</td>
+    <td>Clock Control Register</td>
   </tr>
   <tr>
     <td>[0x000C]</td>
-    <td><a href="#low-power-gpio1-wakeup-status-flags">PWRSEQ_LPWKST1</td>
-    <td>Low Power GPIO1 Wakeup Status Flags</td>
-  </tr>
-  <tr>
-    <td>[0x0010]</td>
-    <td><a href="#low-power-gpio1-wakeup-status-flags">PWRSEQ_LPWKEN1</td>
-    <td>Low Power GPIO1 Wakeup Enable Register</td>
-  </tr>
-  <tr>
-    <td>[0x0014]</td>
-    <td><a href="#low-power-gpio2-wakeup-status-flags">PWRSEQ_LPWKST2</td>
-    <td>Low Power GPIO2 Wakeup Status Flags</td>
+    <td><a href="#power-management-register">GCR_PM</td>
+    <td>Power Management Register</td>
   </tr>
   <tr>
     <td>[0x0018]</td>
-    <td><a href="#low-power-gpio2-wakeup-enable-registers">PWRSEQ_LPWKEN2</td>
-    <td>Low Power GPIO2 Wakeup Enable Registers</td>
+    <td><a href="#peripheral-clocks-divisor">GCR_PCLKDIV</td>
+    <td>Peripheral Clocks Divisor</td>
   </tr>
   <tr>
-    <td>[0x001C]</td>
-    <td><a href="#low-power-gpio3-wakeup-status-flags">PWRSEQ_LPWKST3</td>
-    <td>Low Power GPIO3 Wakeup Status Flags</td>
+    <td>[0x0024]</td>
+    <td><a href="#peripheral-clocks-disable0">GCR_PCLKDIS0</td>
+    <td>Peripheral Clocks Disable 0</td>
   </tr>
   <tr>
-    <td>[0x0020]</td>
-    <td><a href="#low-power-gpio3-wakeup-enable-register">PWRSEQ_LPWKEN3</td>
-    <td>Low Power GPIO3 Wakeup Enable Register</td>
+    <td>[0x0028]</td>
+    <td><a href="#memory-clock-control">GCR_MEMCTRL</td>
+    <td>Memory Clock Control</td>
   </tr>
   <tr>
-    <td>[0x0030]</td>
-    <td><a href="#low-power-peripheral-wakeup-status-register">PWRSEQ_LPPWST</td>
-    <td>Low Power Peripheral Wakeup Status Register</td>
+    <td>[0x002C]</td>
+    <td><a href="#memory-zeroize-register">GCR_MEMZ</td>
+    <td>Memory Zeroize Register</td>
   </tr>
   <tr>
-    <td>[0x0034]</td>
-    <td><a href="#low-power-peripheral-wakeup-enable-register">PWRSEQ_LPPWEN</td>
-    <td>Low Power Peripheral Wakeup Enable Register</td>
+    <td>[0x0040]</td>
+    <td><a href="#system-status-flags">GCR_SYSST</td>
+    <td>System Status Flags</td>
+  </tr>
+  <tr>
+    <td>[0x0044]</td>
+    <td><a href="#reset-register1">GCR_RST1</td>
+    <td>Reset Register 1</td>
   </tr>
   <tr>
     <td>[0x0048]</td>
-    <td><a href="#general-purpose-register0">PWRSEQ_GP0</td>
+    <td><a href="#peripheral-clocks-disable1">GCR_PCLKDIS1</td>
+    <td>Peripheral Clocks Disable 1</td>
+  </tr>
+  <tr>
+    <td>[0x004C]</td>
+    <td><a href="#event-enable-register">GCR_EVENTEN</td>
+    <td>Event Enable Register</td>
+  </tr>
+  <tr>
+    <td>[0x0050]</td>
+    <td><a href="#revision-register">GCR_REVISION</td>
+    <td>Revision Register</td>
+  </tr>
+  <tr>
+    <td>[0x0054]</td>
+    <td><a href="#system-status-interrupt-enable">GCR_SYSIE</td>
+    <td>System Status Interrupt Enable</td>
+  </tr>
+  <tr>
+    <td>[0x0064]</td>
+    <td><a href="#error-correction-coding-error-register">GCR_ECCERR</td>
+    <td>Error Correction Coding Error Register</td>
+  </tr>
+  <tr>
+    <td>[0x0068]</td>
+    <td><a href="#error-correction-coding-correctable-error-detected">GCR_ECCCED</td>
+    <td>Error Correction Coding Correctable Error Detected</td>
+  </tr>
+  <tr>
+    <td>[0x006C]</td>
+    <td><a href="#error-correction-coding-interrupt-enable-register">GCR_ECCIE</td>
+    <td>Error Correction Coding Interrupt Enable Register</td>
+  </tr>
+  <tr>
+    <td>[0x0070]</td>
+    <td><a href="#error-correction-coding-error-address-register">GCR_ECCADDR</td>
+    <td>Error Correction Coding Error Address Register</td>
+  </tr>
+  <tr>
+    <td>[0x0080]</td>
+    <td><a href="#general-purpose-register0">GCR_GPR0</td>
     <td>General Purpose Register 0</td>
   </tr>
+</table>
+
+### Global Control Register Details (GCR)
+
+*Table 4-60: System Control Register*
+<a name="system-control-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+   <tr>
+       <td colspan="3">System Control</td>
+       <td colspan="1">GCR_SYSCTRL</td>
+       <td>[0x0000]</td>
+   </tr>
+   <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+   </tr>
+   <tr>
+       <td>31:18</td>
+       <td>-</td>
+       <td>RO</td>
+       <td>0</td>
+       <td><strong>Reserved</strong></td>
+   </tr>
+   <tr>
+       <td>17:16</td>
+       <td>ovr</td>
+       <td>R/W</td>
+       <td>0b10</td>
+       <td><strong>Operating Voltage Range</strong><br>
+       Set this field to match the V<sub>COREA</sub> voltage to enable the on-chip RAM to operate at the optimal timing range.<br>
+      <div style="margin-left: 20px">
+       0b00: 0.9V ± 10%<br>
+       0b01: 1.0V ± 10%<br>
+       0b10: 1.1V ± 10%<br>
+       0b11: Reserved for Future Use
+      </div>
+      </td>
+   </tr>
+   <tr>
+      <td>15</td>
+      <td>chkres</td>
+      <td>R</td>
+      <td>0</td>
+      <td><strong>ROM Checksum Calculation Pass/Fail</strong><br>
+       This field is the result after setting the <a href="#system-control-register">GCR_SYSCTRL</a>.<em>cchk</em> bit. <br>
+       This bit is only valid after the ROM checksum is complete and <a href="#system-control-register">GCR_SYSCTRL</a>.<em>cchk</em> is cleared.
+      <div style="margin-left: 20px">
+       0: Pass<br>
+       1: Fail
+       </div>
+      </td>
+   </tr>
+   <tr>
+       <td>14</td>
+       <td>swd_dis</td>
+       <td>R/W</td>
+       <td>0</td>
+       <td><strong>Serial Wire Debug Disable</strong><br>
+       This bit is used to disable the serial wire debug interface.
+        <div style="margin-left: 20px">
+          0: Enabled<br>
+          1: Disabled
+        </div>
+      Note: This bit is only writeable if the flash is not factory locked or if the <a href="#system-status-flags">GCR_SYSST</a>.<em>icelock</em> bit is 0 and the <a href="#system-control-register">GCR_SYSCTRL</a>.<em>romdone</em> bit is 1.
+      </td>
+   </tr>
     <tr>
-    <td>[0x004C]</td>
-    <td><a href="#general-purpose-register1">PWRSEQ_GP1</td>
-    <td>General Purpose Register 1</td>
+      <td>13</td>
+      <td>cchk</td>
+      <td>R/W</td>
+      <td>0</td>
+      <td><strong>Calculate ROM Checksum</strong><br>
+      This bit is self-clearing when the ROM checksum calculation is complete, and the result is available at bit <a href="#system-control-register">GCR_SYSCTRL</a>.<em>chkres</em>. Writing a 0 has no effect.
+        <div style="margin-left: 20px">
+          0: No operation<br>
+          1: Start ROM checksum calculation
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>romdone</td>
+      <td>DNM</td>
+      <td>1</td>
+      <td><strong>ROM Start Code Status</strong><br>
+      Reserved, Do Not Modify
+      </td>
+    </tr>
+    <tr>
+      <td>11:7</td>
+      <td>-</td>
+      <td>RO</td>
+      <td>0</td>
+      <td><strong>Reserved</strong></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>icc0_flush</td>
+      <td>R/W</td>
+      <td>0</td>
+      <td><strong>ICC0 Cache Flush</strong><br>
+      Write 1 to flush the code cache and the instruction buffer for the CM4. This bit is automatically cleared to 0 when the flush is complete. Writing 0 has no effect and does not stop a cache flush in progress.
+        <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Flush the contents of the ICC0 cache.
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>5:1</td>
+      <td>-</td>
+      <td>RO</td>
+      <td>1</td>
+      <td><strong>Reserved</strong></td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>bstapen</td>
+      <td>DNM</td>
+      <td>*</td>
+      <td><strong>Boundary Scan Tap Enable</strong><br>
+      This field's reset value matches <a href="#system-status-flags">GCR_SYSST</a>.<em>icelock</em>. Do not modify.
+      </td>
+    </tr>
+</table>
+
+*Table 4-61: Reset Register 0*
+<a name="reset-register0"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">Reset 0</td>
+    <td colspan="1">GCR_RST0</td>
+    <td>[0x0004]</td>
+  </tr>
+  <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31</td>
+    <td>sys</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>System Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete. 
+    See System Reset for additional information. <br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>30</td>
+    <td>periph</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Peripheral Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    Note: Watchdog timers, GPIO ports, the AoD, RAM retention, and the GCR are unaffected. 
+    See Table 4-5 for additional information.
+    </td>
+  </tr>
+  <tr>
+    <td>29</td>
+    <td>soft</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Soft Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete. 
+    See Soft Reset for additional information.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>28</td>
+    <td>uart2</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>UART2 Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>27</td>
+    <td>-</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+  </tr>
+  <tr>
+    <td>28</td>
+    <td>uart2</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>UART2 Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>28</td>
+    <td>uart2</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>UART2 Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>27</td>
+    <td>-</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+  </tr>
+  <tr>
+    <td>26</td>
+    <td>adc</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>ADC Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>25</td>
+    <td>cnn</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNN Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>24</td>
+    <td>trng</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>TRNG Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+  </tr>
+<tr>
+    <td>17</td>
+    <td>rtc</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>RTC Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+</tr>
+<tr>
+    <td>16</td>
+    <td>i2c0</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>I2C0 Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+</tr>
+<tr>
+    <td>15:14</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+<tr>
+    <td>13</td>
+    <td>spi1</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>SPI1 Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+</tr>
+<tr>
+    <td>12</td>
+    <td>uart1</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>UART1 Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+</tr>
+<tr>
+    <td>11</td>
+    <td>uart0</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>UART0 Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+</tr>
+<tr>
+    <td>10:9</td>
+    <td>-</td>
+    <td>RW</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+<tr>
+    <td>8</td>
+    <td>tmr3</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>TMR3 Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>7</td>
+    <td>tmr2</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>TMR2 Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+</tr>
+<tr>
+    <td>6</td>
+    <td>tmr1</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>TMR1 Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+</tr>
+<tr>
+    <td>5</td>
+    <td>tmr0</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>TMR0 Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>-</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>gpio1</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>GPIO1 Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>gpio0</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>GPIO0 Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+</tr>
+<tr>
+    <td>1</td>
+    <td>wdt0</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Watchdog Timer 0 Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+</tr>
+<tr>
+    <td>0</td>
+    <td>dma</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>DMA Access Block Reset</strong><br>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate reset
+      </div>
+    </td>
+</tr>
+</table>
+
+*Table 4-62: Clock Control Register*
+<a name="clock-control-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">Clock Control</td>
+    <td colspan="1">GCR_CLKCTRL</td>
+    <td>[0x0008]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:30</td>
+    <td>-</td>
+    <td>DNM</td>
+    <td>0b10</td>
+    <td><strong>Reserved, Do Not Modify</strong></td>
+</tr>
+
+<tr>
+    <td>29</td>
+    <td>inro_rdy</td>
+    <td>-</td>
+    <td>0</td>
+    <td><strong>8kHz Internal Nano-Ring Oscillator (INRO) Ready Status</strong><br>
+      <div style="margin-left: 20px">
+          0: Not ready or not enabled.<br>
+          1: Oscillator ready.
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>28</td>
+    <td>ibro_rdy</td>
+    <td>R</td>
+    <td>0</td>
+    <td><strong>7.3728MHz Internal Baud Rate Oscillator (IBRO) Ready Status</strong><br>
+      <div style="margin-left: 20px">
+          0: Not ready.<br>
+          1: Oscillator ready.
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>27</td>
+    <td>ipo_rdy</td>
+    <td>R</td>
+    <td>0</td>
+    <td><strong>100MHz Internal Primary Oscillator (IPO) Ready Status</strong><br>
+      <div style="margin-left: 20px">
+          0: Not ready or not enabled.<br>
+          1: Oscillator ready.
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>26</td>
+    <td>iso_rdy</td>
+    <td>R</td>
+    <td>0</td>
+    <td><strong>60MHz Internal Secondary Oscillator (ISO) Ready Status</strong><br>
+      <div style="margin-left: 20px">
+          0: Not ready or not enabled.<br>
+          1: Oscillator ready.
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>25</td>
+    <td>ertco_rdy</td>
+    <td>R</td>
+    <td>0</td>
+    <td><strong>32.768kHz External RTC Oscillator (ERTCO) Ready Status</strong><br>
+      <div style="margin-left: 20px">
+          0: Not ready or not enabled.<br>
+          1: Oscillator ready.
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>24:22</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>21</td>
+    <td>ibro_vs</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>7.3728MHz IBRO Power Supply Select</strong><br>
+      <div style="margin-left: 20px">
+          0: IBRO is powered from V<sub>COREA</sub><br>
+          1: IBRO is powered using a dedicated 1V regulated internal supply
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>20</td>
+    <td>ibro_en</td>
+    <td>RO</td>
+    <td>1</td>
+    <td><strong>7.3728MHz IBRO Enable</strong><br>
+    The IBRO is always enabled.<br>
+      <div style="margin-left: 20px">
+          1: Enabled and ready when <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>ibro_rdy</em> = 1.
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>19</td>
+    <td>ipo_en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>100MHz IPO Enable</strong><br>
+      <div style="margin-left: 20px">
+          0: Disabled<br>
+          1: Enabled and ready when <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>ipo_rdy</em> = 1.
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>18</td>
+    <td>iso_en</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>60MHz ISO Enable</strong><br>
+    Set this field to 0 to disable the ISO. The ISO is the System Oscillator (SYS_OSC) after a POR or System Reset.<br>
+      <div style="margin-left: 20px">
+          0: Disabled<br>
+          1: Enabled and ready when <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>iso_rdy</em> = 1
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>17</td>
+    <td>ertco_en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>32.768kHz ERTCO Enable</strong><br>
+      <div style="margin-left: 20px">
+          0: Disabled if the RTC_CTRL.en field is also set to 0.<br>
+          1: Enabled and ready when <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>ertco_rdy</em> = 1, regardless of the state of the RTC_CTRL.en field.
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>16:14</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>13</td>
+    <td>sysclk_rdy</td>
+    <td>R</td>
+    <td>0</td>
+    <td><strong>SYS_OSC Select Ready</strong><br>
+    When SYS_OSC is changed by modifying <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_sel</em>, there is a delay until the switchover is complete. This bit is cleared until the switchover completes.<br>
+      <div style="margin-left: 20px">
+          0: Switch to new clock source not yet complete.<br>
+          1: SYS_OSC is the clock source selected in <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_sel</em>.
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>12</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>11:9</td>
+    <td>sysclk_sel</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>System Clock Source Select</strong><br>
+    Selects the system oscillator (SYS_OSC) used as the system clock (SYS_CLK) source. 
+    Modifying this field clears <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_rdy</em> immediately.<br>
+      <div style="margin-left: 20px">
+          0: ISO (POR and system reset default)<br>
+          1: Reserved<br>
+          2: Reserved<br>
+          3: INRO<br>
+          4: IPO<br>
+          5: IBRO<br>
+          6: ERTCO<br>
+          7: External Clock, EXT_CLK, P0.3, AF1
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>8:6</td>
+    <td>sysclk_div</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>System Clock Prescaler</strong><br>
+    Sets the divider for generating SYS_CLK from the selected SYS_OSC as shown in the following equation:<br> 
+    $$
+    \text{SYS_CLK} = \frac{\text{SYS_OSC}}{2^{\text{sysclk_div}}}
+    $$
+    <br>
+    <i>Note:</i> Valid values are from 0 to 7 for <em>sysclk_div</em>.
+    </td>
+</tr>
+
+<tr>
+    <td>5:0</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>8</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+</table>
+
+*Table 4-63: Power Management Register*
+<a name="power-management-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">Power Management</td>
+    <td colspan="1">GCR_PM</td>
+    <td>[0x000C]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:18</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>17</td>
+    <td>ibro_pd</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>IBRO Power Down <em>LPM</em></strong><br>
+      Set this field to 1 to power down the IBRO when entering <em>LPM</em>.<br>
+      <div style="margin-left: 20px">
+          0: IBRO is powered on during <em>LPM</em><br>
+          1: IBRO is powered off during <em>LPM</em>
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>16</td>
+    <td>ipo_pd</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>IPO Power Down <em>LPM</em></strong><br>
+      Set this field to 1 to power down the IPO when entering <em>LPM</em>.<br>
+      <div style="margin-left: 20px">
+          0: IPO is powered on during <em>LPM</em><br>
+          1: IPO is powered off during <em>LPM</em>
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>15</td>
+    <td>iso_pd</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>ISO Power Down <em>LPM</em></strong><br>
+      Set this field to 1 to power down the ISO when entering <em>LPM</em>.<br>
+      <div style="margin-left: 20px">
+          0: ISO is powered on during <em>LPM</em><br>
+          1: ISO is powered off during <em>LPM</em>
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>14:10</td>
+    <td>-</td>
+    <td>DNM</td>
+    <td>0b11100</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>9</td>
+    <td>aincomp_we</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Analog Input Comparator Wakeup Enable</strong><br>
+    This bit enables the Analog Input Comparator interrupt to wake the device from <em>SLEEP</em>, <em>LPM</em>, or <em>BACKUP</em>.
+    </td>
+</tr>
+
+<tr>
+    <td>8</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>7</td>
+    <td>wut_we</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Wake-Up Timer Enable</strong><br>
+      Set this field to 1 to enable the wake-up timer as a wake-up source. The wake-up timer wakes the device from <em>SLEEP</em>, <em>LPM</em>, or <em>BACKUP</em>.<br>
+      <div style="margin-left: 20px">
+          0: Wake-up source disabled<br>
+          1: Wake-up source enabled
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>6</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>5</td>
+    <td>rtc_we</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>RTC Alarm Wakeup Enable</strong><br>
+      Set this field to 1 to enable an RTC alarm to wake the device. The RTC alarm wakes the device from <em>SLEEP</em>, <em>LPM</em>, or <em>BACKUP</em>.<br>
+      <div style="margin-left: 20px">
+          0: Wakeup source disabled<br>
+          1: Wakeup source enabled
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>4</td>
+    <td>gpio_we</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>GPIO Wake-Up Enable</strong><br>
+      Set this field to 1 to enable all GPIO pins as potential wake-up sources. Any GPIO configured for wake-up wakes the device from <em>SLEEP</em>, <em>LPM</em>, or <em>BACKUP</em>.<br>
+      <div style="margin-left: 20px">
+          0: Wake-up source disabled<br>
+          1: Wake-up source enabled
+      </div>
+    </td>
+</tr>
+<tr>
+    <td>3:0</td>
+    <td>mode</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Operating Mode</strong><br>
+    This field controls the operating mode of the device.<br>
+      <div style="margin-left: 20px">
+          0: <em>ACTIVE</em><br>
+          1: <em>SLEEP</em><br>
+          2: <em>STANDBY</em><br>
+          3: Reserved<br>
+          4: <em>BACKUP</em><br>
+          5-7: Reserved<br>
+          8: <em>LPM</em> (CM4 deep sleep)<br>
+          9: <em>UPM</em><br>
+          10: <em>PDM</em><br>
+          11-15: Reserved
+      </div>
+    </td>
+</tr>
+</table>
+
+*Table 4-64: Peripheral Clock Divisor Register*
+<a name="peripheral-clocks-divisor"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">Peripheral Clocks Divisor</td>
+    <td colspan="1">GCR_PCLKDIV</td>
+    <td>[0x0018]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:18</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>-</td>
+    <td><strong>Reserved</strong></td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>cnnclksel</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNN Peripheral Clock Select</strong><br>
+    Set this field to select the clock source for the CNN peripheral clock: 
+    $$
+    f_{\text{CNN_Clock}}
+    $$
+    <br>
+      <div style="margin-left: 20px">
+          0: PCLK<br>
+          1: ISO
+      </div>
+  </td>
+  </tr>
+  <tr>
+    <td>16:14</td>
+    <td>cnnclkdiv</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNN Peripheral Clock Frequency Divider</strong><br>
+    This field is used as a divider of the CNN peripheral clock. The CNN peripheral clock,
+    $$
+    f_{\text{CNN_Clock}}
+    $$
+    is selected using the field <a href="#peripheral-clocks-divisor">GCR_PCLKDIV</a>.<em>cnnclksel<em>.<br>
+      <div style="margin-left: 20px">
+          0: CNN_Clock / 2<br>
+          1: CNN_Clock / 4<br>
+          2: CNN_Clock / 8<br>
+          3: CNN_Clock / 16<br>
+          4-7: CNN_Clock / 1
+      </div>
+  </td>
+  </tr>
+  <tr>
+    <td>13:10</td>
+    <td>adcfrq</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>ADC Peripheral Clock Frequency Select</strong><br>
+    This field configures the frequency of the ADC peripheral clock from the PCLK.<br>
+      <div style="margin-left: 20px">
+          0: Reserved <br>
+          1: Reserved <br>
+          2-15: 
+          $$ 
+          f_{\text{adc_clock}} = \frac{f_{\text{PCLK}}}{\text{adcfrq}} 
+          $$ 
+          <br>
+      </div>
+    </td>
+  </tr>
+    <tr>
+    <td>9:0</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>-</td>
+    <td><strong>Reserved</strong></td>
   </tr>
 </table>
+
+*Table 4-65: Peripheral Clock Disable Register 0*
+<a name="peripheral-clocks-disable0"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">Peripheral Clocks Disable 0</td>
+    <td colspan="1">GCR_PCLKDIS0</td>
+    <td>[0x0024]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:30</td>
+    <td>-</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>29</td>
+    <td>pt</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>Pulse Train Clock Disable</strong><br>
+      Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
+      <div style="margin-left: 20px">
+          0: Clock enabled.<br>
+          1: Clock disabled
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>28</td>
+    <td>i2c1</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>I2C1 Clock Disable</strong><br>
+      Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
+      <div style="margin-left: 20px">
+          0: Clock enabled<br>
+          1: Clock disabled
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>27:26</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>1</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>25</td>
+    <td>cnn</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>CNN Clock Disable</strong><br>
+      Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
+      <div style="margin-left: 20px">
+          0: Clock enabled<br>
+          1: Clock disabled
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>24</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>1</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>23</td>
+    <td>adc</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>ADC Clock Disable</strong><br>
+      Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
+      <div style="margin-left: 20px">
+          0: Clock enabled<br>
+          1: Clock disabled
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>22:19</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>1</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>18</td>
+    <td>tmr3</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>TMR3 Clock Disable</strong><br>
+      Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
+      <div style="margin-left: 20px">
+          0: Clock enabled<br>
+          1: Clock disabled
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>17</td>
+    <td>tmr2</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>TMR2 Clock Disable</strong><br>
+      Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
+      <div style="margin-left: 20px">
+          0: Clock enabled<br>
+          1: Clock disabled
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>16</td>
+    <td>tmr1</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>TMR1 Clock Disable</strong><br>
+      Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
+      <div style="margin-left: 20px">
+          0: Clock enabled<br>
+          1: Clock disabled
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>15</td>
+    <td>tmr0</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>TMR0 Clock Disable</strong><br>
+      Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
+      <div style="margin-left: 20px">
+          0: Clock enabled<br>
+          1: Clock disabled
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>14</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>1</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>13</td>
+    <td>i2c0</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>I2C0 Clock Disable</strong><br>
+      Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
+      <div style="margin-left: 20px">
+          0: Clock enabled<br>
+          1: Clock disabled
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>12:11</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>1</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>10</td>
+    <td>uart1</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>UART1 Clock Disable</strong><br>
+      Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
+      <div style="margin-left: 20px">
+          0: Clock enabled<br>
+          1: Clock disabled
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>9</td>
+    <td>uart0</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>UART0 Clock Disable</strong><br>
+      Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
+      <div style="margin-left: 20px">
+          0: Clock enabled<br>
+          1: Clock disabled
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>8:7</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0b11</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>6</td>
+    <td>spi1</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>SPI1 Clock Disable</strong><br>
+      Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
+      <div style="margin-left: 20px">
+          0: Clock enabled<br>
+          1: Clock disabled
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>5</td>
+    <td>dma</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>DMA Clock Disable</strong><br>
+      Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
+      <div style="margin-left: 20px">
+          0: Clock enabled<br>
+          1: Clock disabled
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>4:2</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0b11</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>1</td>
+    <td>gpio1</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>GPIO1 Port and Pad Logic Clock Disable</strong><br>
+      Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
+      <div style="margin-left: 20px">
+          0: Clock enabled<br>
+          1: Clock disabled
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>0</td>
+    <td>gpio0</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>GPIO0 Port and Pad Logic Clock Disable</strong><br>
+      Disabling a clock disables functionality while also saving power. Reads and writes to peripheral registers are disabled. Peripheral register states are retained.<br>
+      <div style="margin-left: 20px">
+          0: Clock enabled<br>
+          1: Clock disabled
+      </div>
+    </td>
+</tr>
+</table>
+
+*Table 4-66: Memory Clock Control Register*
+<a name="memory-clock-control"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">Memory Clock Control</td>
+    <td colspan="1">GCR_MEMCTRL</td>
+    <td>[0x0028]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:17</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+<tr>
+    <td>16</td>
+    <td><em>sysram0ecc</em></td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Sysram0 ECC Enable</strong><br>
+      Set this field to 1 to enable ECC for <em>sysram0</em>.<br>
+      <div style="margin-left: 20px">
+          0: <em>Sysram0</em> active, ECC disabled.<br>
+          1: <em>Sysram0</em> active, ECC enabled.
+      </div>
+    </td>
+</tr>
+<tr>
+    <td>15:3</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+<tr>
+    <td>2:0</td>
+    <td>fws</td>
+    <td>R/W</td>
+    <td>5</td>
+    <td><strong>Program Flash Wait States</strong><br>
+      This field sets the number of wait-state cycles per flash memory read access.<br>
+      <div style="margin-left: 20px">
+          0 – 7: Number of flash code access wait states<br>
+          <em>Note: For the IPO and ISO clocks, the minimum wait state is 2.</em><br>
+          <em>Note: For all other clock sources, the minimum wait state is 0. </em>
+      </div>
+    </td>
+</tr>
+</table>
+
+*Table 4-67: Memory Zeroize Control Register*
+<a name="memory-zeroize-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">Memory Zeroize</td>
+    <td colspan="1">GCR_MEMZ</td>
+    <td>[0x002C]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:7</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>-</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>6</td>
+    <td>icc1</td>
+    <td>R/W1O</td>
+    <td>0</td>
+    <td><strong>ICC1 Zeroization</strong><br>
+      Write 1 to initiate the operation. This field is automatically cleared by hardware on completion.<br>
+      <div style="margin-left: 20px">
+          0: Operation complete.<br>
+          1: Operation in progress.
+      </div>
+    </td>
+</tr>
+<tr>
+    <td>5</td>
+    <td>icc0</td>
+    <td>R/W1O</td>
+    <td>0</td>
+    <td><strong>ICC0 Zeroization</strong><br>
+      Write 1 to initiate the operation. This field is automatically cleared by hardware on completion.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate zeroization
+      </div>
+    </td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>sysram0ecc</td>
+    <td>R/W1O</td>
+    <td>0</td>
+    <td><strong><em>Sysram0</em> ECC Zeroization</strong><br>
+      Write 1 to initiate the operation. This field is automatically cleared by hardware on completion.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate zeroization
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>3</td>
+    <td>ram3</td>
+    <td>R/W1O</td>
+    <td>0</td>
+    <td><strong><em>Sysram3</em> Zeroization</strong><br>
+      Write 1 to initiate the operation. This field is automatically cleared by hardware on completion.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate zeroization
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>2</td>
+    <td>ram2</td>
+    <td>R/W1O</td>
+    <td>0</td>
+    <td><strong><em>Sysram2</em> Zeroization</strong><br>
+      Write 1 to initiate the operation. This field is automatically cleared by hardware on completion.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate zeroization
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>1</td>
+    <td>ram1</td>
+    <td>R/W1O</td>
+    <td>0</td>
+    <td><strong><em>Sysram1</em> Zeroization</strong><br>
+      Write 1 to initiate the operation. This field is automatically cleared by hardware on completion.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate zeroization
+      </div>
+    </td>
+</tr>
+
+<tr>
+    <td>0</td>
+    <td>ram0</td>
+    <td>R/W1O</td>
+    <td>0</td>
+    <td><strong><em>Sysram0</em> Zeroization</strong><br>
+      Write 1 to initiate the operation. This field is automatically cleared by hardware on completion.<br>
+      <div style="margin-left: 20px">
+          0: Normal operation<br>
+          1: Initiate zeroization
+      </div>
+    </td>
+</tr>
+</table>
+
+*Table 4-68: System Status Flag Register*
+<a name="system-status-flags"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">System Status Flag</td>
+    <td colspan="1">GCR_SYSST</td>
+    <td>[0x0040]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:1</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+<tr>
+    <td>0</td>
+    <td>icelock</td>
+    <td>R</td>
+    <td>0</td>
+    <td><strong>Arm ICE Lock Status Flag</strong><br>
+    <div style="margin-left: 20px">
+      0: Arm ICE is unlocked (enabled)<br>
+      1: Arm ICE is locked (disabled)
+      </div>
+    </td>
+</tr>
+</table>
+
+*Table 4-69: Reset Register 1*
+<a name="reset-register1"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">Reset 1</td>
+    <td colspan="1">GCR_RST1</td>
+    <td>[0x0044]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31</td>
+    <td>cpu1</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>CPU1 (RV32) Reset</strong><br>
+        Write 1 to initiate the reset operation.<br>
+        <div style="margin-left: 20px">
+        0: Normal operation<br>
+        1: Initiate reset
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>30:26</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>25</td>
+    <td>simo</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Single Inductor Multiple Output Block Reset</strong><br>
+        Write 1 to initiate the reset operation.<br>
+        <div style="margin-left: 20px">
+        0: Normal operation<br>
+        1: Initiate reset
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>24</td>
+    <td>dvs</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Dynamic Voltage Scaling Controller Reset</strong><br>
+        Write 1 to initiate the operation.<br>
+        <div style="margin-left: 20px">
+        0: Normal operation<br>
+        1: Initiate reset
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>23:21</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>20</td>
+    <td>i2c2</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>I2C2 Reset</strong><br>
+        Write 1 to initiate the operation.<br>
+        <div style="margin-left: 20px">
+        0: Normal operation<br>
+        1: Initiate reset
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>19</td>
+    <td>i2s</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Audio Interface Reset</strong><br>
+        Write 1 to initiate the operation.<br>
+        <div style="margin-left: 20px">
+        0: Normal operation<br>
+        1: Initiate reset
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>18:17</td>
+    <td>-</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>16</td>
+    <td>smphr</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Semaphore Block Reset</strong><br>
+        Write 1 to initiate the operation.<br>
+        <div style="margin-left: 20px">
+        0: Normal operation<br>
+        1: Initiate reset
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>15:12</td>
+    <td>-</td>
+    <td>R/W</td>
+    <td>-</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>11</td>
+    <td>spi0</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>SPI0 Reset</strong><br>
+        Write 1 to initiate the operation.<br>
+        <div style="margin-left: 20px">
+        0: Normal operation<br>
+        1: Initiate reset
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>10</td>
+    <td>aes</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>AES Block Reset</strong><br>
+        Write 1 to initiate the operation.<br>
+        <div style="margin-left: 20px">
+        0: Normal operation<br>
+        1: Initiate reset
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>9</td>
+    <td>crc</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CRC Reset</strong><br>
+        Write 1 to initiate the operation.<br>
+        <div style="margin-left: 20px">
+        0: Normal operation<br>
+        1: Initiate reset
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>8</td>
+    <td>-</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>7</td>
+    <td>owm</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>1-Wire Reset</strong><br>
+        Write 1 to initiate the operation.<br>
+        0: Normal operation<br>
+        1: Initiate reset
+    </td>
+</tr>
+
+<tr>
+    <td>6:2</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>1</td>
+    <td>pt</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Pulse Train Reset</strong><br>
+        Write 1 to initiate the operation.<br>
+        <div style="margin-left: 20px">
+        0: Normal operation<br>
+        1: Initiate reset
+        </div>
+    </td>
+</tr>
+<tr>
+    <td>0</td>
+    <td>i2c1</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>I2C1 Reset</strong><br>
+        Write 1 to initiate the operation.<br>
+        <div style="margin-left: 20px">
+        0: Normal operation<br>
+        1: Initiate reset
+        </div>
+    </td>
+</tr>
+</table>
+
+*Table 4-70: Peripheral Clock Disable Register 1*
+<a name="peripheral-clocks-disable1"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">Peripheral Clock Disable 1</td>
+    <td colspan="1">GCR_PCLKDIS1</td>
+    <td>[0x0048]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31</td>
+    <td>cpu1</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>CPU1 (RV32 Clock Disable)</strong><br>
+        Disabling the clock disables functionality while also saving power. Associated register states are retained but read and write access is blocked.<br>
+        <div style="margin-left: 20px">
+        0: Enabled<br>
+        1: Disabled
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>30:28</td>
+    <td>-</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>27</td>
+    <td>wdt0</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>Watchdog Timer 0 Disable</strong><br>
+        Disabling the clock disables functionality while also saving power. Associated register states are retained but read and write access is blocked.<br>
+        <div style="margin-left: 20px">
+        0: Enabled<br>
+        1: Disabled
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>26:25</td>
+    <td>-</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>24</td>
+    <td>i2c2</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>I2C2 Clock Disable</strong><br>
+        Disabling the clock disables functionality while also saving power. Associated register states are retained but read and write access is blocked.<br>
+        <div style="margin-left: 20px">
+        0: Enabled<br>
+        1: Disabled
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>23</td>
+    <td>i2s0</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>I2S Audio Interface Clock Disable</strong><br>
+        Disabling the clock disables functionality while also saving power. Associated register states are retained but read and write access is blocked.<br>
+        <div style="margin-left: 20px">
+        0: Enabled<br>
+        1: Disabled
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>22:17</td>
+    <td>-</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>16</td>
+    <td>spi0</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>SPI0 Clock Disable</strong><br>
+        Disabling the clock disables functionality while also saving power. Associated register states are retained but read and write access is blocked.<br>
+        <div style="margin-left: 20px">
+        0: Enabled.<br>
+        1: Disabled.
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>15</td>
+    <td>aes</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>AES Block Clock Disable</strong><br>
+        Disabling the clock disables functionality while also saving power. Associated register states are retained but read and write access is blocked.<br>
+        <div style="margin-left: 20px">
+        0: Enabled.<br>
+        1: Disabled.
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>14</td>
+    <td>crc</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>CRC Clock Disable</strong><br>
+        Disabling the clock disables functionality while also saving power. Associated register states are retained but read and write access is blocked.<br>
+        <div style="margin-left: 20px">
+        0: Enabled.<br>
+        1: Disabled.
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>13</td>
+    <td>owm</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>1-Wire Clock Disable</strong><br>
+        Disabling the clock disables functionality while also saving power. Associated register states are retained but read and write access is blocked.<br>
+        <div style="margin-left: 20px">
+        0: Enabled.<br>
+        1: Disabled.
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>12:10</td>
+    <td>-</td>
+    <td>R/W1</td>
+    <td>1</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>9</td>
+    <td>smphr</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>Semaphore Block Clock Disable</strong><br>
+        Disabling the clock disables functionality while also saving power. Associated register states are retained but read and write access is blocked.<br>
+        <div style="margin-left: 20px">
+        0: Enabled.<br>
+        1: Disabled.
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>8:3</td>
+    <td>-</td>
+    <td>R/W1</td>
+    <td>1</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>2</td>
+    <td>trng</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>TRNG Clock Disable</strong><br>
+        Disabling the clock disables functionality while also saving power. Associated register states are retained but read and write access is blocked.<br>
+        <div style="margin-left: 20px">
+        0: Enabled.<br>
+        1: Disabled.
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>1</td>
+    <td>uart2</td>
+    <td>R/W</td>
+    <td>1</td>
+    <td><strong>UART2 Clock Disable</strong><br>
+        Disabling the clock disables functionality while also saving power. Associated register states are retained but read and write access is blocked.<br>
+        <div style="margin-left: 20px">
+        0: Enabled.<br>
+        1: Disabled.
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>0</td>
+    <td>-</td>
+    <td>R/W1</td>
+    <td>1</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+</table>
+
+*Table 4-71: Event Enable Register*
+<a name="event-enable-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">Event Enable</td>
+    <td colspan="1">GCR_EVENTEN</td>
+    <td>[0x004C]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:3</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>2</td>
+    <td>tx</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CPU0 (CM4) TXEV Event Enable</strong><br>
+        A TXEV event wakes the CM4 from a low-power mode entered with a WFE instruction when this bit is set.<br>
+        <div style="margin-left: 20px">
+        0: Disabled<br>
+        1: Enabled
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>1</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>0</td>
+    <td>dma</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CPU0 (CM4) DMA CTZ Wake-Up Enable</strong><br>
+    Enables a DMA CTZ event to generate an RXEV interrupt to wake the CM4 from a low-power mode entered with a WFE instruction.<br>
+      <div style="margin-left: 20px">
+        0: Disabled.<br>
+        1: Enabled.
+      </div>
+    </td>
+</tr>
+</table>
+
+*Table 4-72: Revision Register*
+<a name="revision-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">Revision</td>
+    <td colspan="1">GCR_REVISION</td>
+    <td>[0x0050]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:16</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>15:0</td>
+    <td>revision</td>
+    <td>R</td>
+    <td>*</td>
+    <td><strong>Device Revision</strong><br>
+    This field returns the chip revision ID as packed BCD. For example, 0x00A1 would indicate the device is revision A1.
+    </td>
+</tr>
+</table>
+
+*Table 4-73: System Status Interrupt Enable Register*
+<a name="system-status-interrupt-enable"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">System Status Interrupt Enable</td>
+    <td colspan="1">GCR_SYSIE</td>
+    <td>[0x0054]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:1</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>-</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>0</td>
+    <td>iceunlock</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Arm ICE Unlocked Interrupt Enable</strong><br>
+    Set this field to generate an interrupt if the <a href="#system-status-flags">GCR_SYSST</a>.<em>icelock</em> is set.<br>
+      <div style="margin-left: 20px">
+        0: Interrupt disabled<br>
+        1: Interrupt enabled
+      </div>
+    </td>
+</tr>
+</table>
+
+*Table 4-74: Error Correction Coding Error Register*
+<a name="error-correction-coding-error-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">Error Correction Coding Error</td>
+    <td colspan="1">GCR_ECCERR</td>
+    <td>[0x0064]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+    <tr>
+    <td>31:1</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>-</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>0</td>
+    <td>ram0</td>
+    <td>R/W1C</td>
+    <td>0</td>
+    <td><strong><em>Sysram0</em> ECC Error</strong><br>
+    This flag is set if an ECC error occurs in sysram0. Write to 1 to clear the flag.<br>
+      <div style="margin-left: 20px">
+        0: No error<br>
+        1: Error
+      </div>
+    </td>
+</tr>
+</table>
+
+*Table 4-75: Error Correction Coding Correctable Error Detected Register*
+<a name="error-correction-coding-correctable-error-detected"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">Error Correction Coding Correctable Error Detected</td>
+    <td colspan="1">GCR_ECCCED</td>
+    <td>[0x0068]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:1</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>0</td>
+    <td>ram0</td>
+    <td>R/W1C</td>
+    <td>0</td>
+    <td><strong><em>sysram0</em> Correctable ECC Error Detected</strong><br>
+    When this bit is set, it indicates that there is a single correctable error in the <em>sysram0</em> block. Write to 1 to clear the flag.<br>
+        <div style="margin-left: 20px">
+        0: No error or uncorrectable error if <a href="#error-correction-coding-error-register">GCR_ECCERR</a>.<em>ram0</em> is set to 1.<br>
+        1: Correctable error detected.
+        </div>
+    </td>
+</tr>
+</table>
+
+*Table 4-76: Error Correction Coding Interrupt Enable Register*
+<a name="error-correction-coding-interrupt-enable-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">Error Correction Coding Interrupt Enable</td>
+    <td colspan="1">GCR_ECCIE</td>
+    <td>[0x006C]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:1</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+
+<tr>
+    <td>0</td>
+    <td>ram0</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong><em>Sysram0</em> ECC Error Interrupt Enable</strong><br>
+        Set this field to 1 to generate an interrupt if an ECC error condition occurs for <em>sysram0</em>.<br>
+        <div style="margin-left: 20px">
+        0: Interrupt disabled<br>
+        1: Interrupt enabled
+        </div>
+    </td>
+</tr>
+</table>
+
+*Table 4-77: Error Correction Coding Error Address Register*
+<a name="error-correction-coding-error-address-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">Error Correction Coding Error Address</td>
+    <td colspan="1">GCR_ECCADDR</td>
+    <td>[0x0070]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31</td>
+    <td>tagramerr</td>
+    <td>R</td>
+    <td>0</td>
+    <td><strong>ECC Error Address/TAG RAM Error</strong><br>
+      Data depends on which block has reported the error. If <em>sysram0</em>, this bit represents the bit of the AMBA address of the read that produced the error. If the error is in the cache, this bit is set as follows:<br>
+        <div style="margin-left: 20px">
+        0: No error<br>
+        1: Tag Error. The error is in the TAG RAM.
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>30</td>
+    <td>tagrambank</td>
+    <td>R</td>
+    <td>0</td>
+    <td><strong>ECC Error Address/TAG RAM Error Bank</strong><br>
+      Data depends on which block has reported the error. If <em>sysram0</em>, this bit represents the bit of the AMBA address of the read that produced the error. If the error is from the cache, this bit is set as follows:<br>
+        <div style="margin-left: 20px">
+        0: Error is in TAG RAM bank 0<br>
+        1: Error is in TAG RAM bank 1.
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>29:16</td>
+    <td>tagramaddr</td>
+    <td>R</td>
+    <td>0</td>
+    <td><strong>ECC Error Address/TAG RAM Error Address</strong><br>
+        Data depends on which block has reported the error. If <em>sysram0</em>, this field represents the bits of the AMBA address of the read that produced the error. If the error is from the cache, this field is set as follows:<br>
+        <div style="margin-left: 20px">
+        [TAG ADDRESS]: Represents the TAG RAM address.
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>15</td>
+    <td>dataramerr</td>
+    <td>R</td>
+    <td>0</td>
+    <td><strong>ECC Error Address/Cache Data RAM Error Address</strong><br>
+      Data depends on which block has reported the error. If <em>sysram0</em>, this bit represents the bit of the AMBA address of the read that produced the error. If the error is from the cache, this bit is set as follows:<br>
+        <div style="margin-left: 20px">
+        0: No error<br>
+        1: Cache data RAM error.
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>14</td>
+    <td>datarambank</td>
+    <td>R</td>
+    <td>0</td>
+    <td><strong>ECC Error Address/Cache Data RAM Error Bank</strong><br>
+      Data depends on which block has reported the error. If <em>sysram0</em>, this bit represents the bits of the AMBA address of the read that produced the error. If the error is from the cache, this bit is set as follows:<br>
+        <div style="margin-left: 20px">
+        0: Error is in the cache data RAM bank 0<br>
+        1: Error is in the cache data RAM bank 1.
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>13:0</td>
+    <td>dataramaddr</td>
+    <td>R</td>
+    <td>0</td>
+    <td><strong>ECC Error Address/Cache Data RAM Error Address</strong><br>
+      Data depends on which block has reported the error. This field represents the bits of the AMBA address of the read that produced the error.<br>
+        <div style="margin-left: 20px">
+        [Data Address]: Represents the error address.
+        </div>
+    </td>
+</tr>
+</table>
+
+*Table 4-78: General Purpose 0 Register*
+<a name="general-purpose-register0"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">General Purpose 0</td>
+    <td colspan="1">GCR_GPR0</td>
+    <td>[0x0080]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:0</td>
+    <td>-</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>General Purpose Register</strong><br>
+     This field is a general-purpose register usable by software.
+    </td>
+</tr>
+</table>
+
+## System Initialization Registers (SIR)
+See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the base address of this peripheral/module. See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
+
+*Table 4-79: System Initialization Register Summary*
+<a name= "table4-79-system-initialization-register-summary"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td>Offset</td>
+    <td>Register</td>
+    <td>Name</td>
+  </tr>
+    <tr>
+    <td>[0x0000]</td>
+    <td><a href="#system-initialization-status-register">SIR_SISTAT</td>
+    <td>System Initialization Status Register</td>
+  </tr>
+  <tr>
+    <td>[0x0004]</td>
+    <td><a href="#system-initialization-address-error-register">SIR_ADDR</td>
+    <td>System Initialization Address Error Register</td>
+  </tr>
+  <tr>
+    <td>[0x0100]</td>
+    <td><a href="#system-initialization-function-status-register">SIR_FSTAT</td>
+    <td>System initialization Function Status Register</td>
+  </tr>
+  <tr>
+    <td>[0x0104]</td>
+    <td><a href="#system-initialization-security-function-status-register">SIR_SFSTAT</td>
+    <td>System initialization Security Function Status Register</td>
+  </tr>
+</table>
+
+### System Initialization Register Details
+
+*Table 4-80: System Initialization Status Register*
+<a name="system-initialization-status-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">System Initialization Status</td>
+    <td colspan="1">SIR_SISTAT</td>
+    <td>[0x0000]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:2</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td>Reserved</td>
+</tr>
+
+<tr>
+    <td>1</td>
+    <td>crcerr</td>
+    <td>RO</td>
+    <td>See Description</td>
+    <td><strong>CRC Configuration Error Flag</strong><br>
+    This field is set by hardware during reset if an error in the device configuration is detected in the OTP memory.<br>
+        <div style="margin-left: 20px">
+        0: Configuration valid.<br>
+        1: Configuration invalid, the address of the configuration error is stored in the SIR_ADDR register.<br>
+        </div>
+        <em>Note: If this field reads 1, a device error has occurred. 
+        Please contact Analog Devices technical support for additional assistance, providing the address contained in the <a href="#system-initialization-address-error-register">SIR_ADDR</a>.erraddr.</em>
+    </td>
+</tr>
+<tr>
+    <td>0</td>
+    <td>magic</td>
+    <td>RO</td>
+    <td>See Description</td>
+    <td><strong>Configuration Valid Flag</strong><br>
+      This field is set to 1 by hardware during reset if the device configuration is valid.<br>
+        <div style="margin-left: 20px">
+        0: OTP is not configured correctly.<br>
+        1: OTP configuration valid.
+        </div>
+        <em>Note: If this field reads 0, the device configuration is invalid, and a device error has occurred during system initialization. 
+        Please contact Analog Devices technical support for additional assistance.</em> 
+    </td>
+</tr>
+</table>
+
+*Table 4-81: System Initialization Address Error Register*
+<a name="system-initialization-address-error-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">System Initialization Status</td>
+    <td colspan="1">SIR_ADDR</td>
+    <td>[0x0004]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:0</td>
+    <td>erraddr</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Configuration Error Address</strong><br>
+    If the <a href="#system-initialization-status-register">SIR_SISTAT</a>.<em>crcerr</em> field is set to 1, the value in this register is the address of the configuration failure.
+    </td>
+</tr>
+</table>
+
+*Table 4-82: System Initialization Function Status Register*
+<a name="system-initialization-function-status-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">System Initialization Function Status</td>
+    <td colspan="1">SIR_FSTAT</td>
+    <td>[0x0100]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:8</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td>Reserved</td>
+</tr>
+
+<tr>
+    <td>7</td>
+    <td>smphr</td>
+    <td>RO</td>
+    <td>See Description</td>
+    <td><strong>Semaphore Block</strong><br>
+      This field indicates if the device includes the semaphore block.<br>
+        <div style="margin-left: 20px">
+        0: Block is not available.<br>
+        1: Block is available.
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>6:3</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td>Reserved</td>
+</tr>
+
+<tr>
+    <td>2</td>
+    <td>adc</td>
+    <td>RO</td>
+    <td>See Description</td>
+    <td><strong>ADC</strong><br>
+        This field indicates if the device includes the ADC.<br>
+        <div style="margin-left: 20px">
+        0: Block is not available.<br>
+        1: Block is available.
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>1</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td>Reserved</td>
+</tr>
+
+<tr>
+    <td>0</td>
+    <td>fpu</td>
+    <td>RO</td>
+    <td>See Description</td>
+    <td><strong>FPU</strong><br>
+        This field indicates if the device includes the FPU.<br>
+        <div style="margin-left: 20px">
+        0: Block is not available.<br>
+        1: Block is available.
+        </div>
+    </td>
+</tr>
+
+*Table 4-83: System Initialization Security Function Status Register*
+<a name="system-initialization-security-function-status-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">System Initialization Security Function Status</td>
+    <td colspan="1">SIR_SFSTAT</td>
+    <td>[0x0104]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+<tr>
+    <td>31:4</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td>Reserved</td>
+</tr>
+
+<tr>
+    <td>3</td>
+    <td>aes</td>
+    <td>RO</td>
+    <td>See Description</td>
+    <td><strong>AES</strong><br>
+        This field indicates if the device includes the AES block.<br>
+        <div style="margin-left: 20px">
+        0: Block is not available.<br>
+        1: Block is available.
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>2</td>
+    <td>trng</td>
+    <td>RO</td>
+    <td>See Description</td>
+    <td><strong>TRNG</strong><br>
+        This field indicates if the device includes the TRNG block.<br>
+        <div style="margin-left: 20px">
+        0: Block is not available.<br>
+        1: Block is available.
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>1:0</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td>Reserved</td>
+</tr>
+</table>
+
+## Function Control Registers (FCR)
+See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the base address of this peripheral/module. See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
+
+*Table 4-84: Function Control Register Summary*
+<a name= "table4-84-function-control-registery-summary"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td>Offset</td>
+    <td>Register</td>
+    <td>Name</td>
+  </tr>
+    <tr>
+    <td>[0x0000]</td>
+    <td><a href="#function-control0-register">FCR_FCTRL0</td>
+    <td>Function Control 0 Register (I<sub>2</sub>C Glitch Filter Control)</td>
+  </tr>
+  <tr>
+    <td>[0x0004]</td>
+    <td><a href="#ipo-automatic-calibration0-register">FCR_AUTOCAL0</td>
+    <td>IPO Automatic Calibration 0 Register</td>
+  </tr>
+  <tr>
+    <td>[0x0008]</td>
+    <td><a href="#ipo-automatic-calibration1-register">FCR_AUTOCAL1</td>
+    <td>IPO Automatic Calibration 1 Register</td>
+  </tr>
+  <tr>
+    <td>[0x000C]</td>
+    <td><a href="#ipo-automatic-calibration2-register">FCR_AUTOCAL2</td>
+    <td>IPO Automatic Calibration 2 Register</td>
+  </tr>
+  <tr>
+    <td>[0x0010]</td>
+    <td><a href="#rv32-boot-address-register">FCR_URVBOOTADDR</td>
+    <td>RV32 Boot Address Register</td>
+  </tr>
+  <tr>
+    <td>[0x0014]</td>
+    <td><a href="#rv32-control-register">FCR_URVCTRL</td>
+    <td>RV32 Control Register</td>
+  </tr>
+</table>
+
+### Function Control Register Details
+
+*Table 4-85: Function Control 0 Register*
+<a name="function-control0-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">Function Control 0</td>
+    <td colspan="1">FCR_FCTRL0</td>
+    <td>[0x0000]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+<tr>
+    <td>31:26</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td>Reserved</td>
+</tr>
+
+<tr>
+    <td>25</td>
+    <td>i2c2_scl_filter_en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>I2C2 SCL Glitch Filter Enable</strong><br>
+        <div style="margin-left: 20px">
+        0: Disabled<br>
+        1: Enabled
+        </div>
+    </td>
+</tr>
+<tr>
+    <td>24</td>
+    <td>i2c2_sda_filter_en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>I2C2 SDA Glitch Filter Enable</strong><br>
+        <div style="margin-left: 20px">
+        0: Disabled<br>
+        1: Enabled
+        </div>
+    </td>
+</tr>
+<tr>
+    <td>23</td>
+    <td>i2c1_scl_filter_en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>I2C1 SCL Glitch Filter Enable</strong><br>
+        <div style="margin-left: 20px">
+        0: Disabled<br>
+        1: Enabled
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>22</td>
+    <td>i2c1_sda_filter_en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>I2C1 SDA Glitch Filter Enable</strong><br>
+        <div style="margin-left: 20px">
+        0: Disabled<br>
+        1: Enabled
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>21</td>
+    <td>i2c0_scl_filter_en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>I2C0 SCL Glitch Filter Enable</strong><br>
+        <div style="margin-left: 20px">
+        0: Disabled<br>
+        1: Enabled
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>20</td>
+    <td>i2c0_sda_filter_en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>I2C0 SDA Glitch Filter Enable</strong><br>
+        <div style="margin-left: 20px">
+        0: Disabled<br>
+        1: Enabled
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>19:0</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td>Reserved</td>
+</tr>
+</table>
+
+*Table 4-86: IPO Automatic Calibration 0 Register*
+<a name="ipo-automatic-calibration0-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">IPO Automatic Calibration 0</td>
+    <td colspan="1">FCR_AUTOCAL0</td>
+    <td>[0x0004]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:23</td>
+    <td>trim</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>IPO Trim Value</strong><br>
+    Initial factory trim value for the IPO.
+    </td>
+</tr>
+
+<tr>
+    <td>22:20</td>
+    <td>-</td>
+    <td>RO</td>
+    <td></td>
+    <td>Reserved</td>
+</tr>
+
+<tr>
+    <td>19:8</td>
+    <td>gain</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>IPO Trim Adaptation Gain</strong></td>
+</tr>
+
+<tr>
+    <td>7:5</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td>Reserved</td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>atomic</td>
+    <td>R/W1</td>
+    <td>0</td>
+    <td><strong>IPO Trim Atomic Start</strong><br>
+      Set this bit to start an automatic atomic calibration of the IPO. 
+      The calibration runs for <a href="#ipo-automatic-calibration2-register">FCR_AUTOCAL2</a>.<em>runtime</em> milliseconds. 
+      This bit is automatically cleared by hardware when the calibration is complete.
+    </td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>invert</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>IPO Trim Step Invert</strong><br>
+        <div style="margin-left: 20px">
+        0: IPO trim step is not inverted<br>
+        1: IPO trim step is inverted
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>2</td>
+    <td>load</td>
+    <td>R/*</td>
+    <td>0</td>
+    <td><strong>IPO Initial Trim Load</strong><br>
+        Set this bit to load the initial trim value for the IPO from <a href="#ipo-automatic-calibration1-register">FCR_AUTOCAL1</a>.<em>initial</em>. 
+        This bit is cleared by hardware once the load is complete.
+    </td>
+</tr>
+<tr>
+    <td>1</td>
+    <td>en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>IPO Automatic Calibration Continuous Mode Enable</strong><br>
+        <div style="margin-left: 20px">
+        0: Disabled<br>
+        1: Enabled
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>0</td>
+    <td>acen</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>IPO Trim Select</strong><br>
+        <div style="margin-left: 20px">
+        0: Use default trim<br>
+        1: Use automatic calibration trim values
+        </div>
+    </td>
+</tr>
+</table>
+
+*Table 4-87: IPO Automatic Calibration 1 Register*
+<a name="ipo-automatic-calibration1-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">IPO Automatic Calibration 1</td>
+    <td colspan="1">FCR_AUTOCAL1</td>
+    <td>[0x0008]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>31:9</td>
+    <td>-</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td>Reserved, Do Not Modify</td>
+</tr>
+
+<tr>
+    <td>8:0</td>
+    <td>initial</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>IPO Trim Automatic Calibration Initial Trim</strong><br>
+    This field contains the initial trim setting for the IPO.
+    </td>
+</tr>
+</table>
+
+*Table 4-87: IPO Automatic Calibration 2 Register*
+<a name="ipo-automatic-calibration2-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">IPO Automatic Calibration 2</td>
+    <td colspan="1">FCR_AUTOCAL2</td>
+    <td>[0x000C]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+<tr>
+    <td>31:21</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td>Reserved</td>
+</tr>
+<tr>
+    <td>20:8</td>
+    <td>div</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>IPO Trim Automatic Calibration Divide Factor</strong><br>
+    Target trim frequency for the IPO: <br>
+    $$
+    f_{\text{IPO}} = \text{div} \cdot 32768
+    $$
+    <em>Note: Setting div to 0 is equivalent to setting div to 1.</em>
+    </td>
+</tr>
+<tr>
+    <td>7:0</td>
+    <td>runtime</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td>IPO Trim Automatic Calibration Run Time<br>
+    <em>Atomic Run Time = runtime milliseconds</em>
+    </td>
+</tr>
+</table>
+
+*Table 4-89: RV32 Boot Address Register*
+<a name="rv32-boot-address-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">RV32 Boot Address</td>
+    <td colspan="1">FCR_URVBOOTADDR</td>
+    <td>[0x0010]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+<tr>
+    <td>31:0</td>
+    <td>-</td>
+    <td>R/W</td>
+    <td>0x2000 C000</td>
+    <td>RV32 Boot Address<br>
+    Set this field to the boot address for the RV32 core. 
+    The reset value for this register is 0x2001 C000, <em>sysram3</em>.
+    </td>
+</tr>
+</table>
+
+*Table 4-90: RV32 Control Register*
+<a name="rv32-control-register"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">RV32 Control</td>
+    <td colspan="1">FCR_URVCTRL</td>
+    <td>[0x0014]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+  </tr>
+<tr>
+    <td>31:2</td>
+    <td>-</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td>Reserved</td>
+</tr>
+<tr>
+    <td>1</td>
+    <td>iflushen</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td>ICC1 Cache Flush Enable <br>
+    Write 1 to flush the cache and the instruction buffer for the RV32 core. 
+    This bit is automatically cleared to 0 when the flush is complete. 
+    Writing 0 has no effect and does not stop a cache flush in progress.
+    <div style="margin-left: 20px">
+    0: ICC1 flush complete <br>
+    1: Flush the contents of the ICC1 cache
+    </td>
+</tr>
+
+<tr>
+    <td>0</td>
+    <td>memsel</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td> This field determines if <em>sysram2</em> and <em>sysram3</em> are shared between the CM4 and RV32 cores. 
+    Set this field to 1 to set the RV32 core as the exclusive master for <em>sysram2</em> and <em>sysram3</em>.<br>
+    <div style="margin-left: 20px">
+    0: <em>Sysram2</em> and <em>Sysram3</em> are shared and accessible by both the CM4 and RV32 cores. <br>
+    1: <em>Sysram2</em> and <em>Sysram3</em> are accessible by the RV32 core only. <br>
+    </div>
+    <em>
+    Note: The application software must ensure that no accesses are occurring in <em>Sysram2</em> or <em>Sysram3</em> before setting this field to 1. 
+    See section <a href= "">Multiprocessor Communications</a> for information on using the semaphore peripheral for communication between the RV32 and CM4 cores.</em>
+    </td>
+</tr>
+
+</table>
+
