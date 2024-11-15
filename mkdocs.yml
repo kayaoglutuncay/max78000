@@ -8,6 +8,7 @@ nav:
   - Memory, Register, Mapping: memory-register-mapping-access.md
   - System, Power, Clocks, Reset: system-power-clocks-reset.md
   - Flash Controller: flash-controller.md
+  - Interrupts and Exceptions: interrupts-exceptions.md
 theme:
   name: material
   features:

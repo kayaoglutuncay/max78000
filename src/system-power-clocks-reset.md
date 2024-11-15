@@ -5,44 +5,44 @@ Different peripherals and subsystems use several clocks. These clocks are highly
 ### 100MHz Internal Primary Oscillator (IPO)
 The MAX78000 includes a 100MHz internal high-speed oscillator, referred to in this document as the internal primary oscillator (IPO). The IPO is the highest frequency oscillator and draws the most power.
 
-The IPO can optionally be powered down in LPM by setting the GCR_PM.ipo_pd field to 1.
+The IPO can optionally be powered down in LPM by setting the <a href="#power-management-register">GCR_PM</a>.<em>ipo_pd</em> field to 1.
 
 The IPO can be selected as the SYS_OSC. Use the IPO as the SYS_OSC by performing the following steps:
 
-1. Enable the IPO by setting GCR_CLKCTRL.ipo_en to 1.
-2. Wait until the GCR_CLKCTRL.ipo_rdy field reads 1, indicating the IPO is operating.
-3. Set GCR_CLKCTRL.sysclk_sel to 4.
-4. Wait until the GCR_CLKCTRL.sysclk_rdy field reads 1. The IPO is now operating as the SYS_OSC.
+1. Enable the IPO by setting <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>ipo_en</em> to 1.
+2. Wait until the <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>ipo_rdy</em> field reads 1, indicating the IPO is operating.
+3. Set <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_sel</em> to 4.
+4. Wait until the <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_rdy</em> field reads 1. The IPO is now operating as the SYS_OSC.
 
 ### 60MHz Internal Secondary Oscillator (ISO)
 The ISO is a low-power internal secondary oscillator that is the power-on reset default SYS_OSC. The ISO is automatically selected as SYS_OSC after a system reset or POR.
 
 The following steps show how to enable the ISO and select it as the SYS_OSC.
 
-1. Enable the ISO by setting GCR_CLKCTRL.iso_en to 1.
-2. Wait until the GCR_CLKCTRL.iso_rdy field reads 1, indicating the ISO is operating.
-3. Set GCR_CLKCTRL.sysclk_sel to 0.
-4. Wait until the GCR_CLKCTRL.sysclk_rdy field reads 1. The ISO is now operating as the SYS_OSC.
+1. Enable the ISO by setting <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>iso_en</em> to 1.
+2. Wait until the <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>iso_rdy</em> field reads 1, indicating the ISO is operating.
+3. Set <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_sel</em> to 0.
+4. Wait until the <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_rdy</em> field reads 1. The ISO is now operating as the SYS_OSC.
 
 ### 8kHz-30kHz Internal Nano-Ring Oscillator (INRO)
 The INRO is an ultra-low-power internal oscillator that can be selected as the SYS_OSC. The INRO is always enabled and cannot be disabled by software.
 
-The frequency of this oscillator is configurable to 8kHz, 16kHz, or 30kHz. Use the TRIMSIR_INRO.lpclksel field to select the desired frequency. On a POR or system reset, the frequency defaults to 30kHz.
+The frequency of this oscillator is configurable to 8kHz, 16kHz, or 30kHz. Use the <a href="#inro-trim-system-initialization-register">TRIMSIR_INRO</a>.<em>lpclksel</em> field to select the desired frequency. On a POR or system reset, the frequency defaults to 30kHz.
 
 The following steps show how to set the INRO as the SYS_OSC.
 
-1. Verify the GCR_CLKCTRL.inro_rdy field reads 1.
-2. Set GCR_CLKCTRL.sysclk_sel to 3.
-3. Wait until the GCR_CLKCTRL.sysclk_rdy field reads 1. The INRO is now operating as the SYS_OSC.
+1. Verify the <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>inro_rdy</em> field reads 1.
+2. Set <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_sel</em> to 3.
+3. Wait until the <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_rdy</em> field reads 1. The INRO is now operating as the SYS_OSC.
 
 ### 7.3728MHz Internal Baud Rate Oscillator (IBRO)
 The IBRO is a very low-power internal oscillator that can be selected as SYS_OSC. The INRO can optionally be used as a dedicated baud rate clock for the UARTs. The INRO is useful if the selected SYS_OSC does not accurately generate a desired UART baud rate.
 
 The following steps show how to enable the IBRO and select it as the SYS_OSC.
 
-1. Wait until the GCR_CLKCTRL.ibro_rdy field reads 1, indicating the IBRO is operating.
-2. Set GCR_CLKCTRL.sysclk_sel to 5.
-3. Wait until the GCR_CLKCTRL.sysclk_rdy field reads 1. The IBRO is now operating as the SYS_OSC.
+1. Wait until the <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>ibro_rdy</em> field reads 1, indicating the IBRO is operating.
+2. Set <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_sel</em> to 5.
+3. Wait until the <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_rdy</em> field reads 1. The IBRO is now operating as the SYS_OSC.
 
 ### 32.768kHz External Real-Time Clock Oscillator (ERTCO)
 The ERTCO is an extremely low-power internal oscillator that can be selected as the SYS_OSC. The ERTCO can optionally use a 32.768kHz input clock or an 8kHz independent nano-ring oscillator instead of an external crystal. The internal 32.768kHz clock is available as an output on GPIO P3.1 as alternate function 1 (SQWOUT).
@@ -51,10 +51,10 @@ This oscillator is the default clock for the real-time clock (RTC). If the RTC i
 
 The following steps show how to enable the ERTCO and select it as the SYS_OSC.
 
-1. Enable the ERTCO by setting GCR_CLKCTRL.ertco_en to 1.
-2. Wait until the GCR_CLKCTRL.ertco_rdy field reads 1, indicating the ERTCO is operating.
-3. Set GCR_CLKCTRL.sysclk_sel to 6.
-4. Wait until the GCR_CLKCTRL.sysclk_rdy field reads 1. The ERTCO is now operating as the SYS_OSC.
+1. Enable the ERTCO by setting <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>ertco_en</em> to 1.
+2. Wait until the <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>ertco_rdy</em> field reads 1, indicating the ERTCO is operating.
+3. Set <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_sel</em> to 6.
+4. Wait until the <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_rdy</em> field reads 1. The ERTCO is now operating as the SYS_OSC.
 
 ## System Oscillator (SYS_OSC)
 The MAX78000 supports multiple clock sources as the SYS_OSC. The selected SYS_OSC is the clock source for most internal blocks. Each oscillator, description, and nominal frequency are shown in [Table 4-1](#available-system-oscillators). An external clock source, EXT_CLK, is supported on P0.3, alternate function 1. Each of the oscillators/clocks is described in detail in section Oscillator Sources.
@@ -101,19 +101,19 @@ The MAX78000 supports multiple clock sources as the SYS_OSC. The selected SYS_OS
 </table>
 
 ### System Oscillator Selection
-Set the system oscillator using the GCR_CLKCTRL.sysclk_sel field. Before selecting an oscillator as the system oscillator, the oscillator source must first be enabled and ready. See each oscillator source’s detailed description for the required steps to enable the oscillator and select it as the system oscillator.
+Set the system oscillator using the <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_sel</em> field. Before selecting an oscillator as the system oscillator, the oscillator source must first be enabled and ready. See each oscillator source’s detailed description for the required steps to enable the oscillator and select it as the system oscillator.
 
-When the GCR_CLKCTRL.sysclk_sel is modified, hardware clears the GCR_CLKCTRL.sysclk_rdy field, and there is a delay until the switchover is complete. When the switchover to the selected SYS_OSC is complete, the GCR_CLKCTRL.sysclk_rdy field is set to 1 by hardware. The application software must verify that the switchover is complete before continuing operation.
+When the <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_sel</em> is modified, hardware clears the <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_rdy</em> field, and there is a delay until the switchover is complete. When the switchover to the selected SYS_OSC is complete, the <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_rdy</em> field is set to 1 by hardware. The application software must verify that the switchover is complete before continuing operation.
 
 ### System Clock (SYS_CLK)
-The selected SYS_OSC is the input to the system oscillator divider to generate the system clock (SYS_CLK). The system clock divider divides the selected SYS_OSC by the GCR_CLKCTRL.sysclk_div field, as shown in [Equation 4-1](#equation-4-1-system-clock-scaling).
+The selected SYS_OSC is the input to the system oscillator divider to generate the system clock (SYS_CLK). The system clock divider divides the selected SYS_OSC by the <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_div</em> field, as shown in [Equation 4-1](#equation-4-1-system-clock-scaling).
 
 *Equation 4-1: System Clock Scaling*
 <a name="equation-4-1-system-clock-scaling"></a>
 
-SYS_CLK = SYS_OSC / 2<sup>sysclk_div</sup>
+> SYS_CLK = SYS_OSC / 2<sup>sysclk_div</sup>
 
-GCR_CLKCTRL.sysclk_div is selectable from 0 to 7, resulting in divisors of 1, 2, 4, 8, 16, 32, 64 or 128.
+<a href="#clock-control-register">GCR_CLKCTRL</a>.<em>sysclk_div</em> is selectable from 0 to 7, resulting in divisors of 1, 2, 4, 8, 16, 32, 64 or 128.
 
 SYS_CLK drives the Arm core, the RV32 core, and all AHB masters in the system. SYS_CLK generates the following internal clocks as shown below:
 
@@ -125,10 +125,12 @@ SYS_CLK drives the Arm core, the RV32 core, and all AHB masters in the system. S
 The RTC uses the ERTCO for its clock source. Optionally, the RTC can run using an internal dedicated 8kHz nano-ring oscillator. See the Real-Time Clock (RTC) chapter for details on using this 8kHz nano-ring oscillator for the RTC.
 
 All oscillators are reset to their POR reset default state during:
+
 - Power-On Reset
 - System Reset
 
 Oscillator settings are *not* reset during:
+
 - Soft Reset
 - Peripheral Reset
 
@@ -214,7 +216,7 @@ The MAX78000 includes multiple operating modes and the ability to fine-tune powe
 - Power Down Mode (PDM)
 
 ### ACTIVE Mode
-In this mode, both the CM4 and the RV32 cores can execute software, and all digital and analog peripherals are available on demand. Dynamic clocking disables peripheral not in use, providing the optimal mix of high performance and low power consumption. The CM4 has access to all System RAM by default. The RV32 has access to sysram2 and sysram3 and can be optionally configured to have exclusive access to these RAMs. Additionally, sysram3 can be configured as a unified internal cache controller for the RV32 allowing simultaneous data access and code execution for the CM4 and RV32 from the internal flash memory.
+In this mode, both the CM4 and the RV32 cores can execute software, and all digital and analog peripherals are available on demand. Dynamic clocking disables peripheral not in use, providing the optimal mix of high performance and low power consumption. The CM4 has access to all System RAM by default. The RV32 has access to *sysram2* and *sysram3* and can be optionally configured to have exclusive access to these RAMs. Additionally, *sysram3* can be configured as a unified internal cache controller for the RV32 allowing simultaneous data access and code execution for the CM4 and RV32 from the internal flash memory.
 
 Each of the peripherals can be individually enabled during active mode or powered down. The CNN and each of the four CNNx16_n Processor Arrays and their associated memories can be powered down or set to active mode.
 
@@ -233,9 +235,9 @@ The device status is as follows:
 ##### Entering SLEEP
 Entering SLEEP requires both the CM4 and RV32 to cooperate to enter SLEEP. Synchronization is necessary for deterministic entry into SLEEP. Two methods are described below, allowing either core to request entry into SLEEP. Both methods use the semaphore peripheral interrupt to communicate between the cores.
 
-If the RV32 is driving entry to SLEEP, the RV32 notifies the CM4 of a request to enter SLEEP using Multiprocessor Communications. The CM4 receives the notification and then sends confirmation through the semaphore peripheral to the RV32. The CM4 should then enter SLEEP by setting the SCR.sleepdeep field to 0 and performing a WFI or WFE instruction. The RV32 should then enter SLEEP by performing a WFI instruction or by setting GCR_PM.mode to 1, followed by two NOP instructions.
+If the RV32 is driving entry to SLEEP, the RV32 notifies the CM4 of a request to enter SLEEP using Multiprocessor Communications. The CM4 receives the notification and then sends confirmation through the semaphore peripheral to the RV32. The CM4 should then enter SLEEP by setting the SCR.sleepdeep field to 0 and performing a WFI or WFE instruction. The RV32 should then enter SLEEP by performing a WFI instruction or by setting <a href="#power-management-register">GCR_PM</a>.<em>mode</em> to 1, followed by two NOP instructions.
 
-Alternatively, the CM4 can initiate the request to enter SLEEP by sending the request to the RV32 using Multiprocessor Communications. The RV32 confirms the request through Multiprocessor Communications and performs a WFI instruction followed by two NOP instructions. The CM4 should then enter SLEEP by setting SCR.sleepdeep to 0 and performing a WFI or WFE instruction or by setting GCR_PM.mode to 1.
+Alternatively, the CM4 can initiate the request to enter SLEEP by sending the request to the RV32 using Multiprocessor Communications. The RV32 confirms the request through Multiprocessor Communications and performs a WFI instruction followed by two NOP instructions. The CM4 should then enter SLEEP by setting SCR.sleepdeep to 0 and performing a WFI or WFE instruction or by setting <a href="#power-management-register">GCR_PM</a>.<em>mode</em> to 1.
 
 *Figure 4-2: SLEEP Mode Clock Control*
 <a name="figure4-2"></a>
@@ -245,14 +247,14 @@ Alternatively, the CM4 can initiate the request to enter SLEEP by sending the re
 #### LPM
 This mode is suitable for running the RV32 processor to collect and move data from enabled peripherals. The device status is a follows:
 
-- The CM4, sysram0, and sysram1 are in state retention
+- The CM4, *sysram0*, and *sysram1* are in state retention
 - The CNN quadrants and memory are active and configurable.
-- The RV32 can access the SPI, UARTS, Timers, I2C, 1-Wire, Timers, Pulse Train Engine, I2S, CRC, AES, TRNG, Comparators, as well as sysram2 and sysram3. Sysram3 can be configured to operate as the RV32 unified instruction cache
+- The RV32 can access the SPI, UARTS, Timers, I2C, 1-Wire, Timers, Pulse Train Engine, I2S, CRC, AES, TRNG, Comparators, as well as *sysram2* and *sysram3*. *Sysram3* can be configured to operate as the RV32 unified instruction cache
 - The transition from LPM to ACTIVE is faster than the transition from BACKUP to ACTIVE because system initialization is not required
 - The DMA is in state retention mode
 - PWRSEQ_GP0 and PWRSEQ_GP1 registers retain state
 - Choose the system PCLK or ISO as the clock source for the RV32 and all peripherals 
-    - PWRSEQ_LPCN.lpmclksel defaults to use ISO during LPM. Setting this field to 1 uses the PCLK
+    - <a href="#low-power-control-register">PWRSEQ_LPCN</a>.<em>lpmclksel</em> defaults to use ISO during LPM. Setting this field to 1 uses the PCLK
 - The following oscillators are powered down by default, but can be configured by software to remain active:
     - ISO
     - IPO
@@ -264,7 +266,7 @@ This mode is suitable for running the RV32 processor to collect and move data fr
 ##### Entering LPM
 Entry into LPM should be managed between the two cores using Multiprocessor Communications to ensure both cores are in a known state when entering LPM.
 
-When the CM4 puts itself into deep sleep, the device automatically enters LPM, and hardware sets the GCR_PM.mode to LPM. To place the CM4 in LPM mode in software, perform the following instructions.
+When the CM4 puts itself into deep sleep, the device automatically enters LPM, and hardware sets the <a href="#power-management-register">GCR_PM</a>.<em>mode</em> to LPM. To place the CM4 in LPM mode in software, perform the following instructions.
 
 ```
 SCR.sleepdeep = 1;  // deep sleep mode enabled
@@ -272,9 +274,9 @@ SCR.sleepdeep = 1;  // deep sleep mode enabled
 WFI (or WFE);   // Enter deep sleep mode
 ```
 
-If the RV32 requests the CM4 to enter LPM mode through Multiprocessor Communications and the CM4 enters SLEEP instead, by setting SCR.sleepdeep to 0 and performing a WFI or WFE instruction, the RV32 can put the device into LPM by directly setting the GCR_PM.mode field to LPM (8).
+If the RV32 requests the CM4 to enter LPM mode through Multiprocessor Communications and the CM4 enters SLEEP instead, by setting SCR.sleepdeep to 0 and performing a WFI or WFE instruction, the RV32 can put the device into LPM by directly setting the <a href="#power-management-register">GCR_PM</a>.<em>mode</em> field to LPM (8).
 
-*Note: The device immediately enters LPM when the GCR_PM.mode field is set to LPM. If the CM4 is not in a known state, issues may occur when exiting LPM.*
+*Note: The device immediately enters LPM when the <a href="#power-management-register">GCR_PM</a>.<em>mode</em> field is set to LPM. If the CM4 is not in a known state, issues may occur when exiting LPM.*
 
 *Figure 4-3: LPM Clock and State Retention Diagram*
 <a name="figure4-3"></a>
@@ -308,9 +310,9 @@ This mode is used for extremely low power consumption while using a minimal set 
 ##### Entering UPM
 Entering UPM mode requires both the CM4 and RV32 to cooperate to enter UPM mode. Synchronization is necessary for deterministic entry into UPM. Two methods are described below, allowing either core to request entry into UPM and ensuring deterministic entry. Both methods use the Semaphore peripheral interrupt to communicate between the cores.
 
-If the RV32 is driving entry to UPM, the RV32 notifies the CM4 of a request to enter UPM using Multiprocessor Communications. The CM4 receives the notification and then sends a confirmation through the semaphore peripheral to the RV32. The CM4 should then enter SLEEP by setting SCR.sleepdeep to 0 and performing a WFI or WFE instruction. The RV32 sets the GCR_PM.mode to UPM, followed by two NOP instructions, and the device immediately enters UPM.
+If the RV32 is driving entry to UPM, the RV32 notifies the CM4 of a request to enter UPM using Multiprocessor Communications. The CM4 receives the notification and then sends a confirmation through the semaphore peripheral to the RV32. The CM4 should then enter SLEEP by setting SCR.sleepdeep to 0 and performing a WFI or WFE instruction. The RV32 sets the <a href="#power-management-register">GCR_PM</a>.<em>mode</em> to UPM, followed by two NOP instructions, and the device immediately enters UPM.
 
-Alternatively, the CM4 can initiate the request to enter UPM by sending the request to the RV32 using Multiprocessor Communications. The RV32 confirms the request through Multiprocessor Communications and performs a WFI instruction, followed by two NOP instructions. The CM4 then sets the GCR_PM.mode to UPM, and the device immediately enters UPM.
+Alternatively, the CM4 can initiate the request to enter UPM by sending the request to the RV32 using Multiprocessor Communications. The RV32 confirms the request through Multiprocessor Communications and performs a WFI instruction, followed by two NOP instructions. The CM4 then sets the <a href="#power-management-register">GCR_PM</a>.<em>mode</em> to UPM, and the device immediately enters UPM.
 
 *Figure 4-4: UPM Clock and State Retention Block Diagram*
 <a name="figure4-4"></a>
@@ -337,9 +339,9 @@ This mode is used to maintain the system operation while keeping time with the R
 ##### Entering STANDBY
 Entering STANDBY requires both the CM4 and RV32 to enter STANDBY mode. Synchronization is necessary for deterministic entry into STANDBY. Two methods are described below, allowing either core to request entry into STANDBY and ensuring deterministic entry. Both methods use the semaphore peripheral interrupt to communicate between the cores.
 
-If the RV32 is driving entry to STANDBY, the RV32 notifies the CM4 of a request to enter STANDBY using Multiprocessor Communications. The CM4 receives the notification and then sends a confirmation through the semaphore peripheral to the RV32. The CM4 should then enter SLEEP by setting SCR.sleepdeep to 0 and performing a WFI or WFE instruction. The RV32 sets the GCR_PM.mode to STANDBY, followed by two NOP instructions, and the device immediately enters into STANDBY.
+If the RV32 is driving entry to STANDBY, the RV32 notifies the CM4 of a request to enter STANDBY using Multiprocessor Communications. The CM4 receives the notification and then sends a confirmation through the semaphore peripheral to the RV32. The CM4 should then enter SLEEP by setting SCR.sleepdeep to 0 and performing a WFI or WFE instruction. The RV32 sets the <a href="#power-management-register">GCR_PM</a>.<em>mode</em> to STANDBY, followed by two NOP instructions, and the device immediately enters into STANDBY.
 
-Alternatively, the CM4 can initiate the request to enter STANDBY by sending the request to the RV32 using Multiprocessor Communications. The RV32 confirms the request through Multiprocessor Communications and performs a WFI instruction followed by two NOP instructions. The CM4 then sets the GCR_PM.mode to STANDBY, and the device immediately enters STANDBY.
+Alternatively, the CM4 can initiate the request to enter STANDBY by sending the request to the RV32 using Multiprocessor Communications. The RV32 confirms the request through Multiprocessor Communications and performs a WFI instruction followed by two NOP instructions. The CM4 then sets the <a href="#power-management-register">GCR_PM</a>.<em>mode</em> to STANDBY, and the device immediately enters STANDBY.
 
 *Figure 4-5: STANDBY Mode Clock and State Retention Block Diagram*
 <a name="figure4-5"></a>
@@ -365,21 +367,37 @@ This mode is used to maintain the System RAM. The device status is as follows:
 <a name="table4-3-system-ram-detention-in-backup-mode"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
-   <tr>
+  <tr>
        <th>RAM Block #</th>
        <th>Size</th>
        <th>State Retention Control</th>
-   </tr>
-   <tr><td>sysram0</td><td>32KB + ECC if enabled</td><td>PWRSEQ_LPCN.ramret0</td></tr>
-   <tr><td>sysram1</td><td>32KB</td><td>PWRSEQ_LPCN.ramret1</td></tr>
-   <tr><td>sysram2</td><td>48KB</td><td>PWRSEQ_LPCN.ramret2</td></tr>
-   <tr><td>sysram3</td><td>16KB</td><td>PWRSEQ_LPCN.ramret3</td></tr>
+  </tr>
+  <tr>
+   <td>sysram0</td>
+   <td>32KB + ECC if enabled</td>
+   <td><a href="#low-power-control-register">PWRSEQ_LPCN</a>.<em>ramret0</em</td>
+  </tr>
+  <tr>
+    <td>sysram1</td>
+    <td>32KB</td>
+    <td><a href="#low-power-control-register">PWRSEQ_LPCN</a>.<em>ramret1</em</td>
+  </tr>
+  <tr>
+    <td>sysram2</td>
+    <td>48KB</td>
+    <td><a href="#low-power-control-register">PWRSEQ_LPCN</a>.<em>ramret2</em</td>
+  </tr>
+  <tr>
+    <td>sysram3</td>
+    <td>16KB</td>
+    <td><a href="#low-power-control-register">PWRSEQ_LPCN</a>.<em>ramret3</em</td>
+  </tr>
 </table>
 
 ##### Entering BACKUP
 Entering BACKUP mode does not require synchronization between the RV32 and CM4 cores. However, it is recommended that Multiprocessor Communications are used to ensure both cores are aware of entry into BACKUP and complete any memory transactions before entry.
 
-Either core can set GCR_PM.mode to BACKUP, and the device immediately enters BACKUP.
+Either core can set <a href="#power-management-register">GCR_PM</a>.<em>mode</em> to BACKUP, and the device immediately enters BACKUP.
 
 *Figure 4-6: BACKUP Mode Clock and State Retention Block Diagram*
 <a name="figure4-6"></a>
@@ -399,7 +417,7 @@ This mode is used during product level distribution and storage. The device stat
 ##### Entering PDM
 Entering PDM does not require synchronization between the RV32 and CM4 cores. However, it is recommended that Multiprocessor Communications is used to ensure both cores are aware of entry into PDM and complete any flash memory transactions.
 
-Either core can set GCR_PM.mode to PDM, and the device immediately enters PDM.
+Either core can set <a href="#power-management-register">GCR_PM</a>.<em>mode</em> to PDM, and the device immediately enters PDM.
 
 *Figure 4-7: PDM Clock and State Retention Block Diagram*
 <a name="figure4-7"></a>
@@ -3043,7 +3061,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>0</td>
     <td><strong>GPIO0 Pin Wakeup Interrupt Enable</strong><br>
     Setting a GPIO0 pin’s bit in this register causes an interrupt to be generated to wake up the device from any low-power mode to <em>ACTIVE</em>. A wake-up event sets the corresponding GPIO0’s bit in the <a href="#low-power-gpio0-wakeup-status-flag">PWRSEQ_LPWKST0</a> register, enabling the determination of which GPIO0 pin triggered the wake-up event. Bits corresponding to unimplemented GPIO are ignored.<br>
-    <p><em>Note: To enable the MAX78000 to wake up from a low-power mode on a GPIO pin transition, first set the GPIO wake-up enable register bit GCR_PM.gpio_we to 1.</em></p>
+    <p><em>Note: To enable the MAX78000 to wake up from a low-power mode on a GPIO pin transition, first set the GPIO wake-up enable register bit <a href="#power-management-register">GCR_PM</a>.<em>gpio_we</em> to 1.</em></p>
     </td>
   </tr>
 </table>
@@ -3113,7 +3131,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>0</td>
     <td><strong>GPIO1 Pin Wakeup Interrupt Enable</strong><br>
     Setting a GPIO1 pin’s bit in this register causes an interrupt to be generated that wakes up the device from any low-power mode to <em>ACTIVE</em>. A wake-up event sets the corresponding GPIO1’s bit in the <a href="#low-power-gpio1-wakeup-status-flags">PWRSEQ_LPWKST1</a> register, enabling the determination of which GPIO1 pin triggered the wake-up event. Bits corresponding to unimplemented GPIO are ignored.<br>
-    <p><em>Note: To enable the MAX78000 to wake up from a low-power mode on a GPIO pin transition, first set the GPIO wake-up enable register bit GCR_PM.gpio_we to 1.</em></p>
+    <p><em>Note: To enable the MAX78000 to wake up from a low-power mode on a GPIO pin transition, first set the GPIO wake-up enable register bit <a href="#power-management-register">GCR_PM</a>.<em>gpio_we</em> to 1.</em></p>
     </td>
   </tr>
 </table>
@@ -3183,7 +3201,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>0</td>
     <td><strong>GPIO2 Pin Wakeup Interrupt Enable</strong><br>
     Setting a GPIO2 pin’s bit in this register causes an interrupt to be generated that wakes up the device from any low-power mode to <em>ACTIVE</em>. A wake-up event sets the corresponding GPIO2’s bit in the <a href="#low-power-gpio2-wakeup-status-flags">PWRSEQ_LPWKST2</a> register, enabling the determination of which GPIO2 pin triggered the wake-up event.<br>
-    <p><em>Note: To enable the MAX78000 to wake up from a low-power mode on a GPIO pin transition, first set the GPIO wake-up enable register bit GCR_PM.gpio_we to 1.</em></p>
+    <p><em>Note: To enable the MAX78000 to wake up from a low-power mode on a GPIO pin transition, first set the GPIO wake-up enable register bit <a href="#power-management-register">GCR_PM</a>.gpio_we to 1.</em></p>
     </td>
   </tr>
 </table>
@@ -3254,7 +3272,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>0</td>
     <td><strong>GPIO3 Pin Wakeup Interrupt Enable</strong><br>
     Setting a GPIO3 pin’s bit in this register causes an interrupt to be generated that wakes up the device from any low-power mode to <em>ACTIVE</em>. A wake-up event sets the corresponding GPIO3’s bit in the <a href="#low-power-gpio3-wakeup-status-flags">PWRSEQ_LPWKST3</a> register, enabling the determination of which GPIO3 pin triggered the wake-up event. Bits corresponding to unimplemented GPIO are ignored.<br>
-    <p><em>Note: To enable the MAX78000 to wake up from a low-power mode on a GPIO pin transition, first set the GPIO wake-up enable register bit GCR_PM.gpio_we = 1.</em></p>
+    <p><em>Note: To enable the MAX78000 to wake up from a low-power mode on a GPIO pin transition, first set the GPIO wake-up enable register bit <a href="#power-management-register">GCR_PM</a>.gpio_we = 1.</em></p>
     </td>
   </tr>
 </table>
@@ -3922,7 +3940,7 @@ See <a href=../memory-register-mapping-access#apb-peripheral-base-address-map>Ta
 </table>
 
 *Table 4-58: INRO Trim System Initialization Register*
-<a name="inro-trim-system-initialization-registerr"></a>
+<a name="inro-trim-system-initialization-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
    <tr>
@@ -6502,7 +6520,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 </tr>
 </table>
 
-*Table 4-82: System Initialization Function Status Register*
+<em>Table 4-82: System Initialization Function Status Register</em>
 <a name="system-initialization-function-status-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
@@ -6511,7 +6529,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td colspan="1">SIR_FSTAT</td>
     <td>[0x0100]</td>
   </tr>
-    <tr>
+  <tr>
     <th>Bits</th>
     <th>Name</th>
     <th>Access</th>
@@ -6525,7 +6543,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>0</td>
     <td>Reserved</td>
 </tr>
-
 <tr>
     <td>7</td>
     <td>smphr</td>
@@ -6539,7 +6556,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
         </div>
     </td>
 </tr>
-
 <tr>
     <td>6:3</td>
     <td>-</td>
@@ -6547,7 +6563,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>0</td>
     <td>Reserved</td>
 </tr>
-
 <tr>
     <td>2</td>
     <td>adc</td>
@@ -6561,7 +6576,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
         </div>
     </td>
 </tr>
-
 <tr>
     <td>1</td>
     <td>-</td>
@@ -6569,7 +6583,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>0</td>
     <td>Reserved</td>
 </tr>
-
 <tr>
     <td>0</td>
     <td>fpu</td>
@@ -6583,8 +6596,9 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
         </div>
     </td>
 </tr>
+</table>
 
-*Table 4-83: System Initialization Security Function Status Register*
+<em>Table 4-83: System Initialization Security Function Status Register</em>
 <a name="system-initialization-security-function-status-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
@@ -6607,7 +6621,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>0</td>
     <td>Reserved</td>
 </tr>
-
 <tr>
     <td>3</td>
     <td>aes</td>
@@ -6621,7 +6634,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
         </div>
     </td>
 </tr>
-
 <tr>
     <td>2</td>
     <td>trng</td>
@@ -6635,7 +6647,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
         </div>
     </td>
 </tr>
-
 <tr>
     <td>1:0</td>
     <td>-</td>
@@ -6751,7 +6762,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
         </div>
     </td>
 </tr>
-
 <tr>
     <td>22</td>
     <td>i2c1_sda_filter_en</td>
@@ -6764,7 +6774,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
         </div>
     </td>
 </tr>
-
 <tr>
     <td>21</td>
     <td>i2c0_scl_filter_en</td>
@@ -6777,7 +6786,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
         </div>
     </td>
 </tr>
-
 <tr>
     <td>20</td>
     <td>i2c0_sda_filter_en</td>
@@ -6790,7 +6798,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
         </div>
     </td>
 </tr>
-
 <tr>
     <td>19:0</td>
     <td>-</td>
@@ -6825,7 +6832,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     Initial factory trim value for the IPO.
     </td>
 </tr>
-
 <tr>
     <td>22:20</td>
     <td>-</td>
@@ -6833,7 +6839,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td></td>
     <td>Reserved</td>
 </tr>
-
 <tr>
     <td>19:8</td>
     <td>gain</td>
@@ -6841,7 +6846,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>0</td>
     <td><strong>IPO Trim Adaptation Gain</strong></td>
 </tr>
-
 <tr>
     <td>7:5</td>
     <td>-</td>
@@ -6872,7 +6876,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
         </div>
     </td>
 </tr>
-
 <tr>
     <td>2</td>
     <td>load</td>
@@ -6895,7 +6898,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
         </div>
     </td>
 </tr>
-
 <tr>
     <td>0</td>
     <td>acen</td>
@@ -6933,7 +6935,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>0</td>
     <td>Reserved, Do Not Modify</td>
 </tr>
-
 <tr>
     <td>8:0</td>
     <td>initial</td>
@@ -7057,13 +7058,12 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     1: Flush the contents of the ICC1 cache
     </td>
 </tr>
-
 <tr>
     <td>0</td>
     <td>memsel</td>
     <td>R/W</td>
     <td>0</td>
-    <td> This field determines if <em>sysram2</em> and <em>sysram3</em> are shared between the CM4 and RV32 cores. 
+    <td>This field determines if <em>sysram2</em> and <em>sysram3</em> are shared between the CM4 and RV32 cores. 
     Set this field to 1 to set the RV32 core as the exclusive master for <em>sysram2</em> and <em>sysram3</em>.<br>
     <div style="margin-left: 20px">
     0: <em>Sysram2</em> and <em>Sysram3</em> are shared and accessible by both the CM4 and RV32 cores. <br>
@@ -7074,6 +7074,323 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     See section <a href= "">Multiprocessor Communications</a> for information on using the semaphore peripheral for communication between the RV32 and CM4 cores.</em>
     </td>
 </tr>
-
 </table>
 
+## General Control Function Registers (GCFR)
+See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the base address of this peripheral/module. See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
+
+*Table 4-91: General Control Function Register Summary*
+<a name= "table4-79-system-initialization-register-summary"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td>Offset</td>
+    <td>Register</td>
+    <td>Name</td>
+  </tr>
+    <tr>
+    <td>[0x0000]</td>
+    <td><a href="#general-control-function-register0">GCFR_REG0</td>
+    <td>General Control Function Register 0</td>
+  </tr>
+  </tr>
+  <tr>
+    <td>[0x0004]</td>
+    <td><a href="#general-control-function-register1">GCFR_REG1</td>
+    <td>General Control Function Register 1</td>
+  </tr>
+  <tr>
+    <td>[0x0008]</td>
+    <td><a href="#general-control-function-register2">GCFR_REG2</td>
+    <td>General Control Function Register 2</td>
+  </tr>
+  <tr>
+    <td>[0x000C]</td>
+    <td><a href="#general-control-function-register3">GCFR_REG3</td>
+    <td>General Control Function Register 3</td>
+  </tr>
+</table>
+
+*Table 4-92: General Control Function Register 0*
+<a name="general-control-function-register0"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">General Control Function 0</td>
+    <td colspan="1">GCFR_REG0</td>
+    <td>[0x0000]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+</tr>
+<tr>
+    <td>31:4</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>cnnx16_3_pwr_en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNNx16_3 Power Domain Enable</strong><br>
+    <div style="margin-left: 20px">
+    0: Disabled <br>
+    1: Enabled
+    </td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>cnnx16_2_pwr_en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNNx16_2 Power Domain Enable</strong><br>
+    <div style="margin-left: 20px">
+    0: Disabled <br>
+    1: Enabled
+    </td>
+</tr>
+<tr>
+    <td>1</td>
+    <td>cnnx16_1_pwr_en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNNx16_1 Power Domain Enable</strong><br>
+    <div style="margin-left: 20px">
+    0: Disabled <br>
+    1: Enabled
+    </td>
+</tr>
+<tr>
+    <td>0</td>
+    <td>cnnx16_0_pwr_en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNNx16_0 Power Domain Enable</strong><br>
+    <div style="margin-left: 20px">
+    0: Disabled <br>
+    1: Enabled
+    </td>
+</tr>
+</table>
+
+*Table 4-93: General Control Function Register 1*
+<a name="general-control-function-register1"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">General Control Function 1</td>
+    <td colspan="1">GCFR_REG1</td>
+    <td>[0x0004]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+</tr>
+<tr>
+    <td>31:4</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>cnnx16_3_ram_en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNNx16_3 RAM Power Enable</strong><br>
+    <div style="margin-left: 20px">
+    0: Disabled <br>
+    1: Enabled
+    </td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>cnnx16_2_ram_en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNNx16_2 RAM Power Enable</strong><br>
+    <div style="margin-left: 20px">
+    0: Disabled <br>
+    1: Enabled
+    </td>
+</tr>
+<tr>
+    <td>1</td>
+    <td>cnnx16_1_ram_en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNNx16_1 RAM Power Enable</strong><br>
+    <div style="margin-left: 20px">
+    0: Disabled <br>
+    1: Enabled
+    </td>
+</tr>
+<tr>
+    <td>0</td>
+    <td>cnnx16_0_ram_en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNNx16_0 RAM Power Enable</strong><br>
+    <div style="margin-left: 20px">
+    0: Disabled <br>
+    1: Enabled
+    </td>
+</tr>
+</table>
+
+*Table 4-94: General Control Function Register 2*
+<a name="general-control-function-register2"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">General Control Function 2</td>
+    <td colspan="1">GCFR_REG2</td>
+    <td>[0x0008]</td>
+  </tr>
+    <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+</tr>
+<tr>
+    <td>31:4</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>cnnx16_3_iso</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNNx16_3 Power Domain Isolation</strong><br>
+    <div style="margin-left: 20px">
+    0: Disabled <br>
+    1: Enabled
+    </td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>cnnx16_2_iso</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNNx16_2 Power Domain Isolation</strong><br>
+    <div style="margin-left: 20px">
+    0: Disabled <br>
+    1: Enabled
+    </td>
+</tr>
+<tr>
+    <td>1</td>
+    <td>cnnx16_1_iso</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNNx16_1 Power Domain Isolation</strong><br>
+    <div style="margin-left: 20px">
+    0: Disabled <br>
+    1: Enabled
+    </td>
+</tr>
+<tr>
+    <td>0</td>
+    <td>cnnx16_0_iso</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNNx16_0 Power Domain Isolation</strong><br>
+    <div style="margin-left: 20px">
+    0: Disabled <br>
+    1: Enabled
+    </td>
+</tr>
+</table>
+
+<em>Table 4-95: General Control Function Register 3</em>
+<a name="general-control-function-register3"></a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <td colspan="3">General Control Function 3</td>
+    <td colspan="1">GCFR_REG3</td>
+    <td>[0x000C]</td>
+  </tr>
+  <tr>
+    <th>Bits</th>
+    <th>Name</th>
+    <th>Access</th>
+    <th>Reset</th>
+    <th>Description</th>
+</tr>
+<tr>
+    <td>31:4</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>cnnx16_3_rst</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNNx16_3 Power Domain Reset</strong><br>
+    Write this field to 1 to initiate a power domain reset for the CNNx16_3.<br>
+    <div style="margin-left: 20px">
+    0: Normal operation <br>
+    1: Initiate reset
+    </div>
+    </td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>cnnx16_2_rst</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNNx16_2 Power Domain Reset</strong><br>
+    Write this field to 1 to initiate a power domain reset for the CNNx16_2. <br>
+    <div style="margin-left: 20px">
+    0: Normal operation <br>
+    1: Initiate reset
+    </div>
+    </td>
+</tr>
+<tr>
+    <td>1</td>
+    <td>cnnx16_1_rst</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNNx16_1 Power Domain Reset</strong><br>
+    Write this field to 1 to initiate a power domain reset for the CNNx16_1. <br>
+    <div style="margin-left: 20px">
+    0: Normal operation <br>
+    1: Initiate reset
+    </div>
+    </td>
+</tr>
+<tr>
+    <td>0</td>
+    <td>cnnx16_0_rst</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>CNNx16_0 Power Domain Reset</strong><br>
+    Write this field to 1 to initiate a power domain reset for the CNNx16_0. <br>
+    <div style="margin-left: 20px">
+    0: Normal operation <br>
+    1: Initiate reset
+    </div>
+    </td>
+</tr>
+</table>

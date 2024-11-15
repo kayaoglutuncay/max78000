@@ -8,26 +8,26 @@
       
       
       
-        <link rel="canonical" href="https://kayaoglutuncay.github.io/max78000/">
+        <link rel="canonical" href="https://kayaoglutuncay.github.io/max78000/interrupts-exceptions/">
+      
+      
+        <link rel="prev" href="../flash-controller/">
       
       
       
-        <link rel="next" href="overview/">
-      
-      
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
-        <title>MAX78000 User Guide</title>
+        <title>Interrupts and Exceptions - MAX78000 User Guide</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +46,9 @@
       
     
     
-      <link rel="stylesheet" href="css/extra.css">
+      <link rel="stylesheet" href="../css/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction" class="md-skip">
+        <a href="#cm4-interrupt-and-exception-features" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="MAX78000 User Guide" class="md-header__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
+    <a href=".." title="MAX78000 User Guide" class="md-header__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Interrupts and Exceptions
             
           </span>
         </div>
@@ -213,7 +213,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="MAX78000 User Guide" class="md-nav__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
+    <a href=".." title="MAX78000 User Guide" class="md-nav__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -228,30 +228,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Home
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -260,86 +240,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#related-documentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Related Documentation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#document-conventions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Document Conventions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Document Conventions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#number-notations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Number Notations
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#register-and-field-access-definitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Register and Field Access Definitions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#register-lists" class="md-nav__link">
-    <span class="md-ellipsis">
-      Register Lists
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#register-detail-tables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Register Detail Tables
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -351,7 +251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -371,7 +271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="memory-register-mapping-access/" class="md-nav__link">
+      <a href="../memory-register-mapping-access/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -391,7 +291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="system-power-clocks-reset/" class="md-nav__link">
+      <a href="../system-power-clocks-reset/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -411,7 +311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="flash-controller/" class="md-nav__link">
+      <a href="../flash-controller/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -428,10 +328,28 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="interrupts-exceptions/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Interrupts and Exceptions
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -440,6 +358,42 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cm4-interrupt-and-exception-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      CM4 Interrupt and Exception Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cm4-interrupt-vector-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      CM4 Interrupt Vector Table
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -461,8 +415,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -471,62 +423,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#related-documentation" class="md-nav__link">
+  <a href="#cm4-interrupt-and-exception-features" class="md-nav__link">
     <span class="md-ellipsis">
-      Related Documentation
+      CM4 Interrupt and Exception Features
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#document-conventions" class="md-nav__link">
+  <a href="#cm4-interrupt-vector-table" class="md-nav__link">
     <span class="md-ellipsis">
-      Document Conventions
+      CM4 Interrupt Vector Table
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Document Conventions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#number-notations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Number Notations
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#register-and-field-access-definitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Register and Field Access Definitions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#register-lists" class="md-nav__link">
-    <span class="md-ellipsis">
-      Register Lists
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#register-detail-tables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Register Detail Tables
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -545,149 +455,284 @@
                   
 
 
-<h1 id="introduction">Introduction</h1>
-<p>For ordering information, mechanical and electrical characteristics for the MAX78000 family of devices refer to the device data sheet. For information on the Arm® Cortex®-M4 with FPU core, please refer to the <a href="https://developer.arm.com/documentation/100166/0001">Arm Cortex-M4 Processor Technical Reference Manual</a>.</p>
-<h2 id="related-documentation">Related Documentation</h2>
-<p>The MAX78000 data sheet and errata are available from the Analog Devices website, <a href="https://www.analog.com/en/products/max78000.html">MAX78000</a></p>
-<h2 id="document-conventions">Document Conventions</h2>
-<h3 id="number-notations">Number Notations</h3>
-<table border="1" cellpadding="5" cellspacing="0">
-    <tr>
-        <td><strong>Notation</strong></td>
-        <td><strong>Description</strong></td>
-    </tr>
-    <tr>
-        <td>0xNN</td>
-        <td>Hexadecimal (Base 16) numbers are preceded by the prefix 0x.</td>
-    </tr>
-    <tr>
-        <td>0bNN</td>
-        <td>Binary (Base 2) numbers are preceded by the prefix 0b.</td>
-    </tr>
-    <tr>
-        <td>NN</td>
-        <td>Decimal (Base 10) numbers are represented using no additional prefix or suffix.</td>
-    </tr>
-    <tr>
-        <td>V[X:Y]</td>
-        <td>Bit field representation of a register, field, or value (V) covering Bit X to Bit Y.</td>
-    </tr>
-    <tr>
-        <td>Bit N</td>
-        <td>Bits are numbered in little-endian format; that is, the least significant bit of a number is referred to as bit 0.</td>
-    </tr>
-    <tr>
-        <td>[0xNNNN]</td>
-        <td>An address offset from a base address is shown in bracket form.</td>
-    </tr>
-</table>
+  <h1>Interrupts and Exceptions</h1>
 
-<h3 id="register-and-field-access-definitions">Register and Field Access Definitions</h3>
-<p>All the fields that are accessible by user software have distinct access capabilities. Each register table contained in this user guide has an access type defined for each field. The definition of each field access type is presented in <a href="#table1-1-field-access-definitions">Table 1-1</a>.</p>
-<p><em>Table 1-1: Field Access Definitions</em>
-<a name= "table1-1-field-access-definitions"></a></p>
-<table border="1" cellpadding="5" cellspacing="0">
-    <tr>
-        <td><strong>Access Type</strong></td>
-        <td><strong>Description</strong></td>
-    </tr>
-    <tr>
-        <td>RO</td>
-        <td><strong>Reserved</strong><br>This access type is reserved for static fields. Reads of this field return the reset value. Writes are ignored.</td>
-    </tr>
-    <tr>
-        <td>DNM</td>
-        <td><strong>Reserved. Do Not Modify</strong><br>Software must first read this field and write the same value whenever writing to this register.</td>
-    </tr>
-    <tr>
-        <td>R</td>
-        <td><strong>Read Only</strong><br>Reads of this field return a value. Writes to the field do not affect device operation.</td>
-    </tr>
-    <tr>
-        <td>W</td>
-        <td><strong>Write Only</strong><br>Reads of this field return indeterminate values. Writes to the field change the field's state to the value written and can affect device operation.
-        </td>
-    </tr>
-    <tr>
-        <td>R/W</td>
-        <td><strong>Unrestricted Read/Write</strong><br>Reads of this field return a value. Writes to the field change the field's state to the value written and can affect device operation.
-        </td>
-    </tr>
-    <tr>
-        <td>RC</td>
-        <td><strong>Read to Clear</strong><br>Reading this field clears the field to 0. Writes to the field do not affect device operation.</td>
-    </tr>
-    <tr>
-        <td>RS</td>
-        <td><strong>Read to Set</strong><br>Reading this field sets the field to 1. Writes to the field do not affect device operation.</td>
-    </tr>
-    <tr>
-        <td>R/W0</td>
-        <td><strong>Read/Write 0 Only</strong><br>Writing 0 to this field sets the field to 0. Writing 1 to the field does not affect device operation.</td>
-    </tr>
-    <tr>
-        <td>R/W1</td>
-        <td><strong>Read/Write 1 Only</strong><br>Writing 1 to this field sets the field to 1. Writing 0 to the field does not affect device operation.</td>
-    </tr>
-    <tr>
-        <td>R/W1C</td>
-        <td><strong>Read/Write 1 to Clear</strong><br>Writing 1 to this field clears this field to 0. Writing 0 to the field does not affect device operation.</td>
-    </tr>
-    <tr>
-        <td>R/W0S</td>
-        <td><strong>Read/Write 0 to Set</strong><br>Writing 0 to this field sets this field to 1. Writing 1 to the field does not affect device operation.</td>
-    </tr>
-</table>
-
-<h3 id="register-lists">Register Lists</h3>
-<p>Each peripheral includes a table listing all of the peripheral's registers. The register table includes the offset, register name, and description of each register. The offset shown in the table must be added to the peripheral's base address in <a href="memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> to get the register's absolute address.</p>
-<p><em>Table 1-2: Example Registers</em>
-<a name= "table1-2-example-registers"></a></p>
+<p>Interrupts and exceptions are managed by either the Arm Cortex-M4 with FPU NVIC or the RV32 interrupt controller. The NVIC manages the interrupts, exceptions, priorities, and masking. Table 5-1 and Table 5-2 detail the MAX78000’s interrupt vector tables for the CM4 and RV32 processors, respectively, and describe each exception and interrupt.</p>
+<h2 id="cm4-interrupt-and-exception-features">CM4 Interrupt and Exception Features</h2>
+<ul>
+<li>8 programmable priority levels</li>
+<li>Nested exception and interrupt support</li>
+<li>Interrupt masking</li>
+</ul>
+<h2 id="cm4-interrupt-vector-table">CM4 Interrupt Vector Table</h2>
+<p>Table 5-1 lists the interrupt and exception table for the MAX78000’s CM4 core. There are 119 interrupt entries for the MAX78000, including reserved for future use interrupt placeholders. Including the 15 system exceptions for the Arm Cortex-M4 with FPU, the total number of entries is 134.</p>
+<p><em>Table 5-1: MAX78000 CM4 Interrupt Vector Table</em></p>
 <table border="1" cellpadding="5" cellspacing="0">
   <tr>
-    <td><strong>Offset</strong></td>
-    <td><strong>Register Name</strong></td>
-    <td><strong>Description</strong></td>
-  </tr>
-  <tr>
-    <td>[0x0000]</td>
-    <td>REG_NAME0</td>
-    <td>Name 0 Register</td>
-  </tr>
-</table>
-
-<h3 id="register-detail-tables">Register Detail Tables</h3>
-<p>Each register in a peripheral includes a detailed register table, as shown in <a href="#table1-3-example-name0-register">Table 1-3</a>. The first row of the register detail table includes the register's description, the register's name, and the register's offset from the base peripheral address. The second row of the table is the header for the bit fields represented in the register. The third and subsequent rows of the table include the bit or bit range, the field name, the bit's or field's access, the reset value, and a description of the field. All registers are 32-bits unless specified otherwise. Reserved bits and fields are shown as Reserved in the description column. See <a href="#table1-1-field-access-definitions">Table 1-1</a> for a list of all access types for each bit and field.</p>
-<p><em>Table 1-3: Example Name 0 Register</em>
-<a name= "table1-3-example-name0-register"></a></p>
-<table border="1" cellpadding="5" cellspacing="0">
-  <tr>
-    <td colspan="3">Name 0</td>
-    <td colspan="1">REG_NAME0</td>
-    <td>[0x0000]</td>
-  </tr>
-  <tr>
-    <th>Bits</th>
+    <th>Exception <br>(Interrupt) Number</th>
+    <th>Offset</th>
     <th>Name</th>
-    <th>Access</th>
-    <th>Reset</th>
     <th>Description</th>
   </tr>
   <tr>
-    <td>31:16</td>
-    <td>-</td>
-    <td>RO</td>
-    <td>-</td>
-    <td><strong>Reserved</strong></td>
+    <td>1</td>
+    <td>[0x0004]</td>
+    <td>Reset_IRQn</td>
+    <td>Reset</td>
   </tr>
   <tr>
-    <td>15:0</td>
-    <td>field_name</td>
-    <td>R/W</td>
-    <td>0</td>
-    <td><strong>Field name description</strong><br>
-    Description of <em>field_name</em>.</td>
+    <td>2</td>
+    <td>[0x0008]</td>
+    <td>NonMaskableInt_IRQn</td>
+    <td>Non-Maskable Interrupt</td>
   </tr>
+  <tr>
+    <td>3</td>
+    <td>[0x000C]</td>
+    <td>HardFault_IRQn</td>
+    <td>Hard Fault</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>[0x0010]</td>
+    <td>MemoryManagement_IRQn</td>
+    <td>Memory Management Fault</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>[0x0014]</td>
+    <td>BusFault_IRQn</td>
+    <td>Bus Fault</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>[0x0018]</td>
+    <td>UsageFault_IRQn</td>
+    <td>Usage Fault</td>
+  </tr>
+  <tr>
+    <td>7:10</td>
+    <td>[0x001C]-[0x0028]</td>
+    <td>-</td>
+    <td>Reserved</td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>[0x002C]</td>
+    <td>SVCall_IRQn</td>
+    <td>Supervisor Call Exception</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>[0x0030]</td>
+    <td>DebugMonitor_IRQn</td>
+    <td>Debug Monitor Exception</td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>[0x0034]</td>
+    <td>-</td>
+    <td>Reserved</td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>[0x0038]</td>
+    <td>PendSV_IRQn</td>
+    <td>Request Pending for System Service</td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>[0x003C]</td>
+    <td>SysTick_IRQn</td>
+    <td>System Tick Timer</td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>[0x0040]</td>
+    <td>PF_IRQn</td>
+    <td>Power Fail interrupt</td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>[0x0044]</td>
+    <td>WDT0_IRQn</td>
+    <td>Windowed Watchdog Timer 0 Interrupt</td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td>[0x0048]</td>
+    <td>-</td>
+    <td>Reserved</td>
+  </tr>
+  <tr>
+    <td>19</td>
+    <td>[0x004C]</td>
+    <td>RTC_IRQn</td>
+    <td>Reserved</td>
+  </tr>
+  <tr>
+    <td>20</td>
+    <td>[0x0050]</td>
+    <td>TRNG_IRQn</td>
+    <td>True Random Number Generator Interrupt</td>
+  </tr>
+  <tr>
+    <td>21</td>
+    <td>[0x0054]</td>
+    <td>TMR0_IRQn</td>
+    <td>Timer 0 Interrupt</td>
+  </tr>
+  <tr>
+    <td>22</td>
+    <td>[0x0058]</td>
+    <td>TMR1_IRQn</td>
+    <td>Timer 1 Interrupt</td>
+  </tr>
+  <tr>
+    <td>23</td>
+    <td>[0x005C]</td>
+    <td>TMR2_IRQn</td>
+    <td>Timer 2 Interrupt</td>
+  </tr>
+  <tr>
+    <td>24</td>
+    <td>[0x0060]</td>
+    <td>TMR3_IRQn</td>
+    <td>Timer 3 Interrupt</td>
+  </tr>
+  <tr>
+    <td>25</td>
+    <td>[0x0064]</td>
+    <td>TMR4_IRQn</td>
+    <td>Timer 4 (LPTMR0) Interrupt</td>
+  </tr>
+  <tr>
+    <td>26</td>
+    <td>[0x0068]</td>
+    <td>TMR5_IRQn</td>
+    <td>Timer 5 (LPTMR1) Interrupt</td>
+  </tr>
+  <tr>
+    <td>27:28</td>
+    <td>[0x006C]:[0x0070]</td>
+    <td>-</td>
+    <td>Reserved</td>
+  </tr>
+  <tr>
+    <td>29</td>
+    <td>[0x0074]</td>
+    <td>I2C0_IRQn</td>
+    <td>I<sup>2</sup>C Port 0 Interrupt</td>
+  </tr>
+  <tr>
+    <td>30</td>
+    <td>[0x0078]</td>
+    <td>UART0_IRQn</td>
+    <td>UART Port 0 Interrupt</td>
+  </tr>
+  <tr>
+    <td>31</td>
+    <td>[0x007C]</td>
+    <td>UART1_IRQn</td>
+    <td>UART Port 1 Interrupt</td>
+  </tr>
+  <tr>
+    <td>32</td>
+    <td>[0x0080]</td>
+    <td>SPI1_IRQn</td>
+    <td>SPI Port 1 Interrupt</td>
+  </tr>
+  <tr>
+    <td>33:35</td>
+    <td>[0x0084]:[0x008C]</td>
+    <td>-</td>
+    <td>Reserved</td>
+  </tr>
+  <tr>
+    <td>36</td>
+    <td>[0x90]</td>
+    <td>ADC_IRQn</td>
+    <td>ADC Interrupt</td>
+  </tr>
+  <tr>
+    <td>37:38</td>
+    <td>[0x0094]:[0x0098]</td>
+    <td>-</td>
+    <td>Reserved</td>
+  </tr>
+  <tr>
+    <td>39</td>
+    <td>[0x009C]</td>
+    <td>FLC0_IRQn</td>
+    <td>Flash Controller 0 Interrupt</td>
+  </tr>
+  <tr>
+    <td>40</td>
+    <td>[0x00A0]</td>
+    <td>GPIO0_IRQn</td>
+    <td>GPIO Port 0 Interrupt</td>
+  </tr>
+  <tr>
+    <td>41</td>
+    <td>[0x00A4]</td>
+    <td>GPIO1_IRQn</td>
+    <td>GPIO Port 1 Interrupt</td>
+  </tr>
+  <tr>
+    <td>42</td>
+    <td>[0x00A8]</td>
+    <td>GPIO2_IRQn</td>
+    <td>GPIO Port 2 Interrupt</td>
+  </tr>
+  <tr>
+    <td>43</td>
+    <td>[0x00AC]</td>
+    <td>-</td>
+    <td>Reserved</td>
+  </tr>
+  <tr>
+    <td>44</td>
+    <td>[0x00B0]</td>
+    <td>DMA0_IRQn</td>
+    <td>DMA0 Interrupt</td>
+  </tr>
+  <tr>
+    <td>45</td>
+    <td>[0x00B4]</td>
+    <td>DMA1_IRQn</td>
+    <td>DMA1 Interrupt</td>
+  </tr>
+  <tr>
+    <td>46</td>
+    <td>[0x00B8]</td>
+    <td>DMA2_IRQn</td>
+    <td>DMA2 Interrupt</td>
+  </tr>
+  <tr>
+    <td>47</td>
+    <td>[0x00BC]</td>
+    <td>DMA3_IRQn</td>
+    <td>DMA3 Interrupt</td>
+  </tr>
+  <tr>
+    <td>48:49</td>
+    <td>[0x00C0 : 0x00C4]</td>
+    <td>-</td>
+    <td>Reserved</td>
+  </tr>
+  <tr>
+    <td>50</td>
+    <td>[0x00C8]</td>
+    <td>UART2_IRQn</td>
+    <td>UART Port 2 Interrupt</td>
+  </tr>
+  <tr>
+    <td>51</td>
+    <td>[0x00CC]</td>
+    <td>-</td>
+    <td>Reserved</td>
+  </tr>
+
 </table>
 
 
@@ -760,10 +805,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["search.suggest", "search.highlight", "navigation.tracking"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["search.suggest", "search.highlight", "navigation.tracking"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
