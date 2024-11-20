@@ -14,7 +14,7 @@
         <link rel="prev" href="../memory-register-mapping-access/">
       
       
-        <link rel="next" href="../flash-controller/">
+        <link rel="next" href="../interrupts-exceptions/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -225,26 +225,6 @@
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Home
-  </span>
-  
-
-      </a>
-    </li>
-  
-
     
       
       
@@ -1016,6 +996,86 @@
   
   
     <li class="md-nav__item">
+      <a href="../interrupts-exceptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interrupts and Exceptions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    General-Purpose I/O and Alternate Function Pins (GPIO)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debug-access-port/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Access Port
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semaphore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semaphore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../flash-controller/" class="md-nav__link">
         
   
@@ -1036,11 +1096,31 @@
   
   
     <li class="md-nav__item">
-      <a href="../interrupts-exceptions/" class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Interrupts and Exceptions
+    Document Conventions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../revision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Revision History
   </span>
   
 
@@ -2419,8 +2499,8 @@ The device status is as follows:</p>
 <li>Power-On Reset</li>
 </ul>
 <p>On completion of any of the four reset cycles, all peripherals are reset. On completion of any reset cycle, HCLK and PCLK are operational, the CPU core receives clocks and power, and the device is in ACTIVE. Program execution begins at the reset vector address.</p>
-<p>The contents of the always-on domain (AoD) are reset only on power-cycling VCOREA, VCOREB, VDDA, VDDIOH, or VREGI.</p>
-<p>The on-chip peripherals can also be reset to their POR default state using the two reset registers, GCR_RST0 and GCR_RST1.</p>
+<p>The contents of the always-on domain (AoD) are reset only on power-cycling V<sub>COREA</sub>, V<sub>COREB</sub>, V<sub>DDA</sub>, V<sub>DDIOH</sub>, or V<sub>REGI</sub>.</p>
+<p>The on-chip peripherals can also be reset to their POR default state using the two reset registers, <a href="#reset-register0">GCR_RST0</a> and <a href="#reset-register1">GCR_RST1</a>.</p>
 <p><a href="#table4-5-reset-and-low-power-mode-effects">Table 4-5</a> shows the effects of each reset type on each of the operating modes.</p>
 <p><em>Table 4-5: Reset and Low-Power Mode Effects</em>
 <a name="table4-5-reset-and-low-power-mode-effects"></a></p>
@@ -2651,39 +2731,39 @@ The device status is as follows:</p>
 
 <h3 id="peripheral-reset">Peripheral Reset</h3>
 <p>Peripheral reset resets all peripherals. The CPU retains its state. The GPIO, watchdog timers, AoD, RAM retention, and general control registers (GCR), including the clock configuration, are unaffected.</p>
-<p>To start a peripheral reset, set GCR_RST0.periph to 1. The reset is completed immediately upon setting GCR_RST0.periph to 1.</p>
+<p>To start a peripheral reset, set <a href="#reset-register0">GCR_RST0</a>.<em>periph</em> to 1. The reset is completed immediately upon setting <a href="#reset-register0">GCR_RST0</a>.<em>periph</em> to 1.</p>
 <h3 id="soft-reset">Soft Reset</h3>
 <p>A soft reset is the same as a peripheral reset except that it also resets the GPIO to its POR state.</p>
-<p>To perform a soft reset, set GCR_RST0.soft to 1. The reset occurs immediately upon setting GCR_RST0.soft to 1.</p>
+<p>To perform a soft reset, set <a href="#reset-register0">GCR_RST0</a>.<em>soft</em> to 1. The reset occurs immediately upon setting <a href="#reset-register0">GCR_RST0</a>.<em>soft</em> to 1.</p>
 <h3 id="system-reset">System Reset</h3>
 <p>A system reset is the same as a soft reset, except it also resets all GCR, resetting the clocks to their POR default state. The CPU state is reset, as well as the watchdog timers. The AoD and RAM are unaffected.</p>
-<p>A watchdog timer reset event initiates a system reset. To start a system reset, set GCR_RST0.sys to 1.</p>
+<p>A watchdog timer reset event initiates a system reset. To start a system reset, set <a href="#reset-register0">GCR_RST0</a>.<em>sys</em> to 1.</p>
 <h3 id="power-on-reset">Power-On Reset</h3>
 <p>A POR resets everything in the device to its default state. A POR results from V<sub>COREA</sub>, V<sub>COREB</sub>, V<sub>DDA</sub>, or V<sub>REGI</sub> falling below their reset voltage level. Refer to the MAX78000 data sheet for details of the reset voltage levels.</p>
 <h2 id="unified-internal-cache-controllers">Unified Internal Cache Controllers</h2>
-<p>The MAX78000 includes two unified internal cache controllers. ICC0 is the cache controller used for the CM4. ICC1, if enabled, is dedicated to the RV32 core. ICC1 uses sysram3 as the cache memory. If ICC1 is enabled, sysram3 is not accessible as SRAM (address range 0x2001 C000 to 0x2001 FFFF).</p>
+<p>The MAX78000 includes two unified internal cache controllers. ICC0 is the cache controller used for the CM4. ICC1, if enabled, is dedicated to the RV32 core. ICC1 uses <em>sysram3</em> as the cache memory. If ICC1 is enabled, <em>sysram3</em> is not accessible as SRAM (address range 0x2001 C000 to 0x2001 FFFF).</p>
 <p>Both caches, ICC0 and ICC1, include a line buffer, tag RAM, and a 16KB 2-way set associative RAM when enabled.</p>
 <h3 id="enabling-the-internal-cache-controllers">Enabling the Internal Cache Controllers</h3>
 <p>Enabling ICC1 for use as the cache controller for the RV32 requires using <em>sysram3</em> as the cache memory.
-<em>Note: The contents of sysram3 are lost when ICC1 is enabled, and sysram3 is not accessible for data reads or writes as part of the memory map.</em>
-<em>Note: Before enabling ICC1 as a cache controller, sysram3 should be zeroized.</em></p>
+<em>Note: The contents of sysram3 are lost when ICC1 is enabled, and sysram3 is not accessible for data reads or writes as part of the memory map.</em></p>
+<p><em>Note: Before enabling ICC1 as a cache controller, sysram3 should be zeroized.</em></p>
 <p>Perform the following steps to enable each ICC:</p>
 <ol>
-<li>Set the ICCn_CTRL.en to 0, ensuring the cache is invalidated when enabled.</li>
-<li>Set ICCn_CTRL.en to 1.</li>
-<li>Read ICCn_CTRL.rdy until it returns 1.</li>
-<li>Zeroize the ICC instance by setting GCR_MEMZ.icc0 or GCR_MEMZ.icc1 to 1.</li>
+<li>Set the <a href="#instruction-cache-control-register">ICCn_CTRL</a>.<em>en</em> to 0, ensuring the cache is invalidated when enabled.</li>
+<li>Set <a href="#instruction-cache-control-register">ICCn_CTRL</a>.<em>en</em> to 1.</li>
+<li>Read <a href="#instruction-cache-control-register">ICCn_CTRL</a>.<em>rdy</em> until it returns 1.</li>
+<li>Zeroize the ICC instance by setting <a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>icc0</em> or <a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>icc1</em> to 1.</li>
 </ol>
 <h3 id="disabling-the-icc">Disabling the ICC</h3>
-<p>Disable an ICC instance by setting ICCn_CTRL.en to 0.</p>
-<p>To use sysram3 as data RAM, first, disable the ICC1 instance as described above. When ICC1 is disabled, sysram3 is accessible as data RAM by both the CM4 and RV32 controllers unless sysram3 is configured for exclusive access by the RV32 core only.</p>
+<p>Disable an ICC instance by setting <a href="#instruction-cache-control-register">ICCn_CTRL</a>.<em>en</em> to 0.</p>
+<p>To use <em>sysram3</em> as data RAM, first, disable the ICC1 instance as described above. When ICC1 is disabled, <em>sysram3</em> is accessible as data RAM by both the CM4 and RV32 controllers unless <em>sysram3</em> is configured for exclusive access by the RV32 core only.</p>
 <h3 id="invalidating-the-icc-cache-and-tag-ram">Invalidating the ICC Cache and Tag RAM</h3>
-<p>Invalidate the contents of a specific ICC instance by setting the ICCn_INVALIDATE register to 1. Once invalidated, the system flushes the cache. Read the ICCn_CTRL.rdy field until it returns 1 to determine when the flush is completed.</p>
+<p>Invalidate the contents of a specific ICC instance by setting the ICCn_INVALIDATE register to 1. Once invalidated, the system flushes the cache. Read the <a href="#instruction-cache-control-register">ICCn_CTRL</a>.<em>rdy</em> field until it returns 1 to determine when the flush is completed.</p>
 <h3 id="flushing-the-icc">Flushing the ICC</h3>
-<p>Flush ICC0 using the system configuration register (GCR_SYSCTRL). Set GCR_SYSCTRL.icc0_flush to 1 to immediately flush the contents of the 16KB cache and tag RAM.</p>
-<p>Flush ICC1 using the RV32 Control Register (FCR_URVCTRL). Set FCR_URVCTRL.icc1_flush to 1 to immediately flush the contents of the 16KB cache and tag RAM.</p>
+<p>Flush ICC0 using the system configuration register (GCR_SYSCTRL). Set <a href="#system-control-register">GCR_SYSCTRL</a>.<em>icc0_flush</em> to 1 to immediately flush the contents of the 16KB cache and tag RAM.</p>
+<p>Flush ICC1 using the RV32 Control Register (FCR_URVCTRL). Set <a href="#rv32-control-register">FCR_URVCTRL</a>.<em>icc1_flush</em> to 1 to immediately flush the contents of the 16KB cache and tag RAM.</p>
 <h3 id="internal-cache-control-registers-icc">Internal Cache Control Registers (ICC)</h3>
-<p>See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
+<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the base address of this peripheral/module. See <a href="../#table1-1-field-access-definitions">Table 1-1</a> for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
 <p><em>Table 4-6: Instruction Cache Controller Register Summary</em>
 <a name="table4-6-instruction-cache-controller-register-summary"></a></p>
 <table border="1" cellpadding="5" cellspacing="0">
@@ -2887,21 +2967,21 @@ The device status is as follows:</p>
 <h3 id="on-chip-cache-management">On-Chip Cache Management</h3>
 <p>The MAX78000 includes two unified internal cache controllers for code and data fetches from the flash memory. The caches can be enabled, disabled, zeroized, and flushed. See section <a href="#unified-internal-cache-controllers">Unified Internal Cache Controller</a> for details.</p>
 <h3 id="ram-zeroization">RAM Zeroization</h3>
-<p>The GCR memory zeroize register, GCR_MEMZ, allows clearing memory for software or security reasons. Zeroization writes all zeros to the specified memory.</p>
+<p>The GCR memory zeroize register, <a href="#memory-zeroize-register">GCR_MEMZ</a>, allows clearing memory for software or security reasons. Zeroization writes all zeros to the specified memory.</p>
 <p>The following SRAM memories can be zeroized:</p>
 <ul>
-<li>Each of the System RAMs can be individually zeroized by setting the respective GCR_MEMZ bit:<ul>
-<li>GCR_MEMZ.ram0</li>
-<li>GCR_MEMZ.ram0ecc</li>
-<li>GCR_MEMZ.ram1</li>
-<li>GCR_MEMZ.ram2</li>
-<li>GCR_MEMZ.ram3</li>
+<li>Each of the System RAMs can be individually zeroized by setting the respective <a href="#memory-zeroize-register">GCR_MEMZ</a> bit:<ul>
+<li><a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>ram0</em></li>
+<li><a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>ram0ecc</em></li>
+<li><a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>ram1</em></li>
+<li><a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>ram2</em></li>
+<li><a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>ram3</em></li>
 </ul>
 </li>
 <li>ICC0 16KB Cache</li>
-<li>GCR_MEMZ.icc0</li>
+<li><a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>icc0</em></li>
 <li>ICC1 16KB Cache, if enabled<ul>
-<li>GCR_MEMZ.icc1</li>
+<li><a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>icc1</em></li>
 <li>Each of the CNNx16n processor arrays supports zeroizing the tornado RAM, mask RAM, bias RAM, and data SRAM:</li>
 <li>CNNx16_n_TEST.tramz set to 1 to zero, read CNNx16_n_TEST.tallzdone until 1 for completion</li>
 <li>CNNx16_n_TEST.mramz set to 1 to zero, read CNNx16_n_TEST.mallzdone until 1 for completion</li>
@@ -2911,7 +2991,7 @@ The device status is as follows:</p>
 </li>
 </ul>
 <h2 id="miscellaneous-control-registers-mcr">Miscellaneous Control Registers (MCR)</h2>
-<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the base address of this peripheral/module. See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
+<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the base address of this peripheral/module. See <a href="../#table1-1-field-access-definitions">Table 1-1</a> for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
 <p><em>Table 4-11: Miscellaneous Control Register Summary</em>
 <a name="table4-11-miscellaneous-control-register-summary"></a></p>
 <table border="1" cellpadding="5" cellspacing="0">
@@ -3025,10 +3105,10 @@ The device status is as follows:</p>
     <td>trim_range</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>Trim Range Select</strong><br>If this bit is set to 1, the value loaded into the MCR_IPO_MTRIM.mtrim field must be greater than the trim setting in the TRIMSIR_IPOLO.ipo_limitlo field. If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field must be less than the trim setting in the TRIMSIR_CTRL.ipo_limithi field.
+    <td><strong>Trim Range Select</strong><br>If this bit is set to 1, the value loaded into the <a href="#ipo-manual-trim-register">MCR_IPO_MTRIM</a>.<em>mtrim</em> field must be greater than the trim setting in the <a href="#system-initialization-function-register">TRIMSIR_IPOLO</a>.<em>ipo_limitlo</em> field. If this bit is set to 0, the value loaded into the <a href="#ipo-manual-trim-register">MCR_IPO_MTRIM</a>.<em>mtrim</em> field must be less than the trim setting in the <a href="#control-trim-system-initialization-register">TRIMSIR_CTRL</a>.<em>ipo_limithi</em> field.
         <div style="margin-left: 20px">
-            0: MCR_IPO_MTRIM.mtrim < TRIMSIR_IPOLO.ipo_limitlo<br>
-            1: MCR_IPO_MTRIM.mtrim > TRIMSIR_CTRL.ipo_limithi
+            0: <a href="#ipo-manual-trim-register">MCR_IPO_MTRIM</a>.<em>mtrim</em> < <a href="#system-initialization-function-register">TRIMSIR_IPOLO</a>.<em>ipo_limitlo</em><br>
+            1: <a href="#ipo-manual-trim-register">MCR_IPO_MTRIM</a>.<em>mtrim</em> > <a href="#control-trim-system-initialization-register">TRIMSIR_CTRL</a>.<em>ipo_limithi</em>
         </div>   
     </td>
   </tr>
@@ -3038,9 +3118,9 @@ The device status is as follows:</p>
     <td>R/W</td>
     <td>0x04</td>
     <td><strong>Manual Trim Value</strong><br>
-    Set this value to the desired manual trim based on the value set in MCR_IPO_MTRIM.trim_range.<br>
-    If MCR_IPO_MTRIM.trim_range is 0, the value in this field must be less than the value in TRIMSIR_IPOLO.ipo_limitlo.<br>
-    If MCR_IPO_MTRIM.trim_range is 1, the value in this field must be greater than the value in TRIMSIR_CTRL.ipo_limithi.
+    Set this value to the desired manual trim based on the value set in <a href="#ipo-manual-trim-register">MCR_IPO_MTRIM</a>.<em>trim_range</em>.<br>
+    If <a href="#ipo-manual-trim-register">MCR_IPO_MTRIM</a>.<em>trim_range</em> is 0, the value in this field must be less than the value in < <a href="#system-initialization-function-register">TRIMSIR_IPOLO</a>.<em>ipo_limitlo</em>.<br>
+    If <a href="#ipo-manual-trim-register">MCR_IPO_MTRIM</a>.<em>trim_range</em> is 1, the value in this field must be greater than the value in <a href="#control-trim-system-initialization-register">TRIMSIR_CTRL</a>.<em>ipo_limithi</em>.
     </td>
   </tr>
 </table>
@@ -3264,7 +3344,8 @@ The device status is as follows:</p>
     <td>ertco_en</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>ERTCO Enable for *LPM* and *UPM*</strong><br>Set this field to 1 to enable the ERTCO in *LPM* and *UPM*.<br> 
+    <td><strong>ERTCO Enable for <em>LPM</em> and <em>UPM</em></strong><br>
+    Set this field to 1 to enable the ERTCO in <em>LPM</em> and <em>UPM</em>.<br> 
     <div style="margin-left: 20px">
     0: ERTCO disabled<br>
     1: ERTCO enabled
@@ -3276,7 +3357,7 @@ The device status is as follows:</p>
     <td>inro_en</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>INRO Enable</strong><br>Set this field to 1 to enable the INRO in *LPM* and *UPM*.<br> 
+    <td><strong>INRO Enable</strong><br>Set this field to 1 to enable the INRO in <em>LPM</em> and <em>UPM</em>.<br> 
     <div style="margin-left: 20px">
     0: INRO disabled<br>
     1: INRO enabled
@@ -3321,7 +3402,8 @@ The device status is as follows:</p>
     <td>p31_in</td>
     <td>RO</td>
     <td>See Description</td>
-    <td><strong>GPIO3 Pin 1 Input Status</strong><br>Read this field to determine the input status of P3.1.<br> 
+    <td><strong>GPIO3 Pin 1 Input Status</strong><br>
+    Read this field to determine the input status of P3.1.<br> 
       <div style="margin-left: 20px">
         0: Input Low<br>
         1: Input High
@@ -3333,7 +3415,8 @@ The device status is as follows:</p>
     <td>p31_pe</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>GPIO3 Pin 1 Pull-up Enable</strong><br>Set this bit to 1 to enable the pullup resistor for P3.1.<br> 
+    <td><strong>GPIO3 Pin 1 Pull-up Enable</strong><br>
+    Set this bit to 1 to enable the pullup resistor for P3.1.<br> 
       <div style="margin-left: 20px">
         0: Pull-up Disabled<br>
         1: Pull-up Enabled
@@ -3345,7 +3428,8 @@ The device status is as follows:</p>
     <td>p31_oe</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>GPIO3 Pin 1 Output Enable</strong><br>Set this bit to 1 to enable P3.1 for output mode.<br> 
+    <td><strong>GPIO3 Pin 1 Output Enable</strong><br>
+    Set this bit to 1 to enable P3.1 for output mode.<br> 
       <div style="margin-left: 20px">
         0: Input mode.<br>
         1: Output mode enabled.
@@ -3357,10 +3441,11 @@ The device status is as follows:</p>
     <td>p31_do</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>GPIO3 Pin 1 Data Output</strong><br>If *p31_oe* is set to 1, this field is used to control the output state of P3.1.<br> 
+    <td><strong>GPIO3 Pin 1 Data Output</strong><br>
+    If <em>p31_oe</em> is set to 1, this field is used to control the output state of P3.1.<br> 
       <div style="margin-left: 20px">
-        0: Output low if *p31_oe* is 1<br>
-        1: Output high if *p31_oe* is 1.
+        0: Output low if <em>p31_oe</em> is 1<br>
+        1: Output high if <em>p31_oe</em> is 1.
       </div>
     </td>
 </tr>
@@ -3369,7 +3454,8 @@ The device status is as follows:</p>
     <td>p30_in</td>
     <td>RO</td>
     <td>See Description</td>
-    <td><strong>GPIO3 Pin 0 Input Status</strong><br>Read this field to determine the input status of P3.0.<br> 
+    <td><strong>GPIO3 Pin 0 Input Status</strong><br>
+    Read this field to determine the input status of P3.0.<br> 
       <div style="margin-left: 20px">
         0: Input Low<br>
         1: Input High
@@ -3381,7 +3467,8 @@ The device status is as follows:</p>
     <td>p30_pe</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>GPIO3 Pin 0 Pull-up Enable</strong><br>Set this bit to 1 to enable the pullup resistor for P3.0.<br> 
+    <td><strong>GPIO3 Pin 0 Pull-up Enable</strong><br>
+    Set this bit to 1 to enable the pullup resistor for P3.0.<br> 
       <div style="margin-left: 20px">
         0: Pull-up Disabled<br>
         1: Pull-up Enabled
@@ -3393,7 +3480,8 @@ The device status is as follows:</p>
     <td>p30_oe</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>GPIO3 Pin 0 Output Enable</strong><br>Set this bit to 1 to enable P3.0 for output mode.<br> 
+    <td><strong>GPIO3 Pin 0 Output Enable</strong><br>
+    Set this bit to 1 to enable P3.0 for output mode.<br> 
       <div style="margin-left: 20px">
         0: Input mode<br>
         1: Output mode enabled.
@@ -3405,7 +3493,8 @@ The device status is as follows:</p>
     <td>p30_do</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>GPIO3 Pin 0 Data Output</strong><br>If <em>p30_oe</em> is set to 1, this field is used to control the output state of P3.0.<br> 
+    <td><strong>GPIO3 Pin 0 Data Output</strong><br>
+    If <em>p30_oe</em> is set to 1, this field is used to control the output state of P3.0.<br> 
       <div style="margin-left: 20px">
         0: Output low if <em>p30_oe</em> is 1<br>
         1: Output high if <em>p30_oe</em> is 1.
@@ -3415,7 +3504,7 @@ The device status is as follows:</p>
 </table>
 
 <h2 id="single-inductor-multiple-output-power-supply-simo">Single Inductor Multiple Output Power Supply (SIMO)</h2>
-<p>The SIMO switch mode power supply allows the device to operate autonomously from a single lithium cell. The SIMO provides three buck switching regulators (VREGO_A thru VREGO_C). Each of the three regulator voltages can be controlled by either CPU individually. For the SIMO to operate properly, the three buck regulator outputs must drive the power supply pins of the device, as shown in Table 4-18.</p>
+<p>The SIMO switch mode power supply allows the device to operate autonomously from a single lithium cell. The SIMO provides three buck switching regulators (V<sub>REGO_A</sub> thru V<sub>REGO_C</sub>). Each of the three regulator voltages can be controlled by either CPU individually. For the SIMO to operate properly, the three buck regulator outputs must drive the power supply pins of the device, as shown in Table 4-18.</p>
 <h3 id="power-supply-monitor">Power Supply Monitor</h3>
 <p>The system also provides a power monitor that monitors the external power supplies relative to the on-chip bandgap voltage. The following power supplies are monitored:</p>
 <ul>
@@ -3487,7 +3576,7 @@ The device status is as follows:</p>
 </tr>
 </table>
 
-<p>See <a href="">Table 3-3</a> for the SIMO Controller Peripheral Base Address.</p>
+<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the SIMO Controller Peripheral Base Address.</p>
 <p><em>Table 4-19: SIMO Controller Register Summary</em>
 <a name="table4-19-simo-controller-register-summary"></a></p>
 <table border="1" cellpadding="5" cellspacing="0">
@@ -3623,7 +3712,8 @@ The device status is as follows:</p>
     <td>rangea</td>
     <td>R/W</td>
     <td>1</td>
-    <td><strong>Regulator Output A Range</strong><br>This field selects the regulator output range for V<sub>REGO_A</sub>.<br> 
+    <td><strong>Regulator Output A Range</strong><br>
+    This field selects the regulator output range for V<sub>REGO_A</sub>.<br> 
     <div style="margin-left: 20px">
     0: 0.5V to 1.77V<br>
     1: 0.6V to 1.87V
@@ -3687,7 +3777,8 @@ The device status is as follows:</p>
     <td>vsetb</td>
     <td>R/W</td>
     <td>0x32h</td>
-    <td><strong>Regulator Output Voltage</strong><br>Each bit increment in this field represents 10mV allowing output voltage settings from the minimum to the maximum of the <a href="#buck-voltage-regulator-b-control-register">SIMO_VREGO_B</a>.<em>rangeb</em> selected.<br> 
+    <td><strong>Regulator Output Voltage</strong><br>
+    Each bit increment in this field represents 10mV allowing output voltage settings from the minimum to the maximum of the <a href="#buck-voltage-regulator-b-control-register">SIMO_VREGO_B</a>.<em>rangeb</em> selected.<br> 
     <div style="margin-left: 20px">
     <p><a href="#buck-voltage-regulator-b-control-register">SIMO_VREGO_B</a>.<em>rangeb</em> = 1: Output Voltage=0.6V + (10mV × vsetb)</p>
     <p><a href="#buck-voltage-regulator-b-control-register">SIMO_VREGO_B</a>.<em>rangeb</em>> = 0: Output Voltage=0.5V + (10mV × vsetb)</p>
@@ -4220,7 +4311,7 @@ The device status is as follows:</p>
 <li>LPCOMP1, LPCOMP2, and LPCOMP3</li>
 <li>GPIO2</li>
 </ul>
-<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the base address of this peripheral/module. See <a href="">Table 1-1</a> for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
+<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the base address of this peripheral/module. See <a href="../#table1-1-field-access-definitions">Table 1-1</a> for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
 <p><em>Table 4-36: Low-Power Control Register Summary</em>
 <a name="table4-36-low-power-control-register-summary"></a></p>
 <table border="1" cellpadding="5" cellspacing="0">
@@ -4270,7 +4361,7 @@ The device status is as follows:</p>
     <td>W1O</td>
     <td>0</td>
     <td><strong>Low Power Comparators Reset</strong><br>
-    Write 1 to reset. This field is cleared by hardware when the reset is complete. See Device Resets for additional information. </td>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete. See <a href="#device-resets">Device Resets</a> for additional information. </td>
   </tr>
   <tr>
     <td>5</td>
@@ -4286,7 +4377,7 @@ The device status is as follows:</p>
     <td>W1O</td>
     <td>0</td>
     <td><strong>UART3 (LPUART0) Reset</strong><br>
-    Write 1 to reset. This field is cleared by hardware when the reset is complete. See Device Resets for additional information.</td>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete. See <a href="#device-resets">Device Resets</a> for additional information.</td>
   </tr>
   <tr>
     <td>3</td>
@@ -4294,7 +4385,7 @@ The device status is as follows:</p>
     <td>W1O</td>
     <td>0</td>
     <td><strong>TMR5 (LPTMR1) Reset</strong><br>
-    Write 1 to reset. This field is cleared by hardware when the reset is complete. See Device Resets for additional information.</td>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete. See <a href="#device-resets">Device Resets</a> for additional information.</td>
   </tr>
   <tr>
     <td>2</td>
@@ -4302,7 +4393,7 @@ The device status is as follows:</p>
     <td>W1O</td>
     <td>0</td>
     <td><strong>TMR4 (LPTMR0) Reset</strong><br>
-    Write 1 to reset. This field is cleared by hardware when the reset is complete. See Device Resets for additional information.</td>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete. See <a href="#device-resets">Device Resets</a> for additional information.</td>
   </tr>
   <tr>
     <td>1</td>
@@ -4310,7 +4401,7 @@ The device status is as follows:</p>
     <td>W1O</td>
     <td>0</td>
     <td><strong>WDT1 (LPWDT0) Reset</strong><br>
-    Write 1 to reset. This field is cleared by hardware when the reset is complete. See Device Resets for additional information.</td>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete. See <a href="#device-resets">Device Resets</a> for additional information.</td>
   </tr>
   <tr>
     <td>0</td>
@@ -4318,7 +4409,7 @@ The device status is as follows:</p>
     <td>W1O</td>
     <td>0</td>
     <td><strong>GPIO2 Reset</strong><br>
-    Write 1 to reset. This field is cleared by hardware when the reset is complete. See Device Resets for additional information.</td>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete. See <a href="#device-resets">Device Resets</a> for additional information.</td>
   </tr>
 </table>
 
@@ -4433,7 +4524,7 @@ The device status is as follows:</p>
 </table>
 
 <h2 id="power-sequencer-registers-pwrseq">Power Sequencer Registers (PWRSEQ)</h2>
-<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the base address of this peripheral/module. See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
+<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the base address of this peripheral/module. See <a href="../#table1-1-field-access-definitions">Table 1-1</a> for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
 <p><em>Table 4-39: Power Sequencer Register Summary</em>
 <a name= "table4-39-power-sequencer-register-summary"></a></p>
 <table border="1" cellpadding="5" cellspacing="0">
@@ -4653,7 +4744,7 @@ The device status is as follows:</p>
     <td>R/W</td>
     <td>0</td>
     <td><strong>System RAM 0 Data Retention Enable for BACKUP</strong><br>
-    Set this field to 1 to enable data retention for <em>sysram0</em>. See See <a href="../memory-register-mapping-access#sram-space">SRAM Space</a> for the system RAM configuration.<br>
+    Set this field to 1 to enable data retention for <em>sysram0</em>. See <a href="../memory-register-mapping-access#sram-space">SRAM Space</a> for the system RAM configuration.<br>
     <div style="margin-left: 20px">
     0: Disable data retention for <em>sysram0</em> address space in <em>BACKUP</em>.<br>
     1: Enable data retention for <em>sysram0</em> address space in <em>BACKUP</em>.
@@ -5328,7 +5419,7 @@ The device status is as follows:</p>
 </table>
 
 <h2 id="trim-system-initialization-registers-trimsir">Trim System Initialization Registers (TRIMSIR)</h2>
-<p>See <a href=../memory-register-mapping-access#apb-peripheral-base-address-map>Table 3-3</a> for the base address of this peripheral/module. See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
+<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the base address of this peripheral/module. See <a href="../#table1-1-field-access-definitions">Table 1-1</a> for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
 <p><em>Note: The TRIMSIR registers are reset only on a POR. System reset, soft reset, and peripheral reset do not affect the TRIMSIR register values.</em></p>
 <p><em>Table 4-53: Trim System Initialization Register Summary</em>
 <a name= "table4-53-trim-system-initialization-register-summary"></a></p>
@@ -5879,7 +5970,7 @@ The device status is as follows:</p>
     <td>0</td>
     <td><strong>System Reset</strong><br>
     Write 1 to reset. This field is cleared by hardware when the reset is complete. 
-    See System Reset for additional information. <br>
+    See <a href="#system-reset">System Reset</a> for additional information. <br>
       <div style="margin-left: 20px">
           0: Normal operation<br>
           1: Initiate reset
@@ -5898,7 +5989,7 @@ The device status is as follows:</p>
           1: Initiate reset
       </div>
     Note: Watchdog timers, GPIO ports, the AoD, RAM retention, and the GCR are unaffected. 
-    See Table 4-5 for additional information.
+    See <a href="#table4-5-reset-and-low-power-mode-effects">Table 4-5</a> for additional information.
     </td>
   </tr>
   <tr>
@@ -5908,7 +5999,7 @@ The device status is as follows:</p>
     <td>0</td>
     <td><strong>Soft Reset</strong><br>
     Write 1 to reset. This field is cleared by hardware when the reset is complete. 
-    See Soft Reset for additional information.<br>
+    See <a href="#soft-reset">Soft Reset</a> for additional information.<br>
       <div style="margin-left: 20px">
           0: Normal operation<br>
           1: Initiate reset
@@ -6356,8 +6447,8 @@ The device status is as follows:</p>
     <td>0</td>
     <td><strong>32.768kHz ERTCO Enable</strong><br>
       <div style="margin-left: 20px">
-          0: Disabled if the RTC_CTRL.en field is also set to 0.<br>
-          1: Enabled and ready when <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>ertco_rdy</em> = 1, regardless of the state of the RTC_CTRL.en field.
+          0: Disabled if the <a href="#rtc-control-register">RTC_CTRL</a>.<em>en</em> field is also set to 0.<br>
+          1: Enabled and ready when <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>ertco_rdy</em> = 1, regardless of the state of the <a href="#rtc-control-register">RTC_CTRL</a>.<em>en</em> field.
       </div>
     </td>
 </tr>

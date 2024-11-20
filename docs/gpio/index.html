@@ -1,0 +1,2870 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://kayaoglutuncay.github.io/max78000/gpio/">
+      
+      
+        <link rel="prev" href="../interrupts-exceptions/">
+      
+      
+        <link rel="next" href="../debug-access-port/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>General-Purpose I/O and Alternate Function Pins (GPIO) - MAX78000 User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#instances" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MAX78000 User Guide" class="md-header__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MAX78000 User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              General-Purpose I/O and Alternate Function Pins (GPIO)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MAX78000 User Guide" class="md-nav__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MAX78000 User Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory-register-mapping-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory, Register, Mapping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-power-clocks-reset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System, Power, Clocks, Reset
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interrupts-exceptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interrupts and Exceptions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    General-Purpose I/O and Alternate Function Pins (GPIO)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    General-Purpose I/O and Alternate Function Pins (GPIO)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instances
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#power-on-reset-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Power-On-Reset Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serial-wire-debug-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serial Wire Debug Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pin-function-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pin Function Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-mode-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input Mode Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-mode-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output Mode Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Tables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reset-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reset State
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-mode-configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input Mode Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-mode-configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output Mode Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternate-function-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alternate Function Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-gpio-external-interrupts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring GPIO (External) Interrupts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring GPIO (External) Interrupts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpio-interrupt-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPIO Interrupt Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-gpio-for-wake-up-from-low-power-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using GPIO for Wake Up from Low-Power Modes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Registers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debug-access-port/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Access Port
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semaphore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semaphore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flash-controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flash Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Document Conventions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../revision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Revision History
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instances
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#power-on-reset-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Power-On-Reset Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serial-wire-debug-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serial Wire Debug Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pin-function-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pin Function Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-mode-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input Mode Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-mode-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output Mode Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Tables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reset-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reset State
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-mode-configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input Mode Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-mode-configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output Mode Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternate-function-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alternate Function Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-gpio-external-interrupts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring GPIO (External) Interrupts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring GPIO (External) Interrupts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpio-interrupt-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPIO Interrupt Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-gpio-for-wake-up-from-low-power-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using GPIO for Wake Up from Low-Power Modes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Registers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>General-Purpose I/O and Alternate Function Pins (GPIO)</h1>
+
+<p>General-purpose I/O (GPIO) pins can be individually configured to operate in a digital I/O mode or in an alternate function (AF) mode, which maps a signal associated with an enabled peripheral to that GPIO. Each GPIO supports dynamic switching between I/O mode and alternate function mode. Configuring a pin for an alternate function supersedes its use as a digital I/O; however, the state of the GPIO is still readable through the <em>GPIOn_IN</em> register.</p>
+<p>The electrical characteristics of a GPIO pin are identical whether the pin is configured as an I/O or as an alternate function, except where explicitly noted in the data sheet electrical characteristics
+tables.</p>
+<p>The GPIO are divided logically into ports of 32 pins. Package variants may not implement all pins of a specific 32-bit GPIO port.</p>
+<p>Each port pin has an interrupt function that can be independently enabled and configured as a level-sensitive or edge-sensitive interrupt. All GPIOs of a given port share the same interrupt vector as detailed in GPIO Interrupt Handling.</p>
+<p><em>Note: The register set used to control the GPIO are identical across multiple Analog Devices microcontrollers; however, the behavior of several registers varies depending on the specific device. The behavior of the registers should not be assumed to be the same from one device to a different device. Specifically the registers GPIOn_PADCTRL0, GPIOn_PADCTRL1, GPIOn_HYSEN, GPIOn_SRSEL, GPIOn_DS0, GPIOn_DS1, and GPIOn_VSSEL are device-dependent in their usage. GPIO3 is controlled differently and has different features than the other GPIO ports in the MAX78000. See MCR_GPIO3_CTRL for details on using GPIO3.</em></p>
+<p>The features for each GPIO pin include:</p>
+<ul>
+<li>Full CMOS outputs with configurable drive strength settings</li>
+<li>Input modes/options:<ul>
+<li>High impedance</li>
+<li>Weak pullup/pulldown</li>
+<li>Strong pullup/pulldown</li>
+</ul>
+</li>
+<li>Output data can be from the GPIOn_OUT register or an enabled peripheral.</li>
+<li>Input data can be read from the GPIOn_IN input register or the enabled peripheral.</li>
+<li>Bit set and clear registers for efficient bit-wise write access to the pins and configuration registers.</li>
+<li>Wake from low-power modes using edge-triggered inputs.</li>
+<li>Selectable GPIO voltage supply for GPIO0, GPIO1, and GPIO2:<ul>
+<li>V<sub>DDIO</sub></li>
+<li><p>V<sub>DDIOH</sub></li>
+</ul>
+</li>
+<li>Selectable interrupt events:<ul>
+<li>Level triggered low</li>
+<li>Level triggered high</li>
+<li>Edge triggered rising edge.</li>
+<li>Edge triggered falling edge.</li>
+<li>Edge triggered rising and falling edge.</li>
+</ul>
+</li>
+<li>All GPIO pins default to input mode with weak-pullup during power-on-reset events.</li>
+</ul>
+<h3 id="instances">Instances</h3>
+<p><a href="#table6-1-max78000-gpio-pin-count">Table 6‑1</a> shows the number of GPIO available on each IC package. Some packages and part numbers do not implement all bits of a 32-bit GPIO port. Register fields corresponding to unimplemented GPIO contain indeterminate values and should not be modified.</p>
+<p><em>Table6-1: MAX78000 GPIO Pin Count</em> 
+<a name="table6-1-max78000-gpio-pin-count"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+<th>Package</th>
+<th>GPIO</th>
+<th>PINS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td rowspan="4">81-CTBGA</td>
+    <td>GPIO0[30:0]</td>
+    <td>31</td>
+</tr>
+<tr>
+    <td>GPIO1[9:0]</td>
+    <td>10</td>
+</tr>
+<tr>
+    <td>GPIO2[7:0]</td>
+    <td>8</td>
+</tr>
+<tr>
+    <td>GPIO3[1:0]<sup>+</sup></td>
+    <td>2</td>
+</tr>
+</tbody>
+</table>
+
+<p><em>Note: See <a href="../system-power-clocks-reset/#power-sequencer-registers-pwrseq">Power Sequencer Registers (PWRSEQ)</a> for details on using GPIO3.</em></p>
+<p><em>Note: Refer to the device data sheet for descriptions of each GPIO port pin's alternate functions.</em></p>
+<h2 id="configuration">Configuration</h2>
+<p>Each device pin is individually configurable as a GPIO or an alternate function. The correct alternate function setting must be selected for each pin of a given multi-pin peripheral for proper operation.</p>
+<h3 id="power-on-reset-configuration">Power-On-Reset Configuration</h3>
+<p>All I/O default to GPIO mode during a POR event as high impedance inputs except the SWDIO and SWDCLK pins. After a POR, the SWD is enabled by default with AF1 selected by hardware. See the Bootloader chapter for exceptions.</p>
+<p>Following a POR event, all GPIO, except device pins that have the SWDIO and SWDCLK function, are configured with the following default settings:</p>
+<ul>
+<li>GPIO mode enabled<ul>
+<li>GPIOn_EN0.en[pin] = 1</li>
+<li>GPIOn_EN1.en[pin] = 0</li>
+<li>GPIOn_EN2.en[pin] = 0</li>
+</ul>
+</li>
+<li>Pullup/pulldown disabled, I/O in Hi-Z mode<ul>
+<li>GPIOn_PADCTRL0.mode[pin] = 0</li>
+<li>GPIOn_PADCTRL1.mode[pin]</li>
+</ul>
+</li>
+<li>Output mode disabled<ul>
+<li>GPIOn_OUTEN.en[pin] = 0</li>
+</ul>
+</li>
+<li>Interrupt disabled<ul>
+<li>GPIOn_INTEN.en[pin] = 0</li>
+</ul>
+</li>
+</ul>
+<h3 id="serial-wire-debug-configuration">Serial Wire Debug Configuration</h3>
+<p>Perform the following steps to configure the SWDIO and SWDCLK device pins for SWD mode:</p>
+<ol>
+<li>
+<p>Set the device pin P0.28 for AF1 mode:</p>
+<p>a. GPIOn_EN0.config[28] = 0</p>
+<p>b. GPIOn_EN1.config[28] = 0</p>
+<p>c. GPIOn_EN2.config[28] = 0</p>
+</li>
+<li>
+<p>Set device pin P0.29 for AF1 mode:</p>
+<p>a. GPIOn_EN0.config[29] = 0</p>
+<p>b. GPIOn_EN1.config[29] = 0</p>
+<p>c. GPIOn_EN2.config[29] = 0</p>
+</li>
+</ol>
+<p><em>Note: To use the SWD pins in GPIO mode, set the desired GPIO pins for SWD AF and disable the SWD (GCR_SYSCTRL.swd_dis = 1).</em></p>
+<h3 id="pin-function-configuration">Pin Function Configuration</h3>
+<p><a href="#table6-2-max78000-gpio-pin-function-configuration">Table 6‑2</a> depicts the bit settings for the GPIOn_EN0, GPIOn_EN1, and GPIOn_EN2 registers to configure a GPIO port pin's function. Each of the bits within these registers represents the configuration of a single pin on the GPIO port. For example, GPIO0_EN0.config[25], GPIO0_EN1.config[25], and GPIO0_EN2.config[25] all represent configuration for device pin P0.25. See Table 6‑5 for a detailed example of how each of these bits applies to each GPIO device pin.</p>
+<p><em>Table 6-2: MAX78000 GPIO Pin Function Configuration</em>
+<a name="table6-2-max78000-gpio-pin-function-configuration"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+<th>MODE</th>
+<th>GPIOn_EN0.config[pin]</th>
+<th>GPIOn_EN1.config[pin]</th>
+<th>GPIOn_EN2.config[pin]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>AF1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>AF2</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>I/O (transition to AF1)</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>I/O (transition to AF2)</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="input-mode-configuration">Input Mode Configuration</h3>
+<p><a href="#table6-3-max78000-input-mode-configuration">Table 6‑3</a> depicts the bit settings for the digital I/O input mode. Each of the bits within these registers represents the configuration of a single pin on the GPIO port. For example, GPIO0_PADCTRL1.config[25], GPIO0_PADCTRL0.config[25], GPIO0_PS.pull_sel[25], and GPIO0_VSSEL.v_sel[25] all represent configuration for device pin P0.25. See Table 6‑8 for a detailed example of how each of these bits applies to each GPIO device pin. Refer to the device data sheet for details of specific electrical characteristics.</p>
+<p><em>Table 6-3: MAX78000 Input Mode Configuration</em>
+<a name="table6-3-max78000-input-mode-configuration"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+    <th rowspan="2">Input Mode</th>
+    <th colspan="2" align="center">Mode Select</th>
+    <th align="center">Pullup/Pulldown Strength</th>
+    <th align="center">Power Supply</th>
+</tr>
+<tr>
+    <th><em>GPIOn_PADCTRL1</em>.<em>config[pin]</em></th>
+    <th><em>GPIOn_PADCTRL0.config[pin]</em></th>
+    <th><em>GPIOn_PS</em>.<em>pull_sel[pin]</em></th>
+    <th><em>GPIOn_VSSEL</em>.<em>v_sel[pin]</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>High-impedance</td>
+    <td>0</td>
+    <td>0</td>
+    <td>N/A</td>
+    <td>N/A</td>
+</tr>
+<tr>
+    <td>Weak Pullup to V<sub>DDIO</sub> (1MΩ)</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>Strong Pullup to V<sub>DDIO</sub> (25KΩ)</td>
+    <td>0</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>Weak Pulldown to V<sub>DDIOH</sub> (1MΩ)</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+</tr>
+<tr>
+    <td>Strong Pulldown to V<sub>DDIOH</sub> (25KΩ)</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>1</td>
+</tr>
+<tr>
+    <td>Reserved</td>
+    <td>1</td>
+    <td>1</td>
+    <td>N/A</td>
+    <td>N/A</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="output-mode-configuration">Output Mode Configuration</h3>
+<p><a href="#table6-4-max78000-output-mode-configuration">Table 6‑4</a> shows the configuration options for digital I/O in output mode. Each of the bits within these registers represents the configuration of a single pin on the GPIO port. For example,GPIO2_DS0.config[25], GPIO2_DS1.config[25], and GPIO2_VSSEL.v_sel[25] all represent configuration for GPIO port 2 pin 25 (device pin P0.25). See Table 6‑8 for a detailed example of how each of these bits applies to each GPIO device pin. Refer to the device data sheet for details of specific electrical
+characteristics.</p>
+<p><em>Table 6-4: MAX78000 Output Mode Configuration</em>
+<a name="table6-4-max78000-output-mode-configuration"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+<th rowspan="2">Input Mode</th>
+<th colspan="2" align="center">Drive Strength</th>
+<th align="center">Power Supply</th>
+</tr>
+<tr>
+    <th><em>GPIOn_DS1.config[pin]</em></th>
+    <th><em>GPIOn_DS0.config[pin]</em></th>
+    <th><em>GPIOn_VSSEL.v_sel[pin]</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>Output Drive Strength 0, V<sub>DDIO</sub> Supply</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>Output Drive Strength 1, V<sub>DDIO</sub> Supply</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>Output Drive Strength 2, V<sub>DDIO</sub> Supply</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>Output Drive Strength 3, V<sub>DDIO</sub> Supply</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>Output Drive Strength 0, V<sub>DDIOH</sub> Supply</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+</tr>
+<tr>
+    <td>Output Drive Strength 1, V<sub>DDIOH</sub> Supply</td>
+    <td>0</td>
+    <td>1</td>
+    <td>1</td>
+</tr>
+<tr>
+    <td>Output Drive Strength 2, V<sub>DDIOH</sub> Supply</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+</tr>
+<tr>
+    <td>Output Drive Strength 3, V<sub>DDIOH</sub> Supply</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+</tr>
+</tbody>
+</table>
+
+<p>Each GPIO port is assigned a dedicated interrupt vector, as shown in <a href="#table6-9-max78000-gpio-port-interrupt-vector-mapping">Table 6‑9</a>.</p>
+<h3 id="reference-tables">Reference Tables</h3>
+<p>The tables in this section provide example references for register bit assignment to configure a device's GPIO port 0 pins. Other GPIO port pins are configured similarly using the respective GPIO1 or GPIO2 registers.</p>
+<p><em>Table 6-5: MAX78000 GPIO0 Alternate Function Configuration Reference</em>
+<a name="table6-5-max78000-gpio0-alternate-function-configuration-reference"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+    <th>Device Pin</th>
+    <th colspan="3" align="center">Alternate Function Configuration Bits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>P0.0</td>
+    <td><em>GPIO0_EN0.config[0]</em></td>
+    <td><em>GPIO0_EN1.config[0]</em></td>
+    <td><em>GPIO0_EN2.config[0]</em></td>
+</tr>
+<tr>
+    <td>P0.1</td>
+    <td><em>GPIO0_EN0.config[1]</em></td>
+    <td><em>GPIO0_EN1.config[1]</em></td>
+    <td><em>GPIO0_EN2.config[1]</em></td>
+</tr>
+<tr>
+    <td>…</td>
+    <td><em>…</em></td>
+    <td><em>…</em></td>
+    <td><em>…</em></td>
+</tr>
+<tr>
+    <td>P0.30</td>
+    <td><em>GPIO0_EN0.config[30]</em></td>
+    <td><em>GPIO0_EN1.config[30]</em></td>
+    <td><em>GPIO0_EN2.config[30]</em></td>
+</tr>
+<tr>
+    <td>P0.31</td>
+    <td><em>GPIO0_EN0.config[31]</em></td>
+    <td><em>GPIO0_EN1.config[31]</em></td>
+    <td><em>GPIO0_EN2.config[31]</em></td>
+</tr>
+</tbody>
+</table>
+
+<p><em>Table 6-6: MAX78000 GPIO0 Output/Input Configuration Reference</em>
+<a name="table6-6-max78000-gpio0-output-input-configuration-reference"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+    <th align="center">Device Pin</th>
+    <th align="center">GPIO Output Enable</th>
+    <th align="center">GPIO Output Write</th>
+    <th align="center">GPIO Input Enable</th>
+    <th align="center">GPIO Input Read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>P0.0</td>
+    <td><em>GPIO0_OUTEN.en[0]</em></td>
+    <td><em>GPIO0_OUT.level[0]</em></td>
+    <td><em>GPIO0_INEN.en[0]</em></td>
+    <td><em>GPIO0_IN.level[0]</em></td>
+</tr>
+<tr>
+    <td>P0.1</td>
+    <td><em>GPIO0_OUTEN.en[1]</em></td>
+    <td><em>GPIO0_OUT.level[1]</em></td>
+    <td><em>GPIO0_INEN.en[1]</em></td>
+    <td><em>GPIO0_IN.level[1]</em></td>
+</tr>
+<tr>
+    <td>…</td>
+    <td><em>…</em></td>
+    <td><em>…</em></td>
+    <td><em>…</em></td>
+    <td><em>…</em></td>
+</tr>
+<tr>
+    <td>P0.30</td>
+    <td><em>GPIO0_OUTEN.en[30]</em></td>
+    <td><em>GPIO0_OUT.level[30]</em></td>
+    <td><em>GPIO0_INEN.en[30]</em></td>
+    <td><em>GPIO0_IN.level[30]</em></td>
+</tr>
+<tr>
+    <td>P0.31</td>
+    <td><em>GPIO0_OUTEN.en[31]</em></td>
+    <td><em>GPIO0_OUT.level[31]</em></td>
+    <td><em>GPIO0_INEN.en[31]</em></td>
+    <td><em>GPIO0_IN.level[31]</em></td>
+</tr>
+</tbody>
+</table>
+
+<p><em>Table 6-7: MAX78000 GPIO0 Interrupt Configuration Reference</em>
+<a name="table6-7-max78000-gpio0-interrupt-configuration-reference"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+    <th align="center">Device Pin</th>
+    <th align="center">Enable</th>
+    <th align="center">Status</th>
+    <th align="center">Dual Edge</th>
+    <th align="center">Polarity</th>
+    <th align="center">Trigger</th>
+    <th align="center">Wakeup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>P0.0</td>
+    <td><em>GPIO0_INTEN.en[0]</em></td>
+    <td><em>GPIO0_INTFL.config[0]</em></td>
+    <td><em>GPIO0_DUALEDGE.dualedge[0]</em></td>
+    <td><em>GPIO0_INTPOL.pol[0]</em></td>
+    <td><em>GPIO0_INTMODE.gpio_intmode[0]</em></td>
+    <td><em>GPIO0_WKEN.en[0]</em></td>
+</tr>
+<tr>
+    <td>P0.1</td>
+    <td><em>GPIO0_INTEN.en[1]</em></td>
+    <td><em>GPIO0_INTFL.config[1]</em></td>
+    <td><em>GPIO0_DUALEDGE.config[1]</em></td>
+    <td><em>GPIO0_INTPOL.pol[1]</em></td>
+    <td><em>GPIO0_INTMODE.gpio_intmode[1]</em></td>
+    <td><em>GPIO0_WKEN.en[1]</em></td>
+</tr>
+<tr>
+    <td>…</td>
+    <td><em>…</em></td>
+    <td><em>…</em></td>
+    <td><em>…</em></td>
+    <td><em>…</em></td>
+    <td><em>…</em></td>
+    <td><em>…</em></td>
+</tr>
+<tr>
+    <td>P0.30</td>
+    <td><em>GPIO0_INTEN.en[30]</em></td>
+    <td><em>GPIO0_INTFL.int[30]</em></td>
+    <td><em>GPIO0_DUALEDGE.gpio_dualedge[30]</em></td>
+    <td><em>GPIO0_INTPOL.pol[30]</em></td>
+    <td><em>GPIO0_INTMODE.gpio_intmode[30]</em></td>
+    <td><em>GPIO0_WKEN.en[30]</em></td>
+</tr>
+<tr>
+    <td>P0.31</td>
+    <td><em>GPIO0_INTEN.en[31]</em></td>
+    <td><em>GPIO0_INTFL.int[31]</em></td>
+    <td><em>GPIO0_DUALEDGE.gpio_dualedge[31]</em></td>
+    <td><em>GPIO0_INTPOL.pol[31]</em></td>
+    <td><em>GPIO0_INTMODE.gpio_intmode[31]</em></td>
+    <td><em>GPIO0_WKEN.en[31]</em></td>
+</tr>
+</tbody>
+</table>
+
+<p><em>Table 6-8: MAX78000 GPIO0 Pullup/Pulldown/Drive Strength/Voltage Configuration Reference</em>
+<a name="table6-8-max78000-gpio0-pullup-pulldown-drive-strength-voltage-configuration-reference"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+    <th align="center">Device Pin</th>
+    <th colspan="3" align="center">Pullup/Pulldown/Strength Select</th>
+    <th colspan="2" align="center">Drive Strength</th>
+    <th align="center">Voltage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>P0.0</td>
+    <td><em>GPIO0_PADCTRL0.config[0]</em></td>
+    <td><em>GPIO0_PADCTRL1.config[0]</em></td>
+    <td><em>GPIO0_PS.pull_sel[0]</em></td>
+    <td><em>GPIO0_DS0.config[0]</em></td>
+    <td><em>GPIO0_DS1.config[0]</em></td>
+    <td><em>GPIOn_VSSEL.v_sel[0]</em></td>
+</tr>
+<tr>
+    <td>P0.1</td>
+    <td><em>GPIO0_PADCTRL0.config[1]</em></td>
+    <td><em>GPIO0_PADCTRL1.config[1]</em></td>
+    <td><em>GPIO0_PS.pull_sel[1]</em></td>
+    <td><em>GPIO0_DS0.config[1]</em></td>
+    <td><em>GPIO0_DS1.config[1]</em></td>
+    <td><em>GPIOn_VSSEL.v_sel[1]</em></td>
+</tr>
+<tr>
+    <td>…</td>
+    <td><em>…</em></td>
+    <td><em>…</em></td>
+    <td><em>…</em></td>
+    <td><em>…</em></td>
+    <td><em>…</em></td>
+    <td><em>…</em></td>
+</tr>
+<tr>
+    <td>P0.30</td>
+    <td><em>GPIO0_PADCTRL0.config[30]</em></td>
+    <td><em>GPIO0_PADCTRL1.config[30]</em></td>
+    <td><em>GPIO0_PS.pull_sel[30]</em></td>
+    <td><em>GPIO0_DS0.config[30]</em></td>
+    <td><em>GPIO0_DS1.config[30]</em></td>
+    <td><em>GPIOn_VSSEL.v_sel[30]</em></td>
+</tr>
+<tr>
+    <td>P0.31</td>
+    <td><em>GPIO0_PADCTRL0.config[31]</em></td>
+    <td><em>GPIO0_PADCTRL1.config[31]</em></td>
+    <td><em>GPIO0_PS.pull_sel[31]</em></td>
+    <td><em>GPIO0_DS0.config[31]</em></td>
+    <td><em>GPIO0_DS1.config[31]</em></td>
+    <td><em>GPIOn_VSSEL.v_sel[31]</em></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="usage">Usage</h2>
+<h3 id="reset-state">Reset State</h3>
+<p>During a power-on-reset event, each GPIO is reset to the default input mode with the weak pullup resistor enabled as follows:</p>
+<ol>
+<li>The GPIO configuration enable bits shown in <a href="#table6-2-max78000-gpio-pin-function-configuration">Table 6‑2</a> are set to I/O (transition to AF1) mode.</li>
+<li>Input mode is enabled (GPIOn_INEN.en[pin] = 1).</li>
+<li>High impedance mode enabled (GPIOn_PADCTRL1.config[pin] = 0, GPIOn_PADCTRL0.config[pin] = 0), pullup and pulldown disabled.</li>
+<li>Output mode disabled (GPIOn_OUTEN.en[pin] = 0).</li>
+<li>Interrupt disabled (GPIOn_INTEN.en[pin] = 0).</li>
+</ol>
+<h3 id="input-mode-configuration_1">Input Mode Configuration</h3>
+<p>Perform the following steps to configure one or more pins for input mode:</p>
+<ol>
+<li>Set the GPIO Configuration Enable bits shown in <a href="#table6-2-max78000-gpio-pin-function-configuration">Table 6‑2</a> to any one of the I/O mode settings.</li>
+<li>Configure the electrical characteristics of the pin as desired, as shown in <a href="#table6-3-max78000-input-mode-configuration">Table 6‑3</a>.</li>
+<li>Enable the input buffer connected to the GPIO pin by setting GPIOn_INEN.en[pin] to 1.</li>
+<li>Read the input state of the pin using the GPIOn_IN.level[pin] field.</li>
+</ol>
+<h3 id="output-mode-configuration_1">Output Mode Configuration</h3>
+<p>Perform the following steps to configure a pin for output mode:</p>
+<ol>
+<li>Set the GPIO Configuration Enable bits shown in <a href="#table6-2-max78000-gpio-pin-function-configuration">Table 6‑2</a> to any one of the I/O mode settings.</li>
+<li>Configure the electrical characteristics of the pin as desired, as shown in <a href="#table6-4-max78000-output-mode-configuration">Table 6‑4</a>.</li>
+<li>Set the output logic high or logic low using the GPIOn_OUT.level[pin] bit.</li>
+<li>Enable the output buffer for the pin by setting GPIOn_OUTEN.en[pin] to 1.</li>
+</ol>
+<h3 id="alternate-function-configuration">Alternate Function Configuration</h3>
+<p>Most GPIO support one or more alternate functions selected with the GPIO configuration enable bits shown in <a href="#table6-2-max78000-gpio-pin-function-configuration">Table 6‑2</a>. The bits that select the AF must only be changed while the pin is in one of the I/O modes (GPIOn_EN0 = 1). The specific I/O mode must match the desired AF. For example, if a transition to AF1 is desired, first select the setting corresponding to I/O (transition to AF1). Then enable the desired mode by selecting the AF1 mode.</p>
+<ol>
+<li>Set the GPIO configuration enable bits shown in <a href="#table6-2-max78000-gpio-pin-function-configuration">Table 6‑2</a> to the I/O mode corresponding to the desired new AF setting. For example, select "I/O (transition to AF1)" if switching to AF1. Switching between different I/O mode settings does not affect the state or electrical characteristics of the pin.</li>
+<li>Configure the electrical characteristics of the pin. See <a href="#table6-3-max78000-input-mode-configuration">Table 6‑3</a> if the assigned alternate function uses the pin as an input. See <em>Table 6‑4</em> if the assigned alternate function uses the pin as an output.</li>
+<li>Set the GPIO Configuration Enable bits shown in <a href="#table6-2-max78000-gpio-pin-function-configuration">Table 6‑2</a> to the desired alternate function.</li>
+</ol>
+<h2 id="configuring-gpio-external-interrupts">Configuring GPIO (External) Interrupts</h2>
+<p>Each GPIO pin supports external interrupt events when the GPIO is configured for I/O mode and the input mode is enabled. If the GPIO is configured for an alternate peripheral function, the interrupts are peripheral-controlled.</p>
+<p>GPIO interrupts can be individually enabled and configured as an edge or level triggered independently on a pin-by-pin basis. The edge trigger can be a rising, falling, or both transitions.</p>
+<p>Each GPIO pin has a dedicated status bit in its corresponding GPIOn_INTFL register. A GPIO interrupt occurs when the status bit transitions from 0 to 1 if the corresponding bit is set in the corresponding GPIOn_INTEN register. Note that the interrupt status bit is always set when the current interrupt configuration event occurs, but an interrupt is only generated if explicitly enabled.</p>
+<p>The following procedure details the steps for enabling <em>ACTIVE</em> mode interrupt events for a GPIO pin:</p>
+<ol>
+<li>Disable interrupts by setting the GPIOn_INTEN.en[pin] field to 0. Disabling interrupts prevents any new interrupts on the pin from triggering but does not clear previously triggered (pending) interrupts. The application can disable all interrupts for a GPIO port by writing 0 to the GPIOn_INEN register. To maintain previously enabled interrupts, read the GPIOn_INEN register and save the state before setting the register to 0.</li>
+<li>Clear pending interrupts by writing 1 to the GPIOn_INTFL_CLR.clr[pin] bit.</li>
+<li>Configure the pin for the desired interrupt event.</li>
+<li>Set GPIOn_INTMODE.mode[pin] to select the desired interrupt.</li>
+<li>For level triggered interrupts, the interrupt triggers on an input high (GPIOn_INTPOL.pol[pin] = 0) or input low level.</li>
+<li>For edge triggered interrupts, the interrupt triggers on a transition from low to high(GPIOn_INTPOL.pol[pin] = 0) or high to low (GPIOn_INTPOL.pol[pin] = 1).</li>
+<li>
+<p>Optionally set GPIOn_DUALEDGE.de_en[pin] to 1 to trigger on both the rising and falling edges of the input signal.</p>
+<p>a. Set <em>GPIOn_INTEN</em>.<em>en[pin]</em> to 1 to enable the interrupt for the pin.</p>
+</li>
+</ol>
+<h3 id="gpio-interrupt-handling">GPIO Interrupt Handling</h3>
+<p>Each GPIO port is assigned a dedicated interrupt vector, as shown in <a href="#table6-9-max78000-gpio-port-interrupt-vector-mapping">Table 6‑9</a>.</p>
+<p><em>Table 6-9: MAX78000 GPIO Port Interrupt Vector Mapping</em>
+<a name="table6-9-max78000-gpio-port-interrupt-vector-mapping"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+<th>GPIO Interrupt Source</th>
+<th>GPIO Interrupt Status Register</th>
+<th>CM4 Interrupt Vector Number</th>
+<th>RV32 Interrupt Vector Number</th>
+<th>GPIO Interrupt Vector</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>GPIO0[31:0]</td>
+    <td>GPIOn_INTFL</td>
+    <td>40</td>
+    <td>25</td>
+    <td>GPIO0_IRQn</td>
+</tr>
+<tr>
+    <td>GPIO1[9:0]</td>
+    <td>GPIOn_INTFL</td>
+    <td>41</td>
+    <td>26</td>
+    <td>GPIO1_IRQn</td>
+</tr>
+<tr>
+    <td>GPIO2[7:0]</td>
+    <td>GPIOn_INTFL</td>
+    <td>42</td>
+    <td>27</td>
+    <td>GPIO2_IRQn</td>
+</tr>
+</tbody>
+</table>
+
+<p>To handle GPIO interrupts in your interrupt vector handler, complete the following steps:</p>
+<ol>
+<li>Read the GPIOn_INTFL register to determine the GPIO pin that triggered the interrupt.</li>
+<li>Complete interrupt tasks associated with the interrupt source pin (application-defined).</li>
+<li>Clear the interrupt flag in the GPIOn_INTFL register by writing a 1 to the GPIOn_INTFL_CLR bit position that triggered the interrupt; this also clears and rearms the edge detectors for edge-triggered interrupts.</li>
+<li>Return from the interrupt vector handler.</li>
+</ol>
+<h3 id="using-gpio-for-wake-up-from-low-power-modes">Using GPIO for Wake Up from Low-Power Modes</h3>
+<p>Low-power modes support an asynchronous wake up from edge-triggered interrupts on the GPIO ports. Level triggered interrupts are not supported for wake up because the system clock must be active to detect
+levels.</p>
+<p>A single wake-up interrupt vector, GPIOWAKE_IRQn, is assigned for all pins of all GPIO ports. When the GPIO wake-up event occurs, the application software must interrogate each GPIOn_INTFL register to determine which external port pin caused the wake-up event.</p>
+<p><em>Table 6-10: MAX78000 GPIO Wakeup Interrupt Vector</em>
+<a name="table6-10-max78000-gpio-wakeup-interrupt-vector"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+    <th>GPIO Wake Interrupt Source</th>
+    <th>GPIO Wake Interrupt Status Register</th>
+    <th>CM4 Interrupt Vector Number</th>
+    <th>RV32 Interrupt Vector Number</th>
+    <th>GPIO Wake Interrupt Vector</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>GPIO0</td>
+    <td>GPIO0_INTFL</td>
+    <td>70</td>
+    <td>6</td>
+    <td>GPIOWAKE_IRQn</td>
+</tr>
+<tr>
+    <td>GPIO1</td>
+    <td>GPIO1_INTFL</td>
+    <td>70</td>
+    <td>6</td>
+    <td>GPIOWAKE_IRQn</td>
+</tr>
+<tr>
+    <td>GPIO2</td>
+    <td>GPIO2_INTFL</td>
+    <td>70</td>
+    <td>6</td>
+    <td>GPIOWAKE_IRQn</td>
+</tr>
+</tbody>
+</table>
+
+<p>To enable a low-power mode to wake up from <em>SLEEP</em>, <em>DEEPSLEEP</em>, <em>LPM</em>, <em>UPM</em>, and <em>BACKUP</em> using an external GPIO interrupt, complete the following steps:</p>
+<ol>
+<li>Clear pending interrupt flags by writing a logic 1 to GPIOn_INTFL_CLR.clr[pin].</li>
+<li>Activate the GPIO wake-up function by writing a logic 1 to GPIOn_WKEN.we[pin].</li>
+<li>Configure the power manager to use the GPIO as a wake-up source by GCR_PM.gpio_we field to 1.</li>
+</ol>
+<h2 id="registers">Registers</h2>
+<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the base address of this peripheral/module. If multiple instances of the peripheral are provided, each instance has its own independent set of the registers shown in <a href="#table6-11-gpio-register-summary">Table 6‑11</a>. Register names for a specific instance are defined by replacing "n" with the instance number. For example, a register PERIPHERALn_CTRL resolves to PERIPHERAL0_CTRL and PERIPHERAL1_CTRL for
+instances 0 and 1, respectively.</p>
+<p>See <a href="../#table1-1-field-access-definitions">Table 1-1</a> for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific
+resets.</p>
+<p><em>Table 6-11: GPIO Register Summary</em>
+<a name="table6-11-gpio-register-summary"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<tr>
+    <th>Offset</th>
+    <th>Register</th>
+    <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>[0x0000]</td>
+    <td><a href="#gpio-port-configuration-enable-bit0-register">GPIOn_EN0</a></td>
+    <td>GPIO Port n Configuration Enable Bit 0 Register</td>
+</tr>
+<tr>
+    <td>[0x0004]</td>
+    <td><a href="#gpio-port-configuration-enable-atomic-set-bit0-register">GPIOn_EN0_SET</a></td>
+    <td>GPIO Port n Configuration Enable Atomic Set Bit 0 Register</td>
+</tr>
+<tr>
+    <td>[0x0008]</td>
+    <td><a href="#gpio-port-configuration-enable-atomic-clear-bit0-register">GPIOn_EN0_CLR</a></td>
+    <td>GPIO Port n Configuration Enable Atomic Clear Bit 0 Register</td>
+</tr>
+<tr>
+    <td>[0x000C]</td>
+    <td><a href="#gpio-port-output-enable-register">GPIOn_OUTEN</a></td>
+    <td>GPIO Port n Output Enable Register</td>
+</tr>
+<tr>
+    <td>[0x0010]</td>
+    <td><a href="#gpio-port-output-enable-atomic-set-register">GPIOn_OUTEN_SET</a></td>
+    <td>GPIO Port n Output Enable Atomic Set Register</td>
+</tr>
+<tr>
+    <td>[0x0014]</td>
+    <td><a href="#gpio-port-output-enable-atomic-clear-register">GPIOn_OUTEN_CLR</a></td>
+    <td>GPIO Port n Output Enable Atomic Clear Register</td>
+</tr>
+<tr>
+    <td>[0x0018]</td>
+    <td><a href="#gpio-port-output-register">GPIOn_OUT</a></td>
+    <td>GPIO Port n Output Register</td>
+</tr>
+<tr>
+    <td>[0x001C]</td>
+    <td><a href="#gpio-port-output-atomic-set-register">GPIOn_OUT_SET</a></td>
+    <td>GPIO Port n Output Atomic Set Register</td>
+</tr>
+<tr>
+    <td>[0x0020]</td>
+    <td><a href="#gpio-port-output-atomic-clear-register">GPIOn_OUT_CLR</a></td>
+    <td>GPIO Port n Output Atomic Clear Register</td>
+</tr>
+<tr>
+    <td>[0x0024]</td>
+    <td><a href="#gpio-port-input-register">GPIOn_IN</a></td>
+    <td>GPIO Port n Input Register</td>
+</tr>
+<tr>
+    <td>[0x0028]</td>
+    <td><a href="#gpio-port-interrupt-mode-register">GPIOn_INTMODE</a></td>
+    <td>GPIO Port n Interrupt Mode Register</td>
+</tr>
+<tr>
+    <td>[0x002C]</td>
+    <td><a href="#gpio-port-interrupt-polarity-register">GPIOn_INTPOL</a></td>
+    <td>GPIO Port n Interrupt Polarity Register</td>
+</tr>
+<tr>
+    <td>[0x0030]</td>
+    <td><a href="#gpio-port-input-enable-register">GPIOn_INEN</a></td>
+    <td>GPIO Port n Input Enable Register</td>
+</tr>
+<tr>
+    <td>[0x0034]</td>
+    <td><a href="#gpio-port-interrupt-enable-register">GPIOn_INTEN</a></td>
+    <td>GPIO Port n Interrupt Enable Register</td>
+</tr>
+<tr>
+    <td>[0x0038]</td>
+    <td><a href="#gpio-port-interrupt-enable-atomic-set-register">GPIOn_INTEN_SET</a></td>
+    <td>GPIO Port n Interrupt Enable Atomic Set Register</td>
+</tr>
+<tr>
+    <td>[0x003C]</td>
+    <td><a href="#gpio-port-interrupt-enable-atomic-clear-register">GPIOn_INTEN_CLR</a></td>
+    <td>GPIO Port n Interrupt Enable Atomic Clear Register</td>
+</tr>
+<tr>
+    <td>[0x0040]</td>
+    <td><a href="#gpio-port-interrupt-status-register">GPIOn_INTFL</a></td>
+    <td>GPIO Port n Interrupt Status Register</td>
+</tr>
+<tr>
+    <td>[0x0048]</td>
+    <td><a href="#gpio-port-interrupt-clear-register">GPIOn_INTFL_CLR</a></td>
+    <td>GPIO Port n Interrupt Clear Register</td>
+</tr>
+<tr>
+    <td>[0x004C]</td>
+    <td><a href="#gpio-port-wakeup-enable-register">GPIOn_WKEN</a></td>
+    <td>GPIO Port n Wakeup Enable Register</td>
+</tr>
+<tr>
+    <td>[0x0050]</td>
+    <td><a href="#gpio-port-wakeup-enable-atomic-set-register">GPIOn_WKEN_SET</a></td>
+    <td>GPIO Port n Wakeup Enable Atomic Set Register</td>
+</tr>
+<tr>
+    <td>[0x0054]</td>
+    <td><a href="#gpio-port-wakeup-enable-atomic-clear-register">GPIOn_WKEN_CLR</a></td>
+    <td>GPIO Port n Wakeup Enable Atomic Clear Register</td>
+</tr>
+<tr>
+    <td>[0x005C]</td>
+    <td><a href="#gpio-port-interrupt-dial-edge-mode-register">GPIOn_DUALEDGE</a></td>
+    <td>GPIO Port n Interrupt Dual Edge Mode Register</td>
+</tr>
+<tr>
+    <td>[0x0060]</td>
+    <td><a href="#gpio-port-pad-configuration1-register">GPIOn_PADCTRL0</a></td>
+    <td>GPIO Port n Pad Configuration 1 Register</td>
+</tr>
+<tr>
+    <td>[0x0064]</td>
+    <td><a href="#gpio-port-pad-configuration2-register">GPIOn_PADCTRL1</a></td>
+    <td>GPIO Port n Pad Configuration 2 Register</td>
+</tr>
+<tr>
+    <td>[0x0068]</td>
+    <td><a href="#gpio-port-configuration-enable-bit1-register">GPIOn_EN1</a></td>
+    <td>GPIO Port n Configuration Enable Bit 1 Register</td>
+</tr>
+<tr>
+    <td>[0x006C]</td>
+    <td><a href="#gpio-port-configuration-enable-atomic-set-bit1-register">GPIOn_EN1_SET</a></td>
+    <td>GPIO Port n Configuration Enable Atomic Set Bit 1 Register</td>
+</tr>
+<tr>
+    <td>[0x0070]</td>
+    <td><a href="#gpio-port-configuration-enable-atomic-clar-bit1-register">GPIOn_EN1_CLR</a></td>
+    <td>GPIO Port n Configuration Enable Atomic Clear Bit 1 Register</td>
+</tr>
+<tr>
+    <td>[0x0074]</td>
+    <td><a href="#gpio-port-configuration-enable-bit2-register">GPIOn_EN2</a></td>
+    <td>GPIO Port n Configuration Enable Bit 2 Register</td>
+</tr>
+<tr>
+    <td>[0x0078]</td>
+    <td><a href="#gpio-port-configuration-enable-atomic-set-bit2-register">GPIOn_EN2_SET</a></td>
+    <td>GPIO Port n Configuration Enable Atomic Set Bit 2 Register</td>
+</tr>
+<tr>
+    <td>[0x007C]</td>
+    <td><a href="#gpio-port-configuration-enable-atomic-clear-bit2-register">GPIOn_EN2_CLR</a></td>
+    <td>GPIO Port n Configuration Enable Atomic Clear Bit 2 Register</td>
+</tr>
+<tr>
+    <td>[0x00A8]</td>
+    <td><a href="#gpio-port-hysteresis-enable-register">GPIOn_HYSEN</a></td>
+    <td>GPIO Port n Hysteresis Enable Register</td>
+</tr>
+<tr>
+    <td>[0x00AC]</td>
+    <td><a href="#gpio-port-slew-rate-select-register">GPIOn_SRSEL</a></td>
+    <td>GPIO Port n Slew Rate Select Register</td>
+</tr>
+<tr>
+    <td>[0x00B0]</td>
+    <td><a href="#gpio-port-output-drive-strength-bit0-register">GPIOn_DS0</a></td>
+    <td>GPIO Port n Output Drive Strength Bit 0 Register</td>
+</tr>
+<tr>
+    <td>[0x00B4]</td>
+    <td><a href="#gpio-port-output-drive-strength-bit1-register">GPIOn_DS11</a></td>
+    <td>GPIO Port n Output Drive Strength Bit 1 Register</td>
+</tr>
+<tr>
+    <td>[0x00B8]</td>
+    <td><a href="#gpio-port-pulldown-pullup-strength-select-register">GPIOn_PS</a></td>
+    <td>GPIO Port n Pulldown/Pullup Strength Select Register</td>
+</tr>
+<tr>
+    <td>[0x00C0]</td>
+    <td><a href="#gpio-port-voltage-select-register">GPIOn_VSSEL</a></td>
+    <td>GPIO Port n Voltage Select Register</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="register-details">Register Details</h3>
+<p><em>Table 6-12: GPIO Port n Configuration Enable Bit 0 Register</em>
+<a name="gpio-port-configuration-enable-bit0-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+   <tr>
+       <td colspan="3">GPIO Port n Configuration Enable Bit 0</td>
+       <td colspan="1">GPIOn_EN0</td>
+       <td>[0x0000]</td>
+   </tr>
+   <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+   </tr>
+    <tr>
+        <td>31:0</td>
+        <td>config</td>
+        <td>R/W</td>
+        <td>1</td>
+        <td><strong>GPIO Configuration Enable Bit 0</strong><br>
+        In conjunction with the bits in <a href="#table6-2-max78000-gpio-pin-function-configuration">Table 6‑2</a>, this field configures the corresponding device pin for digital I/O or an alternate function mode. This field can be modified directly by writing to this register or indirectly through <a href="#gpio-port-configuration-enable-atomic-set-bit0-register">GPIOn_EN0_SET</a> or <a href="#gpio-port-configuration-enable-atomic-clear-bit0-register">GPIOn_EN0_CLR</a>. 
+        <p><a href="#table6-5-max78000-gpio0-alternate-function-configuration-reference">Table 6‑5</a> depicts a detailed example of how each of these bits applies to each of the GPIO device pins</p>
+        <p><em>Note: Some GPIO are not implemented in all devices. Bits associated with unimplemented GPIO should not be changed from their default value.</em></p>
+        <p><em>Note: This register setting does not affect the input and interrupt functionality of the associated pin.</em></p>
+        </td>
+    </tr>
+</tbody>
+</table>
+
+<p><em>Table 6-13: GPIO Port n Configuration Enable Atomic Set Bit 0 Register</em>
+<a name="gpio-port-configuration-enable-atomic-set-bit0-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+   <tr>
+       <td colspan="3">GPIO Port n Configuration Enable Atomic Set Bit 0 Register</td>
+       <td colspan="1">GPIOn_EN0_SET</td>
+       <td>[0x0004]</td>
+   </tr>
+   <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+   </tr>
+    <tr>
+        <td>31:0</td>
+        <td>set</td>
+        <td>R/W1</td>
+        <td>0</td>
+            <td><strong>GPIO Configuration Enable Atomic Set Bit 0</strong><br> 
+            Writing 1 to one or more bits sets the corresponding bits in the <a href="#gpio-port-configuration-enable-bit0-register">GPIOn_EN0</a> register.<br>
+            <div style="margin-left: 20px">
+            0: No effect.<br>
+            1: Corresponding bits in <a href="#gpio-port-configuration-enable-bit0-register">GPIOn_EN0</a> register set to 1.
+            </div>
+        </td>
+</tr>
+</table>
+
+<p><em>Table 6-14: GPIO Port n Configuration Enable Atomic Clear Bit 0 Register</em>
+<a name="gpio-port-configuration-enable-atomic-clear-bit0-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+   <tr>
+       <td colspan="3">GPIO Port n Configuration Enable Atomic Clear Bit 0</td>
+       <td colspan="1">GPIOn_EN0_CLR</td>
+       <td>[0x0008]</td>
+   </tr>
+   <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+   </tr>
+    <tr>
+        <td>31:0</td>
+        <td>clr</td>
+        <td>R/W1</td>
+        <td>0</td>
+            <td><strong>GPIO Configuration Enable Atomic Clear Bit 0</strong><br> 
+            Writing 1 to one or more bits sets the corresponding bits in the <a href="#gpio-port-configuration-enable-bit0-register">GPIOn_EN0</a> register.<br>
+            <div style="margin-left: 20px">
+            0: No effect.<br>
+            1: Corresponding bits in <a href="#gpio-port-configuration-enable-bit0-register">GPIOn_EN0</a> register cleared to 0.
+            </div>
+        </td>
+</tr>
+</table>
+
+<p><em>Table 6-15: GPIO Port n Output Enable Register</em>
+<a name="gpio-port-output-enable-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+   <tr>
+       <td colspan="3">GPIO Port n Output Enable</td>
+       <td colspan="1">GPIOn_OUTEN</td>
+       <td>[0x000C]</td>
+   </tr>
+   <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+   </tr>
+    <tr>
+        <td>31:0</td>
+        <td>en</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>GPIO Output Enable</strong><br>
+        Set bit to 1 to enable the output driver for the corresponding GPIO pin. A bit can be enabled directly by writing to this register or indirectly through <a href="#gpio-port-output-enable-atomic-set-register">GPIOn_OUTEN_SET</a> or <a href="#gpio-port-output-enable-atomic-clear-register">GPIOn_OUTEN_CLR</a>.<br>
+        <div style="margin-left: 20px">
+        0: Pin is set to input mode; output driver disabled.<br>
+        1: Pin is set to output mode.
+        </div>
+        </td>
+</tr>
+</table>
+
+<p><em>Table 6-16: GPIO Port n Output Enable Atomic Set Register</em>
+<a name="gpio-port-output-enable-atomic-set-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+   <tr>
+       <td colspan="3">GPIO Port n Output Enable Atomic Set</td>
+       <td colspan="1">GPIOn_OUTEN_SET</td>
+       <td>[0x0010]</td>
+   </tr>
+   <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+   </tr>
+    <tr>
+        <td>31:0</td>
+        <td>set</td>
+        <td>R/W1</td>
+        <td>0</td>
+        <td><strong>GPIO Output Enable Atomic Set</strong><br>
+        Writing 1 to one or more bits sets the corresponding bits in the <a href="#gpio-port-output-enable-register">GPIOn_OUTEN</a> register.<br>
+        <div style="margin-left: 20px">
+        0: No effect.<br>
+        1: Corresponding bits in <a href="#gpio-port-output-enable-register">GPIOn_OUTEN</a> set to 1.</p>
+        </div>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-17: GPIO Port n Output Enable Atomic Clear Register</em>
+<a name="gpio-port-output-enable-atomic-clear-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+   <tr>
+       <td colspan="3">GPIO Port n Output Enable Atomic Clear</td>
+       <td colspan="1">GPIOn_OUTEN_CLR</td>
+       <td>[0x0014]</td>
+   </tr>
+   <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+   </tr>
+    <tr>
+        <td>31:0</td>
+        <td>clr</td>
+        <td>R/W1</td>
+        <td>0</td>
+        <td><strong>GPIO Output Enable Atomic Clear</strong><br> Writing 1 to one or more bits sets the corresponding bits in the <a href="#gpio-port-output-enable-register">GPIOn_OUTEN</a> register.<br>
+        <div style="margin-left: 20px">
+        0: No effect.<br>
+        1: Corresponding bits in <a href="#gpio-port-output-enable-register">GPIOn_OUTEN</a> cleared to 0.</p></div>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-18: GPIO Port n Output Register</em>
+<a name="gpio-port-output-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+       <td colspan="3">GPIO Port n Output</td>
+       <td colspan="1">GPIOn_OUT</td>
+       <td>[0x0018]</td>
+    </tr>
+    <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>level</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>GPIO Output</strong><br>Set the corresponding output pin high or low.
+        <div style="margin-left: 20px">
+        0: Drive the corresponding output pin low (logic 0).<br>
+        1: Drive the corresponding output pin high (logic 1).
+        </div>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-19: GPIO Port n Output Atomic Set Register</em>
+<a name="gpio-port-output-atomic-set-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+       <td colspan="3">GPIO Port n Output Atomic Set</td>
+       <td colspan="1">GPIOn_OUT_SET</td>
+       <td>[0x001C]</td>
+    </tr>
+    <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>set</td>
+        <td>R/W1</td>
+        <td>0</td>
+        <td><strong>GPIO Output Atomic Set</strong><br>Writing 1 to one or more bits sets the corresponding bits in the <a href="#gpio-port-output-register">GPIOn_OUT</a> register.<br>
+        <div style="margin-left: 20px">
+        0: No effect.<br>
+        1: Corresponding bits in <a href="#gpio-port-output-enable-register">GPIOn_OUTEN</a> set to 1.
+        </div>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-20: GPIO Port n Output Atomic Clear Register</em>
+<a name="gpio-port-output-atomic-clear-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+       <td colspan="3">GPIO Port n Output Atomic Clear</td>
+       <td colspan="1">GPIOn_OUT_CLR</td>
+       <td>[0x0020]</td>
+    </tr>
+    <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>clr</td>
+        <td>WO</td>
+        <td>0</td>
+        <td><strong>GPIO Output Atomic Clear</strong><br>
+        Writing 1 to one or more bits clears the corresponding bits in the <a href="#gpio-port-output-register">GPIOn_OUT</a> register.<br>
+        <div style="margin-left: 20px">
+        0: No effect.<br>
+        1: Corresponding bits in <a href="#gpio-port-output-enable-register">GPIOn_OUTEN</a> cleared to 0.
+        </div>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-21: GPIO Port n Input Register</em>
+<a name="gpio-port-input-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+       <td colspan="3">GPIO Port n Input</td>
+       <td colspan="1">GPIOn_IN</td>
+       <td>[0x0024]</td>
+    </tr>
+    <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>level</td>
+        <td>RO</td>
+        <td>-</td>
+        <td><strong>GPIO Input</strong><br> Returns the state of the input pin only if the corresponding bit in the <a href="#gpio-port-input-enable-register">GPIOn_INEN</a> register is set. The state is not affected by the pin's configuration as an output or alternate function.<br>
+        <div style="margin-left: 20px">
+        0: Input pin low<br>
+        1: Input pin high.</div>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-22: GPIO Port n Interrupt Mode Register</em>
+<a name="gpio-port-interrupt-mode-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+       <td colspan="3">GPIO Port n Interrupt Mode</td>
+       <td colspan="1">GPIOn_INTMODE</td>
+       <td>[0x0028]</td>
+    </tr>
+    <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>mode</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>GPIO Interrupt Mode</strong><br>
+        Selects interrupt mode for the corresponding GPIO pin.<br>
+        <div style="margin-left: 20px">
+        0: Level triggered interrupt.<br>
+        1: Edge triggered interrupt.
+        </div>
+        <p><em>Note: This bit has no effect unless the corresponding bit in the
+        <a href="#gpio-port-interrupt-enable-register">GPIOn_INTEN</a> register is set.</em></p>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-23: GPIO Port n Interrupt Polarity Register</em>
+<a name="gpio-port-interrupt-polarity-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+       <td colspan="3">GPIO Port n Interrupt Polarity</td>
+       <td colspan="1">GPIOn_INTPOL</td>
+       <td>[0x002C]</td>
+    </tr>
+    <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>pol</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>GPIO Interrupt Polarity</strong><br>
+        Interrupt polarity selection bit for the corresponding GPIO pin.<br>
+        Level triggered mode (<a href="#gpio-port-interrupt-mode-register">GPIOn_INTMODE</a>.<em>mode[pin]</em> = 0):<br>
+            <div style="margin-left: 20px">
+            0: Input low (logic 0) triggers interrupt.<br>
+            1: Input high (logic 1) triggers interrupt.
+            </div> <br>
+        Edge triggered mode
+        (<a href="#gpio-port-interrupt-mode-register">GPIOn_INTMODE</a>.<em>mode[pin]</em> = 1):
+        <div style="margin-left: 20px">
+        0: Falling edge triggers interrupt<br>
+        1: Rising edge triggers interrupt.
+        </div>
+        <p><em>Note: This bit has no effect unless the corresponding bit in the
+        <a href="#gpio-port-interrupt-enable-register">GPIOn_INTEN</a> register is set.</em></p></td>
+    </tr>
+</table>
+
+<p><em>Table 6-24: GPIO Port n Input Enable Register</em>
+<a name="gpio-port-input-enable-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+       <td colspan="3">GPIO Port n Input Enable</td>
+       <td colspan="1">GPIOn_INEN</td>
+       <td>[0x0030]</td>
+    </tr>
+    <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>en</td>
+        <td>R/W</td>
+        <td>1</td>
+        <td><strong>GPIO Input Enable</strong><br> This field connects the corresponding input pad to the specified input pin for reading the pin state using the <a href="#gpio-port-input-register">GPIOn_IN</a> register.<br>
+            <div style="margin-left: 20px">
+            0: Input not connected.<br>
+            1: Input pin connected to the pad for reading through <a href="#gpio-port-input-register">GPIOn_IN</a> register.
+            </div>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-25: GPIO Port n Interrupt Enable Register</em>
+<a name="gpio-port-interrupt-enable-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+       <td colspan="3">GPIO Port n Interrupt Enable</td>
+       <td colspan="1">GPIOn_INTEN</td>
+       <td>[0x0034]</td>
+    </tr>
+    <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>en</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>GPIO Interrupt Enable</strong><br>
+        Enable or disable the interrupt for the corresponding GPIO pin.<br>
+        <div style="margin-left: 20px">
+        0: Disabled.<br>
+        1: Enabled.
+        </div>
+        <p><em>Note: Disabling a GPIO interrupt does not clear pending interrupts
+        for the associated pin. Use the <a href="#gpio-port-interrupt-clear-register">GPIOn_INTFL_CLR</a> register to clear
+        pending interrupts.</em></p>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-26: GPIO Port n Interrupt Enable Atomic Set Register</em>
+<a name="gpio-port-interrupt-enable-atomic-set-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+       <td colspan="3">GPIO Port Interrupt Enable Atomic Set</td>
+       <td colspan="1">GPIOn_INTEN_SET</td>
+       <td>[0x0038]</td>
+    </tr>
+    <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>set</td>
+        <td>R/W1</td>
+        <td>0</td>
+        <td><strong>GPIO Interrupt Enable Atomic Set</strong><br>
+        Writing 1 to one or more bits sets the corresponding bits in the <a href="#gpio-port-interrupt-enable-register">GPIOn_INTEN</a> register.<br>
+        <div style="margin-left: 20px">
+        0: No effect.<br>
+        1: Corresponding bits in <a href="#gpio-port-interrupt-enable-register">GPIOn_INTEN</a> register set to 1.
+        </div>
+        </td>
+    </tr>
+</tbody>
+</table>
+
+<p><em>Table 6-27: GPIO Port n Interrupt Enable Atomic Clear Register</em>
+<a name="gpio-port-interrupt-enable-atomic-clear-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+       <td colspan="3">GPIO Port Interrupt Enable Atomic Clear</td>
+       <td colspan="1">GPIOn_INTEN_CLR</td>
+       <td>[0x003C]</td>
+    </tr>
+    <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>clr</td>
+        <td>R/W1</td>
+        <td>0</td>
+        <td><strong>GPIO Interrupt Enable Atomic Clear</strong><br>
+        Writing 1 to one or more bits clears the corresponding bits in the <a href="#gpio-port-interrupt-enable-register">GPIOn_INTEN</a> register.<br>
+        <div style="margin-left: 20px">
+        0: No effect.<br>
+        1: Corresponding bits in <a href="#gpio-port-interrupt-enable-register">GPIOn_INTEN</a> register cleared to 0.
+        </div>
+        </td>
+</tr>
+</table>
+
+<p><em>Table 6-28: GPIO Port n Interrupt Status Register</em>
+<a name="gpio-port-interrupt-enable-atomic-clear-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+       <td colspan="3">GPIO Port Interrupt Status</td>
+       <td colspan="1">GPIOn_INTFL</td>
+       <td>[0x0040]</td>
+    </tr>
+    <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>if</td>
+        <td>RO</td>
+        <td>0</td>
+        <td><strong>GPIO Interrupt Status</strong><br>
+        An interrupt is pending for the associated GPIO pin when this bit reads 1.<br>
+        <div style="margin-left: 20px">
+        0: No GPIO interrupt is pending for the associated GPIO pin.<br>
+        1: A GPIO interrupt is pending for the associated GPIO pin.
+        </div>
+        <p><em>Note: Write a 1 to the corresponding bit in the <a href="#gpio-port-interrupt-clear-register">GPIOn_INTFL_CLR</a>
+        register to clear the interrupt pending status flag.</em></p>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-29: GPIO Port n Interrupt Clear Register</em>
+<a name="gpio-port-interrupt-enable-atomic-clear-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+       <td colspan="3">GPIO Port Interrupt Clear</td>
+       <td colspan="1">GPIOn_INTFL_CLR</td>
+       <td>[0x0048]</td>
+    </tr>
+    <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>clr</td>
+        <td>R/W1C</td>
+        <td>0</td>
+        <td><strong>GPIO Interrupt Clear</strong><br>
+        Write 1 to clear the associated interrupt status (<a href="#gpio-port-interrupt-status-register">GPIOn_INTFL</a>).<br>
+        <div style="margin-left: 20px">
+        0: No effect on the associated <a href="#gpio-port-interrupt-status-register">GPIOn_INTFL</a> flag.<br>
+        1: Clear the associated interrupt pending flag in the <a href="#gpio-port-interrupt-status-register">GPIOn_INTFL</a> register.
+        </div>
+        </td>
+</tr>
+</table>
+
+<p><em>Table 6-30: GPIO Port n Wakeup Enable Register</em>
+<a name="gpio-port-wakeup-enable-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+       <td colspan="3">GPIO Port n Wakeup Enable</td>
+       <td colspan="1">GPIOn_WKEN</td>
+       <td>[0x004C]</td>
+    </tr>
+    <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>we</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>GPIO Wakeup Enable</strong><br>
+        Enable the I/O as a wake-up source from <em>SLEEP</em>, <em>DEEPSLEEP</em>, and <em>BACKUP</em>.<br>
+        <div style="margin-left: 20px">
+        0: The GPIO pin is not enabled as a wake-up source from low-power modes.<br>
+        1: The GPIO pin is enabled as a wake-up source from low-power modes.
+        </div>
+        </td>
+</tr>
+</table>
+
+<p><em>Table 6-31: GPIO Port n Wakeup Enable Atomic Set Register</em>
+<a name="gpio-port-wakeup-enable-atomic-set-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+       <td colspan="3">GPIO Port Wakeup Enable Atomic Set</td>
+       <td colspan="1">GPIOn_WKEN_SET</td>
+       <td>[0x0050]</td>
+    </tr>
+    <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>set</td>
+        <td>R/W1</td>
+        <td>0</td>
+        <td><strong>GPIO Wakeup Enable Atomic Set</strong><br>
+        Writing 1 to one or more bits sets the corresponding bits in the <a href="#gpio-port-wakeup-enable-register">GPIOn_WKEN</a> register.<br>
+        <div style="margin-left: 20px">
+        0: No effect.<br>
+        1: Corresponding bits in <a href="#gpio-port-wakeup-enable-register">GPIOn_WKEN</a> register set to 1.
+        </div>
+        </td>
+</tr>
+</table>
+
+<p><em>Table 6-32: GPIO Port n Wakeup Enable Atomic Clear Register</em>
+<a name="gpio-port-wakeup-enable-atomic-clear-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+       <td colspan="3">GPIO Port Wakeup Enable Atomic Clear</td>
+       <td colspan="1">GPIOn_WKEN_CLR</td>
+       <td>[0x0054]</td>
+    </tr>
+    <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>clr</td>
+        <td>R/W1</td>
+        <td>0</td>
+        <td><strong>GPIO Wakeup Enable Atomic Clear</strong><br>
+        Writing 1 to one or more bits clears the corresponding bits in the <a href="#gpio-port-wakeup-enable-register">GPIOn_WKEN</a> register.<br>
+        <div style="margin-left: 20px">
+        0: No effect.<br>
+        1: Corresponding bits in <a href="#gpio-port-wakeup-enable-register">GPIOn_WKEN</a> register cleared to 0.
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-33: GPIO Port n Interrupt Dual Edge Mode Register</em>
+<a name="gpio-port-interrupt-dial-edge-mode-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+       <td colspan="3">GPIO Port n Interrupt Dual Edge Mode</td>
+       <td colspan="1">GPIOn_DUALEDGE</td>
+       <td>[0x005C]</td>
+    </tr>
+    <tr>
+       <th>Bits</th>
+       <th>Name</th>
+       <th>Access</th>
+       <th>Reset</th>
+       <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>de_en</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>GPIO Interrupt Dual-Edge Mode Select</strong><br>
+        Setting this bit triggers interrupts on both the rising and falling edges of the corresponding GPIO if the associated <a href="#gpio-port-interrupt-mode-register">GPIOn_INTMODE</a> bit is set to edge-triggered. The associated polarity (<a href="#gpio-port-interrupt-polarity-register">GPIOn_INTPOL</a>) setting has no effect when this bit is set.<br>
+        <div style="margin-left: 20px">
+        0: Disable<br>
+        1: Enable
+        </div>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-34: GPIO Port n Pad Configuration 1 Register</em>
+<a name="gpio-port-pad-configuration1-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">GPIO Port n Pad Configuration 1</td>
+        <td colspan="1">GPIOn_PADCTRL0</td>
+        <td>[0x0060]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>config</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>GPIO Pad Configuration 1</strong><br>
+        Input mode configuration for the associated GPIO pin. Input mode selection and the choice of a weak or strong pullup, or weak or strong pulldown resistor, are described in <a href="#table6-3-max78000-input-mode-configuration">Table 6‑3</a>.
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-35: GPIO Port n Pad Configuration 2 Register</em>
+<a name="gpio-port-pad-configuration2-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">GPIO Port n Pad Configuration 2</td>
+        <td colspan="1">GPIOn_PADCTRL1</td>
+        <td>[0x0064]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>config</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>GPIO Pad Configuration 2</strong><br>
+        Input mode configuration for the associated GPIO pin. Input mode selection and the choice of a weak or strong pullup, or weak or strong pulldown resistor, are described in <a href="#table6-3-max78000-input-mode-configuration">Table 6‑3</a>.
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-36: GPIO Port n Configuration Enable Bit 1 Register</em>
+<a name="gpio-port-n-pad-configuration-2-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">GPIO Port n Configuration Enable Bit 1</td>
+        <td>GPIOn_EN1</td>
+        <td>[0x0068]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>config</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>GPIO Configuration Enable Bit 1</strong><br>
+        In conjunction with the bits in Table 6-2, this field configures the corresponding device pin for digital I/O or an alternate function mode. This field can be modified directly by writing to this register or indirectly through the <a href="#gpio-port-configuration-enable-atomic-set-bit1-register">GPIOn_EN1_SET</a> or <a href="#gpio-port-configuration-enable-atomic-clar-bit1-register">GPIOn_EN1_CLR</a> registers.
+        <p><a href="#table6-5-max78000-gpio0-alternate-function-configuration-reference">Table 6‑5</a> depicts a detailed example of how each of these bits applies to each of the GPIO device pins</p>
+        <p><em>Note: Some GPIO are not implemented in all devices. The bits associated with unimplemented GPIO should not be changed from their default value.</em></p>
+        <p><em>Note: This register setting does not affect input and interrupt functionality of the associated pin.</em></p>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-37: GPIO Port n Configuration Enable Atomic Set Bit 1 Register</em>
+<a name="gpio-port-configuration-enable-atomic-set-bit1-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">GPIO Port n Configuration Enable Atomic Set Bit 1</td>
+        <td>GPIOn_EN1_SET</td>
+        <td>[0x006C]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>set</td>
+        <td>R/W1</td>
+        <td>0</td>
+        <td><strong>GPIO Configuration Enable Atomic Set Bit 1</strong><br>
+        Writing 1 to one or more bits sets the corresponding bits in the <a href="#gpio-port-configuration-enable-bit1-register">GPIOn_EN1</a> register.<br>
+        <div style="margin-left: 20px">
+        0: No effect.<br>
+        1: Corresponding bits in <a href="#gpio-port-configuration-enable-bit1-register">GPIOn_EN1</a> register set to 1.
+        </div>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-38: GPIO Port n Configuration Enable Atomic Clear Bit 1 Register</em>
+<a name="gpio-port-n-configuration-enable-atomic-clear-bit-1-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">GPIO Port n Configuration Enable Atomic Clear Bit 1</td>
+        <td>GPIOn_EN1_CLR</td>
+        <td>[0x0070]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>clr</td>
+        <td>R/W1</td>
+        <td>0</td>
+        <td><strong>GPIO Configuration Enable Atomic Clear Bit 1</strong><br>
+        Writing 1 to one or more bits clears the corresponding bits in the <a href="#gpio-port-configuration-enable-bit1-register">GPIOn_EN1</a> register.<br>
+        <div style="margin-left: 20px;">
+            0: No effect.<br>
+            1: Corresponding bits in <a href="#gpio-port-configuration-enable-bit1-register">GPIOn_EN1</a> register cleared to 0.
+        </div>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-39: GPIO Port n Configuration Enable Bit 2 Register</em>
+<a name="gpio-port-configuration-enable-bit2-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">GPIO Port n Configuration Enable Bit 2</td>
+        <td>GPIOn_EN2</td>
+        <td>[0x0074]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>config</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>GPIO Configuration Enable Bit 2</strong><br>
+        In conjunction with the bits in <a href="#table6-2-max78000-gpio-pin-function-configuration">Table 6‑2</a>, this field configures the corresponding device pin for digital I/O or an alternate function mode. This field can be modified directly by writing to this register or indirectly through <a href="#gpio-port-configuration-enable-atomic-set-bit2-register">GPIOn_EN2_SET</a> or <a href="#gpio-port-configuration-enable-atomic-clear-bit2-register">GPIOn_EN2_CLR</a>.
+        <p><a href="#table6-5-max78000-gpio0-alternate-function-configuration-reference">Table 6‑5</a> depicts a detailed example of how each of these bits applies to each of the GPIO device pins.</p>
+        <p><em>Note: Some GPIO are not implemented in all devices. The bits associated with unimplemented GPIO should not be changed from their default value.</p>
+        <em>Note:This register setting does not affect input and interrupt functionality of the associated pin.</em>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-40: GPIO Port n Configuration Enable Atomic Set Bit 2 Register</em>
+<a name="gpio-port-configuration-enable-atomic-set-bit2-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">GPIO Port n Configuration Enable Atomic Set Bit 2</td>
+        <td>GPIOn_EN2_SET</td>
+        <td>[0x0078]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>set</td>
+        <td>R/W1</td>
+        <td>0</td>
+        <td><strong>GPIO Alternate Function Select Atomic Set Bit 2</strong><br>
+        Writing 1 to one or more bits sets the corresponding bits in the <a href="#gpio-port-configuration-enable-bit2-register">GPIOn_EN2</a> register.<br>
+        <div style="margin-left: 20px;">
+            0: No effect.<br>
+            1: Corresponding bits in <a href="#gpio-port-configuration-enable-bit2-register">GPIOn_EN2</a> register set to 1.
+        </div>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-41: GPIO Port n Configuration Enable Atomic Clear Bit 2 Register</em>
+<a name="gpio-port-configuration-enable-atomic-clear-bit2-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">GPIO Port n Configuration Enable Atomic Clear Bit 2</td>
+        <td>GPIOn_EN2_CLR</td>
+        <td>[0x007C]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>clr</td>
+        <td>R/W1</td>
+        <td>0</td>
+        <td><strong>GPIO Alternate Function Select Atomic Clear Bit 2</strong><br>
+        Writing 1 to one or more bits clears the corresponding bits in the <a href="#gpio-port-configuration-enable-bit2-register">GPIOn_EN2</a> register.<br>
+        <div style="margin-left: 20px;">
+            0: No effect.<br>
+            1: Corresponding bits in <a href="#gpio-port-configuration-enable-bit2-register">GPIOn_EN2</a> register cleared to 0.
+        </div>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-42: GPIO Port n Hysteresis Enable Register</em>
+<a name="gpio-port-hysteresis-enable-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">GPIO Port n Hysteresis Enable</td>
+        <td>GPIOn_HYSEN</td>
+        <td>[0x00A8]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>en</td>
+        <td>RO</td>
+        <td>0</td>
+        <td>Reserved</td>
+    </tr>
+</table>
+
+<p><em>Table 6-43: GPIO Port n Slew Rate Select Register</em>
+<a name="gpio-port-slew-rate-select-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">GPIO Port n Slew Rate Select Register</td>
+        <td>GPIOn_SRSEL</td>
+        <td>[0x00AC]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>sr_sel</td>
+        <td>RO</td>
+        <td>0</td>
+        <td>Reserved</td>
+    </tr>
+</table>
+
+<p><em>Table 6-44: GPIO Port n Output Drive Strength Bit 0 Register</em>
+<a name="gpio-port-output-drive-strength-bit0-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">GPIO Port n Output Drive Strength Bit 0</td>
+        <td>GPIOn_DS0</td>
+        <td>[0x00B0]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>config</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>GPIO Output Drive Strength Selection 0</strong><br>
+        See <a href="#table6-4-max78000-output-mode-configuration">Table 6-4</a> for details on setting the GPIO output drive strength and other electrical characteristics.
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-45: GPIO Port n Output Drive Strength Bit 1 Register</em>
+<a name="gpio-port-output-drive-strength-bit1-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">GPIO Port n Output Drive Strength Bit 1</td>
+        <td>GPIOn_DS11</td>
+        <td>[0x00B4]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>config</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>GPIO Output Drive Strength Selection 1</strong><br>
+        See <a href="#table6-4-max78000-output-mode-configuration">Table 6-4</a> for details on setting the GPIO output drive strength and other electrical characteristics.
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-46: GPIO Port n Pulldown/Pullup Strength Select Register</em>
+<a name="gpio-port-pulldown-pullup-strength-select-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">GPIO Port n Pulldown/Pullup Strength Select Register</td>
+        <td>GPIOn_PS</td>
+        <td>[0x00B8]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>pull_sel</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td>
+            <strong>GPIO Pulldown/Pullup Strength Select</strong><br>
+            This field selects the strength of the pullup or pulldown resistor for a pin configured for input mode.<br>
+            <div style="margin-left: 20px;">
+                0: Weak pulldown/pullup resistor for input pin.<br>
+                1: Strong pulldown/pullup resistor for input pin.
+            </div>
+            <p><em>Note: Refer to the data sheet for specific electrical characteristics of the pulldown/pullup resistances.</em></p>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 6-47: GPIO Port n Voltage Select Register</em>
+<a name="gpio-port-voltage-select-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">GPIO Port n Voltage Select</td>
+        <td>GPIOn_VSSEL</td>
+        <td>[0x00C0]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>v_sel</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td>
+            <strong>GPIO Supply Voltage Select</strong><br>
+            This field selects the voltage rail used for the GPIO pin.<br>
+            <div style="margin-left: 20px;">
+                0: V<sub>DDIO</sub><br>
+                1: V<sub>DDIOH</sub>
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Analog Devices
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/analog-devices/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/analogdevicesinc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["search.suggest", "search.highlight", "navigation.tracking"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

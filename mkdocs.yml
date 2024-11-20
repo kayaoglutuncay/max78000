@@ -3,12 +3,16 @@ site_url: https://kayaoglutuncay.github.io/max78000/
 docs_dir: src
 site_dir: docs
 nav:
-  - Home: index.md
   - Overview: overview.md
   - Memory, Register, Mapping: memory-register-mapping-access.md
   - System, Power, Clocks, Reset: system-power-clocks-reset.md
-  - Flash Controller: flash-controller.md
   - Interrupts and Exceptions: interrupts-exceptions.md
+  - General-Purpose I/O and Alternate Function Pins (GPIO): gpio.md
+  - Debug Access Port: debug-access-port.md
+  - Semaphore: semaphore.md
+  - Flash Controller: flash-controller.md
+  - Document Conventions: index.md
+  - Revision History: revision.md
 theme:
   name: material
   features:

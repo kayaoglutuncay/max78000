@@ -242,7 +242,7 @@ Mass erase clears the internal flash memory on an instance basis. Perform the fo
 8. Set [FLC_CTRL](#flash-controller-clock-register).*unlock* to any value other than 2 to re-lock the flash instance.
 
 ## Registers
-See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and peripheral-specific resets.
+See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the base address of this peripheral/module. See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
 
 *Note: The FLC registers are reset only on a POR. System reset, soft reset, and peripheral reset do not affect the FLC register values.*
 

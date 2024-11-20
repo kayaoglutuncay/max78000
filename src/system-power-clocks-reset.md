@@ -700,9 +700,9 @@ Four device resets are available:
 
 On completion of any of the four reset cycles, all peripherals are reset. On completion of any reset cycle, HCLK and PCLK are operational, the CPU core receives clocks and power, and the device is in ACTIVE. Program execution begins at the reset vector address.
 
-The contents of the always-on domain (AoD) are reset only on power-cycling VCOREA, VCOREB, VDDA, VDDIOH, or VREGI.
+The contents of the always-on domain (AoD) are reset only on power-cycling V<sub>COREA</sub>, V<sub>COREB</sub>, V<sub>DDA</sub>, V<sub>DDIOH</sub>, or V<sub>REGI</sub>.
 
-The on-chip peripherals can also be reset to their POR default state using the two reset registers, GCR_RST0 and GCR_RST1.
+The on-chip peripherals can also be reset to their POR default state using the two reset registers, <a href="#reset-register0">GCR_RST0</a> and <a href="#reset-register1">GCR_RST1</a>.
 
 [Table 4-5](#table4-5-reset-and-low-power-mode-effects) shows the effects of each reset type on each of the operating modes.
 
@@ -938,53 +938,54 @@ The on-chip peripherals can also be reset to their POR default state using the t
 ### Peripheral Reset
 Peripheral reset resets all peripherals. The CPU retains its state. The GPIO, watchdog timers, AoD, RAM retention, and general control registers (GCR), including the clock configuration, are unaffected.
 
-To start a peripheral reset, set GCR_RST0.periph to 1. The reset is completed immediately upon setting GCR_RST0.periph to 1.
+To start a peripheral reset, set <a href="#reset-register0">GCR_RST0</a>.<em>periph</em> to 1. The reset is completed immediately upon setting <a href="#reset-register0">GCR_RST0</a>.<em>periph</em> to 1.
 
 ### Soft Reset
 A soft reset is the same as a peripheral reset except that it also resets the GPIO to its POR state.
 
-To perform a soft reset, set GCR_RST0.soft to 1. The reset occurs immediately upon setting GCR_RST0.soft to 1.
+To perform a soft reset, set <a href="#reset-register0">GCR_RST0</a>.<em>soft</em> to 1. The reset occurs immediately upon setting <a href="#reset-register0">GCR_RST0</a>.<em>soft</em> to 1.
 
 ### System Reset
 A system reset is the same as a soft reset, except it also resets all GCR, resetting the clocks to their POR default state. The CPU state is reset, as well as the watchdog timers. The AoD and RAM are unaffected.
 
-A watchdog timer reset event initiates a system reset. To start a system reset, set GCR_RST0.sys to 1.
+A watchdog timer reset event initiates a system reset. To start a system reset, set <a href="#reset-register0">GCR_RST0</a>.<em>sys</em> to 1.
 
 ### Power-On Reset
 A POR resets everything in the device to its default state. A POR results from V<sub>COREA</sub>, V<sub>COREB</sub>, V<sub>DDA</sub>, or V<sub>REGI</sub> falling below their reset voltage level. Refer to the MAX78000 data sheet for details of the reset voltage levels.
 
 ## Unified Internal Cache Controllers
-The MAX78000 includes two unified internal cache controllers. ICC0 is the cache controller used for the CM4. ICC1, if enabled, is dedicated to the RV32 core. ICC1 uses sysram3 as the cache memory. If ICC1 is enabled, sysram3 is not accessible as SRAM (address range 0x2001 C000 to 0x2001 FFFF).
+The MAX78000 includes two unified internal cache controllers. ICC0 is the cache controller used for the CM4. ICC1, if enabled, is dedicated to the RV32 core. ICC1 uses *sysram3* as the cache memory. If ICC1 is enabled, *sysram3* is not accessible as SRAM (address range 0x2001 C000 to 0x2001 FFFF).
 
 Both caches, ICC0 and ICC1, include a line buffer, tag RAM, and a 16KB 2-way set associative RAM when enabled.
 
 ### Enabling the Internal Cache Controllers
 Enabling ICC1 for use as the cache controller for the RV32 requires using *sysram3* as the cache memory.
 *Note: The contents of sysram3 are lost when ICC1 is enabled, and sysram3 is not accessible for data reads or writes as part of the memory map.*
+
 *Note: Before enabling ICC1 as a cache controller, sysram3 should be zeroized.*
 
 Perform the following steps to enable each ICC:
 
-1. Set the ICCn_CTRL.en to 0, ensuring the cache is invalidated when enabled.
-2. Set ICCn_CTRL.en to 1.
-3. Read ICCn_CTRL.rdy until it returns 1.
-4. Zeroize the ICC instance by setting GCR_MEMZ.icc0 or GCR_MEMZ.icc1 to 1.
+1. Set the <a href="#instruction-cache-control-register">ICCn_CTRL</a>.<em>en</em> to 0, ensuring the cache is invalidated when enabled.
+2. Set <a href="#instruction-cache-control-register">ICCn_CTRL</a>.<em>en</em> to 1.
+3. Read <a href="#instruction-cache-control-register">ICCn_CTRL</a>.<em>rdy</em> until it returns 1.
+4. Zeroize the ICC instance by setting <a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>icc0</em> or <a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>icc1</em> to 1.
 
 ### Disabling the ICC
-Disable an ICC instance by setting ICCn_CTRL.en to 0.
+Disable an ICC instance by setting <a href="#instruction-cache-control-register">ICCn_CTRL</a>.<em>en</em> to 0.
 
-To use sysram3 as data RAM, first, disable the ICC1 instance as described above. When ICC1 is disabled, sysram3 is accessible as data RAM by both the CM4 and RV32 controllers unless sysram3 is configured for exclusive access by the RV32 core only.
+To use *sysram3* as data RAM, first, disable the ICC1 instance as described above. When ICC1 is disabled, *sysram3* is accessible as data RAM by both the CM4 and RV32 controllers unless *sysram3* is configured for exclusive access by the RV32 core only.
 
 ### Invalidating the ICC Cache and Tag RAM
-Invalidate the contents of a specific ICC instance by setting the ICCn_INVALIDATE register to 1. Once invalidated, the system flushes the cache. Read the ICCn_CTRL.rdy field until it returns 1 to determine when the flush is completed.
+Invalidate the contents of a specific ICC instance by setting the ICCn_INVALIDATE register to 1. Once invalidated, the system flushes the cache. Read the <a href="#instruction-cache-control-register">ICCn_CTRL</a>.<em>rdy</em> field until it returns 1 to determine when the flush is completed.
 
 ### Flushing the ICC
-Flush ICC0 using the system configuration register (GCR_SYSCTRL). Set GCR_SYSCTRL.icc0_flush to 1 to immediately flush the contents of the 16KB cache and tag RAM.
+Flush ICC0 using the system configuration register (GCR_SYSCTRL). Set <a href="#system-control-register">GCR_SYSCTRL</a>.<em>icc0_flush</em> to 1 to immediately flush the contents of the 16KB cache and tag RAM.
 
-Flush ICC1 using the RV32 Control Register (FCR_URVCTRL). Set FCR_URVCTRL.icc1_flush to 1 to immediately flush the contents of the 16KB cache and tag RAM.
+Flush ICC1 using the RV32 Control Register (FCR_URVCTRL). Set <a href="#rv32-control-register">FCR_URVCTRL</a>.<em>icc1_flush</em> to 1 to immediately flush the contents of the 16KB cache and tag RAM.
 
 ### Internal Cache Control Registers (ICC)
-See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
+See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the base address of this peripheral/module. See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
 
 *Table 4-6: Instruction Cache Controller Register Summary*
 <a name="table4-6-instruction-cache-controller-register-summary"></a>
@@ -1196,20 +1197,20 @@ This device has many features for managing the on-chip RAM. The on-chip RAM incl
 The MAX78000 includes two unified internal cache controllers for code and data fetches from the flash memory. The caches can be enabled, disabled, zeroized, and flushed. See section [Unified Internal Cache Controller](#unified-internal-cache-controllers) for details.
 
 ### RAM Zeroization
-The GCR memory zeroize register, GCR_MEMZ, allows clearing memory for software or security reasons. Zeroization writes all zeros to the specified memory.
+The GCR memory zeroize register, <a href="#memory-zeroize-register">GCR_MEMZ</a>, allows clearing memory for software or security reasons. Zeroization writes all zeros to the specified memory.
 
 The following SRAM memories can be zeroized:
 
-- Each of the System RAMs can be individually zeroized by setting the respective GCR_MEMZ bit:
-    - GCR_MEMZ.ram0
-    - GCR_MEMZ.ram0ecc
-    - GCR_MEMZ.ram1
-    - GCR_MEMZ.ram2
-    - GCR_MEMZ.ram3
+- Each of the System RAMs can be individually zeroized by setting the respective <a href="#memory-zeroize-register">GCR_MEMZ</a> bit:
+    - <a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>ram0</em>
+    - <a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>ram0ecc</em>
+    - <a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>ram1</em>
+    - <a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>ram2</em>
+    - <a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>ram3</em>
 - ICC0 16KB Cache
-- GCR_MEMZ.icc0
+- <a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>icc0</em>
 - ICC1 16KB Cache, if enabled
-    - GCR_MEMZ.icc1
+    - <a href="#memory-zeroize-register">GCR_MEMZ</a>.<em>icc1</em>
     - Each of the CNNx16n processor arrays supports zeroizing the tornado RAM, mask RAM, bias RAM, and data SRAM:
     - CNNx16_n_TEST.tramz set to 1 to zero, read CNNx16_n_TEST.tallzdone until 1 for completion
     - CNNx16_n_TEST.mramz set to 1 to zero, read CNNx16_n_TEST.mallzdone until 1 for completion
@@ -1217,7 +1218,7 @@ The following SRAM memories can be zeroized:
     - CNNx16_n_TEST.sramz set to 1 to zero, read CNNx16_n_TEST.sallzdone until 1 for completion
 
 ## Miscellaneous Control Registers (MCR)
-See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the base address of this peripheral/module. See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
+See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the base address of this peripheral/module. See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
 
 *Table 4-11: Miscellaneous Control Register Summary*
 <a name="table4-11-miscellaneous-control-register-summary"></a>
@@ -1336,10 +1337,10 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>trim_range</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>Trim Range Select</strong><br>If this bit is set to 1, the value loaded into the MCR_IPO_MTRIM.mtrim field must be greater than the trim setting in the TRIMSIR_IPOLO.ipo_limitlo field. If this bit is set to 0, the value loaded into the MCR_IPO_MTRIM.mtrim field must be less than the trim setting in the TRIMSIR_CTRL.ipo_limithi field.
+    <td><strong>Trim Range Select</strong><br>If this bit is set to 1, the value loaded into the <a href="#ipo-manual-trim-register">MCR_IPO_MTRIM</a>.<em>mtrim</em> field must be greater than the trim setting in the <a href="#system-initialization-function-register">TRIMSIR_IPOLO</a>.<em>ipo_limitlo</em> field. If this bit is set to 0, the value loaded into the <a href="#ipo-manual-trim-register">MCR_IPO_MTRIM</a>.<em>mtrim</em> field must be less than the trim setting in the <a href="#control-trim-system-initialization-register">TRIMSIR_CTRL</a>.<em>ipo_limithi</em> field.
         <div style="margin-left: 20px">
-            0: MCR_IPO_MTRIM.mtrim < TRIMSIR_IPOLO.ipo_limitlo<br>
-            1: MCR_IPO_MTRIM.mtrim > TRIMSIR_CTRL.ipo_limithi
+            0: <a href="#ipo-manual-trim-register">MCR_IPO_MTRIM</a>.<em>mtrim</em> < <a href="#system-initialization-function-register">TRIMSIR_IPOLO</a>.<em>ipo_limitlo</em><br>
+            1: <a href="#ipo-manual-trim-register">MCR_IPO_MTRIM</a>.<em>mtrim</em> > <a href="#control-trim-system-initialization-register">TRIMSIR_CTRL</a>.<em>ipo_limithi</em>
         </div>   
     </td>
   </tr>
@@ -1349,9 +1350,9 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>R/W</td>
     <td>0x04</td>
     <td><strong>Manual Trim Value</strong><br>
-    Set this value to the desired manual trim based on the value set in MCR_IPO_MTRIM.trim_range.<br>
-    If MCR_IPO_MTRIM.trim_range is 0, the value in this field must be less than the value in TRIMSIR_IPOLO.ipo_limitlo.<br>
-    If MCR_IPO_MTRIM.trim_range is 1, the value in this field must be greater than the value in TRIMSIR_CTRL.ipo_limithi.
+    Set this value to the desired manual trim based on the value set in <a href="#ipo-manual-trim-register">MCR_IPO_MTRIM</a>.<em>trim_range</em>.<br>
+    If <a href="#ipo-manual-trim-register">MCR_IPO_MTRIM</a>.<em>trim_range</em> is 0, the value in this field must be less than the value in < <a href="#system-initialization-function-register">TRIMSIR_IPOLO</a>.<em>ipo_limitlo</em>.<br>
+    If <a href="#ipo-manual-trim-register">MCR_IPO_MTRIM</a>.<em>trim_range</em> is 1, the value in this field must be greater than the value in <a href="#control-trim-system-initialization-register">TRIMSIR_CTRL</a>.<em>ipo_limithi</em>.
     </td>
   </tr>
 </table>
@@ -1578,7 +1579,8 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>ertco_en</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>ERTCO Enable for *LPM* and *UPM*</strong><br>Set this field to 1 to enable the ERTCO in *LPM* and *UPM*.<br> 
+    <td><strong>ERTCO Enable for <em>LPM</em> and <em>UPM</em></strong><br>
+    Set this field to 1 to enable the ERTCO in <em>LPM</em> and <em>UPM</em>.<br> 
     <div style="margin-left: 20px">
     0: ERTCO disabled<br>
     1: ERTCO enabled
@@ -1590,7 +1592,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>inro_en</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>INRO Enable</strong><br>Set this field to 1 to enable the INRO in *LPM* and *UPM*.<br> 
+    <td><strong>INRO Enable</strong><br>Set this field to 1 to enable the INRO in <em>LPM</em> and <em>UPM</em>.<br> 
     <div style="margin-left: 20px">
     0: INRO disabled<br>
     1: INRO enabled
@@ -1637,7 +1639,8 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>p31_in</td>
     <td>RO</td>
     <td>See Description</td>
-    <td><strong>GPIO3 Pin 1 Input Status</strong><br>Read this field to determine the input status of P3.1.<br> 
+    <td><strong>GPIO3 Pin 1 Input Status</strong><br>
+    Read this field to determine the input status of P3.1.<br> 
       <div style="margin-left: 20px">
         0: Input Low<br>
         1: Input High
@@ -1649,7 +1652,8 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>p31_pe</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>GPIO3 Pin 1 Pull-up Enable</strong><br>Set this bit to 1 to enable the pullup resistor for P3.1.<br> 
+    <td><strong>GPIO3 Pin 1 Pull-up Enable</strong><br>
+    Set this bit to 1 to enable the pullup resistor for P3.1.<br> 
       <div style="margin-left: 20px">
         0: Pull-up Disabled<br>
         1: Pull-up Enabled
@@ -1661,7 +1665,8 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>p31_oe</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>GPIO3 Pin 1 Output Enable</strong><br>Set this bit to 1 to enable P3.1 for output mode.<br> 
+    <td><strong>GPIO3 Pin 1 Output Enable</strong><br>
+    Set this bit to 1 to enable P3.1 for output mode.<br> 
       <div style="margin-left: 20px">
         0: Input mode.<br>
         1: Output mode enabled.
@@ -1673,10 +1678,11 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>p31_do</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>GPIO3 Pin 1 Data Output</strong><br>If *p31_oe* is set to 1, this field is used to control the output state of P3.1.<br> 
+    <td><strong>GPIO3 Pin 1 Data Output</strong><br>
+    If <em>p31_oe</em> is set to 1, this field is used to control the output state of P3.1.<br> 
       <div style="margin-left: 20px">
-        0: Output low if *p31_oe* is 1<br>
-        1: Output high if *p31_oe* is 1.
+        0: Output low if <em>p31_oe</em> is 1<br>
+        1: Output high if <em>p31_oe</em> is 1.
       </div>
     </td>
 </tr>
@@ -1685,7 +1691,8 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>p30_in</td>
     <td>RO</td>
     <td>See Description</td>
-    <td><strong>GPIO3 Pin 0 Input Status</strong><br>Read this field to determine the input status of P3.0.<br> 
+    <td><strong>GPIO3 Pin 0 Input Status</strong><br>
+    Read this field to determine the input status of P3.0.<br> 
       <div style="margin-left: 20px">
         0: Input Low<br>
         1: Input High
@@ -1697,7 +1704,8 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>p30_pe</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>GPIO3 Pin 0 Pull-up Enable</strong><br>Set this bit to 1 to enable the pullup resistor for P3.0.<br> 
+    <td><strong>GPIO3 Pin 0 Pull-up Enable</strong><br>
+    Set this bit to 1 to enable the pullup resistor for P3.0.<br> 
       <div style="margin-left: 20px">
         0: Pull-up Disabled<br>
         1: Pull-up Enabled
@@ -1709,7 +1717,8 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>p30_oe</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>GPIO3 Pin 0 Output Enable</strong><br>Set this bit to 1 to enable P3.0 for output mode.<br> 
+    <td><strong>GPIO3 Pin 0 Output Enable</strong><br>
+    Set this bit to 1 to enable P3.0 for output mode.<br> 
       <div style="margin-left: 20px">
         0: Input mode<br>
         1: Output mode enabled.
@@ -1721,7 +1730,8 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>p30_do</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>GPIO3 Pin 0 Data Output</strong><br>If <em>p30_oe</em> is set to 1, this field is used to control the output state of P3.0.<br> 
+    <td><strong>GPIO3 Pin 0 Data Output</strong><br>
+    If <em>p30_oe</em> is set to 1, this field is used to control the output state of P3.0.<br> 
       <div style="margin-left: 20px">
         0: Output low if <em>p30_oe</em> is 1<br>
         1: Output high if <em>p30_oe</em> is 1.
@@ -1731,7 +1741,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 </table>
 
 ## Single Inductor Multiple Output Power Supply (SIMO)
-The SIMO switch mode power supply allows the device to operate autonomously from a single lithium cell. The SIMO provides three buck switching regulators (VREGO_A thru VREGO_C). Each of the three regulator voltages can be controlled by either CPU individually. For the SIMO to operate properly, the three buck regulator outputs must drive the power supply pins of the device, as shown in Table 4-18.
+The SIMO switch mode power supply allows the device to operate autonomously from a single lithium cell. The SIMO provides three buck switching regulators (V<sub>REGO_A</sub> thru V<sub>REGO_C</sub>). Each of the three regulator voltages can be controlled by either CPU individually. For the SIMO to operate properly, the three buck regulator outputs must drive the power supply pins of the device, as shown in Table 4-18.
 
 ### Power Supply Monitor
 The system also provides a power monitor that monitors the external power supplies relative to the on-chip bandgap voltage. The following power supplies are monitored:
@@ -1808,7 +1818,7 @@ Refer to the device data sheet electrical characteristics for the trigger thresh
 </table>
 
 
-See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
+See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the SIMO Controller Peripheral Base Address.
 
 *Table 4-19: SIMO Controller Register Summary*
 <a name="table4-19-simo-controller-register-summary"></a>
@@ -1948,7 +1958,8 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
     <td>rangea</td>
     <td>R/W</td>
     <td>1</td>
-    <td><strong>Regulator Output A Range</strong><br>This field selects the regulator output range for V<sub>REGO_A</sub>.<br> 
+    <td><strong>Regulator Output A Range</strong><br>
+    This field selects the regulator output range for V<sub>REGO_A</sub>.<br> 
     <div style="margin-left: 20px">
     0: 0.5V to 1.77V<br>
     1: 0.6V to 1.87V
@@ -2013,7 +2024,8 @@ See [Table 3-3]() for the SIMO Controller Peripheral Base Address.
     <td>vsetb</td>
     <td>R/W</td>
     <td>0x32h</td>
-    <td><strong>Regulator Output Voltage</strong><br>Each bit increment in this field represents 10mV allowing output voltage settings from the minimum to the maximum of the <a href="#buck-voltage-regulator-b-control-register">SIMO_VREGO_B</a>.<em>rangeb</em> selected.<br> 
+    <td><strong>Regulator Output Voltage</strong><br>
+    Each bit increment in this field represents 10mV allowing output voltage settings from the minimum to the maximum of the <a href="#buck-voltage-regulator-b-control-register">SIMO_VREGO_B</a>.<em>rangeb</em> selected.<br> 
     <div style="margin-left: 20px">
     <p><a href="#buck-voltage-regulator-b-control-register">SIMO_VREGO_B</a>.<em>rangeb</em> = 1: Output Voltage=0.6V + (10mV × vsetb)</p>
     <p><a href="#buck-voltage-regulator-b-control-register">SIMO_VREGO_B</a>.<em>rangeb</em>> = 0: Output Voltage=0.5V + (10mV × vsetb)</p>
@@ -2560,7 +2572,7 @@ This set of general control registers provides reset and clock control for the l
 - LPCOMP1, LPCOMP2, and LPCOMP3
 - GPIO2
 
-See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the base address of this peripheral/module. See [Table 1-1]() for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
+See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the base address of this peripheral/module. See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
 
 *Table 4-36: Low-Power Control Register Summary*
 <a name="table4-36-low-power-control-register-summary"></a>
@@ -2614,7 +2626,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>W1O</td>
     <td>0</td>
     <td><strong>Low Power Comparators Reset</strong><br>
-    Write 1 to reset. This field is cleared by hardware when the reset is complete. See Device Resets for additional information. </td>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete. See <a href="#device-resets">Device Resets</a> for additional information. </td>
   </tr>
   <tr>
     <td>5</td>
@@ -2630,7 +2642,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>W1O</td>
     <td>0</td>
     <td><strong>UART3 (LPUART0) Reset</strong><br>
-    Write 1 to reset. This field is cleared by hardware when the reset is complete. See Device Resets for additional information.</td>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete. See <a href="#device-resets">Device Resets</a> for additional information.</td>
   </tr>
   <tr>
     <td>3</td>
@@ -2638,7 +2650,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>W1O</td>
     <td>0</td>
     <td><strong>TMR5 (LPTMR1) Reset</strong><br>
-    Write 1 to reset. This field is cleared by hardware when the reset is complete. See Device Resets for additional information.</td>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete. See <a href="#device-resets">Device Resets</a> for additional information.</td>
   </tr>
   <tr>
     <td>2</td>
@@ -2646,7 +2658,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>W1O</td>
     <td>0</td>
     <td><strong>TMR4 (LPTMR0) Reset</strong><br>
-    Write 1 to reset. This field is cleared by hardware when the reset is complete. See Device Resets for additional information.</td>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete. See <a href="#device-resets">Device Resets</a> for additional information.</td>
   </tr>
   <tr>
     <td>1</td>
@@ -2654,7 +2666,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>W1O</td>
     <td>0</td>
     <td><strong>WDT1 (LPWDT0) Reset</strong><br>
-    Write 1 to reset. This field is cleared by hardware when the reset is complete. See Device Resets for additional information.</td>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete. See <a href="#device-resets">Device Resets</a> for additional information.</td>
   </tr>
   <tr>
     <td>0</td>
@@ -2662,7 +2674,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>W1O</td>
     <td>0</td>
     <td><strong>GPIO2 Reset</strong><br>
-    Write 1 to reset. This field is cleared by hardware when the reset is complete. See Device Resets for additional information.</td>
+    Write 1 to reset. This field is cleared by hardware when the reset is complete. See <a href="#device-resets">Device Resets</a> for additional information.</td>
   </tr>
 </table>
 
@@ -2778,7 +2790,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 </table>
 
 ## Power Sequencer Registers (PWRSEQ)
-See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the base address of this peripheral/module. See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
+See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the base address of this peripheral/module. See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
 
 *Table 4-39: Power Sequencer Register Summary*
 <a name= "table4-39-power-sequencer-register-summary"></a>
@@ -3001,7 +3013,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>R/W</td>
     <td>0</td>
     <td><strong>System RAM 0 Data Retention Enable for BACKUP</strong><br>
-    Set this field to 1 to enable data retention for <em>sysram0</em>. See See <a href="../memory-register-mapping-access#sram-space">SRAM Space</a> for the system RAM configuration.<br>
+    Set this field to 1 to enable data retention for <em>sysram0</em>. See <a href="../memory-register-mapping-access#sram-space">SRAM Space</a> for the system RAM configuration.<br>
     <div style="margin-left: 20px">
     0: Disable data retention for <em>sysram0</em> address space in <em>BACKUP</em>.<br>
     1: Enable data retention for <em>sysram0</em> address space in <em>BACKUP</em>.
@@ -3689,7 +3701,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 
 ## Trim System Initialization Registers (TRIMSIR)
 
-See <a href=../memory-register-mapping-access#apb-peripheral-base-address-map>Table 3-3</a> for the base address of this peripheral/module. See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
+See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the base address of this peripheral/module. See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.
 
 *Note: The TRIMSIR registers are reset only on a POR. System reset, soft reset, and peripheral reset do not affect the TRIMSIR register values.*
 
@@ -4256,7 +4268,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>0</td>
     <td><strong>System Reset</strong><br>
     Write 1 to reset. This field is cleared by hardware when the reset is complete. 
-    See System Reset for additional information. <br>
+    See <a href="#system-reset">System Reset</a> for additional information. <br>
       <div style="margin-left: 20px">
           0: Normal operation<br>
           1: Initiate reset
@@ -4275,7 +4287,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
           1: Initiate reset
       </div>
     Note: Watchdog timers, GPIO ports, the AoD, RAM retention, and the GCR are unaffected. 
-    See Table 4-5 for additional information.
+    See <a href="#table4-5-reset-and-low-power-mode-effects">Table 4-5</a> for additional information.
     </td>
   </tr>
   <tr>
@@ -4285,7 +4297,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>0</td>
     <td><strong>Soft Reset</strong><br>
     Write 1 to reset. This field is cleared by hardware when the reset is complete. 
-    See Soft Reset for additional information.<br>
+    See <a href="#soft-reset">Soft Reset</a> for additional information.<br>
       <div style="margin-left: 20px">
           0: Normal operation<br>
           1: Initiate reset
@@ -4734,8 +4746,8 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>0</td>
     <td><strong>32.768kHz ERTCO Enable</strong><br>
       <div style="margin-left: 20px">
-          0: Disabled if the RTC_CTRL.en field is also set to 0.<br>
-          1: Enabled and ready when <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>ertco_rdy</em> = 1, regardless of the state of the RTC_CTRL.en field.
+          0: Disabled if the <a href="#rtc-control-register">RTC_CTRL</a>.<em>en</em> field is also set to 0.<br>
+          1: Enabled and ready when <a href="#clock-control-register">GCR_CLKCTRL</a>.<em>ertco_rdy</em> = 1, regardless of the state of the <a href="#rtc-control-register">RTC_CTRL</a>.<em>en</em> field.
       </div>
     </td>
 </tr>

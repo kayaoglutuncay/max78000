@@ -11,10 +11,10 @@
         <link rel="canonical" href="https://kayaoglutuncay.github.io/max78000/flash-controller/">
       
       
-        <link rel="prev" href="../system-power-clocks-reset/">
+        <link rel="prev" href="../semaphore/">
       
       
-        <link rel="next" href="../interrupts-exceptions/">
+        <link rel="next" href="..">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -233,26 +233,6 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Home
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../overview/" class="md-nav__link">
         
   
@@ -298,6 +278,86 @@
   
   <span class="md-ellipsis">
     System, Power, Clocks, Reset
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interrupts-exceptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interrupts and Exceptions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    General-Purpose I/O and Alternate Function Pins (GPIO)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debug-access-port/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Access Port
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semaphore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semaphore
   </span>
   
 
@@ -475,11 +535,31 @@
   
   
     <li class="md-nav__item">
-      <a href="../interrupts-exceptions/" class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Interrupts and Exceptions
+    Document Conventions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../revision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Revision History
   </span>
   
 
@@ -865,7 +945,7 @@ $$</p>
 <li>Set <a href="#flash-controller-clock-register">FLC_CTRL</a>.<em>unlock</em> to any value other than 2 to re-lock the flash instance.</li>
 </ol>
 <h2 id="registers">Registers</h2>
-<p>See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and peripheral-specific resets.</p>
+<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the base address of this peripheral/module. See <a href="../#table1-1-field-access-definitions">Table 1-1</a> for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
 <p><em>Note: The FLC registers are reset only on a POR. System reset, soft reset, and peripheral reset do not affect the FLC register values.</em></p>
 <p><em>Table 7-3: Flash Controller Register Summary</em>
 <a name="flash-controller-register-summary"></a></p>

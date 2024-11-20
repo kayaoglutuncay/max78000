@@ -8,22 +8,28 @@
       
       
       
+        <link rel="canonical" href="https://kayaoglutuncay.github.io/max78000/debug-access-port/">
       
       
+        <link rel="prev" href="../gpio/">
       
-      <link rel="icon" href="/max78000/assets/images/favicon.png">
+      
+        <link rel="next" href="../semaphore/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
-        <title>MAX78000 User Guide</title>
+        <title>Debug Access Port - MAX78000 User Guide</title>
       
     
     
-      <link rel="stylesheet" href="/max78000/assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="/max78000/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -42,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="/max78000/css/extra.css">
+      <link rel="stylesheet" href="../css/extra.css">
     
-    <script>__md_scope=new URL("/max78000/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -69,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#instances" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -81,7 +92,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/max78000/." title="MAX78000 User Guide" class="md-header__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
+    <a href=".." title="MAX78000 User Guide" class="md-header__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -101,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Debug Access Port
             
           </span>
         </div>
@@ -204,7 +215,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/max78000/." title="MAX78000 User Guide" class="md-nav__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
+    <a href=".." title="MAX78000 User Guide" class="md-nav__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -222,7 +233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/max78000/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -242,7 +253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/max78000/memory-register-mapping-access/" class="md-nav__link">
+      <a href="../memory-register-mapping-access/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -262,7 +273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/max78000/system-power-clocks-reset/" class="md-nav__link">
+      <a href="../system-power-clocks-reset/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -282,7 +293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/max78000/interrupts-exceptions/" class="md-nav__link">
+      <a href="../interrupts-exceptions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -302,7 +313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/max78000/gpio/" class="md-nav__link">
+      <a href="../gpio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -319,10 +330,28 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/max78000/debug-access-port/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Debug Access Port
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -331,6 +360,75 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instances
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Access Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#factory-disabled-dap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Factory Disabled DAP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software-accessible-dap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software Accessible DAP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pin-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pin Configuration
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -342,7 +440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/max78000/semaphore/" class="md-nav__link">
+      <a href="../semaphore/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -362,7 +460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/max78000/flash-controller/" class="md-nav__link">
+      <a href="../flash-controller/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -382,7 +480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/max78000/." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -402,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/max78000/revision/" class="md-nav__link">
+      <a href="../revision/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -433,6 +531,65 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instances
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Access Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#factory-disabled-dap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Factory Disabled DAP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software-accessible-dap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software Accessible DAP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pin-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pin Configuration
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -443,8 +600,58 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+  <h1>Debug Access Port</h1>
+
+<p>The device provides an Arm DAP that supports debugging during application development. The DAP enables an external debugger to access the device. The DAP is a standard Arm CoreSight™ serial wire debug port and uses a two-pin serial interface (SWDCLK and SWDIO) to communicate.</p>
+<h2 id="instances">Instances</h2>
+<p>The DAP interface communicates through the serial wire debug (SWD), shown in <a href="#table8-1-max78000-dap-instances">Table 8-1</a>.</p>
+<p><em>Table 8-1: MAX78000 DAP Instances</em>
+<a name="table8-1-max78000-dap-instances"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <th>Instance</th>
+    <th>Pin</th>
+    <th>Alternate Function</th>
+    <th>SWD Signal</th>
+  </tr>
+  <tr>
+    <td rowspan="2">DAP</td>
+    <td>P0.28</td>
+    <td>AF1</td>
+    <td>SWDIO</td>
+  </tr>
+  <tr>
+    <td>P0.29</td>
+    <td>AF1</td>
+    <td>SWDCLK</td>
+  </tr>
+</table>
+
+<h2 id="access-control">Access Control</h2>
+<h3 id="factory-disabled-dap">Factory Disabled DAP</h3>
+<p>Device versions that do not provide a DAP interface have <a href="../system-power-clocks-reset/#system-status-flags">GCR_SYSST</a>.<em>icelock</em> = 1 set at the factory, permanently disabling the DAP interface. No software action is needed to disable the DAP on these devices.</p>
+<h3 id="software-accessible-dap">Software Accessible DAP</h3>
+<p>Device versions that provide a DAP (<a href="../system-power-clocks-reset/#system-status-flags">GCR_SYSST</a>.<em>icelock</em> = 0) always have their interface(s) enabled and running unless the software explicitly sets the <a href="../system-power-clocks-reset/#system-status-flags">GCR_SYSST</a>.<em>swd_dis</em> field to 1. The read-only field <a href="../system-power-clocks-reset/#system-status-flags">GCR_SYSST</a>.<em>icelock</em> is cleared to 0, and the software has read and write access to the <a href="../system-power-clocks-reset/#system-status-flags">GCR_SYSST</a>.<em>swd_dis</em> field. The <a href="../system-power-clocks-reset/#system-status-flags">GCR_SYSST</a>.<em>swd_dis</em> field resets to 0 after every POR to allow access to the DAP during development.</p>
+<p>The software can disable the DAP by setting the <a href="../system-power-clocks-reset/#system-status-flags">GCR_SYSST</a>.<em>swd_dis</em> field to 1. The only practical application for disabling the DAP is to release the interface pins to operate as standard GPIO or in one of the supported alternate function modes in a development environment. Customers can use device versions with the DAP enabled for development but should only use device versions with the factory disabled DAP in a final product.</p>
+<h2 id="pin-configuration">Pin Configuration</h2>
+<p>SWD signals in GPIO and alternate function matrices determine which GPIO pins are associated with a signal. It is unnecessary to configure a pin for an alternate function to use the DAP following a POR.</p>
+<p>By default, the pin associated with the bidirectional SWDIO signal is configured as a GPIO high-impedance input after any POR. While the DAP is in use, a pullup resistor should be connected to the SWDIO pin, as shown in <a href="#table8-1-max78000-dap-instances">Table 8-1</a>. The pullup ensures the signal is in a known state when control of the SWDIO pin is transferred between the host and target. The pullup resistor should be removed if the associated pin is used as a GPIO to avoid unnecessary current consumption.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -503,10 +710,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "/max78000/", "features": ["search.suggest", "search.highlight", "navigation.tracking"], "search": "/max78000/assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["search.suggest", "search.highlight", "navigation.tracking"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="/max78000/assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

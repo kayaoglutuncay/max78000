@@ -6,6 +6,8 @@ The MAX78000 data sheet and errata are available from the Analog Devices website
 
 ## Document Conventions
 ### Number Notations
+<a name="number-notations"></a>
+
 <table border="1" cellpadding="5" cellspacing="0">
     <tr>
         <td><strong>Notation</strong></td>
