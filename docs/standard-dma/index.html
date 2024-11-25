@@ -1,0 +1,2175 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://kayaoglutuncay.github.io/max78000/standard-dma/">
+      
+      
+        <link rel="prev" href="../semaphore/">
+      
+      
+        <link rel="next" href="../adc-and-comparators/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>Standard DMA - MAX78000 User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#instances" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MAX78000 User Guide" class="md-header__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MAX78000 User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Standard DMA
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MAX78000 User Guide" class="md-nav__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MAX78000 User Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory-register-mapping-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory, Register, Mapping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-power-clocks-reset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System, Power, Clocks, Reset
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interrupts-exceptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interrupts and Exceptions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    General-Purpose I/O and Alternate Function Pins (GPIO)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flash-controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flash Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debug-access-port/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Access Port
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semaphore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semaphore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Standard DMA
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Standard DMA
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instances
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dma-channel-operation-dma_ch" class="md-nav__link">
+    <span class="md-ellipsis">
+      DMA Channel Operation (DMA_CH)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DMA Channel Operation (DMA_CH)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#channel-arbitration-and-dma-bursts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Channel Arbitration and DMA Bursts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-and-destination-addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source and Destination Addressing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-movement-from-source-to-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Movement from Source to DMA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-movement-from-dma-to-destination" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Movement from DMA to Destination
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#count-to-zero-ctz-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Count-To-Zero (CTZ) Condition
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chaining-buffers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chaining Buffers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dma-interrupts" class="md-nav__link">
+    <span class="md-ellipsis">
+      DMA Interrupts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channel-timeout-detect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Channel Timeout Detect
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-to-memory-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory-to-Memory DMA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Registers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dma-channel-registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      DMA Channel Registers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DMA Channel Registers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#channel-register-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Channel Register Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adc-and-comparators/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Analog to Digital Converter (ADC) and Comparators (LPCMP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Document Conventions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../revision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Revision History
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instances
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dma-channel-operation-dma_ch" class="md-nav__link">
+    <span class="md-ellipsis">
+      DMA Channel Operation (DMA_CH)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DMA Channel Operation (DMA_CH)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#channel-arbitration-and-dma-bursts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Channel Arbitration and DMA Bursts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-and-destination-addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source and Destination Addressing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-movement-from-source-to-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Movement from Source to DMA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-movement-from-dma-to-destination" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Movement from DMA to Destination
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#count-to-zero-ctz-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Count-To-Zero (CTZ) Condition
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chaining-buffers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chaining Buffers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dma-interrupts" class="md-nav__link">
+    <span class="md-ellipsis">
+      DMA Interrupts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channel-timeout-detect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Channel Timeout Detect
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-to-memory-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory-to-Memory DMA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Registers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dma-channel-registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      DMA Channel Registers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DMA Channel Registers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#channel-register-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Channel Register Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Standard DMA</h1>
+
+<p>The DMA controller is a hardware feature that provides the ability to perform high-speed, block memory transfers of data independent of the device CPU. All DMA transactions consist of a burst read from the source into the internal DMA FIFO followed by a burst write from the internal DMA FIFO to the destination.</p>
+<p>DMA transfers are one of three types:</p>
+<ul>
+<li>From a receive FIFO to a memory address,</li>
+<li>to a transmit FIFO from a memory address, or</li>
+<li>from a source memory address to a destination memory address.</li>
+</ul>
+<p>The DMA supports multiple channels. Each channel provides the following features:</p>
+<ul>
+<li>Full 32-bit source and destination addresses with 24-bit (16 Mbytes) address increment capability</li>
+<li>The ability to chain DMA buffers when a count-to-zero (CTZ) condition occurs</li>
+<li>Interrupt upon CTZ</li>
+<li>Up to 16 Mbytes for each DMA transfer</li>
+<li>8 × 32-byte transmit and receive FIFO<ul>
+<li>Programmable source and destination width with support for byte, half-word, and word</li>
+</ul>
+</li>
+<li>Programmable channel timeout period</li>
+<li>Programmable burst size</li>
+<li>Programmable priority</li>
+<li>Abort on error</li>
+</ul>
+<h2 id="instances">Instances</h2>
+<p>There is one instance of the DMA, generically referred to as DMA. Each instance provides four channels, generically referred to as DMA_CHn. Each instance of the DMA has a set of interrupt registers common to all its channels and a set of registers unique to each channel instance.</p>
+<p><em>Table 10-1: MAX78000 DMA and Channel Instances</em>
+<a name="table10-1-max78000-dma-channel-instances"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <th>DMA Instance</th>
+    <th>DMA_CHn Channel Instance</th>
+  </tr>
+  <tr>
+    <td rowspan="4">DMA</td>
+    <td>DMA_CH0</td>
+  </tr>
+  <tr>
+    <td>DMA_CH1</td>
+  </tr>
+  <tr>
+    <td>DMA_CH2</td>
+  </tr>
+    <tr>
+    <td>DMA_CH3</td>
+  </tr>
+</table>
+
+<h2 id="dma-channel-operation-dma_ch">DMA Channel Operation (DMA_CH)</h2>
+<h3 id="channel-arbitration-and-dma-bursts">Channel Arbitration and DMA Bursts</h3>
+<p>The DMA peripheral contains an internal arbiter that allows enabled channels to access the AHB and move data. Once a channel is programmed and enabled, it generates a request to the arbiter immediately (for memory-to-memory DMA) or whenever its associated peripheral requests DMA (for memory-to-peripheral or peripheral-to-memory DMA).</p>
+<p>Granting is done based on priority; a higher priority request is always granted. Within a given priority level, requests are granted on a round-robin basis. The DMA_CHn_CTRL.pri field determines the DMA channel priority.</p>
+<p>When a channel's request is granted, the channel runs a DMA transfer. The arbiter grants requests to a single channel at a time. Once the DMA transfer completes, the channel relinquishes its grant.</p>
+<p>A DMA channel is enabled using the DMA_CHn_CTRL.en bit.</p>
+<p>When disabling a channel, poll the DMA_CHn_STATUS.status bit to determine if the channel is disabled. In general, DMA_CHn_STATUS.status follows the setting of the DMA_CHn_CTRL.en bit. However, the DMA_CHn_STATUS.status bit is automatically cleared under the following conditions:</p>
+<ul>
+<li>Bus error (cleared immediately)</li>
+<li>CTZ when the DMA_CHn_CTRL.rlden = 0 (cleared at the end of the AHB R/W burst)</li>
+<li>DMA_CHn_CTRL.en bit transitions to 0 (cleared at the end of the AHB R/W burst)</li>
+</ul>
+<p>Whenever DMA_CHn_STATUS.status transitions from 1 to 0, the corresponding DMA_CHn_CTRL.en bit is also cleared. If an active channel is disabled during an AHB read/write burst, the current burst continues until completed.</p>
+<p>Only an error condition can interrupt an ongoing data transfer.</p>
+<h3 id="source-and-destination-addressing">Source and Destination Addressing</h3>
+<p>The source and destination for DMA transfers are dictated by the request select dedicated to the peripheral instance. The DMA_CHn_CTRL.request field dictates the source and destination for a channel's DMA transfer, as shown in Table 10-2. depending on the specific operation, the DMA_CHn_SRC and DMA_CHn_DST registers hold the source or destination memory addresses.</p>
+<p>The DMA_CHn_CTRL.srcinc field is ignored when the DMA source is peripheral memory, and the DMA_CHn_CTRL.dstinc field is ignored when the DMA destination is peripheral memory.</p>
+<p><em>Table 10-2: DMA Source and Destination by Peripheral</em> 
+<a name="table10-2-dma-source-destination-by-peripheral"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th>DMA_CHn_CTRL.<em>request</em></th>
+        <th>Peripheral</th>
+        <th>DMA Source</th>
+        <th>DMA Destination</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>0</td>
+        <td>Memory-to-Memory</td>
+        <td>DMA_CHn_SRC</td>
+        <td>DMA_CHn_DST</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>SPI1</td>
+        <td>SPI1 Receive FIFO</td>
+        <td>DMA_CHn_DST</td>
+    </tr>
+    <tr>
+        <td>2-3</td>
+        <td>Reserved</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>UART0</td>
+        <td>UART0 Receive FIFO</td>
+        <td>DMA_CHn_DST</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>UART1</td>
+        <td>UART1 Receive FIFO</td>
+        <td>DMA_CHn_DST</td>
+    </tr>
+  <tr>
+    <td>6</td>
+    <td>Reserved</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>I2C0</td>
+    <td>I2C0 Receive FIFO</td>
+    <td>DMA_CHn_DST</td>
+  </tr>
+<tr>
+<td>8</td>
+<td>I2C1</td>
+<td>I2C1 Receive FIFO</td>
+<td>DMA_CHn_DST</td>
+</tr>
+<tr>
+<td>9</td>
+<td>ADC</td>
+<td>ADC Data Register</td>
+<td>DMA_CHn_DST</td>
+</tr>
+<tr>
+<td>10</td>
+<td>I2C2</td>
+<td>I2C2 Receive FIFO</td>
+<td>DMA_CHn_DST</td>
+</tr>
+<tr>
+<td>11-12</td>
+<td>Reserved</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>13</td>
+<td>PCIF</td>
+<td>PCIF Receive FIFO</td>
+<td>DMA_CHn_DST</td>
+</tr>
+<tr>
+<td>14</td>
+<td>UART 2</td>
+<td>UART2 Receive FIFO</td>
+<td>DMA_CHn_DST</td>
+</tr>
+<tr>
+<td>15</td>
+<td>SPI 0</td>
+<td>SPI0 Receive FIFO</td>
+<td>DMA_CHn_DST</td>
+</tr>
+<tr>
+<td>16-27</td>
+<td>Reserved</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>28</td>
+<td>LPUART0 (UART 3)</td>
+<td>UART3 Receive FIFO</td>
+<td>DMA_CHn_DST</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Reserved</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>30</td>
+<td>I<sup>2</sup>S</td>
+<td>I<sup>2</sup>S Data Register</td>
+<td>DMA_CHn_DST></td>
+</tr>
+<tr>
+<td>31-32</td>
+<td>Reserved</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>33</td>
+<td>SPI 1</td>
+<td>DMA_CHn_SRC</td>
+<td>SPI1 Transmit FIFO</td>
+</tr>
+<tr>
+<td>34-35</td>
+<td>Reserved</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>36</td>
+<td>UART 0</td>
+<td>DMA_CHn_SRC</td>
+<td>UART0 Transmit FIFO</td>
+</tr>
+<tr>
+<td>37</td>
+<td>UART 1</td>
+<td>DMA_CHn_SRC</td>
+<td>UART1 Transmit FIFO</td>
+</tr>
+<tr>
+<td>38</td>
+<td>Reserved</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>39</td>
+<td>I2C0</td>
+<td>DMA_CHn_SRC</td>
+<td>I2C0 Transmit FIFO</td>
+</tr>
+<tr>
+<td>40</td>
+<td>I2C1</td>
+<td>DMA_CHn_SRC</td>
+<td>I2C1 Transmit FIFO</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Reserved</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>42</td>
+<td>I2C2</td>
+<td>DMA_CHn_SRC</td>
+<td>I2C2 Transmit FIFO</td>
+</tr>
+<tr>
+<td>43</td>
+<td>Reserved</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>44</td>
+<td>CRC</td>
+<td>DMA_CHn_SRC</td>
+<td>CRC Data Register</td>
+</tr>
+<tr>
+<td>45</td>
+<td>PCIF</td>
+<td>DMA_CHn_SRC</td>
+<td>PCIF Transmit FIFO</td>
+</tr>
+<tr>
+<td>46</td>
+<td>UART2</td>
+<td>DMA_CHn_SRC</td>
+<td>UART2 Transmit FIFO</td>
+</tr>
+<tr>
+<td>47</td>
+<td>SPI0</td>
+<td>DMA_CHn_SRC</td>
+<td>SPI0 Transmit FIFO</td>
+</tr>
+<tr>
+<td>48-59</td>
+<td>Reserved</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>60</td>
+<td>LPUART 0 (UART 3)</td>
+<td>DMA_CHn_SRC</td>
+<td>UART3 Transmit FIFO</td>
+</tr>
+<tr>
+<td>61</td>
+<td>Reserved</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>62</td>
+<td>I<sup>2</sup>S</td>
+<td>DMA_CHn_SRC</td>
+<td>I<sup>2</sup>S Data Register</td>
+</tr>
+<tr>
+<td>63</td>
+<td>Reserved</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="data-movement-from-source-to-dma">Data Movement from Source to DMA</h3>
+<p><a href="#table10-3-data-movement-source-dma-fifo">Table 10-3</a> shows the fields that control the burst movement of data into the DMA FIFO. The source is a peripheral or memory.</p>
+<p><em>Table 10-3: Data Movement from Source to DMA FIFO</em>
+<a name="table10-3-data-movement-source-dma-fifo"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+  <tr>
+    <th>Register/Field</th>
+    <th>Description</th>
+    <th>Comments</th>
+  </tr>
+</thead>
+<tbody>
+<tr>
+<td>DMA_CHn_SRC</td>
+<td>Source address</td>
+<td>If the increment enable is set, this increments on every read cycle of the burst. This field is ignored when the DMA source is a peripheral.</td>
+</tr>
+<tr>
+<td>DMA_CHn_CNT</td>
+<td>Number of bytes to transfer before a CTZ condition occurs</td>
+<td>This register is decremented on each read of a burst.</td>
+</tr>
+<tr>
+<td>DMA_CHn_CTRL.<em>burst_size</em></td>
+<td>Burst size (1-32)</td>
+<td>This is the maximum number of bytes moved during the burst read.</td>
+</tr>
+<tr>
+<td>DMA_CHn_CTRL.<em>srcwd</em></td>
+<td>Source width</td>
+<td>This field determines the maximum data width used during each read of the AHB burst (byte, half-word, or word). The actual AHB width might be less if DMA_CHn_CNT is not great enough to supply all the needed data.</td>
+</tr>
+<tr>
+<td>DMA_CHn_CTRL.<em>srcinc</em></td>
+<td>Source increments enable</td>
+<td>Increments DMA_CHn_SRC. This field is ignored when the DMA source is a peripheral.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="data-movement-from-dma-to-destination">Data Movement from DMA to Destination</h3>
+<p><a href="#table10-4-data-movement-dma-fifo-destination">Table 10-4</a> shows the fields that control the burst movement of data out of the DMA FIFO. The destination is a peripheral or memory.</p>
+<p><em>Table 10-4: Data Movement from the DMA FIFO to Destination</em>
+<a name="table10-4-data-movement-dma-fifo-destination"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+  <tr>
+    <th>Register/Field</th>
+    <th>Description</th>
+    <th>Comments</th>
+  </tr>
+</thead>
+<tbody>
+<tr>
+<td>DMA_CHn_DST</td>
+<td>Destination address</td>
+<td>If the increment enable is set, this increments on every write cycle of the burst. This field is ignored when the DMA destination is a peripheral.</td>
+</tr>
+<tr>
+<td>DMA_CHn_CTRL.<em>burst_size</em></td>
+<td>Burst size (1-32)</td>
+<td>The is the maximum number of bytes moved during a single AHB read/write burst.</td>
+</tr>
+<tr>
+<td>DMA_CHn_CTRL.<em>dstwd</em></td>
+<td>Destination width</td>
+<td>This determines the maximum data width used during each write of the AHB burst (byte, half-word, or word).</td>
+</tr>
+<tr>
+<td>DMA_CHn_CTRL.<em>dstinc</em></td>
+<td>Destination address increment enable</td>
+<td>Increments <em>DMA_CHn_DST</em>. This field is ignored when the DMA destination is a peripheral.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="usage">Usage</h2>
+<p>Use the following procedure to perform a DMA transfer from a peripheral's receive FIFO to memory, from memory to a peripheral's transmit FIFO, or from memory to memory.</p>
+<ol>
+<li>Ensure DMA_CHn_CTRL.en, DMA_CHn_CTRL.rlden = 0, and DMA_CHn_STATUS.ctz_if = 0.</li>
+<li>If using memory for the destination of the DMA transfer, configure DMA_CHn_DST to the starting address of the destination in memory.</li>
+<li>If using memory for the source of the DMA transfer, configure DMA_CHn_SRC to the starting address of the source in memory.</li>
+<li>Write the number of bytes to transfer to the DMA_CHn_CNT register.</li>
+<li>
+<p>Configure the following DMA_CHn_CTRL register fields in one or more instructions. Do not set DMA_CHn_CTRL.en to 1 or DMA_CHn_CTRL.rlden to 1 in this step:</p>
+<p>a. Configure DMA_CHn_CTRL.request to select the transfer operation associated with the DMA channel.</p>
+<p>b. Configure DMA_CHn_CTRL.burst_size for the desired burst size.</p>
+<p>c. Configure DMA_CHn_CTRL.pri to set the channel priority relative to other DMA channels.</p>
+<p>d. Configure DMA_CHn_CTRL.dstwd to set the width of the data written in each transaction.</p>
+<p>e. If desired, set DMA_CHn_CTRL.dstinc to 1 to enable automatic incrementing of the DMA_CHn_DST register upon every AHB transaction.</p>
+<p>f. Configure DMA_CHn_CTRL.srcwd to set the width of the data read in each transaction.</p>
+<p>g. If desired, set DMA_CHn_CTRL.srcinc to 1 to enable automatic incrementing of the DMA_CHn_DST register upon every AHB transaction.</p>
+<p>h. If desired, set DMA_CHn_CTRL.dis_ie = 1 to generate an interrupt when the channel becomes disabled. The channel becomes disabled when the DMA transfer completes, or a bus error occurs.</p>
+<p>i. If desired, set DMA_CHn_CTRL.ctz_ie 1 to generate an interrupt when the DMA_CHn_CNT register is decremented to zero.</p>
+<p>j. If using the reload feature, configure the reload registers to set the destination, source, and count for the following DMA transaction.</p>
+<ol>
+<li>Load the DMA_CHn_SRCRLD register with the source address reload value.</li>
+<li>Load the DMA_CHn_DSTRLD register with the destination address reload value.   </li>
+<li>Load the DMA_CHn_CNTRLD register with the count reload value.</li>
+</ol>
+<p>k. If desired, enable the channel timeout feature described in Channel Timeout Detect. Clear DMA_CHn_CTRL.to_clkdiv to 0 to disable the channel timeout feature.</p>
+</li>
+<li>
+<p>Set DMA_CHn_CTRL.rlden to 1 to enable the reload feature if using.</p>
+</li>
+<li>Set DMA_CHn_CTRL.en = 1 to start the DMA transfer immediately.</li>
+<li>Wait for the interrupt flag to become 1 to indicate the completion of the DMA transfer.</li>
+</ol>
+<h2 id="count-to-zero-ctz-condition">Count-To-Zero (CTZ) Condition</h2>
+<p>When an AHB channel burst completes, a CTZ condition exists if DMA_CHn_CNT is decremented to 0.
+At this point, there are two responses are possible depending on the value of the DMA_CHn_CTRL.rlden:</p>
+<ol>
+<li>
+<p>If DMA_CHn_CTRL.rlden = 1, then the DMA_CHn_SRC, DMA_CHn_DST, and DMA_CHn_CNT registers are loaded from the reload registers, and the channel remains active and continues operating using the newly-loaded address/count values and the previously programmed configuration values.</p>
+</li>
+<li>
+<p>If DMA_CHn_CTRL.rlden = 0, then the channel is disabled, and DMA_CHn_STATUS.status is cleared.</p>
+</li>
+</ol>
+<h2 id="chaining-buffers">Chaining Buffers</h2>
+<p>Chaining buffers reduce the DMA interrupt response time and allow the DMA to service requests without intermediate processing from the CPU. Figure 10-1 shows the procedure for generating a DMA transfer using one or more chain buffers.</p>
+<p>Configure the following reload registers to configure a channel for chaining:</p>
+<ul>
+<li>DMA_CHn_SRC</li>
+<li>DMA_CHn_DST</li>
+<li>DMA_CHn_CNT</li>
+<li>DMA_CHn_SRCRLD</li>
+<li>DMA_CHn_DSTRLD</li>
+<li>DMA_CHn_CNTRLD</li>
+</ul>
+<p>Writing to any register while a channel is disabled is supported, but there are certain restrictions when a channel is enabled. The DMA_CHn_STATUS.status bit indicates whether the channel is enabled or not. Because an active channel might be in the middle of an AHB read/write burst, do not write to the DMA_CHn_SRC, DMA_CHn_DST, or DMA_CHn_CNT registers while a channel is active (DMA_CHn_STATUS.status = 1). To disable any DMA channel, clear the DMA_INTEN.ch<n> bit. Then, poll the DMA_CHn_STATUS.status bit to verify that the channel is disabled.</p>
+<p><img alt="Figure 10-1" src="../assets/images/figure10-1.svg" /></p>
+<h2 id="dma-interrupts">DMA Interrupts</h2>
+<p>Enable interrupts for each channel by setting DMA_INTEN.ch<n>. When an interrupt for a channel is pending, the corresponding DMA_INTFL.ch<n> = 1. Set the corresponding enable bit to cause an interrupt when the flag is set.</p>
+<p>A channel interrupt (DMA_CHn_STATUS.ipend = 1) is caused by:</p>
+<ul>
+<li>DMA_CHn_CTRL.ctz_ie = 1<ul>
+<li>If enabled, all CTZ occurrences set the DMA_CHn_STATUS.ipend bit.</li>
+</ul>
+</li>
+<li>DMA_CHn_CTRL.dis_ie = 1<ul>
+<li>If enabled, any clearing of the DMA_CHn_STATUS.status bit sets the DMA_CHn_STATUS.ipend bit. </li>
+</ul>
+</li>
+</ul>
+<p>Examine the DMA_CHn_STATUS register to determine which reasons caused the disable. The DMA_CHn_CTRL.dis_ie bit also enables the DMA_CHn_STATUS.to_if bit. The DMA_CHn_STATUS.to_if bit does not clear the DMA_CHn_STATUS.status bit.</p>
+<p>To clear the channel interrupt, write 1 to the cause of the interrupt (the DMA_CHn_STATUS.ctz_if, DMA_CHn_STATUS.rld_if, DMA_CHn_STATUS.bus_err, or DMA_CHn_STATUS.to_if bits).</p>
+<p>When running in normal mode without buffer chaining (DMA_CHn_CTRL.rlden = 0), set the DMA_CHn_CTRL.dis_ie bit only. An interrupt is generated upon DMA completion or an error condition (bus error or timeout error).</p>
+<p>When running in buffer chaining mode (DMA_CHn_CTRL.rlden = 1), set both the DMA_CHn_CTRL.dis_ie and DMA_CHn_CTRL.ctz_ie bits. The CTZ interrupts occur on completion of each DMA (count reaches zero, and reload occurs). The setting of DMA_CHn_CTRL.dis_ie ensures that an error condition generates an interrupt. If DMA_CHn_CTRL.ctz_ie = 0, then the only interrupt occurs when the DMA completes and DMA_CHn_CTRL.rlden = 0 (final DMA).</p>
+<h2 id="channel-timeout-detect">Channel Timeout Detect</h2>
+<p>Each channel can optionally generate an interrupt when its associated peripheral does not request a transfer in a user-configurable period. When the timeout start conditions are met, an internal 10-bit counter begins incrementing at a frequency determined by the AHB clock, the DMA_CHn_CTRL.to_clkdiv field, and the DMA_CHn_CTRL.to_per field. See Table 10-5 for details. A channel timeout event is generated if the timer is not reset by one of the events listed below before the timeout period expires.</p>
+<p><em>Table 10-5: DMA Channel Timeout Configuration</em>
+<a name="table10-5-dma-channel-timeout-configuration"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+    <tr>
+      <th><em>DMA_CHn_CTRL</em>.<em>to_clkdiv</em></th>
+      <th>Timeout Period (µs)</th>
+    </tr>
+  </thead>
+<tbody>
+  <tr>
+    <td>0</td>
+    <td align="center">Channel timeout disabled.</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>
+    $$
+    \frac{2^{8} \times \text{Value from } \texttt{DMA_CHn_CTRL.to_per}}{f_{HCLK}}
+    $$
+    </td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>
+    $$
+    \frac{2^{16} \times \text{Value from } \texttt{DMA_CHn_CTRL.to_per}}{f_{HCLK}}
+    $$
+    </td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>
+    $$
+    \frac{2^{24} \times \text{Value from } \texttt{DMA_CHn_CTRL.to_per}}{f_{HCLK}}
+    $$
+    </td>
+  </tr>
+</tbody>
+</table>
+
+<p>DMA_CHn_CTRL.to_wait controls the start of the timeout period as follows:
+- If DMA_CHn_CTRL.to_wait = 0, the timer begins immediately counting after DMA_CHn_CTRL.to_per is configured to a value other than 0, and the channel is enabled.
+- If DMA_CHn_CTRL.to_wait = 1, the timer begins counting when the first DMA request is received from the peripheral.</p>
+<p>The timer is reset whenever:
+- The DMA request line programmed for the channel is activated.
+- The channel is disabled for any reason (DMA_CHn_STATUS.status = 0).</p>
+<p>If the timeout timer period expires, hardware sets DMA_CHn_STATUS.to_if = 1 to indicate a channel timeout event has occurred. A channel timeout does not disable the DMA channel.</p>
+<h2 id="memory-to-memory-dma">Memory-to-Memory DMA</h2>
+<p>Memory-to-memory transfers are processed as if the request is permanently active. This means that the DMA channel generates an almost constant request for the bus until its transfer is complete. For this reason, assign a lower priority to channels executing memory-to-memory transfers to prevent starvation of other DMA channels.</p>
+<h2 id="registers">Registers</h2>
+<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the base address of this peripheral/module. See <a href="../#table1-1-field-access-definitions">Table 1-1</a> for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
+<p><em>Table 10-6: DMA Register Summary</em>
+<a name="table10-6-dma-register-summary"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+  <tr>
+    <th>Offset</th>
+    <th>Register</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <td>[0x0000]</td>
+    <td><a href="#dma-channel-interrupt-enable">DMA_INTEN</a></td>
+    <td>DMA Channel Interrupt Enable</td>
+  </tr>
+  <tr>
+    <td>[0x0004]</td>
+    <td><a href="#dma-interrupt-status-register">DMA_INTFL</a></td>
+    <td>DMA Interrupt Status register</td>
+  </tr>
+</tbody>
+</table>
+
+<h3 id="register-details">Register Details</h3>
+<p><em>Table 10-7: DMA Interrupt Enable Register</em>
+<a name="dma-channel-interrupt-enable"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">DMA Interrupt Enable</td>
+        <td colspan="1">DMA_INTEN</td>
+        <td>[0x0000]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>ch&lt;n&gt;</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td>
+            <strong>DMA Channel <em>n</em> Interrupt Enable</strong><br>
+            Each bit in this field enables the corresponding channel interrupt &lt;n&gt; in <em>DMA_INTFL</em>. 
+            Register bits associated with unimplemented channels should not be changed from their default reset value.<br>
+            <div style="margin-left: 20px;">
+                0: Disabled<br>
+                1: Enabled
+            </div>
+        </td>
+    </tr>
+</table>
+
+<p><em>Table 10-8: DMA Interrupt Status Register</em>
+<a name="dma-interrupt-status-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">DMA Interrupt Flag</td>
+        <td colspan="1">DMA_INTFL</td>
+        <td>[0x0004]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31:0</td>
+        <td>ch&lt;n&gt;</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td>
+            <strong>DMA Channel <em>n</em> Interrupt Flag</strong><br>
+            Each bit in this field represents an interrupt for the corresponding channel interrupt &lt;n&gt;. To clear an interrupt, clear the corresponding active interrupt bit in the DMA_CHn_STATUS register. An interrupt bit in this field is set if the corresponding interrupt enable field is set in the DMA_INTEN register and a channel's interrupt occurs. Register bits associated with unimplemented channels should be ignored..<br>
+            <div style="margin-left: 20px;">
+                0: No interrupt<br>
+                1: Interrupt pending
+            </div>
+        </td>
+    </tr>
+</table>
+
+<h2 id="dma-channel-registers">DMA Channel Registers</h2>
+<p><em>Table 10-9: Standard DMA Channel 0 to Channel 3 Register Summary</em>
+<a name="table10-9-standard-dma-channel0-channel3-register-summary"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+  <tr>
+    <th>Offset</th>
+    <th>DMA Channel</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <td>[0x0100]</td>
+    <td><a href="#dma-channel0">DMA_CH0</a></td>
+    <td>DDMA Channel 0</td>
+  </tr>
+  <tr>
+    <td>[0x0120]</td>
+    <td><a href="#dma-channel1">DMA_CH1</a></td>
+    <td>DDMA Channel 1</td>
+  </tr>
+  <tr>
+    <td>[0x0140]</td>
+    <td><a href="#dma-channel2">DMA_CH2</a></td>
+    <td>DDMA Channel 2</td>
+  </tr>
+  <tr>
+    <td>[0x0160]</td>
+    <td><a href="#dma-channel2">DMA_CH3</a></td>
+    <td>DDMA Channel 3</td>
+  </tr>
+</table>
+
+<h3 id="channel-register-details">Channel Register Details</h3>
+<p>See Table 3-3 for the base address of this peripheral/module. If multiple instances of the peripheral are provided, each instance has its own independent set of the registers shown in Table 10-10. Register names for a specific instance are defined by replacing "n" with the instance number. As an example, a register PERIPHERALn_CTRL resolves to PERIPHERAL0_CTRL and PERIPHERAL1_CTRL for instances 0 and 1, respectively.</p>
+<p>See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
+<p><em>Table 10-10: DMA Channel Registers Summary</em>
+<a name="table10-10-cma-channel-registers-summary"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+  <tr>
+    <th>Offset</th>
+    <th>Register</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+<tbody>
+  <tr>
+    <td>[0x0000]</td>
+    <td><a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a></td>
+    <td>DMA Channel n Configuration Register</td>
+  </tr>
+  <tr>
+    <td>[0x0004]</td>
+    <td><a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a></td>
+    <td>DMA Channel n Status Register</td>
+  </tr>
+  <tr>
+    <td>[0x0008]</td>
+    <td><a href="#dma-channel-n-status-register">DMA_CHn_SRC</a></td>
+    <td>DMA Channel n Source Register</td>
+  </tr>
+  <tr>
+    <td>[0x000C]</td>
+    <td><a href="#dma-channel-n-source-register">DMA_CHn_DST</a></td>
+    <td>DMA Channel n Destination Register</td>
+  </tr>
+  <tr>
+    <td>[0x0010]</td>
+    <td><a href="#dma-channel-n-count-register">DMA_CHn_CNT</a></td>
+    <td>DMA Channel n Count Register</td>
+  </tr>
+  <tr>
+    <td>[0x0014]</td>
+    <td><a href="#dma-channel-n-source-reload-register">DMA_CHn_SRCRLD</a></td>
+    <td>DMA Channel n Source Reload Register</td>
+  </tr>
+  <tr>
+    <td>[0x0018]</td>
+    <td><a href="#dma-channel-n-destination-reload-register">DMA_CHn_DSTRLD</a></td>
+    <td>DMA Channel n Destination Reload Register</td>
+  </tr>
+  <tr>
+    <td>[0x001C]</td>
+    <td><a href="#dma-channel-n-count-reload-register">DMA_CHn_CNTRLD</a></td>
+    <td>DMA Channel n Count Reload Register</td>
+  </tr>
+</table>
+
+<p><em>Table 10-11: DMA_CH n Control Register</em>
+<a name="dma-channel-n-configuration-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">DMA Channel n Control</td>
+        <td colspan="1">DMA_CHn_CTRL</td>
+        <td>[0x0000]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>31</td>
+        <td>ctz_ie</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td>
+            <strong>CTZ Interrupt Enable</strong>
+            <div style="margin-left: 20px;">
+                0: Disabled<br>
+                1: Enabled. DMA_INTFL.ch&lt;n&gt; is set to 1 whenever a CTZ event occurs.
+            </div>
+        </td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>dis_ie</td>
+      <td>R/W</td>
+      <td>0</td>
+      <td><strong>Channel Disable Interrupt Enable</strong>
+          <div style="margin-left: 20px;">
+              0: Disabled<br>
+              1: Enabled. <em>DMA_INTFL</em>.ch&lt;n&gt; bit is set to 1 whenever 
+              <em>DMA_CHn_STATUS</em>.status changes from 1 to 0.
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>-</td>
+      <td>RO</td>
+      <td>0</td>
+      <td><strong>Reserved</strong></td>
+    </tr>
+  <tr>
+  <td>28:24</td>
+  <td>burst_size</td>
+  <td>R/W</td>
+  <td>0</td>
+  <td><strong>Burst Size</strong><br>The number of bytes transferred into and out of the DMA FIFO in a
+  single burst.
+  <div style="margin-left: 20px;">
+    0b00000: 1 byte<br>
+    0b00001: 2 bytes<br>
+    0b00010: 3 bytes<br>
+    ...<br>
+    0b11111: 32 bytes</div>
+    </td>
+  </tr>
+  <tr>
+    <td>23</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+  </tr>
+  <tr>
+    <td>22</td>
+    <td>dstinc</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Destination Increment Enable</strong>This bit enables the automatic increment of the <em>DMA_CHn_DST</em>
+    register upon every AHB transaction. This bit is ignored for a DMA
+    transmit to peripherals.<br>
+    <div style="margin-left: 20px;">
+    0: Disabled<br>
+    1: Enabled
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>21:20</td>
+    <td>dstwd</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Destination Width</strong><br>Indicates the width of each AHB transaction to the destination
+    peripheral or memory (the actual width might be less than this if there
+    are insufficient bytes in the DMA FIFO for the full width).
+    <div style="margin-left: 20px;">
+    0: Byte<br>
+    1: Half word<br>
+    2: Word<br>
+    3: Reserved</div>
+    </td>
+  </tr>
+  <tr>
+    <td>19</td>
+    <td>-</td>
+    <td>RO</td>
+    <td>0</td>
+    <td><strong>Reserved</strong></td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td>srcinc</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Source Increment on AHB Transaction Enable</strong><br>This bit enables the automatic increment of the <em>DMA_CHn_SRC</em>
+    register upon every AHB transaction. This bit is ignored for a DMA
+    receive from peripherals.
+    <div style="margin-left: 20px;">
+    0: Disabled<br>
+    1: Enabled
+    </div>
+  </tr>
+  <tr>
+    <td>17:16</td>
+    <td>srcwd</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Source Width</strong><br>This field indicates the width of each AHB transaction from the
+    source peripheral or memory. The actual width might be less than this if
+    the <em>DMA_CHn_CNT</em> register indicates a smaller value.
+    <div style="margin-left: 20px;">
+    0: Byte<br>
+    1: Half word<br>
+    2: Word<br>
+    3: Reserved
+    </div>
+    </td>
+  </tr>
+  <tr>
+  <td>15:14</td>
+  <td>to_clkdiv</td>
+  <td>R/W</td>
+  <td>0</td>
+  <td><strong>Timeout Timer Clock Pre-Scale Select</strong><br>This field selects the pre-scale divider for the timer clock
+  input.
+  <div style="margin-left: 20px;">
+  0: Timer disabled.<br>
+  1: 
+  $$
+  \frac{f_{\text{HCLK}}}{2^8}
+  $$ 
+  <br>
+  2: 
+  $$
+  \frac{f_{HCLK}}{2^{16}}
+  $$ 
+  <br>
+  3: 
+  $$
+  \frac{f_{HCLK}}{2^{24}}
+  $$ 
+  <div>
+  </td>
+  </tr>
+  <tr>
+  <td>13:11</td>
+  <td>to_per</td>
+  <td>R/W</td>
+  <td>0</td>
+  <td><strong>Timeout Period Select</strong> <br> This field selects the number of pre-scaled clocks seen by the channel timer before a timeout condition is generated. The value is approximate because of synchronization delays between timers.
+  <div style="margin-left: 20px;">
+  0: 3 to 4<br>
+  1: 7 to 8<br>
+  2: 15 to 16<br>
+  3: 31 to 32<br>
+  4: 63 to 64<br>
+  5: 127 to 128<br>
+  6: 255 to 256<br>
+  7: 511 to 512
+  </div>
+  </td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>to_wait</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Request DMA Timeout Timer Wait Enable</strong><br> This field controls when the timeout timer starts, either immediately when the timeout timer is enabled or after the first DMA transaction occurs.
+    <div style="margin-left: 20px;">
+    0: Start the timer immediately when enabled.<br>
+    1: Delay the timer's start until after the first DMA transaction occurs.
+    </div>
+    </td>
+  </tr>
+  <tr>
+  <td>9:4</td>
+  <td>request</td>
+  <td>R/W</td>
+  <td>0</td>
+  <td><strong>Request Select</strong><br> Selects the source and destination for the transfer as shown in <em>Source and Destination Addressing</em>.</p></td>
+  </tr>
+  <tr>
+    <td>3:2</td>
+    <td>pri</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Channel Priority</strong><br> This field sets the priority of the channel relative to other channels of the DMA peripheral. Channels of the same priority are serviced in a round-robin fashion.
+    <div style="margin-left: 20px;">
+    0: High<br>
+    1: Medium-high<br>
+    2: Medium-low<br>
+    3: Low 
+    </div>
+    </td>
+  </tr>
+  <tr>
+  <td>1</td>
+  <td>rlden</td>
+  <td>R/W</td>
+  <td>0</td>
+  <td><strong>Reload Enable</strong><br> Setting this bit to 1 allows reloading the <em>DMA_CHn_SRC</em>, <em>DMA_CHn_DST,</em> and <em>DMA_CHn_CNT</em> registers upon a CTZ.<br>
+  When this bit is set to 0 and a CTZ occurs, the channel is disabled, and the <em>DMA_CHn_STATUS.status</em> bit is set to 0.
+  <div style="margin-left: 20px;">
+  0: The channel is disabled when a CTZ occurs, and the <em>DMA_CHn_STATUS.status</em> is set to 0.<br>
+  1: Automatically reload the <em>DMA_CHn_SRC</em>, <em>DMA_CHn_DST</em>, and <em>DMA_CHn_CNT</em> registers on a CTZ.
+  </div>
+  </td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>en</td>
+    <td>R/W</td>
+    <td>0</td>
+    <td><strong>Channel Enable</strong><br> This bit is automatically cleared when <em>DMA_CHn_STATUS</em>.<em>status</em> changes from 1 to 0.
+    <div style="margin-left: 20px;">
+    0: Disabled<br>
+    1: Enabled
+    </div>
+    </td>
+  </tr>
+</tbody>
+</table>
+
+<p><em>Table 10-12: DMA Status Register</em>
+<a name="dma-channel-n-status-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">DMA Channel n Status</td>
+        <td colspan="1">DMA_CHn_STATUS</td>
+        <td>[0x0004]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+            <td>31:7</td>
+            <td>-</td>
+            <td>RO</td>
+            <td>0</td>
+            <td><strong>Reserved</strong></td>
+    </tr>
+        <tr>
+            <td>6</td>
+            <td>to_if</td>
+            <td>R/W1C</td>
+            <td>0</td>
+            <td><strong>Timeout Interrupt Flag</strong><br>
+            Timeout. Write 1 to clear.
+                <div style="margin-left: 20px;">
+                    0: No time out.<br>
+                    1: A channel timeout has occurred.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>-</td>
+            <td>RO</td>
+            <td>0</td>
+            <td><strong>Reserved</strong></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>bus_err</td>
+            <td>R/W1C</td>
+            <td>0</td>
+            <td><strong>Bus Error</strong><br>
+            If this bit reads 1, an AHB abort occurred, and the channel was disabled by hardware. Write 1 to clear.
+                <div style="margin-left: 20px;">
+                    0: No error found.<br>
+                    1: An AHB bus error occurred.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>rld_if</td>
+            <td>R/W1C</td>
+            <td>0</td>
+            <td><strong>Reload Interrupt Flag</strong><br>
+            Reload. Write 1 to clear.
+                <div style="margin-left: 20px;">
+                    0: Reload has not occurred.<br>
+                    1: Reload occurred.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>ctz_if</td>
+            <td>R/W1C</td>
+            <td>0</td>
+            <td><strong>CTZ Interrupt Flag</strong><br>
+            Write 1 to clear.
+                <div style="margin-left: 20px;">
+                    0: CTZ has not occurred.<br>
+                    1: CTZ has occurred.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>ipend</td>
+            <td>RO</td>
+            <td>0</td>
+            <td><strong>Channel Interrupt Pending</strong>
+                <div style="margin-left: 20px;">
+                    0: No interrupt.<br>
+                    1: Interrupt pending.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>status</td>
+            <td>RO</td>
+            <td>0</td>
+            <td><strong>Channel Status</strong><br>
+            This bit indicates when it is safe to change the configuration, address, and count registers for the channel.<br>
+                <div style="margin-left: 20px;">    
+                    Whenever this bit is cleared by hardware, the
+                    <em>DMA_CHn_CTRL</em>.<em>en</em> bit is also cleared.<br>
+                    0: Disabled.<br>
+                    1: Enabled.
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p><em>Table 10-13: DMA Channel n Source Register</em>
+<a name="dma-channel-n-status-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">DMA Channel n Source Register</td>
+        <td colspan="1">DMA_CHn_SRC</td>
+        <td>[0x0008]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+<tr>
+<td>31:0</td>
+<td>addr</td>
+<td>R/W</td>
+<td>0</td>
+<td><strong>Source Device Address</strong><br>
+For peripheral transfers, the actual address field is either ignored or forced to zero because peripherals only have one location to read/write data based on the request select chosen.
+<p>If DMA_CHn_CTRL.<em>srcinc</em> = 1, then this register is incremented on each AHB transfer cycle by one, two, or four bytes depending on the data width.</p>
+<p>If DMA_CHn_CTRL.<em>srcinc</em> = 0, this register remains constant.</p>
+<p>Suppose a CTZ condition occurs while DMA_CHn_CTRL.<em>rlden</em> = 1, then this register is reloaded with the contents of the DMA_CHn_SRCRLD register.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p><em>Table 10-14: DMA Channel n Destination Register</em>
+<a name="dma-channel-n-source-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">DMA Channel n Destination</td>
+        <td colspan="1">DMA_CHn_DST</td>
+        <td>[0x000C]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+<tr>
+<td>31:0</td>
+<td>addr</td>
+<td>R/W</td>
+<td>0</td>
+<td><strong>Destination Device Address</strong><br> For peripheral transfers, the actual address field is either ignored or forced to zero because peripherals only have one location to read/write data based on the request select chosen.
+<p>If DMA_CHn_CTRL.<em>dstinc</em> = 1, then this register is incremented on every AHB transfer cycle by one, two, or four bytes depending on the data width.</p>
+<p>Suppose a CTZ condition occurs while DMA_CHn_CTRL.<em>rlden</em> = 1, then this register is reloaded with the contents of the <em>DMA_CHn_DSTRLD</em> register.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p><em>Table 10-15: DMA Channel n Count Register</em>
+<a name="dma-channel-n-count-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">DMA Channel n Count Register</td>
+        <td colspan="1">DMA_CHn_CNT</td>
+        <td>[0x0010]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+<tr>
+<td>31:24</td>
+<td>-</td>
+<td>RO</td>
+<td>0</td>
+<td><strong>Reserved</strong></td>
+</tr>
+<tr>
+<td>23:0</td>
+<td>cnt</td>
+<td>R/W</td>
+<td>0</td>
+<td><strong>DMA Counter</strong><br> Load this register with the number of bytes to transfer. This field decreases on every AHB access to the DMA FIFO. The decrement is one, two, or four bytes depending on the data width. When the counter reaches 0, a CTZ condition is triggered.
+<p>Suppose a CTZ condition occurs while DMA_CHn_CTRL.<em>rlden</em> = 1, then this register is reloaded with the contents of the DMA_CHn_CNTRLD.<em>cnt</em> field.</p></td>
+</tr>
+</table>
+
+<p><em>Table 10-16: DMA Channel n Source Reload Register</em>
+<a name="dma-channel-n-source-reload-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">DMA Channel n Source Reload</td>
+        <td colspan="1">DMA_CHn_SRCRLD</td>
+        <td>[0x0014]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+<tr>
+<td>31</td>
+<td>-</td>
+<td>RO</td>
+<td>0</td>
+<td><strong>Reserved</strong></td>
+</tr>
+<tr>
+<td>30:0</td>
+<td>addr</td>
+<td>R/W</td>
+<td>0</td>
+<td><strong>Source Address Reload Value</strong><br> If DMA_CHn_CTRL.<em>rlden</em> = 1, then the value of this register is loaded into DMA_CHn_SRC upon a CTZ condition.</p></td>
+</tr>
+</table>
+
+<p><em>Table 10-17: DMA Channel n Destination Reload Register</em>
+<a name="dma-channel-n-destination-reload-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">DMA Channel n Destination Reload</td>
+        <td colspan="1">DMA_CHn_DSTRLD</td>
+        <td>[0x0018]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+<tr>
+<td>31</td>
+<td>-</td>
+<td>RO</td>
+<td>0</td>
+<td><strong>Reserved</strong></td>
+</tr>
+<tr>
+<td>30:0</td>
+<td>addr</td>
+<td>R/W</td>
+<td>0</td>
+<td><strong>Destination Address Reload Value</strong><br>If DMA_CHn_CTRL.<em>rlden</em> = 1, then the value of this register is loaded into DMA_CHn_DST upon a CTZ condition.
+</td>
+</tr>
+</table>
+
+<p><em>Table 10-17: Table 10-18: DMA Channel n Count Reload Register</em>
+<a name="dma-channel-n-count-reload-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <td colspan="3">DMA Channel n Count Reload</td>
+        <td colspan="1">DMA_CHn_CNTRLD</td>
+        <td>[0x001C]</td>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+<tr>
+<td>31:24</td>
+<td>-</td>
+<td>RO</td>
+<td>0</td>
+<td><strong>Reserved</strong></td>
+</tr>
+<tr>
+<td>23:0</td>
+<td>cnt</td>
+<td>R/W</td>
+<td>0</td>
+<td><strong>Count Reload Value</strong><br> If DMA_CHn_CTRL.<em>rlden</em> = 1, then the value of this register is loaded into DMA_CHn_CNT upon a CTZ condition.
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Analog Devices
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/analog-devices/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/analogdevicesinc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["search.suggest", "search.highlight", "navigation.tracking"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

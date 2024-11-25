@@ -4022,97 +4022,97 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
   </tr>
   <tr>
     <td>[0x0000]</td>
-    <td><a href="#system-control-register">GCR_SYSCTRL</td>
+    <td><a href="#system-control-register">GCR_SYSCTRL</a></td>
     <td>System Control Register</td>
   </tr>
   <tr>
     <td>[0x0004]</td>
-    <td><a href="#reset-register0">GCR_RST0</td>
+    <td><a href="#reset-register0">GCR_RST0</a></td>
     <td>Reset Register 0</td>
   </tr>
   <tr>
     <td>[0x0008]</td>
-    <td><a href="#clock-control-register">GCR_CLKCTRL</td>
+    <td><a href="#clock-control-register">GCR_CLKCTRL</a></td>
     <td>Clock Control Register</td>
   </tr>
   <tr>
     <td>[0x000C]</td>
-    <td><a href="#power-management-register">GCR_PM</td>
+    <td><a href="#power-management-register">GCR_PM</a></td>
     <td>Power Management Register</td>
   </tr>
   <tr>
     <td>[0x0018]</td>
-    <td><a href="#peripheral-clocks-divisor">GCR_PCLKDIV</td>
+    <td><a href="#peripheral-clocks-divisor">GCR_PCLKDIV</a></td>
     <td>Peripheral Clocks Divisor</td>
   </tr>
   <tr>
     <td>[0x0024]</td>
-    <td><a href="#peripheral-clocks-disable0">GCR_PCLKDIS0</td>
+    <td><a href="#peripheral-clocks-disable0">GCR_PCLKDIS0</a></td>
     <td>Peripheral Clocks Disable 0</td>
   </tr>
   <tr>
     <td>[0x0028]</td>
-    <td><a href="#memory-clock-control">GCR_MEMCTRL</td>
+    <td><a href="#memory-clock-control">GCR_MEMCTRL</a></td>
     <td>Memory Clock Control</td>
   </tr>
   <tr>
     <td>[0x002C]</td>
-    <td><a href="#memory-zeroize-register">GCR_MEMZ</td>
+    <td><a href="#memory-zeroize-register">GCR_MEMZ</a></td>
     <td>Memory Zeroize Register</td>
   </tr>
   <tr>
     <td>[0x0040]</td>
-    <td><a href="#system-status-flags">GCR_SYSST</td>
+    <td><a href="#system-status-flags">GCR_SYSST</a></td>
     <td>System Status Flags</td>
   </tr>
   <tr>
     <td>[0x0044]</td>
-    <td><a href="#reset-register1">GCR_RST1</td>
+    <td><a href="#reset-register1">GCR_RST1</a></td>
     <td>Reset Register 1</td>
   </tr>
   <tr>
     <td>[0x0048]</td>
-    <td><a href="#peripheral-clocks-disable1">GCR_PCLKDIS1</td>
+    <td><a href="#peripheral-clocks-disable1">GCR_PCLKDIS1</a></td>
     <td>Peripheral Clocks Disable 1</td>
   </tr>
   <tr>
     <td>[0x004C]</td>
-    <td><a href="#event-enable-register">GCR_EVENTEN</td>
+    <td><a href="#event-enable-register">GCR_EVENTEN</a></td>
     <td>Event Enable Register</td>
   </tr>
   <tr>
     <td>[0x0050]</td>
-    <td><a href="#revision-register">GCR_REVISION</td>
+    <td><a href="#revision-register">GCR_REVISION</a></td>
     <td>Revision Register</td>
   </tr>
   <tr>
     <td>[0x0054]</td>
-    <td><a href="#system-status-interrupt-enable">GCR_SYSIE</td>
+    <td><a href="#system-status-interrupt-enable">GCR_SYSIE</a></td>
     <td>System Status Interrupt Enable</td>
   </tr>
   <tr>
     <td>[0x0064]</td>
-    <td><a href="#error-correction-coding-error-register">GCR_ECCERR</td>
+    <td><a href="#error-correction-coding-error-register">GCR_ECCERR</a></td>
     <td>Error Correction Coding Error Register</td>
   </tr>
   <tr>
     <td>[0x0068]</td>
-    <td><a href="#error-correction-coding-correctable-error-detected">GCR_ECCCED</td>
+    <td><a href="#error-correction-coding-correctable-error-detected">GCR_ECCCED</a></td>
     <td>Error Correction Coding Correctable Error Detected</td>
   </tr>
   <tr>
     <td>[0x006C]</td>
-    <td><a href="#error-correction-coding-interrupt-enable-register">GCR_ECCIE</td>
+    <td><a href="#error-correction-coding-interrupt-enable-register">GCR_ECCIE</a></td>
     <td>Error Correction Coding Interrupt Enable Register</td>
   </tr>
   <tr>
     <td>[0x0070]</td>
-    <td><a href="#error-correction-coding-error-address-register">GCR_ECCADDR</td>
+    <td><a href="#error-correction-coding-error-address-register">GCR_ECCADDR</a></td>
     <td>Error Correction Coding Error Address Register</td>
   </tr>
   <tr>
     <td>[0x0080]</td>
-    <td><a href="#general-purpose-register0">GCR_GPR0</td>
+    <td><a href="#general-purpose-register0">GCR_GPR0</a></td>
     <td>General Purpose Register 0</td>
   </tr>
 </table>

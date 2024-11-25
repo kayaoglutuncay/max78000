@@ -1,13 +1,12 @@
-General-purpose I/O (GPIO) pins can be individually configured to operate in a digital I/O mode or in an alternate function (AF) mode, which maps a signal associated with an enabled peripheral to that GPIO. Each GPIO supports dynamic switching between I/O mode and alternate function mode. Configuring a pin for an alternate function supersedes its use as a digital I/O; however, the state of the GPIO is still readable through the *GPIOn_IN* register.
+General-purpose I/O (GPIO) pins can be individually configured to operate in a digital I/O mode or in an alternate function (AF) mode, which maps a signal associated with an enabled peripheral to that GPIO. Each GPIO supports dynamic switching between I/O mode and alternate function mode. Configuring a pin for an alternate function supersedes its use as a digital I/O; however, the state of the GPIO is still readable through the [GPIOn_IN](#gpio-port-input-register) register.
 
-The electrical characteristics of a GPIO pin are identical whether the pin is configured as an I/O or as an alternate function, except where explicitly noted in the data sheet electrical characteristics
-tables.
+The electrical characteristics of a GPIO pin are identical whether the pin is configured as an I/O or as an alternate function, except where explicitly noted in the data sheet electrical characteristics tables.
 
 The GPIO are divided logically into ports of 32 pins. Package variants may not implement all pins of a specific 32-bit GPIO port.
 
 Each port pin has an interrupt function that can be independently enabled and configured as a level-sensitive or edge-sensitive interrupt. All GPIOs of a given port share the same interrupt vector as detailed in GPIO Interrupt Handling.
 
-*Note: The register set used to control the GPIO are identical across multiple Analog Devices microcontrollers; however, the behavior of several registers varies depending on the specific device. The behavior of the registers should not be assumed to be the same from one device to a different device. Specifically the registers GPIOn_PADCTRL0, GPIOn_PADCTRL1, GPIOn_HYSEN, GPIOn_SRSEL, GPIOn_DS0, GPIOn_DS1, and GPIOn_VSSEL are device-dependent in their usage. GPIO3 is controlled differently and has different features than the other GPIO ports in the MAX78000. See MCR_GPIO3_CTRL for details on using GPIO3.*
+*Note: The register set used to control the GPIO are identical across multiple Analog Devices microcontrollers; however, the behavior of several registers varies depending on the specific device. The behavior of the registers should not be assumed to be the same from one device to a different device. Specifically the registers [GPIOn_PADCTRL0](#gpio-port-pad-configuration1-register), [GPIOn_PADCTRL1](#gpio-port-pad-configuration2-register), [GPIOn_HYSEN](#gpio-port-hysteresis-enable-register), [GPIOn_SRSEL](#gpio-port-slew-rate-select-register), [GPIOn_DS0](#gpio-port-output-drive-strength-bit0-register), [GPIOn_DS1](#gpio-port-output-drive-strength-bit1-register), and [GPIOn_VSSEL](#gpio-port-voltage-select-register) are device-dependent in their usage. GPIO3 is controlled differently and has different features than the other GPIO ports in the MAX78000. See MCR_GPIO3_CTRL for details on using GPIO3.*
 
 The features for each GPIO pin include:
 
@@ -16,8 +15,8 @@ The features for each GPIO pin include:
     - High impedance
     - Weak pullup/pulldown
     - Strong pullup/pulldown
-- Output data can be from the GPIOn_OUT register or an enabled peripheral.
-- Input data can be read from the GPIOn_IN input register or the enabled peripheral.
+- Output data can be from the [GPIOn_OUT](#gpio-port-output-register) register or an enabled peripheral.
+- Input data can be read from the [GPIOn_IN](#gpio-port-input-register) input register or the enabled peripheral.
 - Bit set and clear registers for efficient bit-wise write access to the pins and configuration registers.
 - Wake from low-power modes using edge-triggered inputs.
 - Selectable GPIO voltage supply for GPIO0, GPIO1, and GPIO2:
@@ -80,16 +79,16 @@ All I/O default to GPIO mode during a POR event as high impedance inputs except 
 Following a POR event, all GPIO, except device pins that have the SWDIO and SWDCLK function, are configured with the following default settings:
 
 - GPIO mode enabled
-    - GPIOn_EN0.en[pin] = 1
-    - GPIOn_EN1.en[pin] = 0
-    - GPIOn_EN2.en[pin] = 0
+    - [GPIOn_EN0](#gpio-port-configuration-enable-bit0-register).*en[pin]* = 1
+    - [GPIOn_EN1](#gpio-port-configuration-enable-bit1-register).*en[pin]* = 0
+    - [GPIOn_EN2](#gpio-port-configuration-enable-bit2-register).*en[pin]* = 0
 - Pullup/pulldown disabled, I/O in Hi-Z mode
-    - GPIOn_PADCTRL0.mode[pin] = 0
-    - GPIOn_PADCTRL1.mode[pin]
+    - [GPIOn_PADCTRL0](#gpio-port-pad-configuration1-register).*mode[pin]* = 0
+    - [GPIOn_PADCTRL1](#gpio-port-pad-configuration2-register).*mode[pin]*
 - Output mode disabled
-    - GPIOn_OUTEN.en[pin] = 0
+    - [GPIOn_OUTEN](#gpio-port-output-enable-register).*en[pin]* = 0
 - Interrupt disabled
-    - GPIOn_INTEN.en[pin] = 0
+    - [GPIOn_INTEN](#gpio-port-interrupt-enable-register).*en[pin]* = 0
 
 
 ### Serial Wire Debug Configuration
@@ -98,24 +97,24 @@ Perform the following steps to configure the SWDIO and SWDCLK device pins for SW
 
 1. Set the device pin P0.28 for AF1 mode:
 
-    a. GPIOn_EN0.config[28] = 0
+    a. [GPIOn_EN0](#gpio-port-configuration-enable-bit0-register).*config[28]* = 0
     
-    b. GPIOn_EN1.config[28] = 0
+    b. [GPIOn_EN1](#gpio-port-configuration-enable-bit1-register).*config[28]* = 0
 
-    c. GPIOn_EN2.config[28] = 0
+    c. [GPIOn_EN2](#gpio-port-configuration-enable-bit2-register).*config[28]* = 0
 
 2. Set device pin P0.29 for AF1 mode:
 
-    a. GPIOn_EN0.config[29] = 0
+    a. [GPIOn_EN0](#gpio-port-configuration-enable-bit0-register).*config[29]* = 0
 
-    b. GPIOn_EN1.config[29] = 0
+    b. [GPIOn_EN1](#gpio-port-configuration-enable-bit1-register).*config[29]* = 0
 
-    c. GPIOn_EN2.config[29] = 0
+    c. [GPIOn_EN2](#gpio-port-configuration-enable-bit2-register).*config[29]* = 0
 
 *Note: To use the SWD pins in GPIO mode, set the desired GPIO pins for SWD AF and disable the SWD (GCR_SYSCTRL.swd_dis = 1).*
 
 ### Pin Function Configuration
-[Table 6‑2](#table6-2-max78000-gpio-pin-function-configuration) depicts the bit settings for the GPIOn_EN0, GPIOn_EN1, and GPIOn_EN2 registers to configure a GPIO port pin's function. Each of the bits within these registers represents the configuration of a single pin on the GPIO port. For example, GPIO0_EN0.config[25], GPIO0_EN1.config[25], and GPIO0_EN2.config[25] all represent configuration for device pin P0.25. See Table 6‑5 for a detailed example of how each of these bits applies to each GPIO device pin.
+[Table 6‑2](#table6-2-max78000-gpio-pin-function-configuration) depicts the bit settings for the [GPIOn_EN0](#gpio-port-configuration-enable-bit0-register), [GPIOn_EN1](#gpio-port-configuration-enable-bit1-register), and [GPIOn_EN2](#gpio-port-configuration-enable-bit2-register) registers to configure a GPIO port pin's function. Each of the bits within these registers represents the configuration of a single pin on the GPIO port. For example, [GPIOn_EN0](#gpio-port-configuration-enable-bit0-register).*config[25]*, [GPIOn_EN1](#gpio-port-configuration-enable-bit1-register).*config[25]*, and [GPIOn_EN2](#gpio-port-configuration-enable-bit2-register).*config[25]* all represent configuration for device pin P0.25. See Table 6‑5 for a detailed example of how each of these bits applies to each GPIO device pin.
 
 *Table 6-2: MAX78000 GPIO Pin Function Configuration*
 <a name="table6-2-max78000-gpio-pin-function-configuration"></a>
@@ -124,9 +123,9 @@ Perform the following steps to configure the SWDIO and SWDCLK device pins for SW
 <thead>
 <tr>
 <th>MODE</th>
-<th>GPIOn_EN0.config[pin]</th>
-<th>GPIOn_EN1.config[pin]</th>
-<th>GPIOn_EN2.config[pin]</th>
+<th><a href="#gpio-port-configuration-enable-bit0-register">GPIOn_EN0</a>.<em>config[pin]</em></th>
+<th><a href="##gpio-port-configuration-enable-bit1-register">GPIOn_EN1</a>.<em>config[pin]</em></th>
+<th><a href="#gpio-port-configuration-enable-bit2-register">GPIOn_EN2</a>.<em>config[pin]</em></th>
 </tr>
 </thead>
 <tbody>
@@ -158,7 +157,7 @@ Perform the following steps to configure the SWDIO and SWDCLK device pins for SW
 </table>
 
 ### Input Mode Configuration
-[Table 6‑3](#table6-3-max78000-input-mode-configuration) depicts the bit settings for the digital I/O input mode. Each of the bits within these registers represents the configuration of a single pin on the GPIO port. For example, GPIO0_PADCTRL1.config[25], GPIO0_PADCTRL0.config[25], GPIO0_PS.pull_sel[25], and GPIO0_VSSEL.v_sel[25] all represent configuration for device pin P0.25. See Table 6‑8 for a detailed example of how each of these bits applies to each GPIO device pin. Refer to the device data sheet for details of specific electrical characteristics.
+[Table 6‑3](#table6-3-max78000-input-mode-configuration) depicts the bit settings for the digital I/O input mode. Each of the bits within these registers represents the configuration of a single pin on the GPIO port. For example, [GPIOn_PADCTRL1](#gpio-port-pad-configuration2-register).*config[25]*, [GPIOn_PADCTRL0](#gpio-port-pad-configuration1-register).*config[25]*, [GPIO0_PS](#gpio-port-pulldown-pullup-strength-select-register).*pull_sel[25]*, and [GPIO0_VSSEL](#[GPIOn_VSSEL](#gpio-port-voltage-select-register)).*v_sel[25]* all represent configuration for device pin P0.25. See Table 6‑8 for a detailed example of how each of these bits applies to each GPIO device pin. Refer to the device data sheet for details of specific electrical characteristics.
 
 *Table 6-3: MAX78000 Input Mode Configuration*
 <a name="table6-3-max78000-input-mode-configuration"></a>
@@ -172,10 +171,10 @@ Perform the following steps to configure the SWDIO and SWDCLK device pins for SW
     <th align="center">Power Supply</th>
 </tr>
 <tr>
-    <th><em>GPIOn_PADCTRL1</em>.<em>config[pin]</em></th>
-    <th><em>GPIOn_PADCTRL0.config[pin]</em></th>
-    <th><em>GPIOn_PS</em>.<em>pull_sel[pin]</em></th>
-    <th><em>GPIOn_VSSEL</em>.<em>v_sel[pin]</em></th>
+    <th><a href="##gpio-port-pad-configuration2-register">GPIOn_PADCTRL1</a>.<em>config[pin]</em></th>
+    <th><a href="#gpio-port-pad-configuration1-register">GPIOn_PADCTRL0</a>.<em>config[pin]</em></th>
+    <th><a href="#gpio-port-pulldown-pullup-strength-select-register">GPIOn_PS</a>.<em>pull_sel[pin]</em></th>
+    <th><a href="#gpio-port-voltage-select-register">GPIOn_VSSEL</a>.<em>v_sel[pin]</em></th>
 </tr>
 </thead>
 <tbody>
@@ -225,7 +224,7 @@ Perform the following steps to configure the SWDIO and SWDCLK device pins for SW
 </table>
 
 ### Output Mode Configuration
-[Table 6‑4](#table6-4-max78000-output-mode-configuration) shows the configuration options for digital I/O in output mode. Each of the bits within these registers represents the configuration of a single pin on the GPIO port. For example,GPIO2_DS0.config[25], GPIO2_DS1.config[25], and GPIO2_VSSEL.v_sel[25] all represent configuration for GPIO port 2 pin 25 (device pin P0.25). See Table 6‑8 for a detailed example of how each of these bits applies to each GPIO device pin. Refer to the device data sheet for details of specific electrical
+[Table 6‑4](#table6-4-max78000-output-mode-configuration) shows the configuration options for digital I/O in output mode. Each of the bits within these registers represents the configuration of a single pin on the GPIO port. For example, GPIO2_DS0.config[25], GPIO2_DS1.config[25], and GPIO2_VSSEL.v_sel[25] all represent configuration for GPIO port 2 pin 25 (device pin P0.25). See Table 6‑8 for a detailed example of how each of these bits applies to each GPIO device pin. Refer to the device data sheet for details of specific electrical
 characteristics.
 
 *Table 6-4: MAX78000 Output Mode Configuration*
@@ -239,9 +238,9 @@ characteristics.
 <th align="center">Power Supply</th>
 </tr>
 <tr>
-    <th><em>GPIOn_DS1.config[pin]</em></th>
-    <th><em>GPIOn_DS0.config[pin]</em></th>
-    <th><em>GPIOn_VSSEL.v_sel[pin]</em></th>
+    <th><a href="#gpio-port-output-drive-strength-bit1-register">GPIOn_DS1.<em>config[pin]</em></th>
+    <th><a href="#gpio-port-output-drive-strength-bit0-register">GPIOn_DS0</a>.<em>config[pin]</em></th>
+    <th><a href="#gpio-port-voltage-select-register">GPIOn_VSSEL</a>.<em>v_sel[pin]</em></th>
 </tr>
 </thead>
 <tbody>
@@ -528,10 +527,10 @@ The tables in this section provide example references for register bit assignmen
 During a power-on-reset event, each GPIO is reset to the default input mode with the weak pullup resistor enabled as follows:
 
 1. The GPIO configuration enable bits shown in <a href="#table6-2-max78000-gpio-pin-function-configuration">Table 6‑2</a> are set to I/O (transition to AF1) mode.
-2. Input mode is enabled (GPIOn_INEN.en[pin] = 1).
-3. High impedance mode enabled (GPIOn_PADCTRL1.config[pin] = 0, GPIOn_PADCTRL0.config[pin] = 0), pullup and pulldown disabled.
-4. Output mode disabled (GPIOn_OUTEN.en[pin] = 0).
-5. Interrupt disabled (GPIOn_INTEN.en[pin] = 0).
+2. Input mode is enabled ([GPIOn_INTEN](#gpio-port-interrupt-enable-register).*en[pin]* = 1).
+3. High impedance mode enabled ([GPIOn_PADCTRL1](#gpio-port-pad-configuration2-register).*config[pin]* = 0, [GPIOn_PADCTRL0](#gpio-port-pad-configuration1-register).*config[pin]* = 0), pullup and pulldown disabled.
+4. Output mode disabled ([GPIOn_OUTEN](#gpio-port-output-enable-register).*en[pin]* = 0).
+5. Interrupt disabled ([GPIOn_INTEN](#gpio-port-interrupt-enable-register).*en[pin]* = 0).
 
 
 ### Input Mode Configuration
@@ -539,8 +538,8 @@ Perform the following steps to configure one or more pins for input mode:
 
 1. Set the GPIO Configuration Enable bits shown in <a href="#table6-2-max78000-gpio-pin-function-configuration">Table 6‑2</a> to any one of the I/O mode settings.
 2. Configure the electrical characteristics of the pin as desired, as shown in <a href="#table6-3-max78000-input-mode-configuration">Table 6‑3</a>.
-3. Enable the input buffer connected to the GPIO pin by setting GPIOn_INEN.en[pin] to 1.
-4. Read the input state of the pin using the GPIOn_IN.level[pin] field.
+3. Enable the input buffer connected to the GPIO pin by setting [GPIOn_INTEN](#gpio-port-interrupt-enable-register).*en[pin]* to 1.
+4. Read the input state of the pin using the [GPIOn_IN](#gpio-port-input-register).*level[pin]* field.
 
 
 ### Output Mode Configuration
@@ -548,15 +547,15 @@ Perform the following steps to configure a pin for output mode:
 
 1. Set the GPIO Configuration Enable bits shown in <a href="#table6-2-max78000-gpio-pin-function-configuration">Table 6‑2</a> to any one of the I/O mode settings.
 2. Configure the electrical characteristics of the pin as desired, as shown in <a href="#table6-4-max78000-output-mode-configuration">Table 6‑4</a>.
-3. Set the output logic high or logic low using the GPIOn_OUT.level[pin] bit.
-4. Enable the output buffer for the pin by setting GPIOn_OUTEN.en[pin] to 1.
+3. Set the output logic high or logic low using the [GPIOn_OUT](#gpio-port-output-register).*level[pin]* bit.
+4. Enable the output buffer for the pin by setting [GPIOn_OUTEN](#gpio-port-output-enable-register).*en[pin]* to 1.
 
 
 ### Alternate Function Configuration
-Most GPIO support one or more alternate functions selected with the GPIO configuration enable bits shown in <a href="#table6-2-max78000-gpio-pin-function-configuration">Table 6‑2</a>. The bits that select the AF must only be changed while the pin is in one of the I/O modes (GPIOn_EN0 = 1). The specific I/O mode must match the desired AF. For example, if a transition to AF1 is desired, first select the setting corresponding to I/O (transition to AF1). Then enable the desired mode by selecting the AF1 mode.
+Most GPIO support one or more alternate functions selected with the GPIO configuration enable bits shown in <a href="#table6-2-max78000-gpio-pin-function-configuration">Table 6‑2</a>. The bits that select the AF must only be changed while the pin is in one of the I/O modes ([GPIOn_EN0](#gpio-port-configuration-enable-bit0-register) = 1). The specific I/O mode must match the desired AF. For example, if a transition to AF1 is desired, first select the setting corresponding to I/O (transition to AF1). Then enable the desired mode by selecting the AF1 mode.
 
 1. Set the GPIO configuration enable bits shown in <a href="#table6-2-max78000-gpio-pin-function-configuration">Table 6‑2</a> to the I/O mode corresponding to the desired new AF setting. For example, select "I/O (transition to AF1)" if switching to AF1. Switching between different I/O mode settings does not affect the state or electrical characteristics of the pin.
-2. Configure the electrical characteristics of the pin. See <a href="#table6-3-max78000-input-mode-configuration">Table 6‑3</a> if the assigned alternate function uses the pin as an input. See <em>Table 6‑4</em> if the assigned alternate function uses the pin as an output.
+2. Configure the electrical characteristics of the pin. See <a href="#table6-3-max78000-input-mode-configuration">Table 6‑3</a> if the assigned alternate function uses the pin as an input. See [Table 6‑4](#output-mode-configuration) if the assigned alternate function uses the pin as an output.
 3. Set the GPIO Configuration Enable bits shown in <a href="#table6-2-max78000-gpio-pin-function-configuration">Table 6‑2</a> to the desired alternate function.
 
 ## Configuring GPIO (External) Interrupts
@@ -564,19 +563,19 @@ Each GPIO pin supports external interrupt events when the GPIO is configured for
 
 GPIO interrupts can be individually enabled and configured as an edge or level triggered independently on a pin-by-pin basis. The edge trigger can be a rising, falling, or both transitions.
 
-Each GPIO pin has a dedicated status bit in its corresponding GPIOn_INTFL register. A GPIO interrupt occurs when the status bit transitions from 0 to 1 if the corresponding bit is set in the corresponding GPIOn_INTEN register. Note that the interrupt status bit is always set when the current interrupt configuration event occurs, but an interrupt is only generated if explicitly enabled.
+Each GPIO pin has a dedicated status bit in its corresponding [GPIOn_INTFL](#gpio-port-interrupt-status-register) register. A GPIO interrupt occurs when the status bit transitions from 0 to 1 if the corresponding bit is set in the corresponding [GPIOn_INTEN](#gpio-port-interrupt-enable-register) register. Note that the interrupt status bit is always set when the current interrupt configuration event occurs, but an interrupt is only generated if explicitly enabled.
 
 The following procedure details the steps for enabling *ACTIVE* mode interrupt events for a GPIO pin:
 
-1. Disable interrupts by setting the GPIOn_INTEN.en[pin] field to 0. Disabling interrupts prevents any new interrupts on the pin from triggering but does not clear previously triggered (pending) interrupts. The application can disable all interrupts for a GPIO port by writing 0 to the GPIOn_INEN register. To maintain previously enabled interrupts, read the GPIOn_INEN register and save the state before setting the register to 0.
-2. Clear pending interrupts by writing 1 to the GPIOn_INTFL_CLR.clr[pin] bit.
+1. Disable interrupts by setting the [GPIOn_INTEN](#gpio-port-interrupt-enable-register).*en[pin]* field to 0. Disabling interrupts prevents any new interrupts on the pin from triggering but does not clear previously triggered (pending) interrupts. The application can disable all interrupts for a GPIO port by writing 0 to the [GPIOn_INEN](#gpio-port-input-enable-register) register. To maintain previously enabled interrupts, read the GPIOn_INEN register and save the state before setting the register to 0.
+2. Clear pending interrupts by writing 1 to the [GPIOn_INTFL_CLR](#gpio-port-interrupt-clear-register).*clr[pin]* bit.
 3. Configure the pin for the desired interrupt event.
-4. Set GPIOn_INTMODE.mode[pin] to select the desired interrupt.
-5. For level triggered interrupts, the interrupt triggers on an input high (GPIOn_INTPOL.pol[pin] = 0) or input low level.
-6. For edge triggered interrupts, the interrupt triggers on a transition from low to high(GPIOn_INTPOL.pol[pin] = 0) or high to low (GPIOn_INTPOL.pol[pin] = 1).
-7. Optionally set GPIOn_DUALEDGE.de_en[pin] to 1 to trigger on both the rising and falling edges of the input signal.
+4. Set [GPIOn_INTMODE](#gpio-port-interrupt-mode-register).*mode[pin]* to select the desired interrupt.
+5. For level triggered interrupts, the interrupt triggers on an input high ([GPIOn_INTPOL](#gpio-port-interrupt-polarity-register).*pol[pin]* = 0) or input low level.
+6. For edge triggered interrupts, the interrupt triggers on a transition from low to high([GPIOn_INTPOL](#gpio-port-interrupt-polarity-register).*pol[pin]* = 0) or high to low ([GPIOn_INTPOL](#gpio-port-interrupt-polarity-register).*pol[pin]* = 1).
+7. Optionally set [GPIOn_DUALEDGE](#gpio-port-interrupt-dial-edge-mode-register).*de_en[pin]* to 1 to trigger on both the rising and falling edges of the input signal.
    
-    a. Set <em>GPIOn_INTEN</em>.<em>en[pin]</em> to 1 to enable the interrupt for the pin.
+    a. Set [GPIOn_INTEN](#gpio-port-interrupt-enable-register).*en[pin]* to 1 to enable the interrupt for the pin.
 
 
 ### GPIO Interrupt Handling
@@ -598,21 +597,21 @@ Each GPIO port is assigned a dedicated interrupt vector, as shown in <a href="#t
 <tbody>
 <tr>
     <td>GPIO0[31:0]</td>
-    <td>GPIOn_INTFL</td>
+    <td><a href="#gpio-port-interrupt-status-register">GPIOn_INTFL</a</td>
     <td>40</td>
     <td>25</td>
     <td>GPIO0_IRQn</td>
 </tr>
 <tr>
     <td>GPIO1[9:0]</td>
-    <td>GPIOn_INTFL</td>
+    <td><a href="#gpio-port-interrupt-status-register">GPIOn_INTFL</a</td>
     <td>41</td>
     <td>26</td>
     <td>GPIO1_IRQn</td>
 </tr>
 <tr>
     <td>GPIO2[7:0]</td>
-    <td>GPIOn_INTFL</td>
+    <td><a href="#gpio-port-interrupt-status-register">GPIOn_INTFL</a</td>
     <td>42</td>
     <td>27</td>
     <td>GPIO2_IRQn</td>
@@ -622,16 +621,16 @@ Each GPIO port is assigned a dedicated interrupt vector, as shown in <a href="#t
 
 To handle GPIO interrupts in your interrupt vector handler, complete the following steps:
 
-1. Read the GPIOn_INTFL register to determine the GPIO pin that triggered the interrupt.
+1. Read the [GPIOn_INTFL](##gpio-port-interrupt-status-register) register to determine the GPIO pin that triggered the interrupt.
 2. Complete interrupt tasks associated with the interrupt source pin (application-defined).
-3. Clear the interrupt flag in the GPIOn_INTFL register by writing a 1 to the GPIOn_INTFL_CLR bit position that triggered the interrupt; this also clears and rearms the edge detectors for edge-triggered interrupts.
+3. Clear the interrupt flag in the [GPIOn_INTFL](#gpio-port-interrupt-status-register) register by writing a 1 to the [GPIOn_INTFL_CLR](#gpio-port-interrupt-clear-register) bit position that triggered the interrupt; this also clears and rearms the edge detectors for edge-triggered interrupts.
 4. Return from the interrupt vector handler.
 
 ### Using GPIO for Wake Up from Low-Power Modes
 Low-power modes support an asynchronous wake up from edge-triggered interrupts on the GPIO ports. Level triggered interrupts are not supported for wake up because the system clock must be active to detect
 levels.
 
-A single wake-up interrupt vector, GPIOWAKE_IRQn, is assigned for all pins of all GPIO ports. When the GPIO wake-up event occurs, the application software must interrogate each GPIOn_INTFL register to determine which external port pin caused the wake-up event.
+A single wake-up interrupt vector, GPIOWAKE_IRQn, is assigned for all pins of all GPIO ports. When the GPIO wake-up event occurs, the application software must interrogate each [GPIOn_INTFL](#gpio-port-interrupt-status-register) register to determine which external port pin caused the wake-up event.
 
 *Table 6-10: MAX78000 GPIO Wakeup Interrupt Vector*
 <a name="table6-10-max78000-gpio-wakeup-interrupt-vector"></a>
@@ -649,21 +648,21 @@ A single wake-up interrupt vector, GPIOWAKE_IRQn, is assigned for all pins of al
 <tbody>
 <tr>
     <td>GPIO0</td>
-    <td>GPIO0_INTFL</td>
+    <td><a href="#gpio-port-interrupt-status-register">GPIO0_INTFL</a></td>
     <td>70</td>
     <td>6</td>
     <td>GPIOWAKE_IRQn</td>
 </tr>
 <tr>
     <td>GPIO1</td>
-    <td>GPIO1_INTFL</td>
+    <td><a href="#gpio-port-interrupt-status-register">GPIO1_INTFL</a></td>
     <td>70</td>
     <td>6</td>
     <td>GPIOWAKE_IRQn</td>
 </tr>
 <tr>
     <td>GPIO2</td>
-    <td>GPIO2_INTFL</td>
+    <td><a href="#gpio-port-interrupt-status-register">GPIO2_INTFL</a></td>
     <td>70</td>
     <td>6</td>
     <td>GPIOWAKE_IRQn</td>
@@ -673,14 +672,13 @@ A single wake-up interrupt vector, GPIOWAKE_IRQn, is assigned for all pins of al
 
 To enable a low-power mode to wake up from *SLEEP*, *DEEPSLEEP*, *LPM*, *UPM*, and *BACKUP* using an external GPIO interrupt, complete the following steps:
 
-1. Clear pending interrupt flags by writing a logic 1 to GPIOn_INTFL_CLR.clr[pin].
-2. Activate the GPIO wake-up function by writing a logic 1 to GPIOn_WKEN.we[pin].
+1. Clear pending interrupt flags by writing a logic 1 to [GPIOn_INTFL_CLR](#gpio-port-interrupt-clear-register).*clr[pin]*.
+2. Activate the GPIO wake-up function by writing a logic 1 to [GPIOn_WKEN](#gpio-port-wakeup-enable-register).*we[pin]*.
 3. Configure the power manager to use the GPIO as a wake-up source by GCR_PM.gpio_we field to 1.
 
 ## Registers
 
-See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the base address of this peripheral/module. If multiple instances of the peripheral are provided, each instance has its own independent set of the registers shown in [Table 6‑11](#table6-11-gpio-register-summary). Register names for a specific instance are defined by replacing "n" with the instance number. For example, a register PERIPHERALn_CTRL resolves to PERIPHERAL0_CTRL and PERIPHERAL1_CTRL for
-instances 0 and 1, respectively.
+See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-map) for the base address of this peripheral/module. If multiple instances of the peripheral are provided, each instance has its own independent set of the registers shown in [Table 6‑11](#table6-11-gpio-register-summary). Register names for a specific instance are defined by replacing "n" with the instance number. For example, a register PERIPHERALn_CTRL resolves to PERIPHERAL0_CTRL and PERIPHERAL1_CTRL for instances 0 and 1, respectively.
 
 See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific
 resets.
@@ -1385,7 +1383,7 @@ resets.
 </table>
 
 *Table 6-28: GPIO Port n Interrupt Status Register*
-<a name="gpio-port-interrupt-enable-atomic-clear-register"></a>
+<a name="gpio-port-interrupt-status-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
     <tr>
@@ -1418,7 +1416,7 @@ resets.
 </table>
 
 *Table 6-29: GPIO Port n Interrupt Clear Register*
-<a name="gpio-port-interrupt-enable-atomic-clear-register"></a>
+<a name="gpio-port-interrupt-clear-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
     <tr>
@@ -1627,7 +1625,7 @@ resets.
 </table>
 
 *Table 6-36: GPIO Port n Configuration Enable Bit 1 Register*
-<a name="gpio-port-n-pad-configuration-2-register"></a>
+<a name="gpio-port-configuration-enable-bit1-register"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
     <tr>
@@ -1831,7 +1829,7 @@ resets.
         <td>en</td>
         <td>RO</td>
         <td>0</td>
-        <td>Reserved</td>
+        <td><strong>Reserved</strong></td>
     </tr>
 </table>
 
@@ -1856,7 +1854,7 @@ resets.
         <td>sr_sel</td>
         <td>RO</td>
         <td>0</td>
-        <td>Reserved</td>
+        <td><strong>Reserved</strong></td>
     </tr>
 </table>
 

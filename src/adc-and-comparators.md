@@ -1,0 +1,3 @@
+The ADC is a 10-bit sigma-delta ADC with a single-ended input multiplexer and an integrated reference generator. The multiplexer selects an input channel from either the 8 external analog input signals or the internal power supply inputs. The external analog input signals are defined as alternate functions on GPIO, as shown in Table 11-1.
+
+The 10 - bit ADC conversions are stored as a 16-bit value selectable as MSB or LSB aligned. The 8 external analog inputs can be configured by software as 4 two-input comparators with interrupt capabilities. Comparator 0, CMP0, is configurable to wake the device from SLEEP, LPM, UPM, STANDBY, and BACKUP. The remaining three comparators, CMP1, CMP2, and CMP3, are configurable as wake-up sources from SLEEP, LPM, and UPM.

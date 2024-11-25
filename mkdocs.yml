@@ -8,9 +8,11 @@ nav:
   - System, Power, Clocks, Reset: system-power-clocks-reset.md
   - Interrupts and Exceptions: interrupts-exceptions.md
   - General-Purpose I/O and Alternate Function Pins (GPIO): gpio.md
+  - Flash Controller: flash-controller.md
   - Debug Access Port: debug-access-port.md
   - Semaphore: semaphore.md
-  - Flash Controller: flash-controller.md
+  - Standard DMA: standard-dma.md
+  - Analog to Digital Converter (ADC) and Comparators (LPCMP): adc-and-comparators.md
   - Document Conventions: index.md
   - Revision History: revision.md
 theme:
