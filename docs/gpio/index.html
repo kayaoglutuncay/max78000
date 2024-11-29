@@ -1088,7 +1088,7 @@
 </table>
 
 <h3 id="input-mode-configuration">Input Mode Configuration</h3>
-<p><a href="#table6-3-max78000-input-mode-configuration">Table 6‑3</a> depicts the bit settings for the digital I/O input mode. Each of the bits within these registers represents the configuration of a single pin on the GPIO port. For example, <a href="#gpio-port-pad-configuration2-register">GPIOn_PADCTRL1</a>.<em>config[25]</em>, <a href="#gpio-port-pad-configuration1-register">GPIOn_PADCTRL0</a>.<em>config[25]</em>, <a href="#gpio-port-pulldown-pullup-strength-select-register">GPIO0_PS</a>.<em>pull_sel[25]</em>, and <a href="#[GPIOn_VSSEL](#gpio-port-voltage-select-register)">GPIO0_VSSEL</a>.<em>v_sel[25]</em> all represent configuration for device pin P0.25. See Table 6‑8 for a detailed example of how each of these bits applies to each GPIO device pin. Refer to the device data sheet for details of specific electrical characteristics.</p>
+<p><a href="#table6-3-max78000-input-mode-configuration">Table 6‑3</a> depicts the bit settings for the digital I/O input mode. Each of the bits within these registers represents the configuration of a single pin on the GPIO port. For example, <a href="#gpio-port-pad-configuration2-register">GPIOn_PADCTRL1</a>.<em>config[25]</em>, <a href="#gpio-port-pad-configuration1-register">GPIOn_PADCTRL0</a>.<em>config[25]</em>, <a href="#gpio-port-pulldown-pullup-strength-select-register">GPIO0_PS</a>.<em>pull_sel[25]</em>, and <a href="#gpio-port-voltage-select-register">GPIO0_VSSEL</a>.<em>v_sel[25]</em> all represent configuration for device pin P0.25. See Table 6‑8 for a detailed example of how each of these bits applies to each GPIO device pin. Refer to the device data sheet for details of specific electrical characteristics.</p>
 <p><em>Table 6-3: MAX78000 Input Mode Configuration</em>
 <a name="table6-3-max78000-input-mode-configuration"></a></p>
 <table border="1" cellpadding="5" cellspacing="0">
@@ -1533,7 +1533,7 @@ characteristics.</p>
 
 <p>To handle GPIO interrupts in your interrupt vector handler, complete the following steps:</p>
 <ol>
-<li>Read the <a href="##gpio-port-interrupt-status-register">GPIOn_INTFL</a> register to determine the GPIO pin that triggered the interrupt.</li>
+<li>Read the <a href="#gpio-port-interrupt-status-register">GPIOn_INTFL</a> register to determine the GPIO pin that triggered the interrupt.</li>
 <li>Complete interrupt tasks associated with the interrupt source pin (application-defined).</li>
 <li>Clear the interrupt flag in the <a href="#gpio-port-interrupt-status-register">GPIOn_INTFL</a> register by writing a 1 to the <a href="#gpio-port-interrupt-clear-register">GPIOn_INTFL_CLR</a> bit position that triggered the interrupt; this also clears and rearms the edge detectors for edge-triggered interrupts.</li>
 <li>Return from the interrupt vector handler.</li>
@@ -2919,9 +2919,13 @@ resets.</p>
     
       <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

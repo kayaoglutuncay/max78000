@@ -157,7 +157,7 @@ Perform the following steps to configure the SWDIO and SWDCLK device pins for SW
 </table>
 
 ### Input Mode Configuration
-[Table 6‑3](#table6-3-max78000-input-mode-configuration) depicts the bit settings for the digital I/O input mode. Each of the bits within these registers represents the configuration of a single pin on the GPIO port. For example, [GPIOn_PADCTRL1](#gpio-port-pad-configuration2-register).*config[25]*, [GPIOn_PADCTRL0](#gpio-port-pad-configuration1-register).*config[25]*, [GPIO0_PS](#gpio-port-pulldown-pullup-strength-select-register).*pull_sel[25]*, and [GPIO0_VSSEL](#[GPIOn_VSSEL](#gpio-port-voltage-select-register)).*v_sel[25]* all represent configuration for device pin P0.25. See Table 6‑8 for a detailed example of how each of these bits applies to each GPIO device pin. Refer to the device data sheet for details of specific electrical characteristics.
+[Table 6‑3](#table6-3-max78000-input-mode-configuration) depicts the bit settings for the digital I/O input mode. Each of the bits within these registers represents the configuration of a single pin on the GPIO port. For example, [GPIOn_PADCTRL1](#gpio-port-pad-configuration2-register).*config[25]*, [GPIOn_PADCTRL0](#gpio-port-pad-configuration1-register).*config[25]*, [GPIO0_PS](#gpio-port-pulldown-pullup-strength-select-register).*pull_sel[25]*, and [GPIO0_VSSEL](#gpio-port-voltage-select-register).*v_sel[25]* all represent configuration for device pin P0.25. See Table 6‑8 for a detailed example of how each of these bits applies to each GPIO device pin. Refer to the device data sheet for details of specific electrical characteristics.
 
 *Table 6-3: MAX78000 Input Mode Configuration*
 <a name="table6-3-max78000-input-mode-configuration"></a>
@@ -621,7 +621,7 @@ Each GPIO port is assigned a dedicated interrupt vector, as shown in <a href="#t
 
 To handle GPIO interrupts in your interrupt vector handler, complete the following steps:
 
-1. Read the [GPIOn_INTFL](##gpio-port-interrupt-status-register) register to determine the GPIO pin that triggered the interrupt.
+1. Read the [GPIOn_INTFL](#gpio-port-interrupt-status-register) register to determine the GPIO pin that triggered the interrupt.
 2. Complete interrupt tasks associated with the interrupt source pin (application-defined).
 3. Clear the interrupt flag in the [GPIOn_INTFL](#gpio-port-interrupt-status-register) register by writing a 1 to the [GPIOn_INTFL_CLR](#gpio-port-interrupt-clear-register) bit position that triggered the interrupt; this also clears and rearms the edge detectors for edge-triggered interrupts.
 4. Return from the interrupt vector handler.
