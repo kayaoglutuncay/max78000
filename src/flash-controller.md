@@ -616,7 +616,7 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 </table>
 
 *Table7-8: Flash Controller Data 0 Register*
-<a name="flash-controller-data0-register"></a>
+<a name="flash-controller-data-register0"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
    <tr>

@@ -94,8 +94,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="MAX78000 User Guide" class="md-header__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../assets/adi-logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -217,8 +216,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="MAX78000 User Guide" class="md-nav__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../assets/adi-logo.png" alt="logo">
 
     </a>
     MAX78000 User Guide
@@ -936,26 +934,26 @@
 <h2 id="dma-channel-operation-dma_ch">DMA Channel Operation (DMA_CH)</h2>
 <h3 id="channel-arbitration-and-dma-bursts">Channel Arbitration and DMA Bursts</h3>
 <p>The DMA peripheral contains an internal arbiter that allows enabled channels to access the AHB and move data. Once a channel is programmed and enabled, it generates a request to the arbiter immediately (for memory-to-memory DMA) or whenever its associated peripheral requests DMA (for memory-to-peripheral or peripheral-to-memory DMA).</p>
-<p>Granting is done based on priority; a higher priority request is always granted. Within a given priority level, requests are granted on a round-robin basis. The DMA_CHn_CTRL.pri field determines the DMA channel priority.</p>
+<p>Granting is done based on priority; a higher priority request is always granted. Within a given priority level, requests are granted on a round-robin basis. The <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>pri</em> field determines the DMA channel priority.</p>
 <p>When a channel's request is granted, the channel runs a DMA transfer. The arbiter grants requests to a single channel at a time. Once the DMA transfer completes, the channel relinquishes its grant.</p>
-<p>A DMA channel is enabled using the DMA_CHn_CTRL.en bit.</p>
-<p>When disabling a channel, poll the DMA_CHn_STATUS.status bit to determine if the channel is disabled. In general, DMA_CHn_STATUS.status follows the setting of the DMA_CHn_CTRL.en bit. However, the DMA_CHn_STATUS.status bit is automatically cleared under the following conditions:</p>
+<p>A DMA channel is enabled using the <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>en</em> bit.</p>
+<p>When disabling a channel, poll the <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>status</em> bit to determine if the channel is disabled. In general, <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>status</em> follows the setting of the <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>en</em> bit. However, the <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>status</em> bit is automatically cleared under the following conditions:</p>
 <ul>
 <li>Bus error (cleared immediately)</li>
-<li>CTZ when the DMA_CHn_CTRL.rlden = 0 (cleared at the end of the AHB R/W burst)</li>
-<li>DMA_CHn_CTRL.en bit transitions to 0 (cleared at the end of the AHB R/W burst)</li>
+<li>CTZ when the <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>rlden</em> = 0 (cleared at the end of the AHB R/W burst)</li>
+<li><a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>en</em> bit transitions to 0 (cleared at the end of the AHB R/W burst)</li>
 </ul>
-<p>Whenever DMA_CHn_STATUS.status transitions from 1 to 0, the corresponding DMA_CHn_CTRL.en bit is also cleared. If an active channel is disabled during an AHB read/write burst, the current burst continues until completed.</p>
+<p>Whenever <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>status</em> transitions from 1 to 0, the corresponding <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>en</em> bit is also cleared. If an active channel is disabled during an AHB read/write burst, the current burst continues until completed.</p>
 <p>Only an error condition can interrupt an ongoing data transfer.</p>
 <h3 id="source-and-destination-addressing">Source and Destination Addressing</h3>
-<p>The source and destination for DMA transfers are dictated by the request select dedicated to the peripheral instance. The DMA_CHn_CTRL.request field dictates the source and destination for a channel's DMA transfer, as shown in Table 10-2. depending on the specific operation, the DMA_CHn_SRC and DMA_CHn_DST registers hold the source or destination memory addresses.</p>
-<p>The DMA_CHn_CTRL.srcinc field is ignored when the DMA source is peripheral memory, and the DMA_CHn_CTRL.dstinc field is ignored when the DMA destination is peripheral memory.</p>
+<p>The source and destination for DMA transfers are dictated by the request select dedicated to the peripheral instance. The <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>request</em> field dictates the source and destination for a channel's DMA transfer, as shown in Table 10-2. depending on the specific operation, the <a href="#dma-channel-n-source-register">DMA_CHn_SRC</a> and <a href="#dma-channel-n-destination-register">DMA_CHn_DST</a> registers hold the source or destination memory addresses.</p>
+<p>The <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>srcinc</em> field is ignored when the DMA source is peripheral memory, and the <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>dstinc</em> field is ignored when the DMA destination is peripheral memory.</p>
 <p><em>Table 10-2: DMA Source and Destination by Peripheral</em> 
 <a name="table10-2-dma-source-destination-by-peripheral"></a></p>
 <table border="1" cellpadding="5" cellspacing="0">
 <thead>
     <tr>
-        <th>DMA_CHn_CTRL.<em>request</em></th>
+        <th><a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>request</em></th>
         <th>Peripheral</th>
         <th>DMA Source</th>
         <th>DMA Destination</th>
@@ -965,14 +963,14 @@
     <tr>
         <td>0</td>
         <td>Memory-to-Memory</td>
-        <td>DMA_CHn_SRC</td>
-        <td>DMA_CHn_DST</td>
+        <td><a href="#dma-channel-n-source-register">DMA_CHn_SRC</a></td>
+        <td><a href="#dma-channel-n-destination-register">DMA_CHn_DST</a></td>
     </tr>
     <tr>
         <td>1</td>
         <td>SPI1</td>
         <td>SPI1 Receive FIFO</td>
-        <td>DMA_CHn_DST</td>
+        <td><a href="#dma-channel-n-destination-register">DMA_CHn_DST</a></td>
     </tr>
     <tr>
         <td>2-3</td>
@@ -984,13 +982,13 @@
         <td>4</td>
         <td>UART0</td>
         <td>UART0 Receive FIFO</td>
-        <td>DMA_CHn_DST</td>
+        <td><a href="#dma-channel-n-destination-register">DMA_CHn_DST</a></td>
     </tr>
     <tr>
         <td>5</td>
         <td>UART1</td>
         <td>UART1 Receive FIFO</td>
-        <td>DMA_CHn_DST</td>
+        <td><a href="#dma-channel-n-destination-register">DMA_CHn_DST</a></td>
     </tr>
   <tr>
     <td>6</td>
@@ -1002,25 +1000,25 @@
     <td>7</td>
     <td>I2C0</td>
     <td>I2C0 Receive FIFO</td>
-    <td>DMA_CHn_DST</td>
+    <td><a href="#dma-channel-n-destination-register">DMA_CHn_DST</a></td>
   </tr>
 <tr>
 <td>8</td>
 <td>I2C1</td>
 <td>I2C1 Receive FIFO</td>
-<td>DMA_CHn_DST</td>
+<td><a href="#dma-channel-n-destination-register">DMA_CHn_DST</a></td>
 </tr>
 <tr>
 <td>9</td>
 <td>ADC</td>
 <td>ADC Data Register</td>
-<td>DMA_CHn_DST</td>
+<td><a href="#dma-channel-n-destination-register">DMA_CHn_DST</a></td>
 </tr>
 <tr>
 <td>10</td>
 <td>I2C2</td>
 <td>I2C2 Receive FIFO</td>
-<td>DMA_CHn_DST</td>
+<td><a href="#dma-channel-n-destination-register">DMA_CHn_DST</a></td>
 </tr>
 <tr>
 <td>11-12</td>
@@ -1032,19 +1030,19 @@
 <td>13</td>
 <td>PCIF</td>
 <td>PCIF Receive FIFO</td>
-<td>DMA_CHn_DST</td>
+<td><a href="#dma-channel-n-destination-register">DMA_CHn_DST</a></td>
 </tr>
 <tr>
 <td>14</td>
 <td>UART 2</td>
 <td>UART2 Receive FIFO</td>
-<td>DMA_CHn_DST</td>
+<td><a href="#dma-channel-n-destination-register">DMA_CHn_DST</a></td>
 </tr>
 <tr>
 <td>15</td>
 <td>SPI 0</td>
 <td>SPI0 Receive FIFO</td>
-<td>DMA_CHn_DST</td>
+<td><a href="#dma-channel-n-destination-register">DMA_CHn_DST</a></td>
 </tr>
 <tr>
 <td>16-27</td>
@@ -1056,7 +1054,7 @@
 <td>28</td>
 <td>LPUART0 (UART 3)</td>
 <td>UART3 Receive FIFO</td>
-<td>DMA_CHn_DST</td>
+<td><a href="#dma-channel-n-destination-register">DMA_CHn_DST</a></td>
 </tr>
 <tr>
 <td>29</td>
@@ -1068,7 +1066,7 @@
 <td>30</td>
 <td>I<sup>2</sup>S</td>
 <td>I<sup>2</sup>S Data Register</td>
-<td>DMA_CHn_DST></td>
+<td><a href="#dma-channel-n-destination-register">DMA_CHn_DST</a></td>
 </tr>
 <tr>
 <td>31-32</td>
@@ -1079,7 +1077,7 @@
 <tr>
 <td>33</td>
 <td>SPI 1</td>
-<td>DMA_CHn_SRC</td>
+<td><a href="#dma-channel-n-source-register">DMA_CHn_SRC</a></td>
 <td>SPI1 Transmit FIFO</td>
 </tr>
 <tr>
@@ -1091,13 +1089,13 @@
 <tr>
 <td>36</td>
 <td>UART 0</td>
-<td>DMA_CHn_SRC</td>
+<td><a href="#dma-channel-n-source-register">DMA_CHn_SRC</a></td>
 <td>UART0 Transmit FIFO</td>
 </tr>
 <tr>
 <td>37</td>
 <td>UART 1</td>
-<td>DMA_CHn_SRC</td>
+<td><a href="#dma-channel-n-source-register">DMA_CHn_SRC</a></td>
 <td>UART1 Transmit FIFO</td>
 </tr>
 <tr>
@@ -1109,13 +1107,13 @@
 <tr>
 <td>39</td>
 <td>I2C0</td>
-<td>DMA_CHn_SRC</td>
+<td><a href="#dma-channel-n-source-register">DMA_CHn_SRC</a></td>
 <td>I2C0 Transmit FIFO</td>
 </tr>
 <tr>
 <td>40</td>
 <td>I2C1</td>
-<td>DMA_CHn_SRC</td>
+<td><a href="#dma-channel-n-source-register">DMA_CHn_SRC</a></td>
 <td>I2C1 Transmit FIFO</td>
 </tr>
 <tr>
@@ -1127,7 +1125,7 @@
 <tr>
 <td>42</td>
 <td>I2C2</td>
-<td>DMA_CHn_SRC</td>
+<td><a href="#dma-channel-n-source-register">DMA_CHn_SRC</a></td>
 <td>I2C2 Transmit FIFO</td>
 </tr>
 <tr>
@@ -1139,25 +1137,25 @@
 <tr>
 <td>44</td>
 <td>CRC</td>
-<td>DMA_CHn_SRC</td>
+<td><a href="#dma-channel-n-source-register">DMA_CHn_SRC</a></td>
 <td>CRC Data Register</td>
 </tr>
 <tr>
 <td>45</td>
 <td>PCIF</td>
-<td>DMA_CHn_SRC</td>
+<td><a href="#dma-channel-n-source-register">DMA_CHn_SRC</a></td>
 <td>PCIF Transmit FIFO</td>
 </tr>
 <tr>
 <td>46</td>
 <td>UART2</td>
-<td>DMA_CHn_SRC</td>
+<td><a href="#dma-channel-n-source-register">DMA_CHn_SRC</a></td>
 <td>UART2 Transmit FIFO</td>
 </tr>
 <tr>
 <td>47</td>
 <td>SPI0</td>
-<td>DMA_CHn_SRC</td>
+<td><a href="#dma-channel-n-source-register">DMA_CHn_SRC</a></td>
 <td>SPI0 Transmit FIFO</td>
 </tr>
 <tr>
@@ -1169,7 +1167,7 @@
 <tr>
 <td>60</td>
 <td>LPUART 0 (UART 3)</td>
-<td>DMA_CHn_SRC</td>
+<td><a href="#dma-channel-n-source-register">DMA_CHn_SRC</a></td>
 <td>UART3 Transmit FIFO</td>
 </tr>
 <tr>
@@ -1181,7 +1179,7 @@
 <tr>
 <td>62</td>
 <td>I<sup>2</sup>S</td>
-<td>DMA_CHn_SRC</td>
+<td><a href="#dma-channel-n-source-register">DMA_CHn_SRC</a></td>
 <td>I<sup>2</sup>S Data Register</td>
 </tr>
 <tr>
@@ -1207,29 +1205,29 @@
 </thead>
 <tbody>
 <tr>
-<td>DMA_CHn_SRC</td>
+<td><a href="#dma-channel-n-source-register">DMA_CHn_SRC</a></td>
 <td>Source address</td>
 <td>If the increment enable is set, this increments on every read cycle of the burst. This field is ignored when the DMA source is a peripheral.</td>
 </tr>
 <tr>
-<td>DMA_CHn_CNT</td>
+<td><a href="#dma-channel-n-count-register">DMA_CHn_CNT</a></td>
 <td>Number of bytes to transfer before a CTZ condition occurs</td>
 <td>This register is decremented on each read of a burst.</td>
 </tr>
 <tr>
-<td>DMA_CHn_CTRL.<em>burst_size</em></td>
+<td><a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>burst_size</em></td>
 <td>Burst size (1-32)</td>
 <td>This is the maximum number of bytes moved during the burst read.</td>
 </tr>
 <tr>
-<td>DMA_CHn_CTRL.<em>srcwd</em></td>
+<td><a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>srcwd</em></td>
 <td>Source width</td>
-<td>This field determines the maximum data width used during each read of the AHB burst (byte, half-word, or word). The actual AHB width might be less if DMA_CHn_CNT is not great enough to supply all the needed data.</td>
+<td>This field determines the maximum data width used during each read of the AHB burst (byte, half-word, or word). The actual AHB width might be less if <a href="#dma-channel-n-count-register">DMA_CHn_CNT</a> is not great enough to supply all the needed data.</td>
 </tr>
 <tr>
-<td>DMA_CHn_CTRL.<em>srcinc</em></td>
+<td><a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>srcinc</em></td>
 <td>Source increments enable</td>
-<td>Increments DMA_CHn_SRC. This field is ignored when the DMA source is a peripheral.</td>
+<td>Increments <a href="#dma-channel-n-source-register">DMA_CHn_SRC</a>. This field is ignored when the DMA source is a peripheral.</td>
 </tr>
 </tbody>
 </table>
@@ -1248,24 +1246,24 @@
 </thead>
 <tbody>
 <tr>
-<td>DMA_CHn_DST</td>
+<td><a href="#dma-channel-n-destination-register">DMA_CHn_DST</a></td>
 <td>Destination address</td>
 <td>If the increment enable is set, this increments on every write cycle of the burst. This field is ignored when the DMA destination is a peripheral.</td>
 </tr>
 <tr>
-<td>DMA_CHn_CTRL.<em>burst_size</em></td>
+<td><a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>burst_size</em></td>
 <td>Burst size (1-32)</td>
 <td>The is the maximum number of bytes moved during a single AHB read/write burst.</td>
 </tr>
 <tr>
-<td>DMA_CHn_CTRL.<em>dstwd</em></td>
+<td><a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>dstwd</em></td>
 <td>Destination width</td>
 <td>This determines the maximum data width used during each write of the AHB burst (byte, half-word, or word).</td>
 </tr>
 <tr>
-<td>DMA_CHn_CTRL.<em>dstinc</em></td>
+<td><a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>dstinc</em></td>
 <td>Destination address increment enable</td>
-<td>Increments <em>DMA_CHn_DST</em>. This field is ignored when the DMA destination is a peripheral.</td>
+<td>Increments <a href="#dma-channel-n-destination-register">DMA_CHn_DST</a>. This field is ignored when the DMA destination is a peripheral.</td>
 </tr>
 </tbody>
 </table>
@@ -1273,84 +1271,83 @@
 <h2 id="usage">Usage</h2>
 <p>Use the following procedure to perform a DMA transfer from a peripheral's receive FIFO to memory, from memory to a peripheral's transmit FIFO, or from memory to memory.</p>
 <ol>
-<li>Ensure DMA_CHn_CTRL.en, DMA_CHn_CTRL.rlden = 0, and DMA_CHn_STATUS.ctz_if = 0.</li>
-<li>If using memory for the destination of the DMA transfer, configure DMA_CHn_DST to the starting address of the destination in memory.</li>
-<li>If using memory for the source of the DMA transfer, configure DMA_CHn_SRC to the starting address of the source in memory.</li>
-<li>Write the number of bytes to transfer to the DMA_CHn_CNT register.</li>
+<li>Ensure <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>en</em>, <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>rlden</em> = 0, and <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>ctz_if</em> = 0.</li>
+<li>If using memory for the destination of the DMA transfer, configure <a href="#dma-channel-n-destination-register">DMA_CHn_DST</a> to the starting address of the destination in memory.</li>
+<li>If using memory for the source of the DMA transfer, configure <a href="#dma-channel-n-source-register">DMA_CHn_SRC</a> to the starting address of the source in memory.</li>
+<li>Write the number of bytes to transfer to the <a href="#dma-channel-n-count-register">DMA_CHn_CNT</a> register.</li>
 <li>
-<p>Configure the following DMA_CHn_CTRL register fields in one or more instructions. Do not set DMA_CHn_CTRL.en to 1 or DMA_CHn_CTRL.rlden to 1 in this step:</p>
-<p>a. Configure DMA_CHn_CTRL.request to select the transfer operation associated with the DMA channel.</p>
-<p>b. Configure DMA_CHn_CTRL.burst_size for the desired burst size.</p>
-<p>c. Configure DMA_CHn_CTRL.pri to set the channel priority relative to other DMA channels.</p>
-<p>d. Configure DMA_CHn_CTRL.dstwd to set the width of the data written in each transaction.</p>
-<p>e. If desired, set DMA_CHn_CTRL.dstinc to 1 to enable automatic incrementing of the DMA_CHn_DST register upon every AHB transaction.</p>
-<p>f. Configure DMA_CHn_CTRL.srcwd to set the width of the data read in each transaction.</p>
-<p>g. If desired, set DMA_CHn_CTRL.srcinc to 1 to enable automatic incrementing of the DMA_CHn_DST register upon every AHB transaction.</p>
-<p>h. If desired, set DMA_CHn_CTRL.dis_ie = 1 to generate an interrupt when the channel becomes disabled. The channel becomes disabled when the DMA transfer completes, or a bus error occurs.</p>
-<p>i. If desired, set DMA_CHn_CTRL.ctz_ie 1 to generate an interrupt when the DMA_CHn_CNT register is decremented to zero.</p>
+<p>Configure the following <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a> register fields in one or more instructions. Do not set <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>en</em> to 1 or <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>rlden</em> to 1 in this step:</p>
+<p>a. Configure <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>request</em> to select the transfer operation associated with the DMA channel.</p>
+<p>b. Configure <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>burst_size</em> for the desired burst size.</p>
+<p>c. Configure <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>pri</em> to set the channel priority relative to other DMA channels.</p>
+<p>d. Configure <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>dstwd</em> to set the width of the data written in each transaction.</p>
+<p>e. If desired, set <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>dstinc</em> to 1 to enable automatic incrementing of the <a href="#dma-channel-n-destination-register">DMA_CHn_DST</a> register upon every AHB transaction.</p>
+<p>f. Configure <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>srcwd</em> to set the width of the data read in each transaction.</p>
+<p>g. If desired, set <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>srcinc</em> to 1 to enable automatic incrementing of the <a href="#dma-channel-n-destination-register">DMA_CHn_DST</a> register upon every AHB transaction.</p>
+<p>h. If desired, set <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>dis_ie</em> = 1 to generate an interrupt when the channel becomes disabled. The channel becomes disabled when the DMA transfer completes, or a bus error occurs.</p>
+<p>i. If desired, set <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>ctz_ie</em> 1 to generate an interrupt when the <a href="#dma-channel-n-count-register">DMA_CHn_CNT</a> register is decremented to zero.</p>
 <p>j. If using the reload feature, configure the reload registers to set the destination, source, and count for the following DMA transaction.</p>
 <ol>
-<li>Load the DMA_CHn_SRCRLD register with the source address reload value.</li>
-<li>Load the DMA_CHn_DSTRLD register with the destination address reload value.   </li>
-<li>Load the DMA_CHn_CNTRLD register with the count reload value.</li>
+<li>Load the <a href="#dma-channel-n-source-reload-register">DMA_CHn_SRCRLD</a> register with the source address reload value.</li>
+<li>Load the <a href="#dma-channel-n-destination-reload-register">DMA_CHn_DSTRLD</a> register with the destination address reload value.   </li>
+<li>Load the <a href="#dma-channel-n-count-reload-register">DMA_CHn_CNTRLD</a> register with the count reload value.</li>
 </ol>
-<p>k. If desired, enable the channel timeout feature described in Channel Timeout Detect. Clear DMA_CHn_CTRL.to_clkdiv to 0 to disable the channel timeout feature.</p>
+<p>k. If desired, enable the channel timeout feature described in Channel Timeout Detect. Clear <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>to_clkdiv</em> to 0 to disable the channel timeout feature.</p>
 </li>
 <li>
-<p>Set DMA_CHn_CTRL.rlden to 1 to enable the reload feature if using.</p>
+<p>Set <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>rlden</em> to 1 to enable the reload feature if using.</p>
 </li>
-<li>Set DMA_CHn_CTRL.en = 1 to start the DMA transfer immediately.</li>
+<li>Set <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>en</em> = 1 to start the DMA transfer immediately.</li>
 <li>Wait for the interrupt flag to become 1 to indicate the completion of the DMA transfer.</li>
 </ol>
 <h2 id="count-to-zero-ctz-condition">Count-To-Zero (CTZ) Condition</h2>
-<p>When an AHB channel burst completes, a CTZ condition exists if DMA_CHn_CNT is decremented to 0.
-At this point, there are two responses are possible depending on the value of the DMA_CHn_CTRL.rlden:</p>
+<p>When an AHB channel burst completes, a CTZ condition exists if  <a href="#dma-channel-n-count-register">DMA_CHn_CNT</a> is decremented to 0. At this point, there are two responses are possible depending on the value of the <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>rlden</em>:</p>
 <ol>
 <li>
-<p>If DMA_CHn_CTRL.rlden = 1, then the DMA_CHn_SRC, DMA_CHn_DST, and DMA_CHn_CNT registers are loaded from the reload registers, and the channel remains active and continues operating using the newly-loaded address/count values and the previously programmed configuration values.</p>
+<p>If <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>rlden</em> = 1, then the <a href="#dma-channel-n-source-register">DMA_CHn_SRC</a>, <a href="#dma-channel-n-destination-register">DMA_CHn_DST</a>, and  <a href="#dma-channel-n-count-register">DMA_CHn_CNT</a> registers are loaded from the reload registers, and the channel remains active and continues operating using the newly-loaded address/count values and the previously programmed configuration values.</p>
 </li>
 <li>
-<p>If DMA_CHn_CTRL.rlden = 0, then the channel is disabled, and DMA_CHn_STATUS.status is cleared.</p>
+<p>If <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>rlden</em> = 0, then the channel is disabled, and <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>status</em> is cleared.</p>
 </li>
 </ol>
 <h2 id="chaining-buffers">Chaining Buffers</h2>
 <p>Chaining buffers reduce the DMA interrupt response time and allow the DMA to service requests without intermediate processing from the CPU. Figure 10-1 shows the procedure for generating a DMA transfer using one or more chain buffers.</p>
 <p>Configure the following reload registers to configure a channel for chaining:</p>
 <ul>
-<li>DMA_CHn_SRC</li>
-<li>DMA_CHn_DST</li>
-<li>DMA_CHn_CNT</li>
-<li>DMA_CHn_SRCRLD</li>
-<li>DMA_CHn_DSTRLD</li>
-<li>DMA_CHn_CNTRLD</li>
+<li><a href="#dma-channel-n-source-register">DMA_CHn_SRC</a></li>
+<li><a href="#dma-channel-n-destination-register">DMA_CHn_DST</a></li>
+<li><a href="#dma-channel-n-count-register">DMA_CHn_CNT</a></li>
+<li><a href="#dma-channel-n-source-reload-register">DMA_CHn_SRCRLD</a></li>
+<li><a href="#dma-channel-n-destination-reload-register">DMA_CHn_DSTRLD</a></li>
+<li><a href="#dma-channel-n-count-reload-register">DMA_CHn_CNTRLD</a></li>
 </ul>
-<p>Writing to any register while a channel is disabled is supported, but there are certain restrictions when a channel is enabled. The DMA_CHn_STATUS.status bit indicates whether the channel is enabled or not. Because an active channel might be in the middle of an AHB read/write burst, do not write to the DMA_CHn_SRC, DMA_CHn_DST, or DMA_CHn_CNT registers while a channel is active (DMA_CHn_STATUS.status = 1). To disable any DMA channel, clear the DMA_INTEN.ch<n> bit. Then, poll the DMA_CHn_STATUS.status bit to verify that the channel is disabled.</p>
+<p>Writing to any register while a channel is disabled is supported, but there are certain restrictions when a channel is enabled. The <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>status</em> bit indicates whether the channel is enabled or not. Because an active channel might be in the middle of an AHB read/write burst, do not write to the <a href="#dma-channel-n-source-register">DMA_CHn_SRC</a>,<a href="#dma-channel-n-destination-register">DMA_CHn_DST</a>, or <a href="#dma-channel-n-count-register">DMA_CHn_CNT</a> registers while a channel is active (<a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>status</em> = 1). To disable any DMA channel, clear the <a href="#dma-channel-interrupt-enable">DMA_INTEN</a>.<em>ch</em><n> bit. Then, poll the <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>status</em> bit to verify that the channel is disabled.</p>
 <p><img alt="Figure 10-1" src="../assets/images/figure10-1.svg" /></p>
 <h2 id="dma-interrupts">DMA Interrupts</h2>
-<p>Enable interrupts for each channel by setting DMA_INTEN.ch<n>. When an interrupt for a channel is pending, the corresponding DMA_INTFL.ch<n> = 1. Set the corresponding enable bit to cause an interrupt when the flag is set.</p>
-<p>A channel interrupt (DMA_CHn_STATUS.ipend = 1) is caused by:</p>
+<p>Enable interrupts for each channel by setting DMA_INTEN.ch<n>. When an interrupt for a channel is pending, the corresponding <a href="#dma-interrupt-status-register">DMA_INTFL</a>.<em>ch</em><n> = 1. Set the corresponding enable bit to cause an interrupt when the flag is set.</p>
+<p>A channel interrupt (<a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>ipend</em> = 1) is caused by:</p>
 <ul>
-<li>DMA_CHn_CTRL.ctz_ie = 1<ul>
-<li>If enabled, all CTZ occurrences set the DMA_CHn_STATUS.ipend bit.</li>
+<li><a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>ctz_ie</em> = 1<ul>
+<li>If enabled, all CTZ occurrences set the <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>ipend</em> bit.</li>
 </ul>
 </li>
-<li>DMA_CHn_CTRL.dis_ie = 1<ul>
-<li>If enabled, any clearing of the DMA_CHn_STATUS.status bit sets the DMA_CHn_STATUS.ipend bit. </li>
+<li><a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>dis_ie</em> = 1<ul>
+<li>If enabled, any clearing of the <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>status</em> bit sets the <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>ipend</em> bit. </li>
 </ul>
 </li>
 </ul>
-<p>Examine the DMA_CHn_STATUS register to determine which reasons caused the disable. The DMA_CHn_CTRL.dis_ie bit also enables the DMA_CHn_STATUS.to_if bit. The DMA_CHn_STATUS.to_if bit does not clear the DMA_CHn_STATUS.status bit.</p>
-<p>To clear the channel interrupt, write 1 to the cause of the interrupt (the DMA_CHn_STATUS.ctz_if, DMA_CHn_STATUS.rld_if, DMA_CHn_STATUS.bus_err, or DMA_CHn_STATUS.to_if bits).</p>
-<p>When running in normal mode without buffer chaining (DMA_CHn_CTRL.rlden = 0), set the DMA_CHn_CTRL.dis_ie bit only. An interrupt is generated upon DMA completion or an error condition (bus error or timeout error).</p>
-<p>When running in buffer chaining mode (DMA_CHn_CTRL.rlden = 1), set both the DMA_CHn_CTRL.dis_ie and DMA_CHn_CTRL.ctz_ie bits. The CTZ interrupts occur on completion of each DMA (count reaches zero, and reload occurs). The setting of DMA_CHn_CTRL.dis_ie ensures that an error condition generates an interrupt. If DMA_CHn_CTRL.ctz_ie = 0, then the only interrupt occurs when the DMA completes and DMA_CHn_CTRL.rlden = 0 (final DMA).</p>
+<p>Examine the <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a> register to determine which reasons caused the disable. The <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>dis_ie</em> bit also enables the <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>to_if</em> bit. The <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>to_if</em> bit does not clear the <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>status</em> bit.</p>
+<p>To clear the channel interrupt, write 1 to the cause of the interrupt (the <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>ctz_if</em>, <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>rld_if</em>, <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>bus_err</em>, or <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>to_if</em> bits).</p>
+<p>When running in normal mode without buffer chaining (<a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>rlden</em> = 0), set the <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>dis_ie</em> bit only. An interrupt is generated upon DMA completion or an error condition (bus error or timeout error).</p>
+<p>When running in buffer chaining mode (<a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>rlden</em> = 1), set both the <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>dis_ie</em> and <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>ctz_ie</em> bits. The CTZ interrupts occur on completion of each DMA (count reaches zero, and reload occurs). The setting of <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>dis_ie</em> ensures that an error condition generates an interrupt. If <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>ctz_ie</em> = 0, then the only interrupt occurs when the DMA completes and <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>rlden</em> = 0 (final DMA).</p>
 <h2 id="channel-timeout-detect">Channel Timeout Detect</h2>
-<p>Each channel can optionally generate an interrupt when its associated peripheral does not request a transfer in a user-configurable period. When the timeout start conditions are met, an internal 10-bit counter begins incrementing at a frequency determined by the AHB clock, the DMA_CHn_CTRL.to_clkdiv field, and the DMA_CHn_CTRL.to_per field. See Table 10-5 for details. A channel timeout event is generated if the timer is not reset by one of the events listed below before the timeout period expires.</p>
+<p>Each channel can optionally generate an interrupt when its associated peripheral does not request a transfer in a user-configurable period. When the timeout start conditions are met, an internal 10-bit counter begins incrementing at a frequency determined by the AHB clock, the <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>to_clkdiv</em> field, and the <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>to_per</em> field. See Table 10-5 for details. A channel timeout event is generated if the timer is not reset by one of the events listed below before the timeout period expires.</p>
 <p><em>Table 10-5: DMA Channel Timeout Configuration</em>
 <a name="table10-5-dma-channel-timeout-configuration"></a></p>
 <table border="1" cellpadding="5" cellspacing="0">
   <thead>
     <tr>
-      <th><em>DMA_CHn_CTRL</em>.<em>to_clkdiv</em></th>
+      <th><a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>to_clkdiv</em></th>
       <th>Timeout Period (µs)</th>
     </tr>
   </thead>
@@ -1386,13 +1383,13 @@ At this point, there are two responses are possible depending on the value of th
 </tbody>
 </table>
 
-<p>DMA_CHn_CTRL.to_wait controls the start of the timeout period as follows:
-- If DMA_CHn_CTRL.to_wait = 0, the timer begins immediately counting after DMA_CHn_CTRL.to_per is configured to a value other than 0, and the channel is enabled.
-- If DMA_CHn_CTRL.to_wait = 1, the timer begins counting when the first DMA request is received from the peripheral.</p>
+<p><a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>to_wait</em> controls the start of the timeout period as follows:
+- If <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>to_wait</em> = 0, the timer begins immediately counting after <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>to_per</em> is configured to a value other than 0, and the channel is enabled.
+- If <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>to_wait</em> = 1, the timer begins counting when the first DMA request is received from the peripheral.</p>
 <p>The timer is reset whenever:
 - The DMA request line programmed for the channel is activated.
-- The channel is disabled for any reason (DMA_CHn_STATUS.status = 0).</p>
-<p>If the timeout timer period expires, hardware sets DMA_CHn_STATUS.to_if = 1 to indicate a channel timeout event has occurred. A channel timeout does not disable the DMA channel.</p>
+- The channel is disabled for any reason (<a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>status</em> = 0).</p>
+<p>If the timeout timer period expires, hardware sets <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>to_if</em> = 1 to indicate a channel timeout event has occurred. A channel timeout does not disable the DMA channel.</p>
 <h2 id="memory-to-memory-dma">Memory-to-Memory DMA</h2>
 <p>Memory-to-memory transfers are processed as if the request is permanently active. This means that the DMA channel generates an almost constant request for the bus until its transfer is complete. For this reason, assign a lower priority to channels executing memory-to-memory transfers to prevent starvation of other DMA channels.</p>
 <h2 id="registers">Registers</h2>
@@ -1444,7 +1441,7 @@ At this point, there are two responses are possible depending on the value of th
         <td>0</td>
         <td>
             <strong>DMA Channel <em>n</em> Interrupt Enable</strong><br>
-            Each bit in this field enables the corresponding channel interrupt &lt;n&gt; in <em>DMA_INTFL</em>. 
+            Each bit in this field enables the corresponding channel interrupt &lt;n&gt; in <a href="#dma-interrupt-status-register">DMA_INTFL</a>. 
             Register bits associated with unimplemented channels should not be changed from their default reset value.<br>
             <div style="margin-left: 20px;">
                 0: Disabled<br>
@@ -1476,7 +1473,7 @@ At this point, there are two responses are possible depending on the value of th
         <td>0</td>
         <td>
             <strong>DMA Channel <em>n</em> Interrupt Flag</strong><br>
-            Each bit in this field represents an interrupt for the corresponding channel interrupt &lt;n&gt;. To clear an interrupt, clear the corresponding active interrupt bit in the DMA_CHn_STATUS register. An interrupt bit in this field is set if the corresponding interrupt enable field is set in the DMA_INTEN register and a channel's interrupt occurs. Register bits associated with unimplemented channels should be ignored..<br>
+            Each bit in this field represents an interrupt for the corresponding channel interrupt &lt;n&gt;. To clear an interrupt, clear the corresponding active interrupt bit in the <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a> register. An interrupt bit in this field is set if the corresponding interrupt enable field is set in the <a href="#dma-channel-interrupt-enable">DMA_INTEN</a> register and a channel's interrupt occurs. Register bits associated with unimplemented channels should be ignored.<br>
             <div style="margin-left: 20px;">
                 0: No interrupt<br>
                 1: Interrupt pending
@@ -1520,10 +1517,10 @@ At this point, there are two responses are possible depending on the value of th
 </table>
 
 <h3 id="channel-register-details">Channel Register Details</h3>
-<p>See Table 3-3 for the base address of this peripheral/module. If multiple instances of the peripheral are provided, each instance has its own independent set of the registers shown in Table 10-10. Register names for a specific instance are defined by replacing "n" with the instance number. As an example, a register PERIPHERALn_CTRL resolves to PERIPHERAL0_CTRL and PERIPHERAL1_CTRL for instances 0 and 1, respectively.</p>
-<p>See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
+<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the base address of this peripheral/module. If multiple instances of the peripheral are provided, each instance has its own independent set of the registers shown in <a href="#table10-10-dma-channel-registers-summary">Table 10-10</a>. Register names for a specific instance are defined by replacing "n" with the instance number. As an example, a register PERIPHERALn_CTRL resolves to PERIPHERAL0_CTRL and PERIPHERAL1_CTRL for instances 0 and 1, respectively.</p>
+<p>See <a href="../#table1-1-field-access-definitions">Table 1-1</a> for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
 <p><em>Table 10-10: DMA Channel Registers Summary</em>
-<a name="table10-10-cma-channel-registers-summary"></a></p>
+<a name="table10-10-dma-channel-registers-summary"></a></p>
 <table border="1" cellpadding="5" cellspacing="0">
   <thead>
   <tr>
@@ -1599,7 +1596,7 @@ At this point, there are two responses are possible depending on the value of th
             <strong>CTZ Interrupt Enable</strong>
             <div style="margin-left: 20px;">
                 0: Disabled<br>
-                1: Enabled. DMA_INTFL.ch&lt;n&gt; is set to 1 whenever a CTZ event occurs.
+                1: Enabled. <a href="#dma-interrupt-status-register">DMA_INTFL</a>.<em>ch&lt;n&gt;</em> is set to 1 whenever a CTZ event occurs.
             </div>
         </td>
     </tr>
@@ -1611,8 +1608,8 @@ At this point, there are two responses are possible depending on the value of th
       <td><strong>Channel Disable Interrupt Enable</strong>
           <div style="margin-left: 20px;">
               0: Disabled<br>
-              1: Enabled. <em>DMA_INTFL</em>.ch&lt;n&gt; bit is set to 1 whenever 
-              <em>DMA_CHn_STATUS</em>.status changes from 1 to 0.
+              1: Enabled. <a href="#dma-interrupt-status-register">DMA_INTFL</a>.<em>ch&lt;n&gt;</em> bit is set to 1 whenever 
+              <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>status</em> changes from 1 to 0.
           </div>
       </td>
     </tr>
@@ -1650,9 +1647,8 @@ At this point, there are two responses are possible depending on the value of th
     <td>dstinc</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>Destination Increment Enable</strong>This bit enables the automatic increment of the <em>DMA_CHn_DST</em>
-    register upon every AHB transaction. This bit is ignored for a DMA
-    transmit to peripherals.<br>
+    <td><strong>Destination Increment Enable</strong><br>
+    This bit enables the automatic increment of the <a href="#dma-channel-n-destination-register">DMA_CHn_DST</a> register upon every AHB transaction. This bit is ignored for a DMA transmit to peripherals.<br>
     <div style="margin-left: 20px;">
     0: Disabled<br>
     1: Enabled
@@ -1664,9 +1660,7 @@ At this point, there are two responses are possible depending on the value of th
     <td>dstwd</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>Destination Width</strong><br>Indicates the width of each AHB transaction to the destination
-    peripheral or memory (the actual width might be less than this if there
-    are insufficient bytes in the DMA FIFO for the full width).
+    <td><strong>Destination Width</strong><br>Indicates the width of each AHB transaction to the destination peripheral or memory (the actual width might be less than this if there are insufficient bytes in the DMA FIFO for the full width).
     <div style="margin-left: 20px;">
     0: Byte<br>
     1: Half word<br>
@@ -1686,9 +1680,7 @@ At this point, there are two responses are possible depending on the value of th
     <td>srcinc</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>Source Increment on AHB Transaction Enable</strong><br>This bit enables the automatic increment of the <em>DMA_CHn_SRC</em>
-    register upon every AHB transaction. This bit is ignored for a DMA
-    receive from peripherals.
+    <td><strong>Source Increment on AHB Transaction Enable</strong><br>This bit enables the automatic increment of the <a name="#dma-channel-n-source-register">DMA_CHn_SRC</a> register upon every AHB transaction. This bit is ignored for a DMA receive from peripherals.
     <div style="margin-left: 20px;">
     0: Disabled<br>
     1: Enabled
@@ -1699,9 +1691,7 @@ At this point, there are two responses are possible depending on the value of th
     <td>srcwd</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>Source Width</strong><br>This field indicates the width of each AHB transaction from the
-    source peripheral or memory. The actual width might be less than this if
-    the <em>DMA_CHn_CNT</em> register indicates a smaller value.
+    <td><strong>Source Width</strong><br>This field indicates the width of each AHB transaction from the source peripheral or memory. The actual width might be less than this if the <a href="#dma-channel-n-count-register">DMA_CHn_CNT</a> register indicates a smaller value.
     <div style="margin-left: 20px;">
     0: Byte<br>
     1: Half word<br>
@@ -1718,22 +1708,36 @@ At this point, there are two responses are possible depending on the value of th
   <td><strong>Timeout Timer Clock Pre-Scale Select</strong><br>This field selects the pre-scale divider for the timer clock
   input.
   <div style="margin-left: 20px;">
-  0: Timer disabled.<br>
-  1: 
-  $$
-  \frac{f_{\text{HCLK}}}{2^8}
-  $$ 
-  <br>
-  2: 
-  $$
-  \frac{f_{HCLK}}{2^{16}}
-  $$ 
-  <br>
-  3: 
-  $$
-  \frac{f_{HCLK}}{2^{24}}
-  $$ 
-  <div>
+        <table>
+        <tr>
+            <td>0:</td>
+            <td>Timer disabled.</td>
+        </tr>
+        <tr>
+            <td>1:</td>
+            <td>
+              $$
+              \frac{f_{\text{HCLK}}}{2^8}
+              $$ 
+            </td>
+        </tr>
+        <tr>
+            <td>2:</td>
+            <td>
+              $$
+            \frac{f_{HCLK}}{2^{16}}
+            $$ 
+            </td>
+        </tr>
+        <tr>
+            <td>3:</td>
+            <td>
+              $$
+              \frac{f_{HCLK}}{2^{24}}
+              $$ 
+            </td>
+        </tr>
+    </table>
   </td>
   </tr>
   <tr>
@@ -1792,11 +1796,11 @@ At this point, there are two responses are possible depending on the value of th
   <td>rlden</td>
   <td>R/W</td>
   <td>0</td>
-  <td><strong>Reload Enable</strong><br> Setting this bit to 1 allows reloading the <em>DMA_CHn_SRC</em>, <em>DMA_CHn_DST,</em> and <em>DMA_CHn_CNT</em> registers upon a CTZ.<br>
-  When this bit is set to 0 and a CTZ occurs, the channel is disabled, and the <em>DMA_CHn_STATUS.status</em> bit is set to 0.
+  <td><strong>Reload Enable</strong><br> Setting this bit to 1 allows reloading the <a name="#dma-channel-n-source-register">DMA_CHn_SRC</a>, <a href="#dma-channel-n-destination-register">DMA_CHn_DST</a>, and <a href="#dma-channel-n-count-register">DMA_CHn_CNT</a> registers upon a CTZ.<br>
+  When this bit is set to 0 and a CTZ occurs, the channel is disabled, and the <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>status</em> bit is set to 0.
   <div style="margin-left: 20px;">
   0: The channel is disabled when a CTZ occurs, and the <em>DMA_CHn_STATUS.status</em> is set to 0.<br>
-  1: Automatically reload the <em>DMA_CHn_SRC</em>, <em>DMA_CHn_DST</em>, and <em>DMA_CHn_CNT</em> registers on a CTZ.
+  1: Automatically reload the <a name="#dma-channel-n-source-register">DMA_CHn_SRC</a>, <a href="#dma-channel-n-destination-register">DMA_CHn_DST</a>, and <a href="#dma-channel-n-count-register">DMA_CHn_CNT</a> registers on a CTZ.
   </div>
   </td>
   </tr>
@@ -1805,7 +1809,7 @@ At this point, there are two responses are possible depending on the value of th
     <td>en</td>
     <td>R/W</td>
     <td>0</td>
-    <td><strong>Channel Enable</strong><br> This bit is automatically cleared when <em>DMA_CHn_STATUS</em>.<em>status</em> changes from 1 to 0.
+    <td><strong>Channel Enable</strong><br> This bit is automatically cleared when <a href="#dma-channel-n-status-register">DMA_CHn_STATUS</a>.<em>status</em> changes from 1 to 0.
     <div style="margin-left: 20px;">
     0: Disabled<br>
     1: Enabled
@@ -1917,7 +1921,7 @@ At this point, there are two responses are possible depending on the value of th
             This bit indicates when it is safe to change the configuration, address, and count registers for the channel.<br>
                 <div style="margin-left: 20px;">    
                     Whenever this bit is cleared by hardware, the
-                    <em>DMA_CHn_CTRL</em>.<em>en</em> bit is also cleared.<br>
+                    <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>en</em> bit is also cleared.<br>
                     0: Disabled.<br>
                     1: Enabled.
                 </div>
@@ -1927,7 +1931,7 @@ At this point, there are two responses are possible depending on the value of th
 </table>
 
 <p><em>Table 10-13: DMA Channel n Source Register</em>
-<a name="dma-channel-n-status-register"></a></p>
+<a name="dma-channel-n-source-register"></a></p>
 <table border="1" cellpadding="5" cellspacing="0">
     <tr>
         <td colspan="3">DMA Channel n Source Register</td>
@@ -1948,16 +1952,16 @@ At this point, there are two responses are possible depending on the value of th
 <td>0</td>
 <td><strong>Source Device Address</strong><br>
 For peripheral transfers, the actual address field is either ignored or forced to zero because peripherals only have one location to read/write data based on the request select chosen.
-<p>If DMA_CHn_CTRL.<em>srcinc</em> = 1, then this register is incremented on each AHB transfer cycle by one, two, or four bytes depending on the data width.</p>
-<p>If DMA_CHn_CTRL.<em>srcinc</em> = 0, this register remains constant.</p>
-<p>Suppose a CTZ condition occurs while DMA_CHn_CTRL.<em>rlden</em> = 1, then this register is reloaded with the contents of the DMA_CHn_SRCRLD register.</p>
+<p>If <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>srcinc</em> = 1, then this register is incremented on each AHB transfer cycle by one, two, or four bytes depending on the data width.</p>
+<p>If <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>srcinc</em> = 0, this register remains constant.</p>
+<p>Suppose a CTZ condition occurs while <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>rlden</em> = 1, then this register is reloaded with the contents of the <a href="#dma-channel-n-source-reload-register">DMA_CHn_SRCRLD</a> register.</p>
 </td>
 </tr>
 </tbody>
 </table>
 
 <p><em>Table 10-14: DMA Channel n Destination Register</em>
-<a name="dma-channel-n-source-register"></a></p>
+<a name="dma-channel-n-destination-register"></a></p>
 <table border="1" cellpadding="5" cellspacing="0">
     <tr>
         <td colspan="3">DMA Channel n Destination</td>
@@ -1977,8 +1981,8 @@ For peripheral transfers, the actual address field is either ignored or forced t
 <td>R/W</td>
 <td>0</td>
 <td><strong>Destination Device Address</strong><br> For peripheral transfers, the actual address field is either ignored or forced to zero because peripherals only have one location to read/write data based on the request select chosen.
-<p>If DMA_CHn_CTRL.<em>dstinc</em> = 1, then this register is incremented on every AHB transfer cycle by one, two, or four bytes depending on the data width.</p>
-<p>Suppose a CTZ condition occurs while DMA_CHn_CTRL.<em>rlden</em> = 1, then this register is reloaded with the contents of the <em>DMA_CHn_DSTRLD</em> register.</p>
+<p>If <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>dstinc</em> = 1, then this register is incremented on every AHB transfer cycle by one, two, or four bytes depending on the data width.</p>
+<p>Suppose a CTZ condition occurs while <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>rlden</em> = 1, then this register is reloaded with the contents of the <a href="#dma-channel-n-destination-reload-register">DMA_CHn_DSTRLD</a> register.</p>
 </td>
 </tr>
 </tbody>
@@ -2012,7 +2016,7 @@ For peripheral transfers, the actual address field is either ignored or forced t
 <td>R/W</td>
 <td>0</td>
 <td><strong>DMA Counter</strong><br> Load this register with the number of bytes to transfer. This field decreases on every AHB access to the DMA FIFO. The decrement is one, two, or four bytes depending on the data width. When the counter reaches 0, a CTZ condition is triggered.
-<p>Suppose a CTZ condition occurs while DMA_CHn_CTRL.<em>rlden</em> = 1, then this register is reloaded with the contents of the DMA_CHn_CNTRLD.<em>cnt</em> field.</p></td>
+<p>Suppose a CTZ condition occurs while <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>rlden</em> = 1, then this register is reloaded with the contents of the <a href="#dma-channel-n-count-reload-register">DMA_CHn_CNTRLD</a>.<em>cnt</em> field.</p></td>
 </tr>
 </table>
 
@@ -2043,7 +2047,7 @@ For peripheral transfers, the actual address field is either ignored or forced t
 <td>addr</td>
 <td>R/W</td>
 <td>0</td>
-<td><strong>Source Address Reload Value</strong><br> If DMA_CHn_CTRL.<em>rlden</em> = 1, then the value of this register is loaded into DMA_CHn_SRC upon a CTZ condition.</p></td>
+<td><strong>Source Address Reload Value</strong><br> If <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>rlden</em> = 1, then the value of this register is loaded into <a name="#dma-channel-n-source-register">DMA_CHn_SRC</a> upon a CTZ condition.</p></td>
 </tr>
 </table>
 
@@ -2074,7 +2078,7 @@ For peripheral transfers, the actual address field is either ignored or forced t
 <td>addr</td>
 <td>R/W</td>
 <td>0</td>
-<td><strong>Destination Address Reload Value</strong><br>If DMA_CHn_CTRL.<em>rlden</em> = 1, then the value of this register is loaded into DMA_CHn_DST upon a CTZ condition.
+<td><strong>Destination Address Reload Value</strong><br>If <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>rlden</em> = 1, then the value of this register is loaded into <a href="#dma-channel-n-destination-register">DMA_CHn_DST</a> upon a CTZ condition.
 </td>
 </tr>
 </table>
@@ -2106,7 +2110,8 @@ For peripheral transfers, the actual address field is either ignored or forced t
 <td>cnt</td>
 <td>R/W</td>
 <td>0</td>
-<td><strong>Count Reload Value</strong><br> If DMA_CHn_CTRL.<em>rlden</em> = 1, then the value of this register is loaded into DMA_CHn_CNT upon a CTZ condition.
+<td><strong>Count Reload Value</strong><br> 
+If <a href="#dma-channel-n-configuration-register">DMA_CHn_CTRL</a>.<em>rlden</em> = 1, then the value of this register is loaded into <a href="#dma-channel-n-count-register">DMA_CHn_CNT</a> upon a CTZ condition.
 </td>
 </tr>
 </table>

@@ -2,7 +2,7 @@
 For ordering information, mechanical and electrical characteristics for the MAX78000 family of devices refer to the device data sheet. For information on the Arm® Cortex®-M4 with FPU core, please refer to the [Arm Cortex-M4 Processor Technical Reference Manual](https://developer.arm.com/documentation/100166/0001).
 
 ## Related Documentation
-The MAX78000 data sheet and errata are available from the Analog Devices website, [MAX78000](https://www.analog.com/en/products/max78000.html)
+The MAX78000 data sheet and errata are available from the Analog Devices website, [MAX78000](https://www.analog.com/en/products/max78000.html).
 
 ## Document Conventions
 ### Number Notations

@@ -18,6 +18,7 @@ nav:
   - Revision History: revision.md
 theme:
   name: material
+  logo: assets/adi-logo.png
   features:
     - search.suggest
     - search.highlight
