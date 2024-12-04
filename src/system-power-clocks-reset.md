@@ -6472,7 +6472,6 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
     <td>0</td>
     <td>Reserved</td>
 </tr>
-
 <tr>
     <td>1</td>
     <td>crcerr</td>

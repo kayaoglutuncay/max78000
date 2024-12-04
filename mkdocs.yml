@@ -14,6 +14,7 @@ nav:
   - Standard DMA: standard-dma.md
   - Analog to Digital Converter (ADC) and Comparators (LPCMP): adc-and-comparators.md
   - Universal Asynchronous Receiver/Transmitter: universal-asynchronous-receiver-transmitter.md
+  - Serial Peripheral Interface: serial-peripheral-interface.md
   - Document Conventions: index.md
   - Revision History: revision.md
 theme:

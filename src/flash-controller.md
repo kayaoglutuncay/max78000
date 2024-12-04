@@ -84,13 +84,13 @@ The flash is organized as an array of 2,048 words by 128 bits, or 8,192 bytes pe
 The flash controller manages write and erase operations for internal flash memory and provides a lock mechanism to prevent unintentional writes to the internal flash. In-application and in-system programming, page erase, and mass erase operations are supported.
 
 ### Clock Configuration
-The FLC requires a 1MHz internal clock. See Oscillator Sources for details. Use the FLC clock divisor to generate f<sub>FLCn_CLK</sub> = 1MHz, as shown in [Equation 7-1](#flc-clock-frequency). If using the IPO as the system clock, the [FLC_CLKDIV](#flash-controller-address-pointer).*clkdiv* should be set to 100 (0x64).
+The FLC requires a 1MHz internal clock. See Oscillator Sources for details. Use the FLC clock divisor to generate $f_{\text{FLCn_CLK}} = 1MHz$, as shown in [Equation 7-1](#flc-clock-frequency). If using the IPO as the system clock, the [FLC_CLKDIV](#flash-controller-address-pointer).*clkdiv* should be set to 100 (0x64).
 
 *Equation 7-1: FLC Clock Frequency*
 <a name="flc-clock-frequency"></a>
 
 $$
-f_{\text{FLCn\_CLK}} = \frac{f_{\text{SYS\_CLK}}}{\text{FLCn\_CLKDIV} \cdot \text{clkdiv}} = 1 \, \text{MHz}
+f_{\text{FLCn_CLK}} = \frac{f_{\text{SYS_CLK}}}{\text{FLCn_CLKDIV} \cdot \text{clkdiv}} = 1 \, \text{MHz}
 $$
 
 ### Lock Protection

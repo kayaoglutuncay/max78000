@@ -593,6 +593,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../serial-peripheral-interface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serial Peripheral Interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href=".." class="md-nav__link">
         
   
@@ -851,11 +871,11 @@
 <h2 id="usage">Usage</h2>
 <p>The flash controller manages write and erase operations for internal flash memory and provides a lock mechanism to prevent unintentional writes to the internal flash. In-application and in-system programming, page erase, and mass erase operations are supported.</p>
 <h3 id="clock-configuration">Clock Configuration</h3>
-<p>The FLC requires a 1MHz internal clock. See Oscillator Sources for details. Use the FLC clock divisor to generate f<sub>FLCn_CLK</sub> = 1MHz, as shown in <a href="#flc-clock-frequency">Equation 7-1</a>. If using the IPO as the system clock, the <a href="#flash-controller-address-pointer">FLC_CLKDIV</a>.<em>clkdiv</em> should be set to 100 (0x64).</p>
+<p>The FLC requires a 1MHz internal clock. See Oscillator Sources for details. Use the FLC clock divisor to generate <span class="arithmatex">\(f_{\text{FLCn_CLK}} = 1MHz\)</span>, as shown in <a href="#flc-clock-frequency">Equation 7-1</a>. If using the IPO as the system clock, the <a href="#flash-controller-address-pointer">FLC_CLKDIV</a>.<em>clkdiv</em> should be set to 100 (0x64).</p>
 <p><em>Equation 7-1: FLC Clock Frequency</em>
 <a name="flc-clock-frequency"></a></p>
 <div class="arithmatex">\[
-f_{\text{FLCn\_CLK}} = \frac{f_{\text{SYS\_CLK}}}{\text{FLCn\_CLKDIV} \cdot \text{clkdiv}} = 1 \, \text{MHz}
+f_{\text{FLCn_CLK}} = \frac{f_{\text{SYS_CLK}}}{\text{FLCn_CLKDIV} \cdot \text{clkdiv}} = 1 \, \text{MHz}
 \]</div>
 <h3 id="lock-protection">Lock Protection</h3>
 <p>A locking mechanism prevents accidental memory writes and erases. All write and erase operations require the <a href="#flash-controller-clock-divisor-register">FLC_CTRL</a>.<em>unlock</em> field to be set to 2 before starting the operation. Writing any other value to the <a href="#flash-controller-clock-divisor-register">FLC_CTRL</a>.<em>unlock</em> field results in:</p>
