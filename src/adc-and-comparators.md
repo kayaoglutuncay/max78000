@@ -70,7 +70,7 @@ The 10 - bit ADC conversions are stored as a 16-bit value selectable as MSB or L
 </table>
 
 ## Architecture
-The ADC is a first-order sigma-delta converter with 10-bit output. The ADC operates at a maximum frequency of 8MHz with a fixed-sample rate as shown in [Equation 11-1](#equation11-1-adc-10-bit-word-sample-rate). Details of selecting the ADC clock frequency, fadcclk, are covered in the Clock Configuration section.
+The ADC is a first-order sigma-delta converter with 10-bit output. The ADC operates at a maximum frequency of 8MHz with a fixed-sample rate as shown in [Equation 11-1](#equation11-1-adc-10-bit-word-sample-rate). Details of selecting the ADC clock frequency, ${f_{\text{adcclk}}}$, are covered in the [Clock Configuration](#clock-configuration) section.
 
 *Equation 11-1: ADC 10-bit Word Sample Rate*
 <a name="equation11-1-adc-10-bit-word-sample-rate"></a>
@@ -91,7 +91,7 @@ The ADC supports a gain of 2 × to provide additional conversion resolution if t
 ![Figure 11-1](assets/images/figure11-1.svg)
 
 ## Clock Configuration
-The ADC clock, adcclk, is controlled by the GCR_PCLKDIV.adcfrq register field. Configure this field to achieve the target ADC sample frequency. The maximum clock frequency supported by the ADC is 8MHz. The divisor selection, GCR_PCLKDIV.adcfrq, for the ADC depends on the peripheral clock. [Equation 11-2](#equation11-2-adc-clock-frequency) shows the calculation for the ADC clock.
+The ADC clock, *adcclk*, is controlled by the [GCR_PCLKDIV](system-power-clocks-reset.md#peripheral-clocks-divisor).*adcfrq* register field. Configure this field to achieve the target ADC sample frequency. The maximum clock frequency supported by the ADC is 8MHz. The divisor selection, [GCR_PCLKDIV](system-power-clocks-reset.md#peripheral-clocks-divisor).*adcfrq*, for the ADC depends on the peripheral clock. [Equation 11-2](#equation11-2-adc-clock-frequency) shows the calculation for the ADC clock.
 
 *Equation 11-2: ADC Clock Frequency*
 <a name="equation11-2-adc-clock-frequency"></a>
@@ -100,15 +100,14 @@ $$
 f_{\text{adcclk}} = \frac{f_{\text{PCLK}}}{\text{GCR_PCKDIV.adcfrq}}
 $$
 
-The GCR_PCLKDIV.adcfrq field setting must result in a value for $f_{\text{adcclk}} \le 8\,\text{MHz}$
-as shown in [Table 11-2](#table11-2-max78000-adc-clock-frequency) with IPO set as the system clock.   
+The [GCR_PCLKDIV](system-power-clocks-reset.md#peripheral-clocks-divisor).*adcfrq* field setting must result in a value for $f_{\text{adcclk}} \le 8\,\text{MHz}$ as shown in [Table 11-2](#table11-2-max78000-adc-clock-frequency) with IPO set as the system clock.   
 
 *Table 11-2: MAX78000 ADC Clock Frequency and ADC Conversion Time with the System Clock set to the IPO*
 <a name="table11-2-max78000-adc-clock-frequency"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
 <tr>
-<td>GCR_PCLKDIV.adcfrq</td>
+<td><a href="system-power-clocks-reset.md/#peripheral-clocks-divisor">GCR_PCLKDIV</a>.adcfrq</td>
 <td>ADC Clock Frequency (Hz)<p>
 <span class="math display"><strong>f</strong><sub><strong>adcclk</strong></sub></span></td>
 <td>10-Bit Word Conversion Time (𝜇s)<br />
@@ -164,53 +163,53 @@ as shown in [Table 11-2](#table11-2-max78000-adc-clock-frequency) with IPO set a
 ## Power-Up Sequence
 Complete the following steps to configure the ADC:
 
-1. Disable the ADC clock by setting the ADC_CTRL.clk_en field to 0.
-2. Set the ADC clock (f<sub>adcclk</sub>) using the GCR_PCLKDIV.adcfrq field. See Clock Configuration for details.
-3. Enable the ADC clock by setting the ADC_CTRL.clk_en field to 1
-4. Clear the ADC reference ready interrupt flag by writing a 1 to ADC_INTR.ref_ready_if.
-5. Optionally enable the ADC reference ready interrupt by setting the ADC_INTR.ref_ready_ie field to 1 and enable the ADC interrupt handler (ADC_IRQn).
+1. Disable the ADC clock by setting the [ADC_CTRL](#adc-control-register).*clk_en* field to 0.
+2. Set the ADC clock (${f_{\text{adcclk}}}$) using the [GCR_PCLKDIV](system-power-clocks-reset.md#peripheral-clocks-divisor).*adcfrq* field. See [Clock Configuration](#clock-configuration) for details.
+3. Enable the ADC clock by setting the [ADC_CTRL](#adc-control-register).*clk_en* field to 1
+4. Clear the ADC reference ready interrupt flag by writing a 1 to [ADC_INTR](#adc-interrupt-control-register).*ref_ready_if*.
+5. Optionally enable the ADC reference ready interrupt by setting the [ADC_INTR](#adc-interrupt-control-register).*ref_ready_ie* field to 1 and enable the ADC interrupt handler (ADC_IRQn).
 6. Select one of the following ADC reference sources:
 
-    a. Internal 1.22V bandgap reference (ADC_CTRL.ref_sel = 0).
+    a. Internal 1.22V bandgap reference ([ADC_CTRL](#adc-control-register).*ref_sel* = 0).
 
-    b. V<sub>DDA</sub>/2 reference (ADC_CTRL.ref_sel = 1).
+    b. V<sub>DDA</sub>/2 reference ([ADC_CTRL](#adc-control-register).*ref_sel* = 1).
 
 7. Complete the following steps to enable power to the ADC and optionally the internal ADC reference:
 
-    a. Set ADC_CTRL.pwr to 1 to turn on the ADC.
+    a. Set [ADC_CTRL](#adc-control-register).*pwr* to 1 to turn on the ADC.
 
-    b. Set ADC_CTRL.refbuf_pwr to 1 to turn on the internal reference buffer If using the internal reference.
+    b. Set [ADC_CTRL](#adc-control-register).*refbuf_pwr* to 1 to turn on the internal reference buffer If using the internal reference.
 
-    c. Wait until hardware sets the ADC_INTR.ref_ready_if field to 1, indicating the internal reference is fully powered on and ready.
+    c. Wait until hardware sets the [ADC_INTR](#adc-interrupt-control-register).*ref_ready_if* field to 1, indicating the internal reference is fully powered on and ready.
 
-    d. Clear the ADC reference ready interrupt flag by writing 1 to ADC_INTR.ref_ready_if.
+    d. Clear the ADC reference ready interrupt flag by writing 1 to [ADC_INTR](#adc-interrupt-control-register).*ref_ready_if*.
 
-    e. Optionally disable the ADC reference ready interrupt by clearing the ADC_INTR.ref_ready_ie field to 0.
+    e. Optionally disable the ADC reference ready interrupt by clearing the [ADC_INTR](#adc-interrupt-control-register).*ref_ready_ie* field to 0.
 
 ## Conversion
 After the power-up sequence is complete, the ADC is ready for data conversion. Complete the following steps to perform a data conversion.
 
-1. Select the ADC input channel for the conversion by setting the ADC_CTRL.ch_sel field. See ADC Channel Select for details.
-2. Optionally set input and reference scaling. See Scale Limitations for All Other Input Channels for details on each input channel’s scale requirements.
-3. Set the data alignment for the conversion output data using the ADC_CTRL.data_align field.
+1. Select the ADC input channel for the conversion by setting the [ADC_CTRL](#adc-control-register).*ch_sel* field. See ADC Channel Select for details.
+2. Optionally set input and reference scaling. See [Scale Limitations for All Other Input Channels](#scale-limitations-for-all-other-input-channels) for details on each input channel’s scale requirements.
+3. Set the data alignment for the conversion output data using the [ADC_CTRL](#adc-control-register).*data_align* field.
 
-    a. 0 for LSB alignment or 1 for MSB alignment. See Table 11-3 for alignment details of the ADC_DATA register.
+    a. 0 for LSB alignment or 1 for MSB alignment. See [Table 11-3](#table11-3-adc-data-register-alignment-options) for alignment details of the [ADC_DATA](#adc-output-data-register) register.
 
-4. Clear the ADC done interrupt flag by writing 1 to the ADC_INTR.done_if field.
-5. Optionally enable the ADC done interrupt (ADC_INTR.done_ie = 1) and enable the ADC interrupt vector (ADC_IRQn).
-6. Start the ADC conversion by setting the ADC_CTRL.start field to 1.
-7. Poll the ADC_INTR.done_if flag until it reads 1 or wait for the ADC interrupt to occur if enabled.
-8. Read the data from the ADC_DATA register and clear the ADC done interrupt flag by writing 1 to the ADC_INTR.done_if field.
+4. Clear the ADC done interrupt flag by writing 1 to the [ADC_INTR](#adc-interrupt-control-register).*done_if* field.
+5. Optionally enable the ADC done interrupt ([ADC_INTR](#adc-interrupt-control-register).*done_ie* = 1) and enable the ADC interrupt vector (ADC_IRQn).
+6. Start the ADC conversion by setting the [ADC_CTRL](#adc-control-register).*start* field to 1.
+7. Poll the [ADC_INTR](#adc-interrupt-control-register).*done_if* flag until it reads 1 or wait for the ADC interrupt to occur if enabled.
+8. Read the data from the [ADC_DATA](#adc-output-data-register) register and clear the ADC done interrupt flag by writing 1 to the [ADC_INTR](#adc-interrupt-control-register).*done_if* field.
 
 ### Data Conversion Output Alignment
-The ADC outputs 10-bits per conversion and stores the data in the ADC_DATA register LSB justified by default. [Table 11-3](#table11-3-adc-data-register-alignment-options) shows the ADC data alignment based on the value of the ADC_CTRL.data_align bit.
+The ADC outputs 10-bits per conversion and stores the data in the [ADC_DATA](#adc-output-data-register) register LSB justified by default. [Table 11-3](#table11-3-adc-data-register-alignment-options) shows the ADC data alignment based on the value of the [ADC_CTRL](#adc-control-register).*data_align* bit. 
 
 *Table 11-3: ADC Data Register Alignment Options*
 <a name="table11-3-adc-data-register-alignment-options"></a>
 
 <table border="1" cellpadding="5" cellspacing="0">
 <tr>
-<td colspan="18"><strong><em>ADC_CTRL.data_align</em> = 0</strong></td>
+<td colspan="18"><strong><a href="#adc-control-register">ADC_CTRL</a>.<em>data_align</em> = 0</strong></td>
 </tr>
 <tr>
 <td colspan="2" rowspan="2"></td>
@@ -250,7 +249,7 @@ The ADC outputs 10-bits per conversion and stores the data in the ADC_DATA regis
 <td>0</td>
 </tr>
 <tr>
-<td colspan="2"><em>ADC_DATA</em></td>
+<td colspan="2"><a href="#adc-output-data-register">ADC_DATA</a></td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -264,7 +263,7 @@ The ADC outputs 10-bits per conversion and stores the data in the ADC_DATA regis
 
 <table border="1" cellpadding="5" cellspacing="0">
 <tr>
-<td colspan="18"><strong><em>ADC_CTRL.data_align</em> = 1</strong></td>
+<td colspan="18"><strong><a href="#adc-control-register">ADC_CTRL</a>.<em>data_align</em> = 1</strong></td>
 </tr>
 <tr>
 <td colspan="2" rowspan="2"></td>
@@ -304,7 +303,7 @@ The ADC outputs 10-bits per conversion and stores the data in the ADC_DATA regis
 <td>0</td>
 </tr>
 <tr>
-<td colspan="2"><em>ADC_DATA</em></td>
+<td colspan="2"><a href="#adc-output-data-register">ADC_DATA</a></td>
 <td colspan="10">data</td>
 <td>0</td>
 <td>0</td>
@@ -319,7 +318,7 @@ The ADC outputs 10-bits per conversion and stores the data in the ADC_DATA regis
 ### Data Conversion Value Equations
 Use the following equations to calculate the ADC data value for a conversion for the selected channel. If using the internal reference, V<sub>REF</sub> = 1.22V; otherwise, V<sub>REF</sub> = V<sub>DDA</sub>.
 
-*Equation 11-3: ADC Data Calculation for Input Signal ADC_CTRL.ch_sel = 0 through 7 (AIN0 - AIN7)*
+*Equation 11-3: ADC Data Calculation for Input Signal [ADC_CTRL](#adc-control-register).ch_sel = 0 through 7 (AIN0 - AIN7)*
 <a name="equation11-3-adc-data-calculation"></a>
 
 $$
@@ -328,27 +327,27 @@ $$
 
 *Note: Must satisfy [Equation 11-6](#equation11-6-input-and-reference-scale-requirement-equation).*
 
-*Equation 11-4: ADC Data Equation for Input Signal ADC_CTRL.ch_sel = 8 through 12 (V<sub>COREA</sub>, V<sub>COREB</sub>, V<sub>RXOUT</sub>, V<sub>TXOUT</sub>, V<sub>DDA</sub>)*
+*Equation 11-4: ADC Data Equation for Input Signal [ADC_CTRL](#adc-control-register).ch_sel = 8 through 12 (V<sub>COREA</sub>, V<sub>COREB</sub>, V<sub>RXOUT</sub>, V<sub>TXOUT</sub>, V<sub>DDA</sub>)*
 
 $$
 \text{ADC_DATA} = \text{round} \{ \left( \frac{\frac{\text{Input Signal}}{2^{\text{scale}}}}{\frac{V_{\text{REF}}}{2^{\text{ref_scale}}}} \right) \cdot \left( 2^{10} - 1 \right) \}
 $$
 
-*Note: See[ Table 11-4](#table11-4-input-and-reference-scale-support) for limitations.*
+*Note: See [Table 11-4](#table11-4-input-and-reference-scale-support) for limitations.*
 
-*Equation 11-5: ADC Data Calculation Input Signal ADC_CTRL.ch_sel = 14 through 16 (V<sub>DDIO</sub>, V<sub>DDIOH</sub>, V<sub>REGI</sub>)*
+*Equation 11-5: ADC Data Calculation Input Signal [ADC_CTRL](#adc-control-register).ch_sel = 14 through 16 (V<sub>DDIO</sub>, V<sub>DDIOH</sub>, V<sub>REGI</sub>)*
 
 $$
 \text{ADC_DATA} = \text{round}\left\{ \frac{\left( \frac{\frac{\text{Input Signal}}{4}}{2^{\text{scale}}} \right)}{\left( \frac{V_{\text{REF}}}{2^{\text{ref_scale}}} \right)} \cdot \left( 2^{10} - 1 \right) \right\}
 $$
 
-*Note: See[ Table 11-4](#table11-4-input-and-reference-scale-support) for limitations.*
+*Note: See [Table 11-4](#table11-4-input-and-reference-scale-support) for limitations.*
 
 ## Reference Scaling and Input Scaling
-For small signals, the ADC input, ADC reference, or both can be scaled by 50%. This enables flexibility to achieve better resolution on the ADC conversion. Each input channel supports the default of no scaling of the input (ADC_CTRL.scale = 0) and no reference scaling (ADC_CTRL.ref_scale = 0). The following sections describe the scale options for each of the ADC input channels.
+For small signals, the ADC input, ADC reference, or both can be scaled by 50%. This enables flexibility to achieve better resolution on the ADC conversion. Each input channel supports the default of no scaling of the input ([ADC_CTRL](#adc-control-register).*scale* = 0) and no reference scaling ([ADC_CTRL](#adc-control-register).*ref_scale* = 0). The following sections describe the scale options for each of the ADC input channels.
 
 ### AIN0 – AIN7 Scale Limitations
-The external inputs, AIN0 through AIN7, support scaling of the input by 50%, the reference by 50%, or both by 50%. Also, the scaling can further be modified by additional factors of 2, 3, or 4 as defined by ADC_CTRL.adc_divsel. The scale settings for the given input signal and reference must satisfy [Equation 11-6](#equation11-6-input-and-reference-scale-requirement-equation) to be valid:
+The external inputs, AIN0 through AIN7, support scaling of the input by 50%, the reference by 50%, or both by 50%. Also, the scaling can further be modified by additional factors of 2, 3, or 4 as defined by [ADC_CTRL](#adc-control-register).*adc_divsel*. The scale settings for the given input signal and reference must satisfy [Equation 11-6](#equation11-6-input-and-reference-scale-requirement-equation) to be valid:
 
 *Equation 11-6: Input and Reference Scale Requirements Equation*
 <a name="equation11-6-input-and-reference-scale-requirement-equation"></a>
@@ -368,8 +367,8 @@ The scale settings must either be disabled or enabled for the remaining internal
 <tr>
 <th>ADC Channel</th>
 <th>ADC Input Signal</th>
-<th><em>ADC_CTRL</em>.<em>scale</em></th>
-<th><em>ADC_CTRL</em>.<em>ref_scale</em></th>
+<th><a href="#adc-control-register">ADC_CTRL</a>.<em>scale</em></th>
+<th><a href="#adc-control-register">ADC_CTRL</a>.<em>ref_scale</em></th>
 </tr>
 </thead>
 <tbody>
@@ -457,7 +456,7 @@ The scale settings must either be disabled or enabled for the remaining internal
 </table>
 
 ## Data Limits and Out of Range Interrupts
-Channel limits are implemented to minimize power consumption for power supply monitoring. The ADC includes four limit registers, ADC_LIMIT0 to ADC_LIMIT3, that can be used to set a high limit, low limit, and the ADC channel number to apply the limits against. A block diagram of the limit engine for each of the four limit registers is shown in [Figure 11-2](#figure11-2-adc-limit-engine).
+Channel limits are implemented to minimize power consumption for power supply monitoring. The ADC includes four limit registers, [ADC_LIMIT0](#adc-limit0-register) to [ADC_LIMIT3](#adc-limit0-register), that can be used to set a high limit, low limit, and the ADC channel number to apply the limits against. A block diagram of the limit engine for each of the four limit registers is shown in [Figure 11-2](#figure11-2-adc-limit-engine).
 
 *Figure 11-2: ADC Limit Engine*
 <a name="figure11-2-adc-limit-engine"></a>
@@ -466,28 +465,28 @@ Channel limits are implemented to minimize power consumption for power supply mo
 
 When a measurement is taken on the ADC, the limit engine determines if the channel measured matches one of the channels selected by the limit registers. If it does and the data converted is above or below the high or low limit, an interrupt flag is set, resulting in an ADC interrupt if the interrupt is enabled.
 
-Complete the following steps to enable a high and low limit for an ADC input channel using the ADC_LIMIT0 register. Perform these steps after the ADC is configured for measurement, and the configuration is identical for all four limit registers except for the limit register name:
+Complete the following steps to enable a high and low limit for an ADC input channel using the [ADC_LIMIT0](#adc-limit0-register) register. Perform these steps after the ADC is configured for measurement, and the configuration is identical for all four limit registers except for the limit register name:
 
-1. Verify that the ADC is not actively taking a measurement by checking ADC_STATUS.active until it reads 0.
-2. Set the ADC_LIMIT0.ch_sel field to the selected channel for the high and low limits.
-3. Set the high limit, ADC_LIMIT0.ch_hi_limit, to the selected 10-bit trip point. An ADC measurement greater than this field on the channel selected (ADC_LIMIT0.ch_sel) generates an ADC interrupt when enabled.
-4. Set the low limit, ADC_LIMIT0.ch_lo_limit, to the selected 10-bit low trip point. An ADC measurement lower than this field on the channel selected (ADC_LIMIT0.ch_sel) generates an ADC interrupt when enabled.
-5. Enable the high limit, the low limit, or both interrupt signals by writing a 1 to ADC_LIMIT0.ch_high_limit_en, ADC_LIMIT0.ch_low_limit_en, or both. Note: Each limit register is independently enabled for high- and low-limit interrupts.
-6. Clear the ADC interrupt high and low interrupt flags by writing 1 to ADC_INTR.hi_limit_if and ADC_LIMIT0.lo_limit_if.
-7. Enable the high, low, or both interrupts for the ADC by setting ADC_INTR.hi_limit_if to 1, ADC_INTR.lo_limit_ie to 1, or both to 1.
-8. If an ADC conversion occurs that is above or below the enabled limits, an ADC_IRQn is generated with the ADC_LIMIT0.adc_high_limit_if, ADC_LIMIT0.adc_low_limit_if, or both set to 1. The ADC_CTRL.ch_sel value indicates the channel that caused the interrupt, and the value of the ADC conversion that is out of bounds is in the ADC_DATA register.
+1. Verify that the ADC is not actively taking a measurement by checking [ADC_STATUS](#adc-status-register).*active* until it reads 0.
+2. Set the [ADC_LIMIT0](#adc-limit0-register).*ch_sel* field to the selected channel for the high and low limits.
+3. Set the high limit, [ADC_LIMIT0](#adc-limit0-register).*ch_hi_limit*, to the selected 10-bit trip point. An ADC measurement greater than this field on the channel selected ([ADC_LIMIT0](#adc-limit0-register).*ch_sel*) generates an ADC interrupt when enabled.
+4. Set the low limit, [ADC_LIMIT0](#adc-limit0-register).*ch_lo_limit*, to the selected 10-bit low trip point. An ADC measurement lower than this field on the channel selected ([ADC_LIMIT0](#adc-limit0-register).*ch_sel*) generates an ADC interrupt when enabled.
+5. Enable the high limit, the low limit, or both interrupt signals by writing a 1 to [ADC_LIMIT0](#adc-limit0-register).*ch_high_limit_en*, [ADC_LIMIT0](#adc-limit0-register).*ch_low_limit_en*, or both. *Note: Each limit register is independently enabled for high- and low-limit interrupts.*
+6. Clear the ADC interrupt high and low interrupt flags by writing 1 to [ADC_INTR](#adc-interrupt-control-register).*hi_limit_if* and [ADC_LIMIT0](#adc-limit0-register).*lo_limit_if*.
+7. Enable the high, low, or both interrupts for the ADC by setting [ADC_INTR](#adc-interrupt-control-register).*hi_limit_if* to 1, [ADC_INTR](#adc-interrupt-control-register).*lo_limit_ie* to 1, or both to 1.
+8. If an ADC conversion occurs that is above or below the enabled limits, an ADC_IRQn is generated with the [ADC_LIMIT0](#adc-limit0-register).*adc_high_limit_if*, [ADC_LIMIT0](#adc-limit0-register).*adc_low_limit_if*, or both set to 1. The [ADC_CTRL](#adc-control-register).ch_sel value indicates the channel that caused the interrupt, and the value of the ADC conversion that is out of bounds is in the [ADC_DATA](#adc-output-data-register) register.
 
 ## Power-Down Sequence
 
 Complete the following steps to power down the ADC:
 
-1. Set ADC_CTRL.pwr to 0, disabling the ADC converter power.
-2. ADC_CTRL.refbuf_pwr to 0, disabling the internal reference buffer power.
-3. Set ADC_CTRL.clk_en to 0, disabling the ADC internal clock.
+1. Set [ADC_CTRL](#adc-control-register).*pwr* to 0, disabling the ADC converter power.
+2. [ADC_CTRL](#adc-control-register).*refbuf_pwr* to 0, disabling the internal reference buffer power.
+3. Set [ADC_CTRL](#adc-control-register).*clk_en* to 0, disabling the ADC internal clock.
 
 ## Comparator Operation
 ### Comparator 0 Usage
-Comparator 0 is controlled individually using the MCR_CMP_CTRL register. Enable comparator 0 by setting the MCR_CMP_CTRL.en field to 1. Comparator 0s output is readable using the MCR_CMP_CTRL.out. Enable interrupt events for comparator 0 by setting the MCR_CMP_CTRL.int_en field to 1. Interrupts for comparator 0 occur when the output changes to its active state. The active state is controlled using the MCR_CMP_CTRL.pol field. When the output state is active, hardware automatically sets the MCR_CMP_CTRL.if flag to 1. To clear the interrupt flag, write 1 to MCR_CMP_CTRL.if.
+Comparator 0 is controlled individually using the [MCR_CMP_CTRL](system-power-clocks-reset.md#comparator-control-register) register. Enable comparator 0 by setting the [MCR_CMP_CTRL](system-power-clocks-reset.md#comparator-control-register).*en* field to 1. Comparator 0s output is readable using the [MCR_CMP_CTRL](system-power-clocks-reset.md#comparator-control-register).*out*. Enable interrupt events for comparator 0 by setting the [MCR_CMP_CTRL](system-power-clocks-reset.md#comparator-control-register).*int_en* field to 1. Interrupts for comparator 0 occur when the output changes to its active state. The active state is controlled using the [MCR_CMP_CTRL](system-power-clocks-reset.md#comparator-control-register).*pol* field. When the output state is active, hardware automatically sets the [MCR_CMP_CTRL](system-power-clocks-reset.md#comparator-control-register).*if* flag to 1. To clear the interrupt flag, write 1 to [MCR_CMP_CTRL](system-power-clocks-reset.md#comparator-control-register).*if*.
 
 ### Low-Power Comparators 1, 2, and 3 Usage
 Comparators 1, 2, and 3 are controlled using the low-power comparator, LPCOMPn, registers.
@@ -495,16 +494,16 @@ Comparators 1, 2, and 3 are controlled using the low-power comparator, LPCOMPn, 
 ### Using Comparator 0 as a Wake-Up Source
 After configuring Comparator 0, configure it as a wake-up source from SLEEP, LPM, UPM, STANDBY, and BACKUP by performing the following steps:
 
-1. Enable comparator wake-up events by setting GCR_PM.aincomp_we to 1.
-2. Enable comparator 0 as a wake-up source by setting PWRSEQ_LPPWST.comp0 to 1.
+1. Enable comparator wake-up events by setting [GCR_PM](system-power-clocks-reset.md#power-management-register).*aincomp_we* to 1.
+2. Enable comparator 0 as a wake-up source by setting [PWRSEQ_LPPWST](system-power-clocks-reset.md#low-power-peripheral-wakeup-status-register).*comp0* to 1.
 3. If desired, provide an interrupt handler for the comparators (LPCMP_IRQn).
 
-After the device exits a low-power mode, determine if the wake-up event resulted from comparator 0 by checking the PWRSEQ_LPPWST.comp0 and the MCR_CMP_CTRL.if. Wake-up events generated by comparator 0 from STANDBY and BACKUP mode result in the PWRSEQ_LPPWST.comp0 bit being set. Write 1 to clear the PWRSEQ_LPPWST.comp0 bit and the MCR_CMP_CTRL.if bit.
+After the device exits a low-power mode, determine if the wake-up event resulted from comparator 0 by checking the [PWRSEQ_LPPWST](system-power-clocks-reset.md#low-power-peripheral-wakeup-status-register).*comp0* and the [MCR_CMP_CTRL](system-power-clocks-reset.md#comparator-control-register).*if*. Wake-up events generated by comparator 0 from STANDBY and BACKUP mode result in the [PWRSEQ_LPPWST](system-power-clocks-reset.md#low-power-peripheral-wakeup-status-register).*comp0* bit being set. Write 1 to clear the [PWRSEQ_LPPWST](system-power-clocks-reset.md#low-power-peripheral-wakeup-status-register).*comp0* bit and the [MCR_CMP_CTRL](system-power-clocks-reset.md#comparator-control-register).*if* bit.
 
 ### Using Low-Power Comparators 1, 2, and 3 as a Wake-Up Source
-Wake up from the low-power comparators, LPCMPn, by setting PWRSEQ_LPPWST.aincomp0 bit to 1. If any of the three low-power comparators (LPCMPn) cause the device to wake up, the specific comparator’s interrupt flag is set to 1. Inspection of each comparator’s interrupt flag identifies which comparator resulted in the wake-up event. See LPCMPn.if for details.
+Wake up from the low-power comparators, [LPCMPn](#low-power-comparator-register), by setting [MCR_CMP_CTRL](system-power-clocks-reset.md#comparator-control-register).*aincomp0* bit to 1. If any of the three low-power comparators ([LPCMPn](#low-power-comparator-register)) cause the device to wake up, the specific comparator’s interrupt flag is set to 1. Inspection of each comparator’s interrupt flag identifies which comparator resulted in the wake-up event. See [LPCMPn](#low-power-comparator-register).*if* for details.
 
-Enable wake-up events from the low-power comparators by setting the GCR_PM.aincomp_we field to 1. If a comparator event occurs and wakes the device from a low-power operating mode, the PWRSEQ_LPPWST.aincomp0 field is set to 1. Clear the comparator wake-up status flag by writing 1 to PWRSEQ_LPPWST.aincomp0.
+Enable wake-up events from the low-power comparators by setting the GCR_PM.aincomp_we field to 1. If a comparator event occurs and wakes the device from a low-power operating mode, the [MCR_CMP_CTRL](system-power-clocks-reset.md#comparator-control-register).*aincomp0* field is set to 1. Clear the comparator wake-up status flag by writing 1 to [MCR_CMP_CTRL](system-power-clocks-reset.md#comparator-control-register).*aincomp0*.
 
 *Note: Comparator 0, if enabled, wakes the device from SLEEP, LPM, UPM, STANDBY, and BACKUP. If enabled, comparators 1, 2, and 3 wake the device from SLEEP, LPM, and UPM.*
 
@@ -599,8 +598,8 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
        <td><strong>ADC Data Alignment</strong><br>
        This field selects the alignment of the 16-bit data conversion stored in the ADC_DATA register.
         <div style="margin-left: 20px">
-            0: Data is LSB justified in the 16-bit ADC_DATA register. ADC_DATA[15:10] = 0.<br>
-            1: Data is MSB justified in the 16-bit ADC_DATA register. ADC_DATA[5:0] = 0.
+            0: Data is LSB justified in the 16-bit [ADC_DATA](#adc-output-data-register) register. ADC_DATA[15:10] = 0.<br>
+            1: Data is MSB justified in the 16-bit [ADC_DATA](#adc-output-data-register) register. ADC_DATA[5:0] = 0.
         </div>
        </td>
     </tr>

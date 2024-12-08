@@ -1,0 +1,1835 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://kayaoglutuncay.github.io/max78000/i2c-master-slave-serial-communication-peripheral/">
+      
+      
+        <link rel="prev" href="../serial-peripheral-interface/">
+      
+      
+        <link rel="next" href="..">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>I2C Master/Slave Serial Communications Peripheral - MAX78000 User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#i2c-masterslave-features" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MAX78000 User Guide" class="md-header__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
+      
+  <img src="../assets/adi-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MAX78000 User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              I<sup>2</sup>C Master/Slave Serial Communications Peripheral
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MAX78000 User Guide" class="md-nav__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
+      
+  <img src="../assets/adi-logo.png" alt="logo">
+
+    </a>
+    MAX78000 User Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory-register-mapping-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory, Register, Mapping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-power-clocks-reset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System, Power, Clocks, Reset
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interrupts-exceptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interrupts and Exceptions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    General-Purpose I/O and Alternate Function Pins (GPIO)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flash-controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flash Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debug-access-port/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Access Port
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semaphore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semaphore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../standard-dma/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standard DMA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adc-and-comparators/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Analog to Digital Converter (ADC) and Comparators (LPCMP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../universal-asynchronous-receiver-transmitter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Universal Asynchronous Receiver/Transmitter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../serial-peripheral-interface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serial Peripheral Interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    I<sup>2</sup>C Master/Slave Serial Communications Peripheral
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    I<sup>2</sup>C Master/Slave Serial Communications Peripheral
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-masterslave-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      I²C Master/Slave Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instances
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      I²C Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I²C Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i2c-bus-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      I²C Bus Terminology
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i2c-transfer-protocol-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      I²C Transfer Protocol Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-and-stop-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      START and STOP Conditions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#master-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Master Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acknowledge-and-not-acknowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acknowledge and Not Acknowledge
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bit-transfer-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bit Transfer Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration and Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scl-and-sda-bus-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCL and SDA Bus Drivers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scl-clock-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCL Clock Configurations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scl-clock-generation-for-standard-fast-and-fast-plus-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCL Clock Generation for Standard, Fast, and Fast-Plus Modes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scl-clock-generation-for-hs-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCL Clock Generation for Hs-Mode
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SCL Clock Generation for Hs-Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hs-mode-timing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hs-Mode Timing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hs-mode-clock-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hs-Mode Clock Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#master-mode-addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Master Mode Addressing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#master-mode-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Master Mode Operation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Master Mode Operation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i2c-master-mode-receiver-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      I²C Master Mode Receiver Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i2c-master-mode-transmitter-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      I²C Master Mode Transmitter Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i2c-multi-master-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      I²C Multi-Master Operation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slave-mode-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slave Mode Operation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Slave Mode Operation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slave-transmitter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slave Transmitter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Slave Transmitter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#just-in-time-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Just-In-Time Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preload-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preload Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slave-receivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slave Receivers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interrupt-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interrupt Sources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmit-fifo-and-receive-fifo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmit FIFO and Receive FIFO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmit-fifo-preloading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmit FIFO Preloading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-receive-mode-irxm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Receive Mode (IRXM)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clock-stretching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clock Stretching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bus-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bus Timeout
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dma-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      DMA Control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Registers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Document Conventions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../revision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Revision History
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-masterslave-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      I²C Master/Slave Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instances
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      I²C Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I²C Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i2c-bus-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      I²C Bus Terminology
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i2c-transfer-protocol-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      I²C Transfer Protocol Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-and-stop-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      START and STOP Conditions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#master-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Master Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acknowledge-and-not-acknowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acknowledge and Not Acknowledge
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bit-transfer-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bit Transfer Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration and Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scl-and-sda-bus-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCL and SDA Bus Drivers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scl-clock-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCL Clock Configurations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scl-clock-generation-for-standard-fast-and-fast-plus-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCL Clock Generation for Standard, Fast, and Fast-Plus Modes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scl-clock-generation-for-hs-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCL Clock Generation for Hs-Mode
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SCL Clock Generation for Hs-Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hs-mode-timing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hs-Mode Timing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hs-mode-clock-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hs-Mode Clock Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#master-mode-addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Master Mode Addressing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#master-mode-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Master Mode Operation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Master Mode Operation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i2c-master-mode-receiver-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      I²C Master Mode Receiver Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i2c-master-mode-transmitter-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      I²C Master Mode Transmitter Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i2c-multi-master-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      I²C Multi-Master Operation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slave-mode-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slave Mode Operation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Slave Mode Operation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slave-transmitter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slave Transmitter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Slave Transmitter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#just-in-time-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Just-In-Time Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preload-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preload Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slave-receivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slave Receivers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interrupt-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interrupt Sources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmit-fifo-and-receive-fifo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmit FIFO and Receive FIFO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmit-fifo-preloading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmit FIFO Preloading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-receive-mode-irxm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive Receive Mode (IRXM)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clock-stretching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clock Stretching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bus-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bus Timeout
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dma-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      DMA Control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Registers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>I<sup>2</sup>C Master/Slave Serial Communications Peripheral</h1>
+
+<p>The I²C peripherals can be configured as either an I2C master or an I2C slave at standard data rates.</p>
+<p>For detailed information on I²C bus operation, refer to Analog Devices Note 4024 "SPI/I²C Bus Lines Control Multiple Peripherals" at <a href="https://www.analog.com/en/resources/app-notes/spii2c-bus-lines-control-multiple-peripherals.html">https://www.analog.com/en/resources/app-notes/spii2c-bus-lines-control-multiple-peripherals.html</a>.</p>
+<h2 id="i2c-masterslave-features">I²C Master/Slave Features</h2>
+<p>Each I²C master/slave is compliant with the I²C Bus Specification and includes the following features:</p>
+<ul>
+<li>Communicates through a serial data bus (SDA) and a serial clock line (SCL)</li>
+<li>Operates as either a master or slave device as a transmitter or receiver</li>
+<li>Supports I²C Standard Mode, Fast Mode, Fast Mode Plus, and High Speed (Hs) mode</li>
+<li>
+<p>Transfers data at rates up to:</p>
+<ul>
+<li>100kbps in Standard Mode</li>
+<li>400kbps in Fast Mode</li>
+<li>1Mbps in Fast Mode Plus</li>
+<li>3.4Mbps in Hs Mode</li>
+</ul>
+</li>
+<li>
+<p>Supports multi-master systems, including support for arbitration and clock synchronization for Standard, Fast, and Fast Plus modes</p>
+</li>
+<li>Supports 7- and 10-bit addressing</li>
+<li>Supports RESTART condition</li>
+<li>Supports clock stretching</li>
+<li>Provides transfer status interrupts and flags</li>
+<li>Provides DMA data transfer support</li>
+<li>Supports I²C timing parameters fully controllable through software</li>
+<li>Provides glitch filter and Schmitt trigger hysteresis on SDA and SCL</li>
+<li>Provides control, status, and interrupt events for maximum flexibility</li>
+<li>Provides independent 8-byte receive FIFO and 8-byte transmit FIFO</li>
+<li>Provides transmit FIFO preloading</li>
+<li>Provides programmable interrupt threshold levels for the transmit and receive FIFO</li>
+</ul>
+<h2 id="instances">Instances</h2>
+<p>The three instances of the peripheral are shown in Table 14-1, which lists the locations of the SDA and SCL signals for each of the I2C peripherals per package.</p>
+<p><em>Table 14-1: MAX78000 I2C Peripheral Pins</em></p>
+<h2 id="i2c-overview">I²C Overview</h2>
+<h3 id="i2c-bus-terminology">I²C Bus Terminology</h3>
+<p>Table 14-2 contains terms and definitions used in this chapter for the I2C bus terminology.</p>
+<p><em>Table 14-2: I2C Bus Terminology</em></p>
+<h3 id="i2c-transfer-protocol-operation">I²C Transfer Protocol Operation</h3>
+<p>The I2C protocol operates over a two-wire bus: a clock circuit (SCL) and a data circuit (SDA). I2C is a half-duplex protocol: only one device is allowed to transmit on the bus at a time.</p>
+<p>Each transfer is initiated when the bus master sends a START or repeated START condition. It is followed by the I2C slave address of the targeted slave device plus a read/write bit. The master can transmit data to the slave (a 'write' operation) or receive data from the slave (a 'read' operation). Information is sent most significant bit (MSB) first. </p>
+<p>Following the slave address, the master indicates a read or write operation and then exchanges data with the addressed slave. An acknowledge bit is sent by the receiving device after each byte is transferred. </p>
+<p>When all necessary data bytes have been transferred, a STOP or RESTART condition is sent by the bus master to indicate the end of the transaction. After the STOP condition has been sent, the bus is idle and ready for the next transaction. After a RESTART condition is sent, the same master begins a new transmission. The number of bytes that can be transmitted per transfer is unrestricted.</p>
+<h3 id="start-and-stop-conditions">START and STOP Conditions</h3>
+<p>A START condition occurs when a bus master pulls SDA from high to low while SCL is high, and a STOP condition occurs when a bus master allows SDA to be pulled from low to high while SCL is high. Because these are unique conditions that cannot occur during normal data transfer, they are used to denote the beginning and end of the data transfer.</p>
+<h3 id="master-operation">Master Operation</h3>
+<p>I2C transmit and receive data transfer operations occur through the I2Cn_FIFO register. Writes to the register load the transmit FIFO and reads from the register return data from the receive FIFO. If a slave sends a NACK in response to a write operation, the I2C master generates an interrupt. The I2C controller can be configured to issue a STOP condition to free the bus.</p>
+<p>The receive FIFO contains the received data. If the receive FIFO is full or the transmit FIFO is empty, the I2C master stops the clock to allow time to read bytes from the receive FIFO or load bytes into the transmit FIFO.</p>
+<h3 id="acknowledge-and-not-acknowledge">Acknowledge and Not Acknowledge</h3>
+<p>An acknowledge bit (ACK) is generated by the receiver, whether I2C master or slave, after every byte received by pulling SDA low. The ACK bit is how the receiver tells the transmitter that the byte was successfully received and another byte might be sent.</p>
+<p>A Not Acknowledge (NACK) occurs if the receiver does not generate an ACK when the transmitter releases SDA. A NACK is generated by allowing SDA to float high during the acknowledge time slot. The I2C master can then either generate a STOP condition to abort the transfer or generate a repeated START condition (send a START condition without an intervening STOP condition) to start a new transfer.</p>
+<p>A receiver can generate a NACK after a byte transfer if any of the following conditions occur:</p>
+<ul>
+<li>No receiver is present on the bus with the transmitted address. In that case, no device responds with an acknowledge signal.</li>
+<li>The receiver cannot receive or transmit because it is busy and is not ready to start communication with the master.</li>
+<li>During the transfer, the receiver receives data or commands it does not understand.</li>
+<li>During the transfer, the receiver is unable to receive any more data.</li>
+<li>If an I2C master has requested data from a slave, it signals the slave to stop transmitting by sending a NACK following the last byte it requires.</li>
+</ul>
+<h3 id="bit-transfer-process">Bit Transfer Process</h3>
+<p>Both SDA and SCL circuits are open-drain, bidirectional circuits. Each requires an external pullup resistor that ensures each circuit is high when idle. The I2C specification states that during data transfer, the SDA line can change state only when SCL is low and that SDA is stable and can be read when SCL is high, as shown in Figure 14-1.</p>
+<p><em>Figure 14-1: I2C Write Data Transfer</em></p>
+<p>An example of an I2C data transfer is as follows:</p>
+<ol>
+<li>A bus master indicates a data transfer to a slave with a START condition.</li>
+<li>The master then transmits one byte with a 7-bit slave address and a single read-write bit: a zero for a write or a one for a read.</li>
+<li>During the next SCL clock following the read-write bit, the master releases SDA. During this clock period, the addressed slave responds with an ACK by pulling SDA low.</li>
+<li>The master senses the ACK condition and begins transferring data. If reading from the slave, it floats SDA and allows the slave to drive SDA to send data. After each byte, the master drives SDA low to acknowledge the byte. If writing to the slave, the master drives data on the SDA circuit for each of the eight bits of the byte and then floats SDA during the ninth bit to allow the slave to reply with the ACK indication.</li>
+<li>After the last byte is transferred, the master indicates the transfer is complete by generating a STOP condition. A STOP condition is generated when the master pulls SDA from a low to high while SCL is high.</li>
+</ol>
+<h2 id="configuration-and-usage">Configuration and Usage</h2>
+<h3 id="scl-and-sda-bus-drivers">SCL and SDA Bus Drivers</h3>
+<p>SCL and SDA are open-drain signals. In this device, once the I2C peripheral is enabled and the proper GPIO alternate function is selected, the corresponding pad circuits are automatically configured as open-drain outputs. However, SCL can also be optionally configured as a push-pull driver to conserve power and avoid the need for any pullup resistor. This should only be used in systems where no I2C slave device can hold SCL low, such as for clock stretching. Push-pull operation is enabled by setting I2Cn_CTRL.sclppm to 1. SDA, on the other hand, always operates in open-drain mode.</p>
+<h3 id="scl-clock-configurations">SCL Clock Configurations</h3>
+<p>The SCL frequency depends on the values of the I2C's peripheral clock and the values of the external pullup resistor and trace capacitance on the SCL clock line.</p>
+<p><em>Note: An external RC load on the SCL line affects the target SCL frequency calculation.</em></p>
+<h3 id="scl-clock-generation-for-standard-fast-and-fast-plus-modes">SCL Clock Generation for Standard, Fast, and Fast-Plus Modes</h3>
+<p>The master generates the I2C clock on the SCL line. When operating as a master, the software must configure theI2Cn_CLKHI and I2Cn_CLKLO registers for the desired I2C operating frequency.</p>
+<p>The SCL high time is configured in the I2C Clock High Time register field I2Cn_CLKHI.hi using Equation 14-2. The SCL low time is configured in the I2C Clock Low Time register field I2Cn_CLKLO.lo using Equation 14-3. Each of these fields is 8-bits. The I2C frequency value is shown in Equation 14-1.</p>
+<p>Equation 14-1: I2C Clock Frequency</p>
+<p>Equation 14-2: I2C Clock High Time Calculation</p>
+<p>Equation 14-3: I2C Clock Low Time Calculation</p>
+<p>Figure 14-2 shows the association between the SCL clock low and high times for Standard, Fast, and Fast Plus I2C frequencies.</p>
+<p><em>Figure 14-2: I2C SCL Timing for Standard, Fast and Fast-Plus Modes</em></p>
+<p>External masters or external slaves may be driving SCL simultaneously, affecting the SCL duty cycle during synchronization. By monitoring SCL, the controller can determine whether an external master or slave is holding SCL low. In either case, the controller waits until SCL is high before starting to count the number of SCL high cycles. Similarly, suppose an external master pulls SCL low before the controller has finished counting SCL high cycles. In that case, the controller starts counting SCL low cycles and releases SCL once the time period, I2Cn_CLKLO.lo, has expired.</p>
+<p>Because the controller does not start counting the high and low time until the input buffer detects the new value, the actual clock behavior is based on many factors, including bus loading, other devices on the bus holding SCL low, and the filter delay time of this device.</p>
+<h3 id="scl-clock-generation-for-hs-mode">SCL Clock Generation for Hs-Mode</h3>
+<p>Values to be programmed into the I2Cn_HSCLK.hsclk_lo register and I2Cn_HSCLK.hsclk_hi register must be determined to operate the I2C interface in Hs-Mode at its maximum speed (~3.4MHz). Since the Hs-Mode operation is entered by first using one of the lower speed modes for pre-amble, a relevant lower speed mode must also be configured. See SCL Clock Generation for Standard, Fast and Fast-Plus Modes for information regarding the configuration of lower speed modes.</p>
+<h4 id="hs-mode-timing">Hs-Mode Timing</h4>
+<p>With I2C bus capacitances less than 100pf, the following specifications are extracted from the I2C-bus Specification and User Manual Rev. 6 April 2014 https://www.nxp.com/docs/en/user-guide/UM10204.pdf.</p>
+<p>𝑡
+𝐿𝐿𝐿𝐿
+𝐿𝐿
+_𝑀𝑀 = 160ns, the minimum low time for the I2C bus clock.
+𝑡
+𝐻𝐻𝐻𝐻𝐻𝐻 𝐻𝐻_𝑀𝑀 = 60ns, the minimum high time for the I2C bus clock.
+𝑡
+𝑟𝑟𝑟 _𝑀𝑀𝑀 = 40ns, the maximum rise time of the I2C bus clock.
+𝑡
+𝑓𝑓𝑓 _𝑀𝑀𝑀 = 40ns, the maximum fall time of the I2C bus clock.</p>
+<h4 id="hs-mode-clock-configuration">Hs-Mode Clock Configuration</h4>
+<p>The maximum Hs-Mode bus clock frequency can now be determined. Calculate the required settings for Hs-Mode using the following equations.</p>
+<p>Equation 14-4: I2C Target SCL Frequency</p>
+<p>Equation 14-5: Determining the I2Cn_HSCLK.hsclk_lo Register Value</p>
+<p>Equation 14-6: Determining the I2Cn_HSCLK.hsclk_hi Register Value</p>
+<p>Equation 14-7: The Calculated Frequency of the I2C Bus Clock Using the Results of Equation 14-5 and Equation 14-6</p>
+<p>Table 14-3 shows the I2C bus clock calculated frequencies given different fSYS_CLK frequencies.</p>
+<p><em>Table 14-3: Calculated I2C Bus Clock Frequencies</em></p>
+<h3 id="master-mode-addressing">Master Mode Addressing</h3>
+<p>After a START condition, the I2C slave address byte is transmitted by the hardware. The I2C slave address is composed of a slave address followed by a read/write bit.</p>
+<p><em>Table 14-4: I2C Slave Address Format</em></p>
+<p>In 7-bit addressing mode, the master sends one address byte. Address a 7-bit address slave as follows. First, clear the I2Cn_MSTCTRL.ex_addr_en field to 0, then write the address to the transmit FIFO formatted as follows:</p>
+<p>Master writing to slave: 7-bit address : [A6 A5 A4 A3 A2 A1 A0 0]</p>
+<p>Master reading from slave: 7-bit address : [A6 A5 A4 A3 A2 A1 A0 1]</p>
+<p>In 10-bit addressing mode (I2Cn_MSTCTRL.ex_addr_en = 1), the first byte the master sends is the 10-bit slave address byte, which includes the first two bits of the 10-bit address, followed by a 0 for the R/W bit. That is followed by a second byte representing the remainder of the 10-bit address. If the operation is a write, this is followed by data bytes to be written to the slave. If the operation is a read, it is followed by a repeated START. The software then writes the 10-bit address again with a 1 for the R/W bit. This I2C then starts receiving data from the slave device.</p>
+<h3 id="master-mode-operation">Master Mode Operation</h3>
+<p>The peripheral operates in master mode when master mode Enable I2Cn_CTRL.mst_mode = 1. To initiate a transfer, the master generates a START condition by setting I2Cn_MSTCTRL.start = 1. If the bus is busy, it does not generate a START condition until the bus is available.</p>
+<p>A master can communicate with multiple slave devices without relinquishing the bus. Instead of generating a STOP condition after communicating with the first slave, the master generates a Repeated START condition, or RESTART, by setting I2Cn_MSTCTRL.restart = 1. If a transaction is in progress, the peripheral completes the transaction before generating a RESTART. The peripheral then transmits the slave address stored in the transmit FIFO. The I2Cn_MSTCTRL.restart bit is automatically cleared to 0 as soon as the master begins a RESTART condition.</p>
+<p>I2Cn_MSTCTRL.start is automatically cleared to 0 after the master has completed a transaction and sent a STOP condition.</p>
+<p>The master can also generate a STOP condition by setting I2Cn_MSTCTRL.stop = 1.</p>
+<p>If both START and RESTART conditions are enabled simultaneously, a START condition is generated first. Then, at the end of the first transaction, a RESTART condition is generated.</p>
+<p>If both RESTART and STOP conditions are enabled simultaneously, a STOP condition is not generated. Instead, a RESTART condition is generated. After the RESTART condition is generated, both bits are cleared.</p>
+<p>If START, RESTART, and STOP are all enabled simultaneously, a START condition is first generated. At the end of the first transaction, a RESTART condition is generated. The I2Cn_MSTCTRL.stop bit is cleared and ignored.</p>
+<p>A slave cannot generate START, RESTART, or STOP conditions. Therefore, when master mode is disabled, the I2Cn_MSTCTRL.start, I2Cn_MSTCTRL.restart, and I2Cn_MSTCTRL.stop bits are all cleared to 0.</p>
+<p>For master mode operation, the following registers should only be configured when either:</p>
+<ol>
+<li>The I2C peripheral is disabled,
+or</li>
+<li>The I2C bus is guaranteed to be idle/free.</li>
+</ol>
+<p>If this peripheral is the only master on the bus, then changing the registers outside of a transaction (I2Cn_MSTCTRL.start = 0) satisfies this requirement:</p>
+<ul>
+<li>I2Cn_CTRL.mst_mode</li>
+<li>I2Cn_CTRL.irxm_en</li>
+<li>I2Cn_CTRL.one_mst_mode</li>
+<li>I2Cn_CTRL.hs_en</li>
+<li>I2Cn_RXCTRL1.cnt</li>
+<li>I2Cn_MSTCTRL.ex_addr_en</li>
+<li>I2Cn_MSTCTRL.mcode</li>
+<li>I2Cn_CLKLO.lo</li>
+<li>I2Cn_CLKHI.hi</li>
+<li>I2Cn_HSCLK.hsclk_lo</li>
+<li>I2Cn_HSCLK.hsclk_hi</li>
+</ul>
+<h4 id="i2c-master-mode-receiver-operation">I²C Master Mode Receiver Operation</h4>
+<p>In contrast to the above set of registers, these registers below can be safely (re)programmed at any time:</p>
+<ul>
+<li>All interrupt flags and interrupt enable bits</li>
+<li>I2Cn_TXCTRL0.thd_val</li>
+<li>I2Cn_RXCTRL0.thd_lvl</li>
+<li>I2Cn_TIMEOUT.scl_to_val</li>
+<li>I2Cn_DMA.rx_en</li>
+<li>I2Cn_DMA.tx_en</li>
+<li>I2Cn_FIFO.data</li>
+<li>I2Cn_MSTCTRL.start</li>
+<li>I2Cn_MSTCTRL.restart</li>
+<li>I2Cn_MSTCTRL.stop</li>
+</ul>
+<h4 id="i2c-master-mode-transmitter-operation">I²C Master Mode Transmitter Operation</h4>
+<p>When in master mode, initiating a master receiver operation begins with the following sequence:</p>
+<ol>
+<li>Write the number of data bytes to receive to the I2C receive count field (I2Cn_RXCTRL1.cnt).</li>
+<li>Write the I2C slave address byte to the I2Cn_FIFO register with the R/W bit set to 1</li>
+<li>Send a START condition by setting I2Cn_MSTCTRL.start = 1</li>
+<li>The slave address is transmitted by the controller from the I2Cn_FIFO register.</li>
+<li>The I2C controller receives an ACK from the slave, and the controller sets the address ACK interrupt flag (I2Cn_INTFL0.addr_ack = 1).</li>
+<li>The I2C controller receives data from the slave and automatically ACKs each byte. The software must retrieve this data by reading the I2Cn_FIFO register.</li>
+<li>Once I2Cn_RXCTRL1.cnt data bytes have been received, the I2C controller sends a NACK to the slave and sets the Transfer Done Interrupt Status Flag (I2Cn_INTFL0.done = 1).</li>
+<li>If I2Cn_MSTCTRL.restart or I2Cn_M.stop is set, then the I2C controller sends a repeated START or STOP, respectively.</li>
+</ol>
+<h4 id="i2c-multi-master-operation">I²C Multi-Master Operation</h4>
+<p>The I2C protocol supports multiple masters on the same bus. When the bus is free, two (or more) masters might try to initiate communication simultaneously. This is a valid bus condition. If this occurs, and the two masters want to transmit different data or address different slaves, only one master can remain in master mode and complete its transaction. The other master must stop transmission and wait until the bus is idle. This process by which the winning master is determined is called bus arbitration.</p>
+<p>For each address or data bit, the master compares the data being transmitted on SDA to the value observed on SDA to determine which master wins the arbitration. If a master attempts to transmit a 1 on SDA (that is, the master lets SDA float) but senses a 0 instead, then that master loses arbitration, and the other master that sent a zero continues with the transaction. The losing master cedes the bus by switching off its SDA and SCL drivers.</p>
+<p>*Note: This arbitration scheme works with any number of bus masters: if more than two masters begin transmitting simultaneously, the arbitration continues as each master cedes the bus until only one master remains transmitting. Data is not corrupted because as soon as each master realizes it has lost the arbitration, it stops transmitting on SDA, leaving the following data bits sent on SDA intact.</p>
+<p>If the I2C master peripheral detects it has lost the arbitration, it stops generating SCL; sets I2Cn_INTFL0.areri; sets I2Cn_INTFL0.tx_lockout, flushing any remaining data in the transmit FIFO; and clears I2Cn_MSTCTRL.start, I2Cn_MSTCTRL.restart, and I2Cn_MSTCTRL.stop to 0. So long as the peripheral is not addressed by the winning master, the I2C peripheral stays in master mode (I2Cn_CTRL.mst_mode = 1). If, at any time, another master addresses this peripheral using the address programmed in I2Cn_SLAVE.addr, then the I2C peripheral clears I2Cn_CTRL.mst_mode to 0 and begins responding as a slave. This can even occur during the same address transmission during which the peripheral lost arbitration.</p>
+<p>Note: Arbitration loss is considered an error condition, and like the other error conditions, it sets I2Cn_INTFL0.tx_lockout to 1. Therefore, after an arbitration loss, the software needs to clear I2Cn_INTFL0.tx_lockout and reload the transmit FIFO.*</p>
+<p>Also, in a multi-master environment, the software does not need to wait for the bus to become free before attempting to start a transaction (writing 1 to I2Cn_MSTCTRL.start). If the bus is free when I2Cn_MSTCTRL.start is set to 1, the transaction begins immediately. If, instead, the bus is busy, then the peripheral will:</p>
+<ol>
+<li>Wait for the other master to complete the transaction(s) by sending a STOP,</li>
+<li>Count out the bus free time using tBUF=tSCL_LO (see Equation 14-3), and then</li>
+<li>Send a START condition and begin transmitting the slave address byte(s) in the transmit FIFO, followed by the rest of the transfer.</li>
+</ol>
+<p>The I2C master peripheral is compliant with all bus arbitration and clock synchronization requirements of the I2C specification; this operation is automatic, and no additional programming is required.</p>
+<h3 id="slave-mode-operation">Slave Mode Operation</h3>
+<p>When in slave mode, the I2C peripheral operates as a slave device on the I2C bus and responds to an external master's requests to transmit or receive data. To configure the I2C peripheral as a slave, write the I2Cn_CTRL.mst_mode bit to zero. The I2C clock, SCL, is driven by the external master on the bus, and I2Cn_STATUS.mst_busy remains a zero. The desired slave address must be set by writing to the I2Cn_SLAVE.addr register.</p>
+<p>For slave mode operation, the following register fields should be configured with the I2C peripheral disabled:</p>
+<ul>
+<li>I2Cn_CTRL.mst_mode = 0 for slave operation.</li>
+<li>
+<p>I2C slave address</p>
+<ul>
+<li>I2Cn_SLAVE.addr must be set to the desired address for the device on the bus</li>
+<li>I2Cn_SLAVE.ext_addr_en should be set to 1 for 10-bit addressing or 0 for 7-bit addressing</li>
+</ul>
+</li>
+<li>
+<p>I2Cn_CTRL.gc_addr_en</p>
+</li>
+<li>
+<p>I2Cn_CTRL.irxm_en</p>
+<ul>
+<li>The recommended value for this field is 0. Note that a setting of 1 is incompatible with slave mode operation with clock stretching disabled (I2Cn_CTRL.clkstr_dis = 1).</li>
+</ul>
+</li>
+<li>
+<p>I2Cn_CTRL.clkstr_dis</p>
+</li>
+<li>I2Cn_CTRL.hs_en</li>
+<li>
+<p>I2Cn_RXCTRL0.dnr</p>
+<ul>
+<li>SMBus/PMBus applications should set this to 0, while other applications should set this to 1.</li>
+</ul>
+</li>
+<li>
+<p>I2Cn_TXCTRL0.nack_flush_dis</p>
+</li>
+<li>I2Cn_TXCTRL0.rd_addr_flush_dis</li>
+<li>I2Cn_TXCTRL0.wr_addr_flush_dis</li>
+<li>I2Cn_TXCTRL0.gc_addr_flush_dis</li>
+<li>
+<p>I2Cn_TXCTRL0.preload_mode</p>
+<ul>
+<li>The recommended value is 0 for applications that can tolerate slave clock stretching (I2Cn_CTRL.clkstr_dis = 0).</li>
+<li>The recommended value is 1 for applications that do not allow slave clock stretching (I2Cn_CTRL.clkstr_dis = 1).</li>
+</ul>
+</li>
+<li>
+<p>I2Cn_CLKHI.hi</p>
+<ul>
+<li>
+<p>Applies to slave mode when clock stretching is enabled (I2Cn_CTRL.clkstr_dis = 0)</p>
+<ul>
+<li>This is used to satisfy tSU;DAT after clock stretching; program it so that the value defined by Equation 14-2 is &gt;= tSU;DAT(min)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>I2Cn_HSCLK.hsclk_hi</p>
+<ul>
+<li>
+<p>Applies to slave mode in Hs Mode when clock stretching is enabled (I2Cn_CTRL.clkstr_dis = 0)</p>
+<ul>
+<li>This is used to satisfy tSU;DAT after clock stretching during Hs-Mode operation; program it so that the value defined by Equation 14-6 is &gt;= tSU;DAT(min)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>In contrast to the above register fields, the following register fields can be safely (re)programmed at any time:</p>
+<ul>
+<li>All interrupt flags and interrupt enables</li>
+<li>
+<p>I2Cn_TXCTRL0.thd_val and I2Cn_RXCTRL0.thd_lvl</p>
+<ul>
+<li>Transmit and receive FIFO threshold levels</li>
+</ul>
+</li>
+<li>
+<p>I2Cn_TXCTRL1.tx_rdy</p>
+<ul>
+<li>Transmit ready (Can only be cleared by the hardware)</li>
+</ul>
+</li>
+<li>
+<p>I2Cn_TIMEOUT.scl_to_val</p>
+<ul>
+<li>Time out control</li>
+</ul>
+</li>
+<li>
+<p>I2Cn_DMA.rx_en and I2Cn_DMA.tx_en</p>
+<ul>
+<li>Transmit and receive DMA Enables</li>
+</ul>
+</li>
+<li>
+<p>I2Cn_FIFO.data</p>
+<ul>
+<li>FIFO access register</li>
+</ul>
+</li>
+</ul>
+<h4 id="slave-transmitter">Slave Transmitter</h4>
+<p>The device operates as a slave transmitter when the received address matches the device slave address with the R/W bit set to 1. The master is then reading from the device slave. There two main modes of slave transmitter operation: just-in-time mode and preload mode.</p>
+<h5 id="just-in-time-mode">Just-In-Time Mode</h5>
+<p>In just-in-time mode, the software waits to write the transmit data to the transmit FIFO until after the master addresses it for a READ transaction, just in time, to send the data to the master. This allows the software to defer the determination of what data should be sent until the time of the address match. For example, the transmit data could be based on an immediately preceding I2C WRITE transaction that requests a certain block of data to be sent. The data could represent the latest, most up-to-date value of a sensor reading. Clock stretching must be enabled (I2Cn_CTRL.clkstr_dis = 0) for just-in-time mode operation.</p>
+<p>Program flow for transmit operation in just-in-time mode is as follows:</p>
+<h5 id="preload-mode">Preload Mode</h5>
+<p>The other mode of operation for slave transmit is preload mode. In this mode, it is assumed that the software knows before the transmit operation what data it should send to the master. This data is then preloaded into the transmit FIFO. Once the address match occurs, this data can be sent out without any software intervention. Preload mode can be used with clock stretching either enabled or disabled, but it is the only option if clock stretching must be disabled.</p>
+<p>To use slave transmit preload mode:</p>
+<p>Once a slave starts transmitting out of the I2Cn_FIFO, detection of an out of sequence STOP, START, or RESTART condition terminates the current transaction. When a transaction is terminated in such a manner, I2Cn_INTFL0.start_err or I2Cn_INTFL0.stop_err is set to 1.</p>
+<p>If the transmit FIFO is not ready (I2Cn_TXCTRL1.preload_rdy = 0) and the I2C controller receives a data read request from the master, the hardware automatically sends a NACK at the end of the first address byte. In this case, the setting of the do not respond field is ignored by the hardware because the only opportunity to send a NACK for an I2C read transaction is after the address byte.</p>
+<h4 id="slave-receivers">Slave Receivers</h4>
+<p>The device operates as a slave receiver when the received address matches the device slave address with the R/W bit set to 0. The external master is writing to the slave.</p>
+<p>Program flow for a receive operation is as follows:</p>
+<p>Suppose the software has not emptied the data in the receive FIFO from the previous transaction by the time a master addresses it for another write transaction (i.e., a slave receive). In that case, the controller does not participate in the transaction, and no additional data is written into the FIFO. Although a NACK is sent to the master, the software can control whether the NACK is sent with the initial address match or at the end of the first data byte. Setting I2Cn_RXCTRL0.dnr to 1 sends the NACK with the initial address match. Setting I2Cn_RXCTRL0.dnr to 0 chooses to send the NACK at the end of the first data byte.</p>
+<h3 id="interrupt-sources">Interrupt Sources</h3>
+<p>The I2C controller has a very flexible interrupt generator that generates an interrupt signal to the interrupt controller on any of several events. On recognizing the I2C interrupt, the software determines the cause of the interrupt by reading the I2C interrupt flags registers I2Cn_INTFL0 and I2Cn_INTFL1. Interrupts can be generated for the following events:</p>
+<ul>
+<li>
+<p>In either master or slave mode:</p>
+<ul>
+<li>Transaction complete</li>
+<li>Transaction timeout</li>
+<li>FIFO is empty, not empty, and full to a configurable threshold level</li>
+<li>Transmit FIFO lockout during a FIFO flush</li>
+<li>Out of sequence START and STOP conditions</li>
+</ul>
+</li>
+<li>
+<p>In master mode only:</p>
+<ul>
+<li>Address ACK or NACK received from the slave</li>
+<li>Data NACK received from the slave</li>
+<li>Lost arbitration</li>
+</ul>
+</li>
+<li>
+<p>In slave mode only:</p>
+<ul>
+<li>Sent a NACK to an external master because the transmit or receive FIFO was not ready</li>
+<li>Incoming address match</li>
+<li>Transmit FIFO underflow or receive FIFO overflow</li>
+</ul>
+</li>
+</ul>
+<p>Interrupts for each event can be enabled or disabled by setting or clearing the corresponding bit in the I2Cn_INTEN0 or I2Cn_INTEN1 interrupt enable registers.</p>
+<p>*Note: Disabling the interrupt does not prevent the corresponding flag from being set by the hardware but does prevent an interrupt when the interrupt flag is set.</p>
+<p>Note: Before enabling an interrupt, the status of the corresponding interrupt flag should be checked and, if necessary, serviced or cleared. This prevents a previous interrupt event from interfering with a new I2C communications session.*</p>
+<h3 id="transmit-fifo-and-receive-fifo">Transmit FIFO and Receive FIFO</h3>
+<p>There are separate transmit and receive FIFOs. Both are accessed using the FIFO data register I2Cn_FIFO. Writes to this register enqueue data into the transmit FIFO. Writing to a full transmit FIFO has no effect. Reads from I2Cn_FIFO dequeue data from the receive FIFO. Writing to a full transmit FIFO has no effect, and reading from an empty receive FIFO returns 0xFF.</p>
+<p>The transmit and receive FIFO only reads or writes one byte at a time. Transactions larger than 8 bits can still be performed, however. A 16- or 32-bit write to the transmit FIFO stores just the lowest 8 bits of the write data. A 16- or 32-bit read from the receive FIFO has the valid data in the lowest 8 bits and 0's in the upper bits. In any case, the transmit and receive FIFOs only accepts 8 bits at a time for either read or write.</p>
+<p>To offload work from the CPU, the DMA can read and write to each FIFO. See section DMA Control for more information on configuring the DMA.</p>
+<p>During a receive transaction (which during master operation is a READ, and during slave operation is a WRITE), received bytes are automatically written to the receive FIFO. The software should monitor the receive FIFO level and unload data from it as needed by reading I2Cn_FIFO. If the receive FIFO becomes full during a master mode transaction, then the controller sets the I2Cn_INTFL1.rx_ov the I2Cn_INTFL1.rx_ov bit, and one of two things happen, depending on the value of I2Cn_CTRL.clkstr_dis:</p>
+<ul>
+<li>
+<p>If clock stretching is enabled (I2Cn_CTRL.clkstr_dis = 0), then the controller stretches the clock until the software makes space available in the receive FIFO by reading from I2Cn_FIFO. Once space is available, the peripheral moves the data byte from the shift register into the receive FIFO, the SCL device pin is released, and the master is free to continue the transaction.</p>
+</li>
+<li>
+<p>If clock stretching is disabled (I2Cn_CTRL.clkstr_dis = 1), the controller responds to the master with a NACK, and the data byte is lost. The master can return the bus to idle with a STOP condition or start a new transaction with a RESTART condition.</p>
+</li>
+</ul>
+<p>During a transmit transaction (which during master operation is a WRITE, and during slave operation is a READ), either the software or the DMA can provide data to be transmitted by writing to the transmit FIFO. Once the peripheral finishes transmitting each byte, it removes it from the transmit FIFO and, if available, begins transmitting the next byte.</p>
+<p>Interrupts can be generated for the following FIFO status:</p>
+<ul>
+<li>Transmit FIFO level less than or equal to the threshold</li>
+<li>Receive FIFO level greater than or equal to the threshold</li>
+<li>Transmit FIFO underflow</li>
+<li>Receive FIFO overflow</li>
+<li>Transmit FIFO locked for writing</li>
+</ul>
+<p>Both the receive and transmit FIFOs are flushed when the I2C port is disabled by clearing I2Cn_CTRL.en = 0. While the peripheral is disabled, writes to the transmit FIFO have no effect and reads from the receive FIFO return 0xFF.</p>
+<p>The transmit FIFO and receive FIFO can be flushed by setting the transmit FIFO flush bit (I2Cn_TXCTRL0.flush = 1) or the receive FIFO flush bit (I2Cn_RXCTRL0.flush = 1), respectively. In addition, under certain conditions, the transmit FIFO is automatically locked by the hardware and flushed so stale data is not unintentionally transmitted. The transmit FIFO is automatically flushed and writes locked out from software under the following conditions:</p>
+<ul>
+<li>General call address match - Automatic flushing and lockout can be disabled by setting I2Cn_TXCTRL0.gc_addr_flush_dis.</li>
+<li>Slave address match write - Automatic flushing and lockout can be disabled by setting I2Cn_TXCTRL0.wr_addr_flush_dis.</li>
+<li>Slave address match read - Automatic flushing and lockout can be disabled by setting I2Cn_TXCTRL0.rd_addr_flush_dis.</li>
+<li>During operation as a slave transmitter, a NACK is received. Automatic flushing and lockout can be disabled by setting I2Cn_TXCTRL0.nack_flush_dis.</li>
+<li>
+<p>Any of the following interrupts (Automatic flushing cannot be disabled for these conditions):</p>
+<ul>
+<li>Arbitration error</li>
+<li>Timeout error</li>
+<li>Master mode address NACK error</li>
+<li>Master mode data NACK error</li>
+<li>Start error</li>
+<li>Stop error</li>
+</ul>
+</li>
+</ul>
+<p>When the above conditions occur, the transmit FIFO is flushed so that data intended for a previous transaction is not transmitted unintentionally for a new transaction. In addition to flushing the transmit FIFO, the transmit lockout flag is set (I2Cn_INTFL0.tx_lockout = 1), and writes to the transmit FIFO are ignored until the software acknowledges the external event by clearing I2Cn_INTFL0.tx_lockout.</p>
+<h3 id="transmit-fifo-preloading">Transmit FIFO Preloading</h3>
+<p>There may be situations during slave mode operation where software wants to preload the transmit FIFO before transmission, such as when clock stretching is disabled. In this scenario, rather than responding to an external master requesting data with an ACK and clock stretching while software writes the data to the transmit FIFO, the controller instead responds with a NACK until the software has preloaded the requested data into the transmit FIFO.</p>
+<p>When transmit FIFO preloading is enabled, the software controls ACKs to the external master using the transmit ready (I2Cn_TXCTRL1.preload_rdy) bit. When I2Cn_TXCTRL1.preload_rdy is set to 0, the hardware automatically NACKs all read transactions from the master. Setting I2Cn_TXCTRL1.preload_rdy to 1 sends an ACK to the master on the next read transaction and transmits the data in the transmit FIFO. Preloading the transmit FIFO should be complete before setting the I2Cn_TXCTRL1.preload_rdy field to 1.</p>
+<p>The required steps for implementing transmit FIFO Preloading in an application are as follow:</p>
+<ol>
+<li>Enable transmit FIFO preloading by setting I2Cn_TXCTRL0.preload_mode to 1. This automatically clears I2Cn_TXCTRL1.preload_rdy to 0.</li>
+<li>If the transmit FIFO lockout flag (I2Cn_INTFL0.tx_lockout) is set to 1, write 1 to clear the flag and enable writes to the transmit FIFO.</li>
+<li>Enable DMA or Interrupts if required.</li>
+<li>Load the transmit FIFO with the data to send when the master sends the next read request.</li>
+<li>Set I2Cn_TXCTRL1.preload_rdy to 1 to automatically let the hardware send the preloaded FIFO on the next read from a master.</li>
+<li>I2Cn_TXCTRL1.preload_rdy is cleared by the hardware once it finishes transmitting the first byte, and data is transmitted from the transmit FIFO. Once cleared, the software may repeat the preloading process or disable transmit FIFO preloading.</li>
+</ol>
+<p><em>Note: To prevent the preloaded data from being cleared when the master tries to read it, the software must at least set I2Cn_TXCTRL0.rd_addr_flush_dis to 1, disabling auto flush on READ address match. The software determines whether the other auto flush disable bits should be set. For example, if a master uses I2C WRITE transactions to determine what data the slave should send in the following READ transactions, then the software can clear I2Cn_TXCTRL0.wr_addr_flush_dis to 0. Then when a WRITE occurs, the transmit FIFO is flushed, giving the software time to load the new data. For the READ transaction, the external master can poll the slave address until the new data has been loaded and I2Cn_TXCTRL1.preload_rdy is set, at which point the peripheral responds with an ACK.</em></p>
+<h3 id="interactive-receive-mode-irxm">Interactive Receive Mode (IRXM)</h3>
+<p>In some situations, the I2C peripheral might want to inspect and respond to each byte of received data. In this case, IRXM can be used. IRXM is enabled by setting I2Cn_CTRL.irxm_en = 1. If IRXM is enabled, it must occur before any I2C transfer is initiated.</p>
+<p>When IRXM is enabled, after every data byte received, the I2C peripheral automatically holds SCL low before the ACK bit. Additionally, after the 8th SCL falling edge, the I2C peripheral sets the IRXM interrupt status flag (I2Cn_INTFL0.irxm = 1). The software must read the data and generate a response (ACK or NACK) by setting the IRXM acknowledge (I2Cn_CTRL.irxm_ack) bit accordingly. Send an ACK by clearing the I2Cn_CTRL.irxm_ack bit to 0. Send a NACK by setting the I2Cn_CTRL.irxm_ack bit to 1.</p>
+<p>After setting the I2Cn_CTRL.irxm_ack bit, clear the IRXM interrupt flag. Write 1 to I2Cn_INTFL0.irxm to clear the interrupt flag. When the IRXM interrupt flag is cleared, the I2C peripheral hardware releases the SCL line and sends the I2Cn_CTRL.irxm_ack on the SDA line.</p>
+<p>While the I2C peripheral is waiting for the software to clear the I2Cn_INTFL0.irxm flag, the software can disable IRXM and, if operating as a master, load the remaining number of bytes to be received for the transaction. This allows the software to examine the initial bytes of a transaction, which might be a command, and then disable IRXM to receive the remaining bytes in normal operation.</p>
+<p>During IRXM, received data is not placed in the receive FIFO. Instead, the I2Cn_FIFO address is repurposed to directly read the receive shift register, bypassing the receive FIFO. Therefore, before disabling IRXM, the software must first read the data byte from I2Cn_FIFO.data. If the IRXM byte is not read, the byte is lost, and the next read from the receive FIFO returns 0xFF.</p>
+<p><em>Note: IRXM does not apply to address bytes, only to data bytes.</em></p>
+<p><em>Note: IRXM does not apply to general call address responses or START byte responses.</em></p>
+<p><em>Note: When enabling IRXM and operating as a slave, clock stretching must remain enabled (I2Cn_CTRL.clkstr_dis = 0).</em></p>
+<h3 id="clock-stretching">Clock Stretching</h3>
+<p>When the I2C peripheral requires some response or intervention from the software to continue with a transaction, it holds SCL low, preventing the transfer from continuing. This is called "clock stretching" or "stretching the clock." While the I2C Bus Specification defines the term "clock stretching" to only apply to a slave device holding the SCL line low, this section describes situations where the I2C peripheral holds the SCL line low in either slave or master mode and refers to both as clock stretching.</p>
+<p>When the I2C peripheral stretches the clock, it typically does so in response to either a full receive FIFO during a receive operation or an empty transmit FIFO during a transmit operation. Necessarily, this occurs before the next data byte begins, either between the ACK bit and the first data bit or, if at the beginning of a transaction, immediately after a START or RESTART condition. However, when operating in IRXM (I2Cn_CTRL.irxm_en = 1), the peripheral can also clock stretch before the ACK bit, allowing the software to decide whether to send an ACK or NACK.</p>
+<p>For a transmit operation (as either master or slave), when the transmit FIFO is empty, SCL is automatically held low after the ACK bit and before the next data byte begins. The software must write data to I2Cn_FIFO.data to stop clock stretching and continue the transaction. However, if operating in master mode, instead of sending more data, the software may also set either I2Cn_MSTCTRL.stop or I2Cn_MSTCTRL.restart to send a STOP or RESTART condition, respectively.</p>
+<p>For a receive operation (as either master or slave), when both the receive FIFO and the receive shift register are full, SCL is automatically held low until at least one data byte is read from the receive FIFO. The software must read data from I2Cn_FIFO.data to stop clock stretching and continue the transaction. If operating in master mode and this is the final byte of the transaction, as determined by I2Cn_RXCTRL1.cnt, the software must also set either I2Cn_MSTCTRL.stop or I2Cn_MSTCTRL.restart to send a STOP or RESTART condition, respectively. This must be done in addition to reading from the receive FIFO since the peripheral cannot start sending the STOP or RESTART until the last data byte has been moved from the receive shift register into the receive FIFO. (This automatically occurs once there is space in the receive FIFO.)</p>
+<p><em>Note: Since some masters do not support other devices stretching the clock, it is possible to completely disable all clock stretching during slave mode by setting I2Cn_CTRL.clkstr_dis to 1 and clearing I2Cn_CTRL.irxm_en to 0. In this case, instead of clock stretching, the peripheral automatically sends a NACK if receiving data or sends 0xFF if transmitting data.</em></p>
+<p><em>Note: The clock synchronization required to support other I2C master or slave devices stretching the clock is built into the peripheral and requires no intervention from software to operate correctly.</em></p>
+<h3 id="bus-timeout">Bus Timeout</h3>
+<p>The timeout register, I2Cn_TIMEOUT.scl_to_val, is used to detect bus errors. Equation 14-8 and Equation 14-9 show equations for calculating the maximum and minimum timeout values based on the value loaded into the I2Cn_TIMEOUT.scl_to_val field.</p>
+<p>Equation 14-8: I2C Timeout Maximum</p>
+<p>Due to clock synchronization, the timeout is guaranteed to meet the following minimum time calculation shown in Equation 14-9.</p>
+<p>Equation 14-9: I2C Timeout Minimum</p>
+<p>The timeout feature is disabled when I2Cn_TIMEOUT.scl_to_val = 0 and is enabled for any non-zero value. When the timeout is enabled, the timeout timer starts counting when the I2C peripheral hardware drives SCL low and is reset by the I2C peripheral hardware when the SCL line is released.</p>
+<p>The timeout counter only monitors if the I2C peripheral hardware is driving the SCL line low. It does not monitor if an external I2C device is actively holding the SCL line low. The timeout counter also does not monitor the status of the SDA line.</p>
+<p>If the timeout timer expires, a bus error condition has occurred. When a timeout error occurs, the I2C peripheral hardware releases the SCL and SDA lines and sets the timeout error interrupt flag to 1 (I2Cn_INTFL0.to_err = 1).</p>
+<p>For applications where the device may hold the SCL line low longer than the maximum timeout supported, the timeout can be disabled by setting the timeout field to 0 (I2Cn_TIMEOUT.scl_to_val = 0).</p>
+<h3 id="dma-control">DMA Control</h3>
+<p>There are independent DMA channels for each transmit FIFO and receive FIFO. DMA activity is triggered by the transmit FIFO (I2Cn_TXCTRL0.thd_val) and receive FIFO (I2Cn_RXCTRL0.thd_lvl) threshold levels.</p>
+<p>When the transmit FIFO byte count (I2Cn_TXCTRL1.lvl) is less than or equal to the transmit FIFO Threshold Level I2Cn_TXCTRL0.thd_val, then the DMA transfers data into the transmit FIFO according to the DMA configuration.</p>
+<p>The DMA burst size should be set as shown in Equation 14-10 to ensure the DMA does not overflow the transmit FIFO:</p>
+<p><em>Equation 14-10: DMA Burst Size Calculation for I2C Transmit</em></p>
+<p>Applications trying to avoid transmit underflow or clock stretching should use a smaller burst size and higher I2Cn_TXCTRL0.thd_val setting. This fills up the FIFO more frequently but increases internal bus traffic.</p>
+<p>When the receive FIFO count (I2Cn_RXCTRL1.lvl) is greater than or equal to the receive FIFO Threshold Level I2Cn_RXCTRL0.thd_lvl, the DMA transfers data out of the receive FIFO according to the DMA configuration. The DMA burst size should be set as shown in Equation 14-11 to ensure the DMA does not underflow the receive FIFO:</p>
+<p><em>Equation 14-11: DMA Burst Size Calculation for I2C Receive</em></p>
+<p>Applications trying to avoid receive overflow or clock stretching should use a smaller burst size and lower I2Cn_RXCTRL0.thd_lvl. This results in reading from the receive FIFO more frequently but increases internal bus traffic.</p>
+<p>Note: For receive operations, the length of the DMA transaction (in bytes) must be an integer multiple of I2Cn_RXCTRL0.thd_lvl. Otherwise, the receive transaction ends with some data still in the receive FIFO, but not enough to trigger an interrupt to the DMA, leaving the DMA transaction incomplete. One easy way to ensure this for all transaction lengths is to set burst size to 1 (I2Cn_RXCTRL0.thd_lvl = 1).</p>
+<p>To enable DMA transfers, enable the transmit DMA channel (I2Cn_DMA.tx_en) and the receive DMA channel (I2Cn_DMA.rx_en) if receiving data.</p>
+<h2 id="registers">Registers</h2>
+<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the base address of this peripheral/module. If multiple instances of the peripheral are provided, each instance has its own independent set of the registers shown in <a href="table14-5-i2c-register-summary">Table 14-5</a>. Register names for a specific instance are defined by replacing "n" with the instance number. For example, a register PERIPHERALn_CTRL resolves to PERIPHERAL0_CTRL and PERIPHERAL1_CTRL for instances 0 and 1, respectively.</p>
+<p>See <a href="../#table1-1-field-access-definitions">Table 1-1</a> for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
+<p><em>Table 14-5: I²C Register Summary</em>
+<a name="table14-5-i2c-register-summary"></a></p>
+<h3 id="register-details">Register Details</h3>
+<p><em>Table 14-6: I²C Control Register</em>
+<a name="table14-6-i2c-control-register"></a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Analog Devices
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/analog-devices/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/analogdevicesinc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["search.suggest", "search.highlight", "navigation.tracking"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

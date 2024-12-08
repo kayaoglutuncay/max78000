@@ -15,6 +15,7 @@ nav:
   - Analog to Digital Converter (ADC) and Comparators (LPCMP): adc-and-comparators.md
   - Universal Asynchronous Receiver/Transmitter: universal-asynchronous-receiver-transmitter.md
   - Serial Peripheral Interface: serial-peripheral-interface.md
+  - I<sup>2</sup>C Master/Slave Serial Communications Peripheral: i2c-master-slave-serial-communication-peripheral.md
   - Document Conventions: index.md
   - Revision History: revision.md
 theme:
