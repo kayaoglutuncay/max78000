@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://kayaoglutuncay.github.io/max78000/debug-access-port/">
+        <link rel="canonical" href="https://kayaoglutuncay.github.io/max78000/inter-ic-interface-i2s/">
       
       
-        <link rel="prev" href="../flash-controller/">
+        <link rel="prev" href="../i2c-master-slave-serial-communication-peripheral/">
       
       
-        <link rel="next" href="../semaphore/">
+        <link rel="next" href="..">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Debug Access Port - MAX78000 User Guide</title>
+        <title>Inter-IC Interface (I²S) - MAX78000 User Guide</title>
       
     
     
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Debug Access Port
+              Inter-IC Interface (I²S)
             
           </span>
         </div>
@@ -348,28 +348,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Debug Access Port
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../debug-access-port/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -378,75 +360,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#instances" class="md-nav__link">
-    <span class="md-ellipsis">
-      Instances
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#access-control" class="md-nav__link">
-    <span class="md-ellipsis">
-      Access Control
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Access Control">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#factory-disabled-dap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Factory Disabled DAP
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#software-accessible-dap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Software Accessible DAP
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pin-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pin Configuration
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -575,10 +488,28 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../inter-ic-interface-i2s/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Inter-IC Interface (I²S)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -587,6 +518,321 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instances
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instances">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i2s-bus-lines-and-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2S Bus Lines and Definitions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Details
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#master-and-slave-mode-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Master and Slave Mode Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clocking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clocking
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clocking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bclk-generation-for-master-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      BCLK Generation for Master Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lrclk-period-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      LRCLK Period Calculation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Formatting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Formatting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sample-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Size
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#word-select-polarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Word Select Polarity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-bit-location-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      First Bit Location Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-adjustment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Adjustment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stereomono-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stereo/Mono Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transmit-and-receive-fifos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmit and Receive FIFOs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transmit and Receive FIFOs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fifo-data-width" class="md-nav__link">
+    <span class="md-ellipsis">
+      FIFO Data Width
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmit-fifo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmit FIFO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#receive-fifo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receive FIFO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fifo-word-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      FIFO Word Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fifo-data-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      FIFO Data Alignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typical-audio-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typical Audio Configurations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interrupt-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interrupt Events
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interrupt Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receive-fifo-overrun" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receive FIFO Overrun
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#receive-fifo-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receive FIFO Threshold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmit-fifo-half-empty" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmit FIFO Half-Empty
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmit-fifo-one-entry-remaining" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmit FIFO One Entry Remaining
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#direct-memory-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Direct Memory Access
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#block-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block Operation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Registers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -662,31 +908,13 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#access-control" class="md-nav__link">
-    <span class="md-ellipsis">
-      Access Control
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Access Control">
+    <nav class="md-nav" aria-label="Instances">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#factory-disabled-dap" class="md-nav__link">
+  <a href="#i2s-bus-lines-and-definitions" class="md-nav__link">
     <span class="md-ellipsis">
-      Factory Disabled DAP
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#software-accessible-dap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Software Accessible DAP
+      I2S Bus Lines and Definitions
     </span>
   </a>
   
@@ -698,11 +926,275 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pin-configuration" class="md-nav__link">
+  <a href="#details" class="md-nav__link">
     <span class="md-ellipsis">
-      Pin Configuration
+      Details
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#master-and-slave-mode-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Master and Slave Mode Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clocking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clocking
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clocking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bclk-generation-for-master-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      BCLK Generation for Master Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lrclk-period-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      LRCLK Period Calculation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Formatting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Formatting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sample-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Size
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#word-select-polarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Word Select Polarity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-bit-location-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      First Bit Location Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-adjustment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Adjustment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stereomono-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stereo/Mono Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transmit-and-receive-fifos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmit and Receive FIFOs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transmit and Receive FIFOs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fifo-data-width" class="md-nav__link">
+    <span class="md-ellipsis">
+      FIFO Data Width
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmit-fifo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmit FIFO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#receive-fifo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receive FIFO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fifo-word-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      FIFO Word Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fifo-data-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      FIFO Data Alignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typical-audio-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typical Audio Configurations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interrupt-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interrupt Events
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interrupt Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receive-fifo-overrun" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receive FIFO Overrun
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#receive-fifo-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receive FIFO Threshold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmit-fifo-half-empty" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmit FIFO Half-Empty
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmit-fifo-one-entry-remaining" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transmit FIFO One Entry Remaining
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#direct-memory-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Direct Memory Access
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#block-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block Operation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Registers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -721,42 +1213,72 @@
                   
 
 
-  <h1>Debug Access Port</h1>
+  <h1>Inter-IC Interface (I²S)</h1>
 
-<p>The device provides an Arm DAP that supports debugging during application development. The DAP enables an external debugger to access the device. The DAP is a standard Arm CoreSight™ serial wire debug port and uses a two-pin serial interface (SWDCLK and SWDIO) to communicate.</p>
+<p>I²S is a serial audio interface for communicating pulse-code modulation (PCM) encoded streams between devices. The peripheral supports both master and slave modes.</p>
+<p>Key features:</p>
+<ul>
+<li>Stereo (2 channel) and mono (left or right channel option) formats</li>
+<li>Separate DMA channels for transmit and receive.</li>
+<li>
+<p>Flexible timing:</p>
+<ul>
+<li>Configurable sampling rate from 165536 to 1 of the I2S input clock.</li>
+</ul>
+</li>
+<li>
+<p>Flexible data format:</p>
+<ul>
+<li>The number of bits per data word can be selected from 1 to 32, typically 8, 16, 24, or 32-bit width.</li>
+<li>
+<p>Feature enhancement not in the I2S specification.</p>
+<ul>
+<li>Word/Channel select polarity control.</li>
+<li>First bit position selection.</li>
+<li>Selectable FIFO data alignment to the MSB or the LSB of the sample</li>
+<li>Sample size less than the word size with adjustment to MSB or LSB of the word.</li>
+<li>Optional sign extension.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Full-duplex serial communication with separate I2S serial data input and serial data output pins</p>
+</li>
+</ul>
 <h2 id="instances">Instances</h2>
-<p>The DAP interface communicates through the serial wire debug (SWD), shown in <a href="#table8-1-max78000-dap-instances">Table 8-1</a>.</p>
-<p><em>Table 8-1: MAX78000 DAP Instances</em>
-<a name="table8-1-max78000-dap-instances"></a></p>
-<table border="1" cellpadding="5" cellspacing="0">
-  <tr>
-    <th>Instance</th>
-    <th>Pin</th>
-    <th>Alternate Function</th>
-    <th>SWD Signal</th>
-  </tr>
-  <tr>
-    <td rowspan="2">DAP</td>
-    <td>P0.28</td>
-    <td>AF1</td>
-    <td>SWDIO</td>
-  </tr>
-  <tr>
-    <td>P0.29</td>
-    <td>AF1</td>
-    <td>SWDCLK</td>
-  </tr>
-</table>
-
-<h2 id="access-control">Access Control</h2>
-<h3 id="factory-disabled-dap">Factory Disabled DAP</h3>
-<p>Device versions that do not provide a DAP interface have <a href="../system-power-clocks-reset/#system-status-flags">GCR_SYSST</a>.<em>icelock</em> = 1 set at the factory, permanently disabling the DAP interface. No software action is needed to disable the DAP on these devices.</p>
-<h3 id="software-accessible-dap">Software Accessible DAP</h3>
-<p>Device versions that provide a DAP (<a href="../system-power-clocks-reset/#system-status-flags">GCR_SYSST</a>.<em>icelock</em> = 0) always have their interface(s) enabled and running unless the software explicitly sets the <a href="../system-power-clocks-reset/#system-status-flags">GCR_SYSST</a>.<em>swd_dis</em> field to 1. The read-only field <a href="../system-power-clocks-reset/#system-status-flags">GCR_SYSST</a>.<em>icelock</em> is cleared to 0, and the software has read and write access to the <a href="../system-power-clocks-reset/#system-status-flags">GCR_SYSST</a>.<em>swd_dis</em> field. The <a href="../system-power-clocks-reset/#system-status-flags">GCR_SYSST</a>.<em>swd_dis</em> field resets to 0 after every POR to allow access to the DAP during development.</p>
-<p>The software can disable the DAP by setting the <a href="../system-power-clocks-reset/#system-status-flags">GCR_SYSST</a>.<em>swd_dis</em> field to 1. The only practical application for disabling the DAP is to release the interface pins to operate as standard GPIO or in one of the supported alternate function modes in a development environment. Customers can use device versions with the DAP enabled for development but should only use device versions with the factory disabled DAP in a final product.</p>
-<h2 id="pin-configuration">Pin Configuration</h2>
-<p>SWD signals in GPIO and alternate function matrices determine which GPIO pins are associated with a signal. It is unnecessary to configure a pin for an alternate function to use the DAP following a POR.</p>
-<p>By default, the pin associated with the bidirectional SWDIO signal is configured as a GPIO high-impedance input after any POR. While the DAP is in use, a pullup resistor should be connected to the SWDIO pin, as shown in <a href="#table8-1-max78000-dap-instances">Table 8-1</a>. The pullup ensures the signal is in a known state when control of the SWDIO pin is transferred between the host and target. The pullup resistor should be removed if the associated pin is used as a GPIO to avoid unnecessary current consumption.</p>
+<p><em>Table 15-1: MAX78000 I2S Instances</em></p>
+<h3 id="i2s-bus-lines-and-definitions">I2S Bus Lines and Definitions</h3>
+<h2 id="details">Details</h2>
+<h2 id="master-and-slave-mode-configuration">Master and Slave Mode Configuration</h2>
+<h2 id="clocking">Clocking</h2>
+<h3 id="bclk-generation-for-master-mode">BCLK Generation for Master Mode</h3>
+<h3 id="lrclk-period-calculation">LRCLK Period Calculation</h3>
+<h2 id="data-formatting">Data Formatting</h2>
+<h3 id="sample-size">Sample Size</h3>
+<h3 id="word-select-polarity">Word Select Polarity</h3>
+<h3 id="first-bit-location-control">First Bit Location Control</h3>
+<h3 id="sample-adjustment">Sample Adjustment</h3>
+<h3 id="stereomono-configuration">Stereo/Mono Configuration</h3>
+<h2 id="transmit-and-receive-fifos">Transmit and Receive FIFOs</h2>
+<h3 id="fifo-data-width">FIFO Data Width</h3>
+<h3 id="transmit-fifo">Transmit FIFO</h3>
+<h3 id="receive-fifo">Receive FIFO</h3>
+<h3 id="fifo-word-control">FIFO Word Control</h3>
+<h3 id="fifo-data-alignment">FIFO Data Alignment</h3>
+<h3 id="typical-audio-configurations">Typical Audio Configurations</h3>
+<h2 id="interrupt-events">Interrupt Events</h2>
+<h3 id="receive-fifo-overrun">Receive FIFO Overrun</h3>
+<h3 id="receive-fifo-threshold">Receive FIFO Threshold</h3>
+<h3 id="transmit-fifo-half-empty">Transmit FIFO Half-Empty</h3>
+<h3 id="transmit-fifo-one-entry-remaining">Transmit FIFO One Entry Remaining</h3>
+<h2 id="direct-memory-access">Direct Memory Access</h2>
+<h2 id="block-operation">Block Operation</h2>
+<h2 id="registers">Registers</h2>
+<p>See Table 3-3 for the base address of this peripheral/module. See Table 1-1 for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
+<p><em>Table 15-9: I2S Register Summary</em></p>
+<h3 id="register-details">Register Details</h3>
+<p><em>Table 15-10: I2S Control 0 Register</em></p>
 
 
 

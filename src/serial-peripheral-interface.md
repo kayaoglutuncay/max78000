@@ -697,13 +697,16 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>start</td>
         <td>R/W1O</td>
         <td>0</td>
-        <td><strong>Master Start Data Transmission</strong><br>Set this field to 1 to start an SPI master mode transaction.
+        <td><strong>Master Start Data Transmission</strong><br>
+        Set this field to 1 to start an SPI master mode transaction.
         <div style="margin-left: 20px;">
         0: No master mode transaction active.<br>
         1: Master initiates data transmission. Ensure that all pending transactions are complete before setting this field to 1.
         </div>
-        <p><em>Note: This field is only used when the SPI is configured for Master
-        Mode (<a href="#spi-master-signals-control-register">SPIn_CTRL0</a>.<em>mst_mode = 1).</em></p>
+        <p>
+        <em>Note: This field is only used when the SPI is configured for Master
+        Mode (<a href="#spi-master-signals-control-register">SPIn_CTRL0</a>.<em>mst_mode = 1).</em>
+        </p>
         </td>
     </tr>
     <tr>

@@ -2,62 +2,66 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://kayaoglutuncay.github.io/max78000/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-11</lastmod>
     </url>
     <url>
          <loc>https://kayaoglutuncay.github.io/max78000/adc-and-comparators/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-11</lastmod>
     </url>
     <url>
          <loc>https://kayaoglutuncay.github.io/max78000/debug-access-port/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-11</lastmod>
     </url>
     <url>
          <loc>https://kayaoglutuncay.github.io/max78000/flash-controller/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-11</lastmod>
     </url>
     <url>
          <loc>https://kayaoglutuncay.github.io/max78000/gpio/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-11</lastmod>
     </url>
     <url>
          <loc>https://kayaoglutuncay.github.io/max78000/i2c-master-slave-serial-communication-peripheral/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-11</lastmod>
+    </url>
+    <url>
+         <loc>https://kayaoglutuncay.github.io/max78000/inter-ic-interface-i2s/</loc>
+         <lastmod>2024-12-11</lastmod>
     </url>
     <url>
          <loc>https://kayaoglutuncay.github.io/max78000/interrupts-exceptions/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-11</lastmod>
     </url>
     <url>
          <loc>https://kayaoglutuncay.github.io/max78000/memory-register-mapping-access/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-11</lastmod>
     </url>
     <url>
          <loc>https://kayaoglutuncay.github.io/max78000/overview/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-11</lastmod>
     </url>
     <url>
          <loc>https://kayaoglutuncay.github.io/max78000/revision/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-11</lastmod>
     </url>
     <url>
          <loc>https://kayaoglutuncay.github.io/max78000/semaphore/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-11</lastmod>
     </url>
     <url>
          <loc>https://kayaoglutuncay.github.io/max78000/serial-peripheral-interface/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-11</lastmod>
     </url>
     <url>
          <loc>https://kayaoglutuncay.github.io/max78000/standard-dma/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-11</lastmod>
     </url>
     <url>
          <loc>https://kayaoglutuncay.github.io/max78000/system-power-clocks-reset/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-11</lastmod>
     </url>
     <url>
          <loc>https://kayaoglutuncay.github.io/max78000/universal-asynchronous-receiver-transmitter/</loc>
-         <lastmod>2024-12-08</lastmod>
+         <lastmod>2024-12-11</lastmod>
     </url>
 </urlset>
