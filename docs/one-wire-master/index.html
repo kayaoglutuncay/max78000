@@ -1,0 +1,2665 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://kayaoglutuncay.github.io/max78000/one-wire-master/">
+      
+      
+        <link rel="prev" href="../camera-interface/">
+      
+      
+        <link rel="next" href="../real-time-clock/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>1-Wire Master (OWM) - MAX78000 User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-wire-master-owm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MAX78000 User Guide" class="md-header__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
+      
+  <img src="../assets/adi-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MAX78000 User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1-Wire Master (OWM)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MAX78000 User Guide" class="md-nav__button md-logo" aria-label="MAX78000 User Guide" data-md-component="logo">
+      
+  <img src="../assets/adi-logo.png" alt="logo">
+
+    </a>
+    MAX78000 User Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory-register-mapping-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory, Register, Mapping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-power-clocks-reset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System, Power, Clocks, Reset
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interrupts-exceptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interrupts and Exceptions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    General-Purpose I/O and Alternate Function Pins (GPIO)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flash-controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flash Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debug-access-port/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Access Port
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semaphore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semaphore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../standard-dma/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standard DMA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adc-and-comparators/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Analog to Digital Converter (ADC) and Comparators (LPCMP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../universal-asynchronous-receiver-transmitter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Universal Asynchronous Receiver/Transmitter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../serial-peripheral-interface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serial Peripheral Interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../i2c-master-slave-serial-communication-peripheral/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I²C Master/Slave Serial Communications Peripheral
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inter-ic-interface-i2s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inter-IC Interface (I²S)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../camera-interface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Camera Interface(CAMERAIF)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1-Wire Master (OWM)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    1-Wire Master (OWM)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-wire-master-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      1-Wire Master Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-wire-pins-and-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      1-Wire Pins and Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1-Wire Pins and Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1wire-io-owm_io" class="md-nav__link">
+    <span class="md-ellipsis">
+      1‑Wire I/O (OWM_IO)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pullup-enable-owm_pe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pullup Enable (OWM_PE)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clock-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clock Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-wire-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      1-Wire Protocol
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1-Wire Protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#networking-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Networking Layers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Networking Layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#physical-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Physical Layer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#link-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Link Layer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Link Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#owm-reset-and-presence-detect" class="md-nav__link">
+    <span class="md-ellipsis">
+      OWM Reset and Presence Detect
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owm-write-time-slot" class="md-nav__link">
+    <span class="md-ellipsis">
+      OWM Write Time Slot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owm-read-time-slot" class="md-nav__link">
+    <span class="md-ellipsis">
+      OWM Read Time Slot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard-speed-and-overdrive-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard Speed and Overdrive Speed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Layer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rom-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROM Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rom-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROM ID
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-rom-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read ROM Command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skip-rom-and-overdrive-skip-rom-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skip ROM and Overdrive Skip ROM Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#match-rom-and-overdrive-match-rom-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Match ROM and Overdrive Match ROM Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-rom-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search ROM Command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-rom-accelerator-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search ROM Accelerator Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resume-communication-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resume Communication Command
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-wire-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      1-Wire Operation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1-Wire Operation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resetting-the-owm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resetting the OWM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-wire-data-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      1-Wire Data Reads
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1-Wire Data Reads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-a-single-bit-value-from-the-1wire-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading a Single Bit Value from the 1‑Wire Bus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-an-8-bit-value-from-the-1wire-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading an 8-Bit Value from the 1‑Wire Bus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Registers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../real-time-clock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Clock (RTC)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../timers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Timers (TMR/LPTMR)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wake-up-timers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wake-Up Timer (WUT)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../watch-dog-timer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Watchdog Timer (WDT)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pulse-train-engine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pulse Train Engine (PT)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cyclic-redundancy-check/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cyclic Redundancy Check (CRC)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced Encryption Standard (AES)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trng-engine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TRNG Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bootloader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bootloader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cnn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolutional Neural Network (CNN)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Document Conventions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../revision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Revision History
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-wire-master-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      1-Wire Master Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-wire-pins-and-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      1-Wire Pins and Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1-Wire Pins and Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1wire-io-owm_io" class="md-nav__link">
+    <span class="md-ellipsis">
+      1‑Wire I/O (OWM_IO)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pullup-enable-owm_pe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pullup Enable (OWM_PE)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clock-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clock Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-wire-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      1-Wire Protocol
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1-Wire Protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#networking-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Networking Layers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Networking Layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#physical-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Physical Layer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#link-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Link Layer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Link Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#owm-reset-and-presence-detect" class="md-nav__link">
+    <span class="md-ellipsis">
+      OWM Reset and Presence Detect
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owm-write-time-slot" class="md-nav__link">
+    <span class="md-ellipsis">
+      OWM Write Time Slot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owm-read-time-slot" class="md-nav__link">
+    <span class="md-ellipsis">
+      OWM Read Time Slot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard-speed-and-overdrive-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard Speed and Overdrive Speed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Layer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rom-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROM Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rom-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROM ID
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-rom-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read ROM Command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skip-rom-and-overdrive-skip-rom-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skip ROM and Overdrive Skip ROM Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#match-rom-and-overdrive-match-rom-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Match ROM and Overdrive Match ROM Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-rom-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search ROM Command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-rom-accelerator-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search ROM Accelerator Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resume-communication-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resume Communication Command
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-wire-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      1-Wire Operation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1-Wire Operation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resetting-the-owm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resetting the OWM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-wire-data-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      1-Wire Data Reads
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1-Wire Data Reads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-a-single-bit-value-from-the-1wire-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading a Single Bit Value from the 1‑Wire Bus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-an-8-bit-value-from-the-1wire-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading an 8-Bit Value from the 1‑Wire Bus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Registers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="1-wire-master-owm">1-Wire Master (OWM)</h1>
+<p>The device provides a 1‑Wire master (OWM) that the software can use to
+communicate with one or more external 1‑Wire slave devices using a
+single-signal, combined clock, data protocol. The OWM is contained in
+the OWM module. The OWM module handles the lower-level details
+(including timing and drive modes) required by the 1‑Wire protocol,
+allowing the CPU to communicate over the 1‑Wire bus at a logical data
+level.</p>
+<h2 id="1-wire-master-features">1-Wire Master Features</h2>
+<p>The OWM provides the following features:</p>
+<ul>
+<li>
+<p>Flexible 1‑Wire timing generation (required 1MHz timing base) using the
+OWM module clock frequency derived from the current system clock source</p>
+</li>
+<li>
+<p>The OWM module clock can be pre-scaled to allow proper 1‑Wire timing
+generation using a range of base frequencies.</p>
+</li>
+<li>
+<p>Automatic generation of proper 1‑Wire time slots for both standard and
+overdrive timing modes</p>
+</li>
+<li>
+<p>Flexible configuration for 1‑Wire line pullup modes: options for
+internal pullup, external fixed pullup, and optional external strong
+pullup are available.</p>
+</li>
+<li>
+<p>Long-line compensation and bit-banging (direct software drive) modes</p>
+</li>
+<li>
+<p>1‑Wire reset generation and presence-pulse detection.</p>
+</li>
+<li>
+<p>Generation of 1‑Wire read and write time slots for single-bit and
+eight-bit byte transmissions.</p>
+</li>
+<li>
+<p>Search ROM Accelerator (SRA) mode simplifies the generation of
+multiple-bit time slots and discrepancy resolution required when
+completing the Search ROM function to determine the IDs of multiple,
+unknown 1‑Wire slaves on the bus.</p>
+</li>
+<li>
+<p>Transmit data completion, received data available, presence pulse
+detection, and 1‑Wire line-error condition interrupts.</p>
+</li>
+</ul>
+<p>For more information about the 1‑Wire protocol and supporting devices,
+refer to the following resources:</p>
+<ul>
+<li>
+<p><a href="https://www.analog.com/en/resources/technical-articles/book-of-ibuttonreg-standards.html"><em>AN937: Book of iButton®
+Standards</em></a></p>
+</li>
+<li>
+<p><a href="https://www.analog.com/en/resources/app-notes/1wire-search-algorithm.html"><em>AN187: 1‑Wire Search
+Algorithm</em></a></p>
+</li>
+</ul>
+<blockquote>
+<p>iButton is a registered trademark of Maxim Integrated Products, Inc.</p>
+</blockquote>
+<h2 id="1-wire-pins-and-configuration">1-Wire Pins and Configuration</h2>
+<p>The one instance of the peripheral shown in <a href="#table17-1">Table 17‑1</a> lists the location of the OWM_IO and OWM_PE signals.</p>
+<p><em>Table 17-1: MAX78000 1-Wire Master Peripheral Pins</em>
+<a name="table17-1"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th>OWM Instance</th>
+        <th>Alternate Function Name</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td rowspan="2">OWM</td>
+        <td>OWM_IO</td>
+    </tr>
+    <tr>
+        <td>OWM_PE</td>
+    </tr>
+</tbody>
+</table>
+
+<h3 id="1wire-io-owm_io">1‑Wire I/O (OWM_IO)</h3>
+<p>The OWM_IO pin is a bidirectional I/O that is used to drive the external 1‑Wire bus directly. As described in the <a href="http://www.maximintegrated.com/AN937"><em>Book of iButton Standards</em></a>, this I/O is generally driven as an open-drain output. The 1‑Wire bus requires a common pullup
+to return the 1‑Wire bus line to an idle high state when no master or
+slave device is actively driving the line low. This pullup can consist
+of a fixed resistor pullup (connected to the 1‑Wire bus outside the
+microcontroller), an internal pullup enabled by setting <a href="#owm-configuration-register">OWM_CFG</a>.<em>int_pullup_enable</em> to 1, or an OWM module controlled external pullup enabled by setting <a href="#owm-configuration-register">OWM_CFG</a>.<em>ext_pullup_mode</em> to 1.</p>
+<h3 id="pullup-enable-owm_pe">Pullup Enable (OWM_PE)</h3>
+<p>The 1‑Wire pullup enable (PE) signal is an active high output used to
+enable an optional external pullup on the 1‑Wire bus. This pullup is
+intended to provide a stronger (lower impedance) pullup on the 1‑Wire
+bus under certain circumstances, such as during overdrive mode.</p>
+<h3 id="clock-configuration">Clock Configuration</h3>
+<p>To correctly generate the timing required by the 1‑Wire protocol in
+Standard or Overdrive timing modes, the OWM clock must be set to achieve
+<span class="arithmatex">\(f_{owmclk} = 1MHz\)</span>. This clock generates both the Standard and
+Overdrive timing, so it does not need adjustment when transitioning from
+Standard to Overdrive mode or vice versa.</p>
+<p>The OWM peripheral uses the system peripheral clock, PCLK, divided by
+the value in the <em>OWM_CLK_DIV_1US.divisor</em> field as shown in <a href="#equation17-1">Equation 17‑1</a> 
+where <span class="arithmatex">\(f_{PCLK}\  = \ \frac{f_{SYSCLK}}{2}\)</span>.</p>
+<p><em>Equation 17-1: OWM 1MHz Clock Frequency</em>
+<a name="equation17-1"></a></p>
+<div class="arithmatex">\[f_{owmclk} = \ 1MHz = \frac{f_{PCLK}}{OWM\text{_}CLK\text{_}DIV\text{_}1US.divisor}\]</div>
+<h2 id="1-wire-protocol">1-Wire Protocol</h2>
+<p>The general timing and communication protocols used by the OWM interface
+are those standardized for the 1‑Wire network.</p>
+<p>Because the 1‑Wire interface is a master interface, it initiates and
+times all communication on the 1‑Wire bus. Except for the presence pulse
+generation when a device first connects to the 1‑Wire bus, 1‑Wire slave
+devices complete 1‑Wire bus communication only as directed by the 1‑Wire
+bus master. From a software perspective, the lowest-level timing and
+electrical details of how the 1‑Wire network operates are unimportant.
+The application can configure the OWM module properly and direct it to
+complete low-level operations such as reset, read, and write bit/byte
+operations. Thus, the OWM module on the microcontroller is designed to
+interface to the 1‑Wire bus at a low level.</p>
+<h3 id="networking-layers">Networking Layers</h3>
+<p>In the <a href="http://www.maximintegrated.com/AN937"><em>Book of iButton Standards</em></a>, the 1‑Wire communication protocol is described in terms of the ISO-OSI model
+(International Organization of Standardization (ISO) Open System
+Interconnection (OSI) Network Layer model). Network layers that apply to
+this description are the Physical, Link, Network, and Transport layers.
+The Transport layer consists of the software that transfers memory data
+other than ROM ID contents to and from the individual 1‑Wire network
+nodes. The Presentation layer corresponds to higher-level application
+software functions (such as library layers) that implement communication
+protocols using the 1‑Wire layers as a foundation. This document
+describes the details of the physical, link, and network layers
+regarding the OSI Network Layer model. The Transport and Presentation
+layers are beyond the scope of this document.</p>
+<h5 id="physical-layer">Physical Layer</h5>
+<p>The 1‑Wire communication bus consists of a single data/power line plus
+ground. Devices (either master or slave) interface to the 1‑Wire
+communication bus using an open-drain (active low) connection, meaning
+the 1‑Wire bus normally idles in a high state.</p>
+<p>An external pullup resistor is used to pull the 1‑Wire line high when no
+master or slave device is driving the line. This means that 1‑Wire
+devices do not actively drive the 1‑Wire line high. Instead, they either
+drive the line low or release it (set their output to high impedance) to
+allow the external resistor to pull the line high. This allows the
+1‑Wire bus to operate in a wired-AND manner, as shown in <a href="#figure17-1">Figure 17‑1</a>,
+and avoids bus contention if more than one device attempts to drive the
+1‑Wire bus at the same time.</p>
+<p><em>Figure 17-1: 1-Wire Signal Interface</em>
+<a name="figure17-1"></a></p>
+<p><img alt="Figure 17-1" src="../assets/images/figure17-1.svg" /></p>
+<h5 id="link-layer">Link Layer</h5>
+<p>The 1‑Wire Bus supports a single master and one or more slave devices
+(multidrop). Slave devices can connect to and disconnect from the 1‑Wire
+Bus dynamically (as is typically the case with iButton devices that
+operate using an intermittent touch contact interface), which means that
+it is the master's responsibility to poll the bus as needed to
+determine the number and types of 1‑Wire devices that are connected to
+the bus.</p>
+<p>The OWM initiates all communication sequences on the 1‑Wire Bus. The OWM
+determines when 1‑Wire data transmissions begin and the overall
+communication speed that is used. There are three different
+communication speeds supported by the 1‑Wire specification: standard
+speed, overdrive speed, and hyperdrive speed. However, only standard
+speed and overdrive speed are supported by the OWM peripheral in the
+devices.</p>
+<h6 id="owm-reset-and-presence-detect">OWM Reset and Presence Detect</h6>
+<p>The OWM begins each communication sequence by sending a reset pulse, as
+shown in <a href="#figure17-2">Figure 17‑2</a>. This pulse resets all 1‑Wire slave devices on
+the line to their initial states and causes them all to begin monitoring
+the line for a command from the OWM. Each 1‑Wire slave device on the
+line responds to the reset pulse by sending out a presence pulse. These
+pulses from multiple 1‑Wire slave devices are combined in wired-AND
+fashion, resulting in a pulse whose length is determined by the slowest
+1‑Wire slave device on the bus.</p>
+<p><em>Figure 17-2: 1-Wire Reset Pulse</em>
+<a name="figure17-2"></a></p>
+<p><img alt="Figure 17-2" src="../assets/images/figure17-2.svg" /></p>
+<p>In general, the 1‑Wire line must idle in a high state when communication
+is not taking place. The master can pause communication in between time
+slots. There is not an overall "timeout" period that causes a slave to
+revert to the reset state if the master takes too long between one time
+slot and the next time slot.</p>
+<p>The 1‑Wire communication protocol relies on the fact that the maximum
+allowable length for a bit transfer (write 0/1 or read bit) time slot is
+less than the minimum length for a 1‑Wire reset. At any time, if the
+1‑Wire line is held low (by the master or by any slave device) for more
+than the minimum reset pulse time, all slave devices on the line
+interpret this as a 1‑Wire reset pulse.</p>
+<h6 id="owm-write-time-slot">OWM Write Time Slot</h6>
+<p>All 1‑Wire bit time slots are initiated by the 1‑Wire bus master and
+begin with a single falling edge. There is no indication given by the
+beginning of a time slot if a read bit or write bit operation is
+intended, as the time slots all begin in the same manner. Rather, the
+1‑Wire command protocol enforces agreement between the OWM and slave as
+to which time slots are used for bit writes and which time slots are
+used for bit reads.</p>
+<p>When multiple bits of a value are transmitted (or read) in sequence, the
+least significant bit of the value is always sent or received first. The
+1‑Wire bus is a half-duplex bus, so data is transmitted in only one
+direction (from master to slave or from slave to master) at any given
+time.</p>
+<p>As shown in <a href="#figure17-3">Figure 17‑3</a>, the time slots for writing a 0 bit and
+writing a 1 bit begin identically, with the falling edge and a
+minimum-width low pulse sent by the master. To write a one bit, the
+master releases the line after the minimum low pulse, allowing it to be
+pulled high. To write a zero bit, the master continues to hold the line
+low until the end of the time slot.</p>
+<p><em>Figure 17-3: 1-Wire Write Time Slot</em>
+<a name="figure17-3"></a></p>
+<p><img alt="Figure 17-3" src="../assets/images/figure17-3.svg" /></p>
+<p>From the slave's perspective, the initial falling edge of the time slot
+triggers the start of an internal timer, and when the proper amount of
+time has passed, the slave samples the 1‑Wire line that is driven by the
+master. This sampling point is in between the end of the minimum-width
+low pulse and the end of the time slot.</p>
+<h6 id="owm-read-time-slot">OWM Read Time Slot</h6>
+<p>As with all 1‑Wire transactions, the master initiates all bit read time
+slots. Like the bit write time slots, the bit read time slot begins with
+a falling edge. From the master's perspective, this time slot is
+transmitted identically to the "Write 1 Bit" time slot shown in <a href="#figure17-3">Figure 17‑3</a>. The master begins by transmitting a falling edge, holds the line low for a minimum-width period, and then releases the line.</p>
+<p>The difference here is that instead of the slave sampling the line, the
+slave begins transmitting either a 0 (by holding the line low) or a 1
+(by leaving the line to float high) after the initial falling edge. The
+master then samples the line to read the bit value that is transmitted
+by the slave device.</p>
+<p>For example, <a href="#figure17-4">Figure 17‑4</a> shows a sequence in which the slave device
+transmits data back to the 1‑Wire bus master upon request. The slave
+device does not need to do anything to transmit a 1 bit. It simply
+leaves the line alone (to float high) and waits for the next time slot.
+The slave device holds the line low until the end of the time slot to
+transmit a 0 bit.</p>
+<p><em>Figure 17-4: 1-Wire Read Time Slot</em>
+<a name="figure17-4"></a></p>
+<p><img alt="Figure 17-4" src="../assets/images/figure17-4.svg" /></p>
+<h6 id="standard-speed-and-overdrive-speed">Standard Speed and Overdrive Speed</h6>
+<p>By default, all 1‑Wire communications following reset begin at the
+lowest rate of speed (that is, standard speed). For 1‑Wire devices that
+support it, it is possible for the OWM to increase the rate of
+communication from standard speed to overdrive speed by sending the
+appropriate command.</p>
+<p>The protocols and time slots operate identically for standard and
+overdrive speeds. The difference comes in the widths of the time slots
+and pulses. The OWM automatically adjusts the timings based on the
+setting of the <a href="#owm-configuration-register">OWM_CFG</a>.<em>overdrive</em> field.</p>
+<p>If a 1‑Wire slave device receives a standard speed reset pulse, it
+resets and reverts to standard speed communication. If the device is
+already communicating in overdrive mode, and it receives a reset pulse
+at the overdrive speed, it resets but remains in overdrive mode.</p>
+<h5 id="network-layer">Network Layer</h5>
+<h6 id="rom-commands">ROM Commands</h6>
+<p>Following the initial 1‑Wire reset pulse on the bus, all slave 1‑Wire
+devices are active, which means they are monitoring the bus for
+commands. Because the 1‑Wire bus can have multiple slave devices present
+on the bus at any time, the OWM must go through a process (defined by
+the 1‑Wire command protocol) to activate only the 1‑Wire slave device it
+intends to communicate with and deactivate all others. This is the
+purpose of the ROM commands (network layer) shown in <a href="#table17-2">Table 17‑2</a>.</p>
+<p><em>Table 17-2: 1-Wire ROM Commands</em>
+<a name="table17-2"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th>ROM Command</th>
+        <th>Hex Value</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>Read ROM</td>
+        <td>0x33</td>
+    </tr>
+    <tr>
+        <td>Match ROM</td>
+        <td>0x55</td>
+    </tr>
+    <tr>
+        <td>Search ROM</td>
+        <td>0xF0</td>
+    </tr>
+    <tr>
+        <td>Skip ROM</td>
+        <td>0xCC</td>
+    </tr>
+    <tr>
+        <td>Overdrive Skip ROM</td>
+        <td>0x3C</td>
+    </tr>
+    <tr>
+        <td>Overdrive Match ROM</td>
+        <td>0x69</td>
+    </tr>
+    <tr>
+        <td>Resume Communication</td>
+        <td>0xA5</td>
+    </tr>
+</tbody>
+</table>
+
+<p>The ROM command layer relies on the fact that all 1‑Wire slave devices are assigned a globally unique, 64-bit ROM ID. This ROM ID value is factory programmed to ensure that no two 1‑Wire slave devices have the same value.</p>
+<h6 id="rom-id">ROM ID</h6>
+<p><a href="#figure17-5">Figure 17‑5</a> is a visual representation of the 1‑Wire ROM ID fields and shows the organization of the fields within the 64-bit ROM ID for a device.</p>
+<p><em>Figure 17-5: 1-Wire ROM ID Fields</em>
+<a name="figure17-5"></a></p>
+<p><img alt="Figure 17-5" src="../assets/images/figure17-5.svg" /></p>
+<p><a href="#table17-3">Table 17‑3</a> provides a detailed description of each of the ROM ID
+fields.</p>
+<p><em>Table 17-3: 1-Wire Slave Device ROM ID Field</em>
+<a name="table17-3"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th>Field</th>
+        <th>Bit Number</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>Family code</td>
+        <td>0-7</td>
+        <td>This 8-bit value is used to identify the type of a 1‑Wire slave device.</td>
+    </tr>
+    <tr>
+        <td>Unique ID</td>
+        <td>8-55</td>
+        <td>This 48-bit value is factory-programmed to give each 1‑Wire slave device (within a given family code group) a globally unique identifier.</td>
+    </tr>
+    <tr>
+        <td>CRC</td>
+        <td>56-63</td>
+        <td>This is the 8-bit, 1‑Wire CRC as defined in the <a href="http://www.maximintegrated.com/AN937"><em>Book of iButton Standards</em></a>. The CRC is generated using the polynomial (x<sup>8</sup> + x<sup>5</sup> + x<sup>4</sup> + 1 ).</td>
+    </tr>
+</tbody>
+</table>
+
+<p><em>Note: For certain operations that consist only of writing from the OWM
+to the slave, it is technically possible for the master to communicate
+with more than one slave at a time on the same 1‑Wire bus. For this to
+work, the exact same data must be transmitted to all slave devices, and
+any values read back from the slaves must either be identical as well or
+must be disregarded by the master device (because different slaves can
+attempt to transmit different values). The following descriptions
+assume, however, that the master is communicating with only one slave
+device at a time because this is the method normally used.</em></p>
+<p>As explained above, the ROM ID contents play a key role in addressing
+and selecting devices on the 1‑Wire bus. All devices except one are in
+an idle/inactive state after the Match ROM command or the Search ROM
+command is executed. They return to the active state only after
+receiving a 1‑Wire reset pulse.</p>
+<p>Devices with overdrive capability are distinguished from others by their
+family code and two additional ROM commands (Overdrive Skip ROM and
+Overdrive Match ROM). The first transmission of the ROM command itself
+takes place at the normal speed understood by all 1‑Wire devices. After
+a device with overdrive capability is addressed and set into overdrive
+mode (that is, after the appropriate ROM command is received), further
+communication to that device must occur at overdrive speed. Because all
+deselected devices remain in the idle state if no reset pulse of regular
+duration is detected, even multiple overdrive components can reside on
+the same 1‑Wire bus. A reset pulse of regular duration resets all 1‑Wire
+devices on the bus and simultaneously sets all overdrive-capable devices
+back to the default standard speed.</p>
+<h3 id="read-rom-command">Read ROM Command</h3>
+<p>The Read ROM command allows the OWM to obtain the 8-byte ROM ID of any
+slave device connected to the 1‑Wire bus. Each slave device on the bus
+responds to this command by transmitting all eight bytes of its ROM ID
+value, starting with the least significant byte (Family Code) and ending
+with the most significant byte (CRC).</p>
+<p>Because this command is addressed to all 1‑Wire devices on the bus, if
+more than one slave is present on the bus, there is a data collision as
+multiple slaves attempt to transmit their ROM IDs at once. This
+condition is detectable by the OWM because the CRC value does not match
+the ROM ID value received. In this case, the OWM should reset the 1‑Wire
+bus and select a single slave device on the bus to continue either by
+using the Match ROM command (if the ROM ID values are already known) or
+the Search ROM command (if the master has not yet identified some or all
+devices on the bus).</p>
+<p>After the Read ROM command is complete, all slave devices on the 1‑Wire
+bus are selected or active, and communication proceeds to the Transport
+layer.</p>
+<h3 id="skip-rom-and-overdrive-skip-rom-commands">Skip ROM and Overdrive Skip ROM Commands</h3>
+<p>The Skip ROM command is used to activate all slave devices present on
+the 1‑Wire bus regardless of their ROM ID. Normally, this command is
+used when only a single 1‑Wire slave device is connected to the bus.
+After the Skip ROM command is complete, all slave devices on the 1‑Wire
+bus are selected or active, and communication proceeds to the Transport
+layer.</p>
+<p>The Overdrive Skip ROM command operates in an identical manner except
+that running it also causes the receiving slave devices to shift
+communication speed from standard speed to overdrive speed. The
+Overdrive Skip ROM command byte itself (0x3C) is transmitted at standard
+speed. All subsequent communication is sent at overdrive speed.</p>
+<h3 id="match-rom-and-overdrive-match-rom-commands">Match ROM and Overdrive Match ROM Commands</h3>
+<p>The Match ROM command is used by the OWM to select one and only one
+slave 1‑Wire device when the ROM ID of the device is already determined.
+When transmitting this command, the master sends the command byte (that
+is, 0x55 for standard speed and 0x69 for overdrive speed) and then sends
+the entire 64-bit ROM ID for the device selected, least significant bit
+first.</p>
+<p>During the transmission of the ROM ID by the master, all slave devices
+monitor the bus. As each bit is transmitted, each of the slave devices
+compares it against the corresponding bit of their ROM ID. If the bits
+match, the slave device continues to monitor the bus. If the bits do not
+match, the slave device transitions to the inactive state (waiting for a
+1‑Wire reset) and stops monitoring the bus.</p>
+<p>At the end of the transmission, at most one slave device is active,
+which is the slave device whose ROM ID matched the ROM ID that was
+transmitted. All other slave devices are inactive. Communication then
+proceeds to the Transport layer for the device that was selected.</p>
+<p>The Overdrive Match ROM command operates in an identical manner except
+that it also causes the slave device selected by the command to shift
+communication speed from standard speed to overdrive speed. The
+Overdrive Match ROM command byte (0x69) and the 64-bit ROM ID bits are
+transmitted at standard speed. All subsequent communication is sent at
+overdrive speed.</p>
+<h3 id="search-rom-command">Search ROM Command</h3>
+<p>The Search ROM command allows the OWM to determine the ROM ID values of
+all 1‑Wire slave devices connected to the bus using an iterative search
+process. Each execution of the Search ROM command reveals the ROM ID of
+one slave device on the bus.</p>
+<p>The operation of the Search ROM command resembles a combination of the
+Read ROM and Match ROM commands. First, all slaves on the bus transmit
+the least significant bit (bit 0) of their ROM IDs. Next, all slaves on
+the bus transmit a complement of the same bit. By analyzing the two bits
+received, the master can determine if the bit 0 values were 0 for all
+slaves, 1 for all slaves, or a combination of the two. Next, the master
+selects which slaves remain activated for the next step in the Search
+ROM process by transmitting the bit 0 value for the slaves it selects.
+All slaves whose bit 0 matches the value transmitted by the master
+remain active, while slaves with a different bit 0 value go to the
+inactive state and do not participate in the remainder of the Search ROM
+command.</p>
+<p>Next, the same process is followed for bit 1, then bit 2, and so on
+until the 63rd bit (most significant bit) of the ROM ID is transmitted.
+At this point, only one slave device remains active, and the master can
+either continue with communication at the Transport layer or issue a
+1‑Wire reset pulse to go back for another pass at the Search ROM
+command.</p>
+<p>The <a href="http://www.maximintegrated.com/AN937"><em>Book of iButton Standards</em></a>
+goes into more detail about the process used by the master to obtain ROM
+IDs of all devices on the 1‑Wire bus using multiple executions of the
+Search ROM command. The algorithm resembles a binary tree search and is
+used regardless of how many devices are on the bus.</p>
+<p>There is no overdrive equivalent version of the Search ROM command.</p>
+<h3 id="search-rom-accelerator-operation">Search ROM Accelerator Operation</h3>
+<p>The OWM module provides a special accelerator mode for use with the Search ROM command to allow the Search ROM command to process more quickly. This mode is activated by setting <a href="#owm-control-status-register">OWM_CTRL_STAT</a>.<em>sra_mode</em> to 1.</p>
+<p>When this mode is active, ROM IDs being processed by the Search ROM
+command are broken into 4-bit nibbles where the current 64-bit ROM ID
+varies with each pass through the search algorithm. Each 4-bit
+processing step is initiated by writing the 4-bit value to <a href="#owm-data-buffer-register">OWM_DATA</a>.<em>tx_rx</em>. This causes the generation of twelve 1‑Wire time slots
+by the OWM as each bit in the 4-bit value (starting with the LSB)
+results in a read of two bits (all active slaves transmitting bit N of
+their ROM IDs, then all active slaves transmitting the complement of bit
+N of their ROM ID), and then a write of a single bit by the OWM.</p>
+<p>After the 4-bit processing stage is complete, the return value is loaded
+into <a href="#owm-data-buffer-register">OWM_DATA</a>.<em>tx_rx</em> consists of 8 bits. The low nibble (bits 0 through 3) contains the four discrepancy flags: one for each ID bit processed.
+If the discrepancy bit is set to 1, it means that either two slaves with
+differing ID bits in that position both responded (the 2 bits read were
+both zero), or no slaves responded (the 2 bits read were both 1). If the
+discrepancy bit is set to 0, then the 2 bits read were complementary
+(either 0, 1 or 1, 0), meaning there was no bus conflict.</p>
+<p>In this way, at each step in the Search ROM command, the master either
+follows the ID of the responding slaves or deselects some of the slaves
+on the bus in case of a conflict. By the time the end of the 64-bit ROM
+ID is reached (the sixteenth 4-bit group processing step), the
+combination of all bits from the high nibbles of the received data are
+equal to the ROM ID of one of the slaves remaining on the bus.
+Subsequent passes through the Search ROM algorithm are used to determine
+additional slave ROM ID values until all slaves are identified. Refer to
+the <em><a href="http://www.maximintegrated.com/AN937">Book of iButton Standards</a></em>
+for a detailed explanation of the search function and possible variants
+of the search algorithm applicable to specific circumstances.</p>
+<h3 id="resume-communication-command">Resume Communication Command</h3>
+<p>If more than one 1‑Wire slave device is on the bus, then the master must
+specify which one it wishes to communicate with each time a new 1‑Wire
+command (starting with a reset pulse) begins. Using the commands
+discussed previously, this would normally involve sending the Match ROM
+command each time, which means the master must explicitly specify the
+full 64-bit ROM ID of the part it communicates with for each command.</p>
+<p>The Resume Communication command provides a shortcut for this process by
+allowing the master to repeatedly select the same device for multiple
+commands without having to transmit the full ROM ID each time.</p>
+<p>When the OWM selects a single device (using the Match ROM or Search ROM
+commands), an internal flag called the RC (for Resume Communication)
+flag is set in the slave device. (Only one device on the bus has this
+flag set at any one time; the Skip ROM command selects multiple devices,
+but the RC flag is not set by the Skip ROM command.)</p>
+<p>When the master resets the 1‑Wire bus, the RC flag remains set. At this
+point, it is possible for the master to send the Resume Communication
+command. This command does not have a ROM ID attached to it, but the
+device that has the RC flag set responds to this command by going to the
+active state while all other devices deactivate and drop off the 1‑Wire
+bus.</p>
+<p>Issuing any other ROM command clears the RC flag on all devices. So, for
+example, if a Match ROM command is issued for device A, its RC flag is
+set. The Resume Communication command can then be used repeatedly to
+send commands to device A. If a Match ROM command is then sent with the
+ROM ID of device B, the RC flag on device A will clear to 0, and the RC
+flag on device B is set.</p>
+<h2 id="1-wire-operation">1-Wire Operation</h2>
+<p>Once the OWM peripheral is correctly configured, then using the OWM
+peripheral to communicate with the 1‑Wire network involves directing the
+OWM to generate the proper reset, read, and write operations to
+communicate with the 1‑Wire slave devices used in a specific
+application.</p>
+<p>The OWM manages the following 1‑Wire protocol primitives directly in either Standard or Overdrive mode:</p>
+<ul>
+<li>1‑Wire bus reset (including detection of presence pulse from responding
+slave devices).</li>
+<li>Write single bit (a single write time slot).</li>
+<li>Write 8-bit byte, least significant bit first (eight write time slots).</li>
+<li>Read single bit (a single write-1 time slot).</li>
+<li>Read 8-bit byte, least significant bit first (eight write-1 time slots).</li>
+<li>Search ROM Acceleration Mode allowing the generation of four groups of
+three time slots (read, read, and write) from a single 4-bit register
+write to support the Search ROM command.</li>
+</ul>
+<h3 id="resetting-the-owm">Resetting the OWM</h3>
+<p>The first step in any 1‑Wire communication sequence is to reset the
+1‑Wire bus. To direct the OWM module to complete a 1‑Wire reset, write <a href="#owm-control-status-register">OWM_CTRL_STAT</a>.<em>start_ow_reset</em> to 1. This generates a reset pulse and
+checks for a replying presence pulse from any connected slave devices.</p>
+<p>Once the reset time slot is complete, the <a href="#owm-control-status-register">OWM_CTRL_STAT</a>.<em>start_ow_reset</em> field is automatically cleared to zero. Then, the interrupt flag <a href="#owm-interrupt-flag-register">OWM_INTFL</a>.<em>ow_reset_done</em> is set to 1 by the hardware. This flag must be cleared by writing a 1 bit to the flag.</p>
+<p>If a presence pulse is detected on the 1‑Wire bus during the reset sequence (that should normally be the case unless no 1‑Wire slave devices are present on the bus), the <a href="#owm-control-status-register">OWM_CTRL_STAT</a>.<em>presence_detect</em> flag is also set to 1. This flag does not result in the generation of an interrupt.</p>
+<h2 id="1-wire-data-reads">1-Wire Data Reads</h2>
+<h3 id="reading-a-single-bit-value-from-the-1wire-bus">Reading a Single Bit Value from the 1‑Wire Bus</h3>
+<p>The procedure for reading a single bit is like the procedure for writing
+a single bit because the operation is completed by writing a 1 bit that
+the slave device either leaves unchanged (to transmit a 1 bit) or
+overrides by forcing the line low (to transmit a 0 bit).</p>
+<p>To read a single bit value from the 1‑Wire Bus, complete the following
+steps:</p>
+<ol>
+<li>
+<p>Set <a href="#owm-configuration-register">OWM_CFG</a>.<em>single_bit_mode</em> to 1. This setting causes the OWM
+    to transmit/receive a single bit of data at a time instead of the default 8 bits.</p>
+</li>
+<li>
+<p>Write <a href="#owm-data-buffer-register">OWM_DATA</a>.<em>tx_rx</em> to 1. Only bit 0 of this field is used in
+    this instance; the other bits in the field are ignored. Writing to
+    the <a href="#owm-data-buffer-register">OWM_DATA</a> register initiates the read of the bit on the 1‑Wire
+    bus.</p>
+</li>
+<li>
+<p>Once the single-bit transmission is complete, the hardware sets
+    the interrupt flag <a href="#owm-interrupt-flag-register">OWM_INTFL</a>.<em>tx_data_empty</em> to 1. This flag (that
+    triggers an OWM module interrupt if <a href="#owm-interrupt-enable-register">OWM_INTEN</a>.<em>tx_data_empty</em> is
+    also set to 1) is cleared by writing a 1 to the flag.</p>
+</li>
+<li>
+<p>As the hardware shifts the bit value out, it also samples the
+    value returned from the slave device. Once this value is ready to
+    read, the interrupt flag <a href="#owm-interrupt-flag-register">OWM_INTFL</a>.<em>rx_data_ready</em> is set to 1. If
+    <a href="#owm-interrupt-enable-register">OWM_INTEN</a>.<em>rx_data_ready</em> is set to 1, an OWM module interrupt
+    occurs.</p>
+</li>
+<li>
+<p>Read <a href="#owm-data-buffer-register">OWM_DATA</a>.<em>tx_rx</em> (only bit 0 is used) to determine the
+    value returned by the slave device. Note that if no slave devices
+    are present or the slaves are not communicating with the master, bit
+    0 remains set to 1.</p>
+</li>
+</ol>
+<h3 id="reading-an-8-bit-value-from-the-1wire-bus">Reading an 8-Bit Value from the 1‑Wire Bus</h3>
+<p>The procedure for reading an 8-bit byte is like the procedure for
+writing an 8-bit byte because the operation is completed by writing
+eight 1 bits that the slave device either leaves unchanged (to transmit
+1 bits) or overrides by forcing the line low (to transmit 0 bits).</p>
+<ol>
+<li>
+<p>Set <a href="#owm-configuration-register">OWM_CFG</a>.<em>single_bit_mode</em> to 0. This setting causes the OWM
+    to transmit/receive in the default 8-bit mode.</p>
+</li>
+<li>
+<p>Write <a href="#owm-data-buffer-register">OWM_DATA</a>.<em>tx_rx</em> to 0x0FFh.</p>
+</li>
+<li>
+<p>Once the 8-bit transmission completes, the hardware sets the
+    interrupt flag <a href="#owm-interrupt-flag-register">OWM_INTFL</a>.<em>tx_data_empty</em> to 1. This flag (that
+    triggers an OWM module interrupt if <a href="#owm-interrupt-enable-register">OWM_INTEN</a>.<em>tx_data_empty</em> is
+    also set to 1) is cleared by writing a 1 to the flag.</p>
+</li>
+<li>
+<p>As the hardware shifts the bit values out, it also samples the
+    values returned from the slave device. Once the full 8-bit value is
+    ready to be read, the interrupt flag <a href="#owm-interrupt-flag-register">OWM_INTFL</a>.<em>rx_data_ready</em> is
+    set to 1. If <a href="#owm-interrupt-enable-register">OWM_INTEN</a>.<em>rx_data_ready</em> is set to 1, an OWM module
+    interrupt occurs.</p>
+</li>
+<li>
+<p>Read <a href="#owm-data-buffer-register">OWM_DATA</a>.<em>tx_rx</em> to determine the 8-bit value returned by
+    the slave device. <em>Note that if no slave devices are present or the
+    slave devices are not communicating with the master, the return
+    value 0x0FF is the same as the transmitted value.</em></p>
+</li>
+</ol>
+<h2 id="registers">Registers</h2>
+<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the base address of this peripheral/module. See <a href="../#table1-1-field-access-definitions">Table 1-1</a> for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
+<p><em>Table 17-4: OWM Register Summary</em>
+<a name="table17-4"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th>Offset</th>
+        <th>Register</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>[0x0000]</td>
+        <td><a href="#owm-configuration-register">OWM_CFG</a></td>
+        <td>OWM Configuration Register</td>
+    </tr>
+    <tr>
+        <td>[0x0004]</td>
+        <td><a href="#owm-clock-divisor-register">OWM_CLK_DIV_1US</a></td>
+        <td>OWM Clock Divisor Register</td>
+    </tr>
+    <tr>
+        <td>[0x0008]</td>
+        <td><a href="#owm-control-status-register">OWM_CTRL_STAT</a></td>
+        <td>OWM Control/Status Register</td>
+    </tr>
+    <tr>
+        <td>[0x000C]</td>
+        <td><a href="#owm-data-buffer-register">OWM_DATA</a></td>
+        <td>OWM Data Buffer Register</td>
+    </tr>
+    <tr>
+        <td>[0x0010]</td>
+        <td><a href="#owm-interrupt-flag-register">OWM_INTFL</a></td>
+        <td>OWM Interrupt Flag Register</td>
+    </tr>
+    <tr>
+        <td>[0x0014]</td>
+        <td><a href="#owm-interrupt-enable-register">OWM_INTEN</a></td>
+        <td>OWM Interrupt Enable Register</td>
+    </tr>
+</tbody>
+</table>
+
+<h3 id="register-details">Register Details</h3>
+<p><em>Table 17-5: OWM Configuration Register</em>
+<a name="owm-configuration-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+    <th colspan="3">OWM Configuration Register</th>
+    <th colspan="1">OWM_CFG</th>
+    <th>[0x0000]</th>
+</tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>31:8</td>
+        <td>-</td>
+        <td>RO</td>
+        <td>0</td>
+        <td><strong>Reserved</strong></td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>int_pullup_enable</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>Internal Pullup Enable</strong><br> Set this field to enable the internal pullup resistor.
+        <div style="margin-left: 20px;">
+        0: Internal pullup disabled.<br>
+        1: Internal pullup enabled.</div>
+        </td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>overdrive</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>Overdrive Enable</strong><br> Set this field to 1 to enable overdrive mode for 1‑Wire communications. Clearing this field sets 1‑Wire communications to standard speed.
+        <div style="margin-left: 20px;">
+        0: Overdrive mode disabled, standard speed mode. <br>
+        1: Overdrive mode enabled.</div>
+        </td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>single_bit_mode</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>Bit Mode Enable</strong><br>When set to 1, only a single bit at a time is transmitted and received (LSB of <a href="#owm-data-buffer-register">OWM_DATA</a>) rather than the whole byte.
+        <div style="margin-left: 20px;">
+        0: Byte mode enabled, single bit mode disabled. <br>
+        1: Single bit mode enabled, byte mode disabled.</div>
+        </td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>ext_pullup_enable</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>External Pullup Enable</strong><br> Enables external FET pullup when the 1‑Wire master is idle. FET is designed to pull the wire high regardless of its enable state (that is, high or low). Idle means the 1‑Wire master is idle, and there are no 1‑Wire accesses in progress.
+        <div style="margin-left: 20px;">
+        0: External pullup pin is not driven to high. <br>
+        1: External pullup pin is driven high when the 1‑Wire bus is idle, actively pulling the 1‑Wire IO high.</div>
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>ext_pullup_mode</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>External Pullup Mode</strong><br> Provides an extra output to control an external pullup. For long wires, a pullup resistor strong enough to pull the wire high in a
+        reasonable amount of time might need to be so strong that it would be difficult to drive the line low. In this case, implement an external FET to actively drive the wire high for a brief amount of time. Then, let the resistor keep the line high.</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>bit_bang_en</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>Bit-Bang Mode Enable</strong><br> Enable bit-bang control of the I/O pin. If this bit is set to 1, <a href="#owm-control-status-register">OWM_CTRL_STAT</a>.<em>bit_bang_oe</em> controls the state of the I/O pin.
+        <div style="margin-left: 20px;">
+        0: Bit-bang mode disabled. <br>
+        1: Bit-bang mode enabled.</div>
+        </td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>force_pres_det</td>
+        <td>R/W</td>
+        <td>1</td>
+        <td><strong>Presence Detect Force</strong><br>Setting this bit to 1 drives the OWM_IO pin low during presence detection. Use this bit field to prevent a large number of 1‑Wire slaves on the bus from all responding at different times, which might cause ringing. When this bit is set to 1, the <a href="#owm-control-status-register">OWM_CTRL_STAT</a>.<em>presence_detect</em> bit is always set as the result of a 1‑Wire reset even if no slave devices are present on the bus.
+        <div style="margin-left: 20px;">
+        0: OWM_IO pin floats during presence detection portion of 1‑Wire reset. <br>
+        1: OWM_IO pin is driven low during presence detection portion of 1‑Wire reset.</div>
+        </td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>long_line_mode</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>Long Line Mode Enable</strong> <br> Selects alternate timings for 1‑Wire communication. The recommended setting depends on the length of the wire. For lines less than 40 meters, 0 should be used.
+        <p>Setting this bit to 0 leaves the write one release, the data
+        sampling, and the time-slot recovery times at approximately 5μs, 15μs,
+        and 7μs, respectively.</p>
+        <p>Setting this bit to 1 enables long line mode timings during standard
+        mode communications. This mode moves the write one release, the data
+        sampling, and the time-slot recovery times out to approximately 8μs,
+        22μs, and 14μs, respectively.</p>
+        <div style="margin-left: 20px;">
+        0: Standard operation for lines less than 40 meters. <br>
+        1: Long Line mode enabled.</div>
+        </td>
+    </tr>
+</tbody>
+</table>
+
+<p><em>Table 17-6: OWM Clock Divisor Register</em>
+<a name="owm-clock-divisor-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th colspan="3">OWM Clock Divisor</th>
+        <th colspan="1">OWM_CLK_DIV_1US</th>
+        <th>[0x0004]</th>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>31:8</td>
+        <td>-</td>
+        <td>RO</td>
+        <td>0</td>
+        <td><strong>Reserved</strong></td>
+    </tr>
+    <tr>
+        <td>7:0</td>
+        <td>divisor</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>OWM Clock Divisor</strong>
+        <p>Divisor for the OWM peripheral clock. The target is to achieve a 1MHz
+        clock. See the <em>Clock Configuration</em> section for details.</p>
+        <p>0x00: OWM clock disabled.</p>
+        <p>0x01: <span class="math display">f<sub>owmclk</sub> = f<sub>PCLK</sub> / 1</span></p>
+        <p>0x02: <span class="math display">f<sub>owmclk</sub> = f<sub>PCLK</sub> / 2</span></p>
+        <p>…</p>
+        <p>0xFF: <span class="math display">f<sub>owmclk</sub> = f<sub>PCLK</sub> / 255</span></p></td>
+    </tr>
+</tbody>
+</table>
+
+<p><em>Table 17-7: OWM Control Status Register</em>
+<a name="owm-control-status-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+<th colspan="3">OWM Control Status</th>
+<th colspan="1">OWM_CTRL_STAT</th>
+<th>[0x0008]</th>
+</tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+<td>31:6</td>
+<td>-</td>
+<td>RO</td>
+<td>0</td>
+<td><strong>Reserved</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>presence_detect</td>
+<td>R</td>
+<td>0</td>
+<td><strong>Presence Detect Flag</strong> <br> Set to 1 when a presence pulse is detected from one or more slaves during the 1‑Wire reset sequence.</p>
+<div style="margin-left: 20px;">
+0: No presence detect pulse during previous 1‑Wire reset sequence.
+1: Presence detect pulse on bus during previous 1‑Wire reset sequence.</div>
+</td>
+</tr>
+<tr>
+<td>4</td>
+<td>od_spec_mode</td>
+<td>R</td>
+<td>0</td>
+<td><strong>Overdrive Spec Mode</strong><br> Returns the version of the overdrive spec.
+</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ow_input</td>
+<td>R</td>
+<td>-</td>
+<td><strong>OWM_IN State</strong><br> Returns the current logic level on the OWM_IO pin.
+<div style="margin-left: 20px;">
+0: OWM_IO pin is low. <br>
+1: OWM_IO pin is high.</div>
+</td>
+</tr>
+<tr>
+<td>2</td>
+<td>bit_bang_oe</td>
+<td>R/W</td>
+<td>0</td>
+<td><strong>OWM Bit-Bang Output</strong> <br> When bit-bang mode is enabled (<a href="#owm-configuration-register">OWM_CFG</a>.<em>bit_bang_en</em> = 1), this bit sets the state of the OWM_IO pin. Setting this bit to 1 drives the OWM_IO pin low. Setting this bit to 0 releases the line, allowing the OWM_IO pin to be pulled high by the pullup resistor or held low by a slave device.
+<div style="margin-left: 20px;">
+0: OWM_IO pin floating.<br>
+1: Drive OWM_IO pin to low state.</div>
+</td>
+</tr>
+<tr>
+<td>1</td>
+<td>sra_mode</td>
+<td>R/W</td>
+<td>0</td>
+<td><strong>Search ROM Accelerator Enable</strong> <br> Enable Search ROM Accelerator mode. This mode is used to identify slaves and their addresses that are attached to the 1‑Wire bus.
+<div style="margin-left: 20px;">
+0: Search ROM accelerator mode disabled.<br>
+1: Search ROM accelerator mode enabled.</div>
+</td>
+</tr>
+<tr>
+<td>0</td>
+<td>start_ow_reset</td>
+<td>R/W</td>
+<td>0</td>
+<td><strong>Start 1‑Wire Reset Pulse</strong><br> Write 1 to start a 1‑Wire reset sequence. Automatically cleared by the OWM hardware when the reset sequence is complete.
+<div style="margin-left: 20px;">
+0: 1‑Wire reset sequence complete or inactive.<br>
+1: Start a 1‑Wire reset sequence.</div>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p><em>Table 17-8: OWM Data Buffer Register</em>
+<a name="owm-data-buffer-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th colspan="3">OWM Data</th>
+        <th colspan="1">OWM_DATA</th>
+        <th>[0x000C]</th>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+<td>31:8</td>
+<td>-</td>
+<td>RO</td>
+<td>0</td>
+<td><strong>Reserved</strong></td>
+</tr>
+<tr>
+<td>7:0</td>
+<td>tx_rx</td>
+<td>R/W</td>
+<td>0</td>
+<td><strong>OWM Data Field</strong><br> Writing to this field sets the transmit data and initiates a 1‑Wire data transmit cycle. Reading from this field returns the data received by the master during the last 1‑Wire data transmit cycle.</td>
+</tr>
+</tbody>
+</table>
+
+<p><em>Table 17-9: OWM Interrupt Flag Register</em>
+<a name="owm-interrupt-flag-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th colspan="3">OWM Interrupt Flag</th>
+        <th colspan="1">OWM_INTFL</th>
+        <th>[0x0010]</th>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+<td>31:5</td>
+<td>-</td>
+<td>RO</td>
+<td>0</td>
+<td><strong>Reserved</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>line_low</td>
+<td>R/W1C</td>
+<td>0</td>
+<td><strong>Line Low Flag</strong><br> If this flag is set, the OWM_IO pin was in a low state. Write 1 to clear this flag.
+</td>
+</tr>
+<tr>
+<td>3</td>
+<td>line_short</td>
+<td>R/W1C</td>
+<td>0</td>
+<td><strong>Line Short Flag</strong><br> The OWM hardware detected a short on the OWM_IO pin. Write 1 to clear this flag.
+</td>
+</tr>
+<tr>
+<td>2</td>
+<td>rx_data_ready</td>
+<td>R/W1C</td>
+<td>0</td>
+<td><strong>RX Data Ready</strong><br> Data received from the 1‑Wire bus and is available in the
+<a href="#owm-data-buffer-register">OWM_DATA</a>.<em>tx_rx</em> field. Write 1 to clear this flag.
+<div style="margin-left: 20px;">
+0: Receive data not available.<br>
+1: Data received and is available in the <a href="#owm-data-buffer-register">OWM_DATA</a>.<em>tx_rx</em> field.</div>
+</td>
+</tr>
+<tr>
+<td>1</td>
+<td>tx_data_empty</td>
+<td>R/W1C</td>
+<td>0</td>
+<td><strong>TX Empty</strong><br> The OWM hardware automatically sets this interrupt flag when the data
+transmit is complete. Write 1 to clear this flag.
+<div style="margin-left: 20px;">
+0: Either no data was sent, or the data in the
+<a href="#owm-data-buffer-register">OWM_DATA</a>.<em>tx_rx</em> field has not completed transmission.<br>
+1: Data in the <a href="#owm-data-buffer-register">OWM_DATA</a>.<em>tx_rx</em> field was
+transmitted.</div>
+</td>
+</tr>
+<tr>
+<td>0</td>
+<td>ow_reset_done</td>
+<td>R/W1C</td>
+<td>0</td>
+<td><strong>Reset Complete</strong><br> This flag is set when a 1‑Wire reset sequence completes. To start a 1‑Wire reset sequence, see <a href="#owm-control-status-register">OWM_CTRL_STAT</a>.<em>start_ow_reset</em>. Write 1 to clear this flag.
+<div style="margin-left: 20px;">
+0: 1‑Wire reset sequence not complete or bus idle.<br>
+1: 1‑Wire reset sequence complete.</div>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p><em>Table 17-10: OWM Interrupt Enable Register</em>
+<a name="owm-interrupt-enable-register"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th colspan="3">OWM Interrupt Enable</th>
+        <th colspan="1">OWM_INTEN</th>
+        <th>[0x0014]</th>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+<td>31:5</td>
+<td>-</td>
+<td>RO</td>
+<td>0</td>
+<td><strong>Reserved</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>line_low</td>
+<td>R/W</td>
+<td>0</td>
+<td><strong>Line Low Interrupt Enable</strong><br> Set this field to 1 to enable the I/O pin low detected interrupt.
+<div style="margin-left: 20px;">
+0: Interrupt disabled.<br>
+1: Interrupt enabled.<br>
+</td>
+</tr>
+<tr>
+<td>3</td>
+<td>line_short</td>
+<td>R/W</td>
+<td>0</td>
+<td><strong>Line Short Interrupt Enable</strong><br> Set this field to 1 to enable the I/O pin short detected interrupt.
+<div style="margin-left: 20px;">
+0: Interrupt disabled. <br>
+1: Interrupt enabled.</div>
+</td>
+</tr>
+<tr>
+<td>2</td>
+<td>rx_data_ready</td>
+<td>R/W</td>
+<td>0</td>
+<td><strong>Receive Data Ready Interrupt Enable</strong> <br> Set this field to 1 to enable the receive data ready interrupt.
+<div style="margin-left: 20px;">
+0: Interrupt disabled.<br>
+1: Interrupt enabled.</div>
+</td>
+</tr>
+<tr>
+<td>1</td>
+<td>tx_data_empty</td>
+<td>R/W</td>
+<td>0</td>
+<td><strong>Transmit Data Empty Interrupt Enable</strong><br> Set this field to 1 to enable the transmit data empty interrupt.
+<div style="margin-left: 20px;">
+0: Interrupt disabled.<br>
+1: Interrupt enabled.</div>
+</td>
+</tr>
+<tr>
+<td>0</td>
+<td>ow_reset_done</td>
+<td>R/W</td>
+<td>0</td>
+<td><strong>1‑Wire Reset Sequence Complete Interrupt Enable</strong><br>Set this field to 1 to enable the 1‑Wire reset sequence completed interrupt.
+<div style="margin-left: 20px;">
+0: Interrupt disabled.<br>
+1: Interrupt enabled.</div>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Analog Devices
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/analog-devices/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/analogdevicesinc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["search.suggest", "search.highlight", "navigation.tracking"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

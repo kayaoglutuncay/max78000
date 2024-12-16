@@ -17,6 +17,18 @@ nav:
   - Serial Peripheral Interface: serial-peripheral-interface.md
   - I²C Master/Slave Serial Communications Peripheral: i2c-master-slave-serial-communication-peripheral.md
   - Inter-IC Interface (I²S): inter-ic-interface-i2s.md
+  - Camera Interface(CAMERAIF): camera-interface.md
+  - 1-Wire Master (OWM): one-wire-master.md
+  - Real-Time Clock (RTC): real-time-clock.md
+  - Timers (TMR/LPTMR): timers.md
+  - Wake-Up Timer (WUT): wake-up-timers.md
+  - Watchdog Timer (WDT): watch-dog-timer.md
+  - Pulse Train Engine (PT): pulse-train-engine.md
+  - Cyclic Redundancy Check (CRC): cyclic-redundancy-check.md
+  - Advanced Encryption Standard (AES): aes.md
+  - TRNG Engine: trng-engine.md
+  - Bootloader: bootloader.md
+  - Convolutional Neural Network (CNN): cnn.md
   - Document Conventions: index.md
   - Revision History: revision.md
 theme:
