@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#instances" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -613,6 +618,17 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Watchdog Timer (WDT)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -622,6 +638,173 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instances
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instances">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-wdt-as-a-long-interval-timer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the WDT as a Long-Interval Timer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-wdt-as-a-long-interval-wake-up-timer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the WDT as a Long-Interval Wake-Up Timer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wdt-feed-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      WDT Feed Sequence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wdt-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      WDT Events
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WDT Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wdt-early-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      WDT Early Reset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wdt-early-interrupt" class="md-nav__link">
+    <span class="md-ellipsis">
+      WDT Early Interrupt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wdt-late-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      WDT Late Reset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wdt-late-interrupt" class="md-nav__link">
+    <span class="md-ellipsis">
+      WDT Late Interrupt
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initializing-the-wdt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initializing the WDT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Registers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -805,6 +988,164 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instances
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instances">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-wdt-as-a-long-interval-timer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the WDT as a Long-Interval Timer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-wdt-as-a-long-interval-wake-up-timer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the WDT as a Long-Interval Wake-Up Timer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wdt-feed-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      WDT Feed Sequence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wdt-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      WDT Events
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WDT Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wdt-early-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      WDT Early Reset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wdt-early-interrupt" class="md-nav__link">
+    <span class="md-ellipsis">
+      WDT Early Interrupt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wdt-late-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      WDT Late Reset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wdt-late-interrupt" class="md-nav__link">
+    <span class="md-ellipsis">
+      WDT Late Interrupt
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initializing-the-wdt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initializing the WDT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Registers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -820,7 +1161,996 @@
 
   <h1>Watchdog Timer (WDT)</h1>
 
+<p>The watchdog timer (WDT) protects against corrupt or unreliable
+software, power faults, and other system-level problems which may place
+the IC into an improper operating state. The software must periodically
+write a special sequence to a dedicated register to confirm the software
+is operating correctly. Failure to reset the watchdog timer within a
+user-specified time frame can first generate an interrupt allowing the
+software the opportunity to identify and correct the problem. If the
+software cannot regain normal operation, the watchdog timer can generate
+a system reset as a last resort.</p>
+<p>Some instances provide a windowed timer function. These instances
+support an additional feature that can detect watchdog timer resets that
+occur too early and too late (or never). This could happen if program
+execution is corrupted and is accidentally forced into a tight loop of
+code that contains a watchdog sequence. This would not be detected with
+a traditional WDT because the end of the timeout periods would never be
+reached. A new set of \"watchdog timer early\" fields are available to
+support the lower limits required for windowing. Traditional watchdog
+timers can only detect a loss of program control that fails to reset the
+watchdog timer.</p>
+<p>Each time the software performs a reset, as early as possible in the
+software, the peripheral control register should be examined to
+determine if the reset was caused by at WDT late reset event (or WDT
+early reset event if the window function is supported). If so, the
+software should take the desired action as part of its restart sequence.</p>
+<p>The WDT is a critical safety feature, and most fields are reset on POR
+or system reset events only.</p>
+<p>Features:</p>
+<ul>
+<li>
+<p>Single-ended (legacy) watchdog timeout.</p>
+</li>
+<li>
+<p>Windowed mode adds lower-limit timeout settings to detect loss of
+    control in tight code loops.</p>
+</li>
+<li>
+<p>Configurable clock source.</p>
+</li>
+<li>
+<p>Configurable time-base.</p>
+</li>
+<li>
+<p>Programmable upper and lower limits for reset and interrupts from
+    2^16^ to 2^32^ time-base ticks.</p>
+</li>
+<li>
+<p>A register is provided to read the WDT counter register, simplifying
+    code development.</p>
+</li>
+</ul>
+<p><em>Figure 21‑1</em> shows the block diagram of the WDT.</p>
+<figure>
+<img src="media/image1.emf" />
+<figcaption><p>: Windowed Watchdog Timer Block Diagram</p></figcaption>
+</figure>
 
+<h2 id="instances">Instances</h2>
+<p><em>Table 21‑1</em> shows the peripheral instances, available clock sources,
+and indicates which instances support the windowed watchdog
+functionality.</p>
+<hr />
+<p>Instance   Register     Window        External    CLK0     CLK1     CLK2
+             Access\      Support       Clock                       <br />
+             Name                                                     </p>
+<hr />
+<p>WDT0       WDT0         Yes           N/A         PCLK     IBRO     -</p>
+<p>LPWDT0     WDT1         Yes           N/A         IBRO     ERTC0    INRO</p>
+<hr />
+<p>: : MAX78000 WDT Instances Summary</p>
+<h3 id="usage">Usage</h3>
+<p>When enabled, the <em>WDTn_CNT</em>.<em>count</em> increments once every <em>t~WDTCLK~</em>
+period. The software periodically executes the feed sequence during
+correct operation and resets <em>WDTn_CNT</em>.<em>count</em> to 0x0000 0000 within
+the target window.</p>
+<p>The upper and lower limits of the target window are user-configurable to
+accommodate different applications and non-deterministic execution times
+within an application.</p>
+<p>The WDT can generate an interrupt and a reset event in response to the
+WDT activity. Interrupts are typically configured to respond first to an
+event outside the target window. The approach is that a minor system
+event may have temporarily delayed the execution of the feed sequence,
+so the event can be diagnosed in an interrupt routine and control
+returned to the system. When the WDT feed sequence occurs much earlier
+than expected or not at all, a reset event can be generated that forces
+the system to a known good state before continuing.</p>
+<p>Traditional WDTs only detect execution errors that fail to perform the
+WDT feed sequence. If the counter reaches the WDT late interrupt
+threshold, the device attempts to regain program control by vectoring to
+the dedicated WDT ISR. The ISR should reset the WDT counter, perform the
+desired recovery activity, and return execution to a known good address.</p>
+<p>If the execution error prevents the successful execution of the ISR, the
+WDT continues to increment until the count reaches the WDT late reset
+threshold. The WDT generates a late reset event which sets the WDT late
+reset flag and generates a system interrupt.</p>
+<p>Instances that support the window feature (<em>WDTn_CTRL</em>.<em>win_en</em> = 1) can
+generate a WDT early interrupt event if the WDT feed sequence occurs
+earlier than expected. Analogously, the device attempts to regain
+program control by vectoring to the dedicated WDT interrupt. The WDT
+interrupt should reset the WDT counter, perform the desired recovery
+activity, and return execution to a known good address.</p>
+<p>A WDT feed sequence that occurs earlier than the WDT early reset
+threshold indicates the execution error is significant enough to
+initiate a reset of the device to correct the problem. The WDT generates
+an early reset event that sets the WDT late reset flag and generates a
+system interrupt.</p>
+<p>The event flags are set regardless of the corresponding interrupt or
+reset enable. This includes the early interrupt and early event flags,
+even if the WDT is disabled (<em>WDTn_CTRL.win_en</em> = 0).</p>
+<h4 id="using-the-wdt-as-a-long-interval-timer">Using the WDT as a Long-Interval Timer</h4>
+<p>One use case of the WDT is as a very long interval timer in <em>ACTIVE</em>.
+The timer can be configured to generate a WDT late interrupt event for
+as long as 2^32^ periods of the selected watchdog clock source. The WDT
+should not be enabled to generate WDT reset events in this use case.</p>
+<h4 id="using-the-wdt-as-a-long-interval-wake-up-timer">Using the WDT as a Long-Interval Wake-Up Timer</h4>
+<p>The WDT can be used as a very long internal wake-up source from <em>SLEEP</em>.
+Additionally, the low power WDT can be used as a wake-up source from
+<em>SLEEP</em>, <em>LPM</em>, and <em>UPM</em>. The timer can be configured to generate a WDT
+wake-up event for as long as 2^32^ periods of the selected watchdog
+clock source.</p>
+<h3 id="wdt-feed-sequence">WDT Feed Sequence</h3>
+<p>The WDT feed sequence protects the system against unintentional altering
+of the WDT count and unintentionally enabling or disabling the timer.</p>
+<p>Two consecutive write instructions to the <em>WDTn_RST</em>.<em>reset</em> field are
+required to reset the <em>WDTn_CNT</em>.<em>count</em> = 0. Global interrupts should
+be disabled immediately before and re-enabled after the writes to ensure
+both writes to the <em>WDTn_RST</em>.<em>reset</em> field complete without
+interruption.</p>
+<p>The feed sequence must also be performed immediately before enabling the
+WDT to prevent accidental triggering of the reset or interrupt as soon
+as the timer is enabled. There is no timed access window for these write
+operations; the operations can be separated by any length of time as
+long as they occur in the required sequence</p>
+<ol>
+<li>
+<p>1. Disable interrupts.</p>
+</li>
+<li>
+<p>2. In consecutive write operations:</p>
+<ol>
+<li>
+<p>a. Write <em>WDTn_RST</em>.<em>reset</em>: 0xA5.</p>
+<p>b. Write <em>WDTn_RST</em>.<em>reset</em>: 0x5A.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>3. If desired, enable or disable the timer.</p>
+</li>
+<li>
+<p>4. Re-enable interrupts.</p>
+</li>
+</ol>
+<h3 id="wdt-events">WDT Events</h3>
+<p>Multiple events are supported, as shown in <em>Table 21‑2</em>. The
+corresponding event flag is set when the event occurs.</p>
+<p>Typically the system is configured such that the late interrupt events
+occur before the late reset events, and early interrupts occur when the
+feed sequence has the least error from the target time, before the early
+reset events.</p>
+<p>The event flags are set even if the corresponding interrupt or reset
+enable flags regardless of the state of the corresponding enable fields.
+This includes the early interrupt and early event flags, even if
+<em>WDTn_CTRL.win_en</em> = 0.</p>
+<p>Software must clear all event flags before enabling the timers.</p>
+<p>+----------+-----------------------------+--------------+--------------+
+| Event    | Condition                   | Local        | Local        |
+|          |                             | Interrupt    | Interrupt    |
+|          |                             | Event Flag   | Event Enable |
++==========+=============================+==============+==============+
+| Early    | Feed sequence occurs while  | <em>WDTn_CTR    | </em>WDTn_CTRL   |
+| I        |                             | L.int_early<em> | .wdt_int_en</em> |
+| nterrupt | <em>WDTn_CTRL.rst_early_val</em> ≤ |              |              |
+|          | <em>WDTn_CNT</em>.<em>count</em> \&lt;       |              |              |
+|          | <em>WDTn_CTRL.int_early_val</em>   |              |              |
+|          |                             |              |              |
+|          | <em>WDTn_CTRL.win_en = 1</em>      |              |              |
++----------+-----------------------------+--------------+--------------+
+| Early    | Feed sequence occurs while  | <em>WDTn_CTR    | </em>WDTn_CTRL   |
+| Reset    |                             | L.rst_early<em> | .wdt_rst_en</em> |
+|          | <em>WDTn_CNT</em>.<em>count</em> \&lt;       |              |              |
+|          | <em>WDTn_CTRL.rst_early_val</em>   |              |              |
+|          |                             |              |              |
+|          | <em>WDTn_CTRL.win_en = 1</em>      |              |              |
++----------+-----------------------------+--------------+--------------+
+| I        | <em>WDTn_CNT</em>.<em>count</em> =        | <em>WDTn_CT     | </em>WDTn_CTRL   |
+| nterrupt | <em>WDTn_CTRL.int_late_val</em>    | RL.int_late<em> | .wdt_int_en</em> |
+| Late     |                             |              |              |
++----------+-----------------------------+--------------+--------------+
+| Reset    | <em>WDTn_CNT</em>.<em>count</em> =        | <em>WDTn_CT     | </em>WDTn_CTRL   |
+| Late     | <em>WDTn_CTRL.rst_late_val</em>    | RL.rst_late<em> | .wdt_rst_en</em> |
++----------+-----------------------------+--------------+--------------+
+| Timer    | <em>WDTn_CTRL.</em><em>clkrdy</em> 0 → 1  | No event     |              |
+| Enabled  |                             | flags are    |              |
+|          |                             | set by a     |              |
+|          |                             | timer        |              |
+|          |                             | enabled      |              |
+|          |                             | event        |              |
++----------+-----------------------------+--------------+--------------+</p>
+<p>: : MAX78000 WDT Event Summary</p>
+<h4 id="wdt-early-reset">WDT Early Reset</h4>
+<p>The early reset event occurs if the software performs the WDT feed
+sequence while <em>WDTn_CNT</em>.<em>count</em> \&lt; <em>WDTn_CTRL.rst_late_val</em> threshold
+as shown in <em>Table 21‑2</em>. <em>Figure 21‑2</em> shows the sequencing details
+associated with an early reset event.</p>
+<p>: WDT Early Interrupt and Reset Event Sequencing Details</p>
+<p><img alt="" src="media/image2.emf" /></p>
+<p>The following occurs when a WDT early reset event occurs:</p>
+<ol>
+<li>
+<p>1. The hardware sets <em>WDTn_CTRL.rst_early</em> to 1.</p>
+</li>
+<li>
+<p>2. The hardware initiates a system reset:</p>
+</li>
+<li>
+<p>3. The hardware resets <em>WDTn_CNT</em>.<em>count</em> to 0x0000 0000 during the
+    reset event.</p>
+</li>
+<li>
+<p>4. The <em>WDTn_CTRL.en</em> field is unaffected by a system reset. The
+    WDT continues incrementing.</p>
+</li>
+<li>
+<p>5. The <em>WDTn_CTRL.rst_early</em> field is unaffected by a system reset,
+    allowing the software to determine an early reset event occurred.</p>
+</li>
+</ol>
+<h4 id="wdt-early-interrupt">WDT Early Interrupt</h4>
+<p>The early interrupt event occurs if the software performs the WDT feed
+sequence while
+<em>WDTn_CTRL.rst_early_val</em> ≤ <em>WDTn_CNT</em>.<em>count</em> \&lt; <em>WDTn_CTRL.int_early_val</em>
+as shown in <em>Table 21‑2</em>. <em>Figure 21‑2</em> shows the sequencing details
+associated with an early interrupt event, including the required
+functions performed by the WDT ISR.</p>
+<p>The hardware performs the following when a WDT early interrupt event
+occurs:</p>
+<ol>
+<li>
+<p>1. The <em>WDTn_CTRL.int_early</em> field is set to 1.</p>
+</li>
+<li>
+<p>2. An interrupt occurs if enabled.</p>
+</li>
+</ol>
+<h4 id="wdt-late-reset">WDT Late Reset</h4>
+<p>The late reset event occurs if the counter increments where
+<em>WDTn_CNT</em>.<em>count</em> is equal to the <em>WDTn_CTRL.rst_late_val</em> threshold,
+as shown in <em>Table 21‑2</em>. <em>Figure 21‑3</em> shows the sequencing details
+associated with a late reset event.</p>
+<figure>
+<img src="media/image3.emf" />
+<figcaption><p>: WDT Late Interrupt and Reset Event Sequencing
+Details</p></figcaption>
+</figure>
+
+<p>The following occurs when a WDT late reset event occurs:</p>
+<ol>
+<li>
+<p>1. The hardware sets <em>WDTn_CTRL.rst_late</em> to 1.</p>
+</li>
+<li>
+<p>2. The hardware initiates a system reset:</p>
+</li>
+<li>
+<p>3. The hardware resets <em>WDTn_CNT</em>.<em>count</em> to 0x0000 0000 during the
+    reset event.</p>
+</li>
+<li>
+<p>4. The <em>WDTn_CTRL.en</em> field is unaffected by a system reset. The
+    WDT continues incrementing.</p>
+</li>
+<li>
+<p>5. The <em>WDTn_CTRL.rst_late</em> field is unaffected by a system reset.</p>
+</li>
+</ol>
+<h4 id="wdt-late-interrupt">WDT Late Interrupt</h4>
+<p>The late reset event occurs if the counter increments to the point where
+<em>WDTn_CNT</em>.<em>count</em> = <em>WDTn_CTRL.int_late_val</em> threshold, as shown in
+<em>Table 21‑2</em>. <em>Figure 21‑3</em> shows the sequencing details associated with
+a late interrupt event, including the required functions performed by
+the WDT interrupt handler.</p>
+<p>The following occurs when WDT late interrupt event occurs:</p>
+<ol>
+<li>
+<p>1. The hardware sets <em>WDTn_CTRL.int_late</em> to 1.</p>
+</li>
+<li>
+<p>2. The hardware initiates an interrupt if enabled.</p>
+</li>
+</ol>
+<h3 id="initializing-the-wdt">Initializing the WDT</h3>
+<p>The full procedure for configuring the WDT is shown below:</p>
+<ol>
+<li>
+<p>1. Execute the WDT feed sequence and disable the WDT:</p>
+<ol>
+<li>
+<p>a. Disable global interrupts</p>
+<p>b. Write <em>WDTn_RST.reset</em> to 0xA5.</p>
+<p>c. Write <em>WDTn_RST.reset</em> to 0x5A. Hardware will reset
+<em>WDTn_CNT</em>.<em>count</em> = 0x0000 0000.</p>
+<p>d. Set <em>WDTn_CTRL.en</em> to 0 to disable the WDT.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>2. Verify the peripheral is disabled before proceeding:</p>
+<ol>
+<li>
+<p>a. Poll <em>WDTn_CTRL</em>.<em>clkrdy</em> until it reads 1, or</p>
+<p>b. Set <em>WDTn_CTRL</em>.<em>clkrdy_ie =</em> 1 to generate a WDT enabled
+interrupt event.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>3. Re-enable global interrupts.</p>
+</li>
+<li>
+<p>4. Configure <em>WDTn_CLKSEL.source</em> to select the clock source.</p>
+</li>
+<li>
+<p>5. Configure the traditional/legacy thresholds:</p>
+<ol>
+<li>
+<p>a. Configure <em>WDTn_CTRL.int_late_val</em> to the desired threshold
+    for the WDT late interrupt event.</p>
+<p>b. Configure <em>WDTn_CTRL.rst_late_val</em> to the desired threshold
+for the WDT late reset event.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>6. If using the optional windowed WDT feature:</p>
+<ol>
+<li>
+<p>a. Set <em>WDTn_CTRL.win_en</em> = 1 to enable the windowed WDT
+    feature.</p>
+<p>b. Configure <em>WDTn_CTRL.int_early_val</em> to the desired threshold
+for the WDT early interrupt event.</p>
+<p>c. Configure <em>WDTn_CTRL.rst_early_val</em> to the desired threshold
+for the WDT early reset event.</p>
+<p>d. Set <em>WDTn_CTRL.wdt_int_en</em> to generate an interrupt when a
+WDT late interrupt event occurs. If <em>WDTn_CTRL.win_en</em> = 1, an
+interrupt is generated by a WDT late interrupt event and a WDT
+early interrupt event.</p>
+<p>e. Set <em>WDTn_CTRL.wdt_rst_en</em> to generate an interrupt when a
+WDT late reset event occurs. If <em>WDTn_CTRL.win_en</em> = 1, an
+interrupt is generated by a WDT late reset event and a WDT early
+reset event.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>7. Execute the WDT feed sequence and enable the WDT:</p>
+<ol>
+<li>
+<p>a. Disable global interrupts</p>
+<p>b. Write <em>WDTn_RST.reset</em> to 0xA5.</p>
+<p>c. Write <em>WDTn_RST.reset</em> to 0x5A. Hardware will reset
+<em>WDTn_CNT</em>.<em>count</em> = 0x0000 0000.</p>
+<p>d. Set <em>WDTn_CTRL.en</em> to 1 to enable the WDT.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>8. Verify the peripheral is enabled before proceeding:</p>
+<ol>
+<li>
+<p>a. Poll <em>WDTn_CTRL</em>.<em>clkrdy</em> until it reads 1, or</p>
+<p>b. Set <em>WDTn_CTRL</em>.<em>clkrdy_ie =</em> 1 to generate a WDT enabled
+event interrupt.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>9. Re-enable global interrupts.</p>
+</li>
+</ol>
+<h3 id="resets">Resets</h3>
+<p>The WDT is a critical safety feature, and most of the fields are set on
+POR or system reset events only.</p>
+<h3 id="registers">Registers</h3>
+<p>See <em>Table 3‑3</em> for the base address of this peripheral/module. If
+multiple instances of the peripheral are provided, each instance has its
+own independent set of the registers shown in <em>Table 21‑3</em>. Register
+names for a specific instance are defined by replacing \"n\" with the
+instance number. As an example, a register PERIPHERALn_CTRL resolves to
+PERIPHERAL0_CTRL and PERIPHERAL1_CTRL for instances 0 and 1,
+respectively.</p>
+<p>See <em>Table 1‑1</em> for an explanation of the read and write access of each
+field. Unless specified otherwise, all fields are reset on a system
+reset, soft reset, POR, and the peripheral-specific resets.</p>
+<hr />
+<p>Offset       Register        Name</p>
+<hr />
+<p>[0x0000]   <em>WDTn_CTRL</em>     WDT Control Register</p>
+<p>[0x0004]   <em>WDTn_RST</em>      WDT Reset Register</p>
+<p>[0x0008]   <em>WDTn_CLKSEL</em>   WDT Clock Select Register</p>
+<p>[0x000C]   <em>WDTn_CNT</em>      WDT Count Register</p>
+<hr />
+<p>: : WDT Register Summary</p>
+<h4 id="register-details">Register Details</h4>
+<p>+---+----------+----+----+----------------------+---------------------+
+| W |          |    |    | ##### WDTn_CTRL      | [0x0000]          |
+| D |          |    |    |                      |                     |
+| T |          |    |    |                      |                     |
+| C |          |    |    |                      |                     |
+| o |          |    |    |                      |                     |
+| n |          |    |    |                      |                     |
+| t |          |    |    |                      |                     |
+| r |          |    |    |                      |                     |
+| o |          |    |    |                      |                     |
+| l |          |    |    |                      |                     |
++===+==========+====+====+======================+=====================+
+| B | Name     | Ac | R  | Description          |                     |
+| i |          | ce | es |                      |                     |
+| t |          | ss | et |                      |                     |
+| s |          |    |    |                      |                     |
++---+----------+----+----+----------------------+---------------------+
+| 3 | rst_late | R  | 0  | Reset Late Event     |                     |
+| 1 |          | /W |    |                      |                     |
+|   |          |    |    | A watchdog reset     |                     |
+|   |          |    |    | event occurred after |                     |
+|   |          |    |    | the time specified   |                     |
+|   |          |    |    | in                   |                     |
+|   |          |    |    | <em>WDTn_C              |                     |
+|   |          |    |    | TRL</em>.<em>rst_late_val</em>. |                     |
+|   |          |    |    | This flag is set     |                     |
+|   |          |    |    | even if              |                     |
+|   |          |    |    | <em>WDTn_CTRL</em>.<em>win_en</em> |                     |
+|   |          |    |    | = 0 or               |                     |
+|   |          |    |    | <em>WDT                 |                     |
+|   |          |    |    | n_CTRL</em>.<em>wdt_rst_en</em> |                     |
+|   |          |    |    | = 0. The software    |                     |
+|   |          |    |    | has to clear the     |                     |
+|   |          |    |    | flag appropriately   |                     |
+|   |          |    |    | in case of           |                     |
+|   |          |    |    | carried-over flags   |                     |
+|   |          |    |    | from prior           |                     |
+|   |          |    |    | operations.          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0: Normal operation  |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 1: Watchdog reset    |                     |
+|   |          |    |    | occurred after       |                     |
+|   |          |    |    | <em>WDTn_CT             |                     |
+|   |          |    |    | RL</em>.<em>rst_early_val</em>. |                     |
++---+----------+----+----+----------------------+---------------------+
+| 3 | r        | R  | 0  | Reset Early Event    |                     |
+| 0 | st_early | /W |    |                      |                     |
+|   |          |    |    | A watchdog reset     |                     |
+|   |          |    |    | event occurred       |                     |
+|   |          |    |    | before the time      |                     |
+|   |          |    |    | specified in         |                     |
+|   |          |    |    | <em>WDTn_CT             |                     |
+|   |          |    |    | RL</em>.<em>rst_early_val</em>. |                     |
+|   |          |    |    | This flag is set     |                     |
+|   |          |    |    | even if              |                     |
+|   |          |    |    | <em>WDTn_CTRL</em>.<em>win_en</em> |                     |
+|   |          |    |    | = 0 or               |                     |
+|   |          |    |    | <em>WDT                 |                     |
+|   |          |    |    | n_CTRL</em>.<em>wdt_rst_en</em> |                     |
+|   |          |    |    | = 0. The software    |                     |
+|   |          |    |    | has to clear the     |                     |
+|   |          |    |    | flag appropriately   |                     |
+|   |          |    |    | in case of           |                     |
+|   |          |    |    | carried-over flags   |                     |
+|   |          |    |    | from prior           |                     |
+|   |          |    |    | operations.          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0: Normal operation  |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 1: Watchdog reset    |                     |
+|   |          |    |    | occurred before      |                     |
+|   |          |    |    | <em>WDTn_CT             |                     |
+|   |          |    |    | RL</em>.<em>rst_early_val</em>. |                     |
++---+----------+----+----+----------------------+---------------------+
+| 2 | win_en   | R  | 0  | Window Function      |                     |
+| 9 |          | /W |    | Enable               |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0: Disabled. WDT     |                     |
+|   |          |    |    | recognizes interrupt |                     |
+|   |          |    |    | late and reset late  |                     |
+|   |          |    |    | events, supporting   |                     |
+|   |          |    |    | legacy               |                     |
+|   |          |    |    | implementations.     |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 1: Enabled           |                     |
++---+----------+----+----+----------------------+---------------------+
+| 2 | clkrdy   | R  | 0  | Clock Status         |                     |
+| 8 |          |    |    |                      |                     |
+|   |          |    |    | This field is        |                     |
+|   |          |    |    | cleared by the       |                     |
+|   |          |    |    | hardware when        |                     |
+|   |          |    |    | software changes the |                     |
+|   |          |    |    | state of             |                     |
+|   |          |    |    | <em>WDTn_CTRL.en</em>. The  |                     |
+|   |          |    |    | hardware sets the    |                     |
+|   |          |    |    | field to 1 when the  |                     |
+|   |          |    |    | change to the        |                     |
+|   |          |    |    | requested enable or  |                     |
+|   |          |    |    | disable state        |                     |
+|   |          |    |    | completes.           |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0: WDT clock is off. |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 1: WDT clock is on.  |                     |
++---+----------+----+----+----------------------+---------------------+
+| 2 | c        | R  | 0  | Clock Switch Ready   |                     |
+| 7 | lkrdy_ie | /W |    | Interrupt Enable     |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | This interrupt       |                     |
+|   |          |    |    | prevents the         |                     |
+|   |          |    |    | software from        |                     |
+|   |          |    |    | needing to poll the  |                     |
+|   |          |    |    | <em>WDTn_CTRL</em>.<em>clkrdy</em> |                     |
+|   |          |    |    | all the time. When   |                     |
+|   |          |    |    | <em>WDTn_CTRL</em>.<em>clkrdy</em> |                     |
+|   |          |    |    | goes from high to    |                     |
+|   |          |    |    | low, the interrupt   |                     |
+|   |          |    |    | signals that the     |                     |
+|   |          |    |    | transition is        |                     |
+|   |          |    |    | complete.            |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0: Disabled          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 1: Enabled           |                     |
++---+----------+----+----+----------------------+---------------------+
+| 2 | -       | RO | 0  | Reserved             |                     |
+| 6 |          |    |    |                      |                     |
+| : |          |    |    |                      |                     |
+| 2 |          |    |    |                      |                     |
+| 4 |          |    |    |                      |                     |
++---+----------+----+----+----------------------+---------------------+
+| 2 | rst_e    | R  | 0  | Reset Early Event    |                     |
+| 3 | arly_val | /W |    | Threshold            |                     |
+| : |          |    |    |                      |                     |
+| 2 |          |    |    | 0x0: 2^31^ ×         |                     |
+| 0 |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x1: 2^30^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x2: 2^29^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x3: 2^28^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x4: 2^27^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x5: 2^26^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x6: 2^25^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x7: 2^24^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x8: 2^23^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x9: 2^22^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xA: 2^21^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xB: 2^20^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xC: 2^19^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xD: 2^18^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xE: 2^17^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xF: 2^16^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | Note: The watchdog   |                     |
+|   |          |    |    | timer must be        |                     |
+|   |          |    |    | disabled             |                     |
+|   |          |    |    | (WDTn_CTRL.en = 0)   |                     |
+|   |          |    |    | before changing this |                     |
+|   |          |    |    | field.               |                     |
++---+----------+----+----+----------------------+---------------------+
+| 1 | int_e    | R  | 0  | Interrupt Early      |                     |
+| 9 | arly_val | /W |    | Event Threshold      |                     |
+| : |          |    |    |                      |                     |
+| 1 |          |    |    | 0x0: 2^31^ ×         |                     |
+| 6 |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x1: 2^30^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x2: 2^29^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x3: 2^28^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x4: 2^27^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x5: 2^26^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x6: 2^25^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x7: 2^24^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x8: 2^23^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x9: 2^22^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xA: 2^21^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xB: 2^20^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xC: 2^19^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xD: 2^18^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xE: 2^17^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xF: 2^16^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | Note: The watchdog   |                     |
+|   |          |    |    | timer must be        |                     |
+|   |          |    |    | disabled             |                     |
+|   |          |    |    | (WDTn_CTRL.en = 0)   |                     |
+|   |          |    |    | before changing this |                     |
+|   |          |    |    | field.               |                     |
++---+----------+----+----+----------------------+---------------------+
+| 1 | -       | RO | 0  | Reserved             |                     |
+| 5 |          |    |    |                      |                     |
+| : |          |    |    |                      |                     |
+| 1 |          |    |    |                      |                     |
+| 3 |          |    |    |                      |                     |
++---+----------+----+----+----------------------+---------------------+
+| 1 | i        | R  | 0  | Interrupt Early Flag |                     |
+| 2 | nt_early | /W |    |                      |                     |
+|   |          |    |    | A feed sequence      |                     |
+|   |          |    |    | occurred earlier     |                     |
+|   |          |    |    | than the time        |                     |
+|   |          |    |    | determined by the    |                     |
+|   |          |    |    | <em>WDTn_C              |                     |
+|   |          |    |    | TRL</em>.<em>int_early_val</em> |                     |
+|   |          |    |    | field. This flag     |                     |
+|   |          |    |    | will be set even if  |                     |
+|   |          |    |    | <em>WDTn_CTRL</em>.<em>win_en</em> |                     |
+|   |          |    |    | = 0.                 |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0: No interrupt      |                     |
+|   |          |    |    | event                |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 1: Interrupt event   |                     |
+|   |          |    |    | occurred. Generates  |                     |
+|   |          |    |    | a WDT interrupt if   |                     |
+|   |          |    |    | <em>WDTn_CTR            |                     |
+|   |          |    |    | L</em>.<em>wdt_int_en</em> = 1. |                     |
++---+----------+----+----+----------------------+---------------------+
+| 1 | wd       | R  | 0  | WDT Reset Enable     |                     |
+| 1 | t_rst_en | /W |    |                      |                     |
+|   |          |    |    | 0: Disabled          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 1: Enabled           |                     |
++---+----------+----+----+----------------------+---------------------+
+| 1 | wd       | R  | 0  | WDT Interrupt Enable |                     |
+| 0 | t_int_en | /W |    |                      |                     |
+|   |          |    |    | 0: Disabled          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 1: Enabled           |                     |
++---+----------+----+----+----------------------+---------------------+
+| 9 | int_late | R  | 0  | Interrupt Late Flag  |                     |
+|   |          | /W |    |                      |                     |
+|   |          |    |    | A watchdog feed      |                     |
+|   |          |    |    | sequence did not     |                     |
+|   |          |    |    | occur before the     |                     |
+|   |          |    |    | time determined by   |                     |
+|   |          |    |    | the                  |                     |
+|   |          |    |    | <em>WDTn_               |                     |
+|   |          |    |    | CTRL</em>.<em>int_late_val</em> |                     |
+|   |          |    |    | field.               |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0: No interrupt      |                     |
+|   |          |    |    | event.               |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 1: Interrupt event   |                     |
+|   |          |    |    | occurred.            |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | Note: A WDT          |                     |
+|   |          |    |    | interrupt is         |                     |
+|   |          |    |    | generated if the WDT |                     |
+|   |          |    |    | interrupt is enabled |                     |
+|   |          |    |    | (                    |                     |
+|   |          |    |    | WDTn_CTRL.wdt_int_en |                     |
+|   |          |    |    | = 1).                |                     |
++---+----------+----+----+----------------------+---------------------+
+| 8 | en       | R  | 0  | WDT Enable           |                     |
+|   |          | /W |    |                      |                     |
+|   |          |    |    | This field           |                     |
+|   |          |    |    | enables/disables the |                     |
+|   |          |    |    | WDT peripheral       |                     |
+|   |          |    |    | clock.               |                     |
+|   |          |    |    | <em>WDTn_CNT</em>.<em>count</em>   |                     |
+|   |          |    |    | holds its value      |                     |
+|   |          |    |    | while the WDT is     |                     |
+|   |          |    |    | disabled. The WDT    |                     |
+|   |          |    |    | feed sequence must   |                     |
+|   |          |    |    | be performed         |                     |
+|   |          |    |    | immediately before   |                     |
+|   |          |    |    | any change to this   |                     |
+|   |          |    |    | field.               |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0: Disabled          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 1: Enabled           |                     |
++---+----------+----+----+----------------------+---------------------+
+| 7 | rst_     | R  | 0  | Reset Late Event     |                     |
+| : | late_val | /W |    | Threshold            |                     |
+| 4 |          |    |    |                      |                     |
+|   |          |    |    | 0x0: 2^31^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x1: 2^30^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x2: 2^29^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x3: 2^28^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x4: 2^27^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x5: 2^26^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x6: 2^25^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x7: 2^24^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x8: 2^23^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x9: 2^22^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xA: 2^21^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xB: 2^20^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xC: 2^19^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xD: 2^18^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xE: 2^17^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xF: 2^16^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | Note: The watchdog   |                     |
+|   |          |    |    | timer must be        |                     |
+|   |          |    |    | disabled             |                     |
+|   |          |    |    | (WDTn_CTRL.en = 0)   |                     |
+|   |          |    |    | before changing this |                     |
+|   |          |    |    | field.               |                     |
++---+----------+----+----+----------------------+---------------------+
+| 3 | int_     | R  | 0  | Interrupt Late Event |                     |
+| : | late_val | /W |    | Threshold            |                     |
+| 0 |          |    |    |                      |                     |
+|   |          |    |    | 0x0: 2^31^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x1: 2^30^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x2: 2^29^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x3: 2^28^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x4: 2^27^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x5: 2^26^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x6: 2^25^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x7: 2^24^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x8: 2^23^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0x9: 2^22^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xA: 2^21^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xB: 2^20^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xC: 2^19^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xD: 2^18^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xE: 2^17^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | 0xF: 2^16^ ×         |                     |
+|   |          |    |    | <em>t~WDTCLK~</em>          |                     |
+|   |          |    |    |                      |                     |
+|   |          |    |    | Note: The watchdog   |                     |
+|   |          |    |    | timer must be        |                     |
+|   |          |    |    | disabled             |                     |
+|   |          |    |    | (WDTn_CTRL.en = 0)   |                     |
+|   |          |    |    | before changing this |                     |
+|   |          |    |    | field.               |                     |
++---+----------+----+----+----------------------+---------------------+</p>
+<p>: : WDT Control Register</p>
+<p>+----+------+-----+-----+----------------------+---------------------+
+| W  |      |     |     | ##### WDTn_RST       | [0x0004]          |
+| DT |      |     |     |                      |                     |
+| R  |      |     |     |                      |                     |
+| es |      |     |     |                      |                     |
+| et |      |     |     |                      |                     |
++====+======+=====+=====+======================+=====================+
+| Bi | Name | Acc | Re  | Description          |                     |
+| ts |      | ess | set |                      |                     |
++----+------+-----+-----+----------------------+---------------------+
+| 31 | -   | RO  | 0   | Reserved             |                     |
+| :8 |      |     |     |                      |                     |
++----+------+-----+-----+----------------------+---------------------+
+| 7  | r    | R/W | 0<em>~ | Reset Watchdog Timer |                     |
+| :0 | eset |     | ✝~</em> | Count                |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | Writing the WDT feed |                     |
+|    |      |     |     | sequence, in two     |                     |
+|    |      |     |     | consecutive write    |                     |
+|    |      |     |     | instructions, to     |                     |
+|    |      |     |     | this register resets |                     |
+|    |      |     |     | the internal counter |                     |
+|    |      |     |     | to 0x0000 0000.      |                     |
+|    |      |     |     | Perform the          |                     |
+|    |      |     |     | following steps to   |                     |
+|    |      |     |     | perform a WDT feed   |                     |
+|    |      |     |     | sequence:            |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | 1. Write            |                     |
+|    |      |     |     | <em>WDTn_RST.reset</em> =   |                     |
+|    |      |     |     | 0xA5                 |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | 2. Write            |                     |
+|    |      |     |     | <em>WDTn_RST.reset</em> =   |                     |
+|    |      |     |     | 0x5A                 |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | Writes to the        |                     |
+|    |      |     |     | <em>WDTn_CTRL</em>.<em>en</em>     |                     |
+|    |      |     |     | field, which enable  |                     |
+|    |      |     |     | or disable the WDT,  |                     |
+|    |      |     |     | must be the next     |                     |
+|    |      |     |     | instruction          |                     |
+|    |      |     |     | following the WDT    |                     |
+|    |      |     |     | feed sequence.       |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | ^✝^Note: This field  |                     |
+|    |      |     |     | is set to 0 on a POR |                     |
+|    |      |     |     | and is not affected  |                     |
+|    |      |     |     | by any other form of |                     |
+|    |      |     |     | reset.               |                     |
++----+------+-----+-----+----------------------+---------------------+</p>
+<p>: : WDT Reset Register</p>
+<p>+----+------+-----+-----+----------------------+---------------------+
+| W  |      |     |     | ##### WDTn_CLKSEL    | [0x0008]          |
+| DT |      |     |     |                      |                     |
+| C  |      |     |     |                      |                     |
+| lo |      |     |     |                      |                     |
+| ck |      |     |     |                      |                     |
+| So |      |     |     |                      |                     |
+| ur |      |     |     |                      |                     |
+| ce |      |     |     |                      |                     |
+| Se |      |     |     |                      |                     |
+| le |      |     |     |                      |                     |
+| ct |      |     |     |                      |                     |
++====+======+=====+=====+======================+=====================+
+| Bi | Name | Acc | Re  | Description          |                     |
+| ts |      | ess | set |                      |                     |
++----+------+-----+-----+----------------------+---------------------+
+| 31 | -   | RO  | 0   | Reserved             |                     |
+| :3 |      |     |     |                      |                     |
++----+------+-----+-----+----------------------+---------------------+
+| 2  | so   | R/W | 0<em>~ | Clock Source Select  |                     |
+| :0 | urce |     | ✝~</em> |                      |                     |
+|    |      |     |     | See <em>Table 21‑1</em> for |                     |
+|    |      |     |     | available clock      |                     |
+|    |      |     |     | options.             |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | 0: CLK0              |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | 1: CLK1              |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | 2: CLK2              |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | 3: CLK3              |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | 4: CLK4              |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | 5: CLK5              |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | 6: CLK6              |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | 7: CLK7              |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | ^✝^Note: This field  |                     |
+|    |      |     |     | is only reset on a   |                     |
+|    |      |     |     | POR and unaffected   |                     |
+|    |      |     |     | by other resets.     |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | Note: The watchdog   |                     |
+|    |      |     |     | timer must be        |                     |
+|    |      |     |     | disabled             |                     |
+|    |      |     |     | (WDTn_CTRL.en = 0)   |                     |
+|    |      |     |     | before changing this |                     |
+|    |      |     |     | field.               |                     |
++----+------+-----+-----+----------------------+---------------------+</p>
+<p>: : WDT Clock Source Select Register</p>
+<p>+----+------+-----+-----+----------------------+---------------------+
+| W  |      |     |     | ##### WDTn_CNT       | [0x000C]          |
+| DT |      |     |     |                      |                     |
+| C  |      |     |     |                      |                     |
+| ou |      |     |     |                      |                     |
+| nt |      |     |     |                      |                     |
++====+======+=====+=====+======================+=====================+
+| Bi | Name | Acc | Re  | Description          |                     |
+| ts |      | ess | set |                      |                     |
++----+------+-----+-----+----------------------+---------------------+
+| 31 | c    | R   | 0   | WDT Counter          |                     |
+| :0 | ount |     |     |                      |                     |
+|    |      |     |     | This field is a      |                     |
+|    |      |     |     | mirror of the watch  |                     |
+|    |      |     |     | dog timer\'s counter |                     |
+|    |      |     |     | value.               |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | This register is     |                     |
+|    |      |     |     | reset by a system    |                     |
+|    |      |     |     | reset, as well as    |                     |
+|    |      |     |     | the watchdog feeding |                     |
+|    |      |     |     | sequence.            |                     |
+|    |      |     |     |                      |                     |
+|    |      |     |     | Note: The watchdog   |                     |
+|    |      |     |     | timer must be        |                     |
+|    |      |     |     | disabled             |                     |
+|    |      |     |     | (WDTn_CTRL.en = 0)   |                     |
+|    |      |     |     | before reading this  |                     |
+|    |      |     |     | field.               |                     |
++----+------+-----+-----+----------------------+---------------------+</p>
+<p>: : WDT Count Register</p>
 
 
 

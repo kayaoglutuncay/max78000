@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#trng-engine" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -693,6 +698,17 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    TRNG Engine
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -702,6 +718,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#trng-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      TRNG Engine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TRNG Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Registers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -805,6 +877,53 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#trng-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      TRNG Engine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TRNG Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Registers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -820,7 +939,188 @@
 
   <h1>TRNG Engine</h1>
 
-
+<h2 id="trng-engine">TRNG Engine</h2>
+<p>The Analog Devices-supplied Universal Cryptographic Library (UCL)
+provides a function to generate random numbers intended to meet the
+requirements of common security validations. The entropy from one or
+more internal noise sources continually feeds a TRNG, the output of
+which is then processed by software and hardware to generate the number
+returned by the UCL function. Analog Devices works directly with the
+customer\'s accredited testing laboratory to provide any information
+regarding the TRNG needed to support the customer\'s validation
+requirements.</p>
+<p>The general information in this section is provided only for
+completeness; customers are expected to use the Analog Devices UCL to
+generate random numbers.</p>
+<p>Software can use the TRNG engine to generate AES keys using a hardware
+key derivation function (HKDF) and using the TRNG as input to the HKDF.</p>
+<h3 id="registers">Registers</h3>
+<p>See <em>Table 3‑3</em> for the base address of this peripheral/module. See
+<em>Table 1‑1</em> for an explanation of the read and write access of each
+field. Unless specified otherwise, all fields are reset on a system
+reset, soft reset, POR, and the peripheral-specific resets.</p>
+<hr />
+<p>Offset       Register        Name</p>
+<hr />
+<p>[0x0000]   <em>TRNG_CTRL</em>     TRNG Control Register</p>
+<p>[0x0004]   <em>TRNG_STATUS</em>   TRNG Status Register</p>
+<p>[0x0008]   <em>TRNG_DATA</em>     TRNG Data Register</p>
+<hr />
+<p>: : TRNG Register Summary</p>
+<h4 id="register-details">Register Details</h4>
+<p>+----+--------+---+---+-----+----------------------+---------------------+
+| C  |        |   | # |     |                      | [0x0000]          |
+| ry |        |   | # |     |                      |                     |
+| pt |        |   | # |     |                      |                     |
+| og |        |   | # |     |                      |                     |
+| ra |        |   | # |     |                      |                     |
+| ph |        |   |   |     |                      |                     |
+| ic |        |   | T |     |                      |                     |
+| C  |        |   | R |     |                      |                     |
+| on |        |   | N |     |                      |                     |
+| tr |        |   | G |     |                      |                     |
+| ol |        |   | _ |     |                      |                     |
+|    |        |   | C |     |                      |                     |
+|    |        |   | T |     |                      |                     |
+|    |        |   | R |     |                      |                     |
+|    |        |   | L |     |                      |                     |
++====+========+===+===+=====+======================+=====================+
+| Bi | Name   | A |   | Re  | Description          |                     |
+| ts |        | c |   | set |                      |                     |
+|    |        | c |   |     |                      |                     |
+|    |        | e |   |     |                      |                     |
+|    |        | s |   |     |                      |                     |
+|    |        | s |   |     |                      |                     |
++----+--------+---+---+-----+----------------------+---------------------+
+| 3  | -     | R |   | 0   | Reserved             |                     |
+| 1: |        | O |   |     |                      |                     |
+| 16 |        |   |   |     |                      |                     |
++----+--------+---+---+-----+----------------------+---------------------+
+| 15 | k      | R |   | 0   | Wipe Key             |                     |
+|    | eywipe | / |   |     |                      |                     |
+|    |        | W |   |     | Write this field to  |                     |
+|    |        |   |   |     | 1 to wipe the TRNG   |                     |
+|    |        |   |   |     | key.                 |                     |
++----+--------+---+---+-----+----------------------+---------------------+
+| 14 | -     | R |   | 0   | Reserved             |                     |
+| :4 |        | O |   |     |                      |                     |
++----+--------+---+---+-----+----------------------+---------------------+
+| 3  | keygen | R |   | 0   | Generate Key         |                     |
+|    |        | / |   |     |                      |                     |
+|    |        | W |   |     | Write this field to  |                     |
+|    |        |   |   |     | 1 to generate a key  |                     |
+|    |        |   |   |     | using the TRNG.      |                     |
++----+--------+---+---+-----+----------------------+---------------------+
+| 2  | -     | R |   | 0   | Reserved             |                     |
+|    |        | O |   |     |                      |                     |
++----+--------+---+---+-----+----------------------+---------------------+
+| 1  | rnd_ie | R |   | 0   | Random Number        |                     |
+|    |        | / |   |     | Interrupt Enable     |                     |
+|    |        | W |   |     |                      |                     |
+|    |        |   |   |     | This bit enables an  |                     |
+|    |        |   |   |     | interrupt to be      |                     |
+|    |        |   |   |     | generated when       |                     |
+|    |        |   |   |     | <em>TRNG_STATUS</em>.<em>rdy</em>  |                     |
+|    |        |   |   |     | = 1.                 |                     |
+|    |        |   |   |     |                      |                     |
+|    |        |   |   |     | 0: Disabled          |                     |
+|    |        |   |   |     |                      |                     |
+|    |        |   |   |     | 1: Enabled           |                     |
++----+--------+---+---+-----+----------------------+---------------------+
+| 0  | -     | R |   | 0   | Reserved             |                     |
+|    |        | O |   |     |                      |                     |
++----+--------+---+---+-----+----------------------+---------------------+</p>
+<p>: : TRNG Control Register</p>
+<p>+----+---------+---+---+---+----------------------+---------------------+
+| TR |         |   |   | # |                      | [0x0004]          |
+| NG |         |   |   | # |                      |                     |
+| St |         |   |   | # |                      |                     |
+| at |         |   |   | # |                      |                     |
+| us |         |   |   | # |                      |                     |
+|    |         |   |   |   |                      |                     |
+|    |         |   |   | T |                      |                     |
+|    |         |   |   | R |                      |                     |
+|    |         |   |   | N |                      |                     |
+|    |         |   |   | G |                      |                     |
+|    |         |   |   | _ |                      |                     |
+|    |         |   |   | S |                      |                     |
+|    |         |   |   | T |                      |                     |
+|    |         |   |   | A |                      |                     |
+|    |         |   |   | T |                      |                     |
+|    |         |   |   | U |                      |                     |
+|    |         |   |   | S |                      |                     |
++====+=========+===+===+===+======================+=====================+
+| Bi | Name    | A | R |   | Description          |                     |
+| ts |         | c | e |   |                      |                     |
+|    |         | c | s |   |                      |                     |
+|    |         | e | e |   |                      |                     |
+|    |         | s | t |   |                      |                     |
+|    |         | s |   |   |                      |                     |
++----+---------+---+---+---+----------------------+---------------------+
+| 31 | -      | R | 0 |   | Reserved             |                     |
+| :1 |         | O |   |   |                      |                     |
++----+---------+---+---+---+----------------------+---------------------+
+| 0  | rdy     | R | 0 |   | Random Number Ready  |                     |
+|    |         |   |   |   |                      |                     |
+|    |         |   |   |   | This bit is          |                     |
+|    |         |   |   |   | automatically        |                     |
+|    |         |   |   |   | cleared to 0, and a  |                     |
+|    |         |   |   |   | new random number is |                     |
+|    |         |   |   |   | generated when       |                     |
+|    |         |   |   |   | <em>TRNG_DATA</em>.<em>data</em>   |                     |
+|    |         |   |   |   | is read.             |                     |
+|    |         |   |   |   |                      |                     |
+|    |         |   |   |   | 0: Random number     |                     |
+|    |         |   |   |   | generation in        |                     |
+|    |         |   |   |   | progress. The        |                     |
+|    |         |   |   |   | content of           |                     |
+|    |         |   |   |   | <em>TRNG_DATA</em>.<em>data</em>   |                     |
+|    |         |   |   |   | is invalid.          |                     |
+|    |         |   |   |   |                      |                     |
+|    |         |   |   |   | 1:                   |                     |
+|    |         |   |   |   | <em>TRNG_DATA</em>.<em>data</em>   |                     |
+|    |         |   |   |   | contains new 32-bit  |                     |
+|    |         |   |   |   | random data. An      |                     |
+|    |         |   |   |   | interrupt is         |                     |
+|    |         |   |   |   | generated if         |                     |
+|    |         |   |   |   | <em>TRNG_CTRL</em>.<em>rnd_ie</em> |                     |
+|    |         |   |   |   | = 1.                 |                     |
++----+---------+---+---+---+----------------------+---------------------+</p>
+<p>: : TRNG Status Register</p>
+<p>+----+---------+---+---+---+----------------------+---------------------+
+| TR |         |   |   | # |                      | [0x0008]          |
+| NG |         |   |   | # |                      |                     |
+| Da |         |   |   | # |                      |                     |
+| ta |         |   |   | # |                      |                     |
+|    |         |   |   | # |                      |                     |
+|    |         |   |   |   |                      |                     |
+|    |         |   |   | T |                      |                     |
+|    |         |   |   | R |                      |                     |
+|    |         |   |   | N |                      |                     |
+|    |         |   |   | G |                      |                     |
+|    |         |   |   | _ |                      |                     |
+|    |         |   |   | D |                      |                     |
+|    |         |   |   | A |                      |                     |
+|    |         |   |   | T |                      |                     |
+|    |         |   |   | A |                      |                     |
++====+=========+===+===+===+======================+=====================+
+| Bi | Name    | A | R |   | Description          |                     |
+| ts |         | c | e |   |                      |                     |
+|    |         | c | s |   |                      |                     |
+|    |         | e | e |   |                      |                     |
+|    |         | s | t |   |                      |                     |
+|    |         | s |   |   |                      |                     |
++----+---------+---+---+---+----------------------+---------------------+
+| 31 | data    | R | 0 |   | TRNG Data            |                     |
+| :0 |         | O |   |   |                      |                     |
+|    |         |   |   |   | The 32-bit random    |                     |
+|    |         |   |   |   | number generated is  |                     |
+|    |         |   |   |   | available in this    |                     |
+|    |         |   |   |   | field when           |                     |
+|    |         |   |   |   | <em>TRN                 |                     |
+|    |         |   |   |   | G_STATUS</em>.<em>rdy</em> = 1. |                     |
++----+---------+---+---+---+----------------------+---------------------+</p>
+<p>: : TRNG Data Register</p>
 
 
 
