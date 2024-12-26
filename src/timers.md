@@ -1517,8 +1517,7 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>Timer PWM Match</strong><br>This field sets the count value for the first transition period of the PWM cycle in PWM mode. At the end of the cycle, when
-        <a href="#table19-9">TMRn_CNT</a> = <a href="#table19-10">TMRn_CMP</a>, the PWM output transitions to the second period of the PWM cycle. The second PWM period count is stored in <a href="#table19-10">TMRn_CMP</a>. <a href="#table19-11">TMRn_PWM</a>.<em>pwm</em> must be less than
-        <a href="#table19-10">TMRn_CMP</a> for PWM mode operation.
+        <a href="#table19-9">TMRn_CNT</a> = <a href="#table19-10">TMRn_CMP</a>, the PWM output transitions to the second period of the PWM cycle. The second PWM period count is stored in <a href="#table19-10">TMRn_CMP</a>. <a href="#table19-11">TMRn_PWM</a>.<em>pwm</em> must be less than <a href="#table19-10">TMRn_CMP</a> for PWM mode operation.
         <p>Timer Capture Value</p>
         <p>In capture, compare, and capture/compare modes, this field is used to store the <a href="#table19-9">TMRn_CNT</a> value when a Capture, Compare, or Capture/Compare event occurs.</p></td>
     </tr>
@@ -1558,8 +1557,9 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>0</td>
         <td><strong>TimerB Write Protect in Dual Timer Mode</strong><br> Set this field to 0 to write protect the TimerB fields in the <a href="#table19-9">TMRn_CNT</a>[31:16] and <a href="#table19-11">TMRn_PWM</a>.<em>pwm[31:16]</em>. When this field is set to 0, 32-bit writes to the <a href="#table19-9">TMRn_CNT</a> and
         <a href="#table19-11">TMRn_PWM</a> registers only modify the lower 16-bits associated with TimerA.
-        <p>0: Enabled.</p>
-        <p>1: Disabled.</p>
+        <div style="margin-left: 20px;">
+        0: Enabled.<br>
+        1: Disabled.</div>
         <p><em>Note: This field always reads 0 if the timer is configured as a 32-bit cascade timer.</em></p></td>
     </tr>
     <tr>
@@ -1568,8 +1568,9 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R</td>
         <td>0</td>
         <td><strong>TimerB Write Done</strong><br> This field is cleared to 0 by the hardware when the software performs a write to <a href="#table19-9">TMRn_CNT</a>[31:16] or <a href="#table19-11">TMRn_PWM</a>.<em>pwm[31:16]</em> when in dual timer mode. Wait until the field is set to 1 before proceeding.
-        <p>0: Operation in progress.</p>
-        <p>1: Operation complete.</p>
+        <div style="margin-left: 20px;">
+        0: Operation in progress.<br>
+        1: Operation complete.</div>
         </td>
     </tr>
     <tr>
@@ -1585,8 +1586,9 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W1C</td>
         <td>0</td>
         <td><strong>TimerB Interrupt Event</strong><br> This field is set when a TimerB interrupt event occurs. Write 1 to clear.
-        <p>0: No event.</p>
-        <p>1: Interrupt event occurred.</p>
+        <div style="margin-left: 20px;">
+        0: No event.<br>
+        1: Interrupt event occurred.</div>
         </td>
     </tr>
     <tr>
@@ -1602,8 +1604,9 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerA Dual Timer Mode Write Protect</strong><br> This field disables write access to the <a href="#table19-9">TMRn_CNT</a>[15:0] and <a href="#table19-11">TMRn_PWM</a>.<em>pwm[15:0]</em> fields so that only the 16 bits associated with updating TimerA are modified during writes to the <a href="#table19-9">TMRn_CNT</a> and <a href="#table19-11">TMRn_PWM</a> registers.
-        <p>0: Enabled.</p>
-        <p>1: Disabled.</p>
+        <div style="margin-left: 20px;">
+        0: Enabled.<br>
+        1: Disabled.</div>
         <p><em>Note: This field always reads 0 if the timer is configured as a 32-bit cascade timer.</em></p></td>
     </tr>
     <tr>
@@ -1612,8 +1615,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R</td>
         <td>0</td>
         <td><strong>TimerA Write Done</strong><br> This field is cleared to 0 by the hardware when the application software performs a write to <a href="#table19-9">TMRn_CNT</a>[15:0]or <a href="#table19-11">TMRn_PWM</a>.<em>pwm[15:0]</em> when in dual 16-bit timer mode. Wait until the field reads 1 before proceeding.
-        <p>0: Operation in progress.</p>
-        <p>1: Operation complete.</p></td>
+        <div style="margin-left: 20px;">
+        0: Operation in progress.<br>
+        1: Operation complete.</div>
+        </td>
     </tr>
     <tr>
         <td>7:1</td>
@@ -1628,8 +1633,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>W1C</td>
         <td>0</td>
         <td><strong>TimerA Interrupt Event</strong><br> This field is set when a TimerA interrupt event occurs. Write 1 to clear.
-        <p>0: No event.</p>
-        <p>1: Interrupt event occurred.</p></td>
+        <div style="margin-left: 20px;">
+        0: No event.<br>
+        1: Interrupt event occurred.</div>
+        </td>
     </tr>
 </tbody>
 </table>
@@ -1659,8 +1666,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerB Enable</strong>
-        <p>0: Disabled.</p>
-        <p>1: Enabled.</p></td>
+        <div style="margin-left: 20px;">
+        0: Disabled.<br>
+        1: Enabled.</div>
+        </td>
     </tr>
     <tr>
         <td>30</td>
@@ -1668,8 +1677,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerB Clock Enable</strong>
-        <p>0: Disabled.</p>
-        <p>1: Enabled.</p></td>
+        <div style="margin-left: 20px;">
+        0: Disabled.<br>
+        1: Enabled.</div>
+        </td>
     </tr>
     <tr>
         <td>29</td>
@@ -1677,8 +1688,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>W1O</td>
         <td>0</td>
         <td><strong>TimerB Reset</strong>
-        <p>0: Normal operation.</p>
-        <p>1: Reset TImerB.</p></td>
+        <div style="margin-left: 20px;">
+        0: Normal operation.<br>
+        1: Reset TImerB.</div>
+        </td>
     </tr>
     <tr>
         <td>28:24</td>
@@ -1694,7 +1707,7 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>0</td>
         <td><strong>TimerB Prescaler Select</strong><br> The <em>clkdiv_b</em> field selects a prescaler that divides the timer's source clock to set the timer's count clock as follows:
         <p><em>f</em><sub>CNT_CLK</sub>=<em>f</em><sub>CLK_SOURCE</sub> / <em>prescaler</em></p>
-        <p>See <em>Operating Modes</em> for details on which timer modes use the prescaler.</p>
+        <p>See <a href="#operating-modes">Operating Modes</a> for details on which timer modes use the prescaler.</p>
         <table border="0">
         <tbody>
         <tr>
@@ -1850,8 +1863,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>1</td>
         <td><strong>TimerA PWM Output <em>ϕA′</em> Disable</strong><br> Set this field to 0 to enable the <em>ϕA′</em> output signal. The ϕA′ output signal is disabled by default.</p>
-        <p>0: Enable the PWM <em>ϕA′</em> output signal.</p>
-        <p>1: Disable PWM <em>ϕA′</em> output signal.</p></td>
+        <div style="margin-left: 20px;">
+        0: Enable the PWM <em>ϕA′</em> output signal.<br>
+        1: Disable PWM <em>ϕA′</em> output signal.</div>
+        </td>
     </tr>
     <tr>
         <td>11</td>
@@ -1859,8 +1874,9 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerA PWM Output <em>ϕA′</em> Polarity Bit</strong><br> Set this field to 1 to invert the PWM <em>ϕA</em>′ signal.
-        <p>0: Do not invert the PWM <em>ϕA′</em> output signal.</p>
-        <p>1: Invert the PWM <em>ϕA′</em> output signal.</p>
+        <div style="margin-left: 20px;">
+        0: Do not invert the PWM <em>ϕA′</em> output signal.<br>
+        1: Invert the PWM <em>ϕA′</em> output signal.</div>
         </td>
     </tr>
     <tr>
@@ -1869,8 +1885,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerA PWM Output <em>ϕA′</em> Polarity Bit</strong><br> Set this field to 1 to invert the PWM <em>ϕA</em> signal.
-        <p>0: Do not invert the <em>ϕA</em> PWM output signal.</p>
-        <p>1: Invert the <em>ϕA</em> output signal.</p></td>
+        <div style="margin-left: 20px;">
+        0: Do not invert the <em>ϕA</em> PWM output signal.<br>
+        1: Invert the <em>ϕA</em> output signal.</div>
+        </td>
     </tr>
     <tr>
         <td>9</td>
@@ -1878,8 +1896,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerA/TimerB PWM Synchronization Mode</strong>
-        <p>0: Disabled</p>
-        <p>1: Enabled</p></td>
+        <div style="margin-left: 20px;">
+        0: Disabled<br>
+        1: Enabled</div>
+        </td>
     </tr>
     <tr>
         <td>8</td>
@@ -1887,7 +1907,7 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerA Polarity</strong><br> This field selects the polarity of the timer's input and output signal. This setting is not used if the GPIO is not configured for the
-        timer's alternate function. This field's usage and settings are operating mode specific. See the <em>Operating Modes</em> section for details on the mode selected. </td>
+        timer's alternate function. This field's usage and settings are operating mode specific. See the <a href="#operating-modes">Operating Modes</a> section for details on the mode selected. </td>
     </tr>
     <tr>
         <td>7:4</td>
@@ -1895,11 +1915,8 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerA Prescaler Select</strong><br> The <em>clkdiv_a</em> field selects a prescaler that divides the timer's clock source to set the timer's count clock as follows:
-        <p>
-        <em>f</em><sub>CNT_CLK</sub> = <em>f</em><sub>CLK_SOURCE</sub> / <em>prescaler</em>
-        </p>
-        <p>See the <em>Operating Modes</em> section to determine which modes use
-        the prescaler.</p>
+        <p><em>f</em><sub>CNT_CLK</sub> = <em>f</em><sub>CLK_SOURCE</sub> / <em>prescaler</em>
+        </p> <p>See the <a href="#operating-modes">Operating Modes</a> section to determine which modes use the prescaler.</p>
         <table border="0">
         <tbody>
         <tr>
@@ -2047,8 +2064,7 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>hi_b</td>
         <td>R/W</td>
         <td>0</td>
-        <td><strong>TimerA Non-Overlapping High Compare 1</strong><br> The 8-bit timer count value of non-overlapping time between the falling edge of the PWM output 
-        <em>ϕA</em>′ (phase A prime) and the next rising edge of the PWM output <em>ϕA</em> <em>(phase A)</em>.</p></td>
+        <td><strong>TimerA Non-Overlapping High Compare 1</strong><br> The 8-bit timer count value of non-overlapping time between the falling edge of the PWM output <em>ϕA</em>′ (phase A prime) and the next rising edge of the PWM output <em>ϕA</em> <em>(phase A)</em>.</p></td>
     </tr>
     <tr>
         <td>23:16</td>
@@ -2099,8 +2115,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>32-bit Cascade Timer Enable</strong><br> This field is only supported by timer instances with support for 32-bit cascade mode.
-        <p>0: Dual 16-bit timers</p>
-        <p>1: 32-bit cascade timer</p></td>
+        <div style="margin-left: 20px;">
+        0: Dual 16-bit timers<br>
+        1: 32-bit cascade timer</div>
+        </td>
     </tr>
     <tr>
         <td>30</td>
@@ -2122,25 +2140,31 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerB Wake-Up Function</strong>
-        <p>0: Disabled</p>
-        <p>1: Enabled</p></td>
+        <div style="margin-left: 20px;">
+        0: Disabled<br>
+        1: Enabled</div>
+        </td>
     </tr>
     <tr>
         <td>27</td>
         <td>sw_capevent_b</td>
         <td>R/W</td>
         <td>0</td>
-        <td><strong>TimerB Software Event Capture</strong><br> Write this field to 1 to initiate a software event capture when operating the timer in capture mode to perform a software event capture.</p>
-        <p>0: No event</p>
-        <p>1: Reserved</p></td>
+        <td><strong>TimerB Software Event Capture</strong><br> Write this field to 1 to initiate a software event capture when operating the timer in capture mode to perform a software event capture.
+        <div style="margin-left: 20px;">
+        0: No event<br>
+        1: Reserved</div>
+        </td>
     </tr>
     <tr>
         <td>26:25</td>
         <td>capevent_sel_b</td>
         <td>R/W</td>
         <td>0</td>
-        <td><strong>TimerB Event Capture Selection</strong><br> Set this field to the desired capture event source. See <em>Table 19‑2</em> for available capture event 0 and capture event 1 options.</p>
-        <p>0-3: Reserved</p></td>
+        <td><strong>TimerB Event Capture Selection</strong><br> Set this field to the desired capture event source. See <a href="#table19-2">Table 19‑2</a> for available capture event 0 and capture event 1 options.
+        <div style="margin-left: 20px;">
+        0-3: Reserved</div>
+        </td>
     </tr>
     <tr>
         <td>24</td>
@@ -2148,8 +2172,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerB Interrupt Enable</strong>
-        <p>0: Disabled</p>
-        <p>1: Enabled</p></td>
+        <div style="margin-left: 20px;">
+        0: Disabled<br>
+        1: Enabled</div>
+        </td>
     </tr>
     <tr>
         <td>23</td>
@@ -2157,8 +2183,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerB Negative Edge Trigger for Event</strong>
-        <p>0: Rising-edge trigger</p>
-        <p>1: Falling-edge trigger</p></td>
+        <div style="margin-left: 20px;">
+        0: Rising-edge trigger<br>
+        1: Falling-edge trigger</div>
+        </td>
     </tr>
     <tr>
         <td>22:20</td>
@@ -2185,8 +2213,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>RO</td>
         <td>0</td>
         <td><strong>TimerB Clock Ready Status</strong><br> This field indicates if the timer clock is ready.
-        <p>0: Timer clock not ready or synchronization in progress</p>
-        <p>1: Timer clock is ready</p></td>
+        <div style="margin-left: 20px;">
+        0: Timer clock not ready or synchronization in progress<br>
+        1: Timer clock is ready</div>
+        </td>
     </tr>
     <tr>
         <td>18</td>
@@ -2194,8 +2224,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>RO</td>
         <td>0</td>
         <td><strong>TimerB Clock Enable Status</strong><br> Set this field to 1 to enable the TimerB clock.
-        <p>0: Timer not enabled or synchronization in progress</p>
-        <p>1: Timer is enabled</p></td>
+        <div style="margin-left: 20px;">
+        0: Timer not enabled or synchronization in progress<br>
+        1: Timer is enabled</div>
+        </td>
     </tr>
     <tr>
         <td>17:16</td>
@@ -2203,12 +2235,14 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerB Clock Source</strong><br> See <em>Table 19‑1</em> for the clock sources supported by each instance.
-        <p>Note: In cascade 32-bit mode this field must be set to the same value
-        selected in the <a href="#table19-15">TMRn_CTRL1</a>.clksel_a field.</p>
-        <p>0: Clock option 0.</p>
-        <p>1: Clock option 1.</p>
-        <p>2: Clock option 2.</p>
-        <p>3: Clock option 3.</p></td>
+        <p><em>Note: In cascade 32-bit mode this field must be set to the same value
+        selected in the <a href="#table19-15">TMRn_CTRL1</a>.<em>clksel_a</em> field.</em></p>
+        <div style="margin-left: 20px;">
+        0: Clock option 0.<br>
+        1: Clock option 1.<br>
+        2: Clock option 2.<br>
+        3: Clock option 3.</div>
+        </td>
     </tr>
     <tr>
         <td>15</td>
@@ -2241,8 +2275,9 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerA Wake-Up Function</strong>
-        <p>0: Disabled</p>
-        <p>1: Enabled.</p>
+        <div style="margin-left: 20px;">
+        0: Disabled<br>
+        1: Enabled.</div>
         </td>
     </tr>
     <tr>
@@ -2251,8 +2286,9 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerA Software Event capture</strong>
-        <p>0: No software capture event triggered</p>
-        <p>1: Trigger software capture event</p>
+        <div style="margin-left: 20px;">
+        0: No software capture event triggered<br>
+        1: Trigger software capture event</div>
         </td>
     </tr>
     <tr>
@@ -2260,11 +2296,13 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>capevent_sel_a</td>
         <td>R/W</td>
         <td>0</td>
-        <td><strong>TimerA Event capture Selection</strong><br>Set this field to the desired capture event source. See <em>Table 19‑2</em> for available capture event 0 and capture event 1 options.</p>
-        <p>0: Capture event 0</p>
-        <p>1: Capture event 1</p>
-        <p>2: Capture event 2</p>
-        <p>3: Capture event 3</p></td>
+        <td><strong>TimerA Event capture Selection</strong><br>Set this field to the desired capture event source. See <a href="#table19-2">Table 19‑2</a> for available capture event 0 and capture event 1 options.
+        <div style="margin-left: 20px;">
+        0: Capture event 0<br>
+        1: Capture event 1<br>
+        2: Capture event 2<br>
+        3: Capture event 3</div>
+        </td>
     </tr>
     <tr>
         <td>8</td>
@@ -2272,8 +2310,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerA Interrupt Enable</strong>
-        <p>0: Disabled</p>
-        <p>1: Enabled</p></td>
+        <div style="margin-left: 20px;">
+        0: Disabled<br>
+        1: Enabled</div>
+        </td>
     </tr>
     <tr>
         <td>7</td>
@@ -2281,8 +2321,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerA Edge Trigger Selection for Event</strong>
-        <p>0: Positive-edge triggered</p>
-        <p>1: Negative-edge triggered</p></td>
+        <div style="margin-left: 20px;">
+        0: Positive-edge triggered<br>
+        1: Negative-edge triggered</div>
+        </td>
     </tr>
     <tr>
         <td>6:4</td>
@@ -2308,9 +2350,11 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>clkrdy_a</td>
         <td>RO</td>
         <td>0</td>
-        <td><strong>TimerA Clock Ready</strong><br> This field is set to 1 after software enables the TimerA clock by writing 1 to the BBBVVVXXXX
-        <p>0: Timer not enabled or synchronization in progress</p>
-        <p>1: TimerA clock is ready</p></td>
+        <td><strong>TimerA Clock Ready</strong><br> This field is set to 1 after software enables the TimerA clock by writing 1 to the 
+        <div style="margin-left: 20px;">
+        0: Timer not enabled or synchronization in progress<br>
+        1: TimerA clock is ready</div>
+        </td>
     </tr>
     <tr>
         <td>2</td>
@@ -2318,20 +2362,23 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W</td>
         <td>0</td>
         <td><strong>TimerA Clock Enable</strong><br> Write this field to 1 to enable the TimerA clock.
-        <p>0: Timer not enabled or synchronization in progress</p>
-        <p>1: Timer is enabled</p></td>
+        <div style="margin-left: 20px;">
+        0: Timer not enabled or synchronization in progress<br>
+        1: Timer is enabled</div>
+        </td>
     </tr>
     <tr>
         <td>1:0</td>
         <td>clksel_a</td>
         <td>R/W</td>
         <td>0</td>
-        <td><strong>Clock Source TimerA</strong><br> See <em>Table 19‑1</em> for the available clock options for each timer instance.
-        <p><em>Note: In cascade 32-bit mode the <a href="#table19-15">TMRn_CTRL1</a>.clksel_b field must be set to the same value as this field.</em></p>
-        <p>0: Clock option 0</p>
-        <p>1: Clock option 1</p>
-        <p>2: Clock option 2</p>
-        <p>3: Clock option 3</p></td>
+        <td><strong>Clock Source TimerA</strong><br> See <em>Table 19‑1</em> for the available clock options for each timer instance. <p><em>Note: In cascade 32-bit mode the <a href="#table19-15">TMRn_CTRL1</a>.clksel_b field must be set to the same value as this field.</em></p>
+        <div style="margin-left: 20px;">
+        0: Clock option 0<br>
+        1: Clock option 1<br>
+        2: Clock option 2<br>
+        3: Clock option 3</div>
+        </td>
     </tr>
 </tbody>
 </table>
@@ -2368,8 +2415,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W1C</td>
         <td>1</td>
         <td><strong>TimerB Wake-Up Event</strong><br> This flag is set when a wake-up event occurs for TimerB. Write 1 to clear.
-        <p>0: No event</p>
-        <p>1: Wake-up event occurred</p></td>
+        <div style="margin-left: 20px;">
+        0: No event<br>
+        1: Wake-up event occurred</div>
+        </td>
     </tr>
     <tr>
         <td>15:1</td>
@@ -2384,8 +2433,10 @@ See [Table 1-1](index.md#table1-1-field-access-definitions) for an explanation o
         <td>R/W1C</td>
         <td>1</td>
         <td><strong>TimerA Wake-Up Event</strong><br> This flag is set when a wake-up event occurs for TimerA. Write 1 to clear.
-        <p>0: No event</p>
-        <p>1: Wake-up event occurred</p></td>
+        <div style="margin-left: 20px;">
+        0: No event<br>
+        1: Wake-up event occurred</div>
+        </td>
     </tr>
 </tbody>
 </table>

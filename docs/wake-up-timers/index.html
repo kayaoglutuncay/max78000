@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#wake-up-timer-wut" class="md-skip">
+        <a href="#basic-operation" class="md-skip">
           Skip to content
         </a>
       
@@ -633,16 +633,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#wake-up-timer-wut" class="md-nav__link">
-    <span class="md-ellipsis">
-      Wake-Up Timer (WUT)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Wake-Up Timer (WUT)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#basic-operation" class="md-nav__link">
     <span class="md-ellipsis">
       Basic Operation
@@ -650,8 +640,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#one-shot-mode-0" class="md-nav__link">
     <span class="md-ellipsis">
       One-Shot Mode (0)
@@ -679,11 +669,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#continuous-mode-1" class="md-nav__link">
     <span class="md-ellipsis">
@@ -691,8 +676,7 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Continuous Mode (1)">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#continuous-mode-timer-period" class="md-nav__link">
@@ -725,8 +709,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#registers" class="md-nav__link">
     <span class="md-ellipsis">
       Registers
@@ -742,11 +726,6 @@
       Register Details
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -968,16 +947,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#wake-up-timer-wut" class="md-nav__link">
-    <span class="md-ellipsis">
-      Wake-Up Timer (WUT)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Wake-Up Timer (WUT)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#basic-operation" class="md-nav__link">
     <span class="md-ellipsis">
       Basic Operation
@@ -985,8 +954,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#one-shot-mode-0" class="md-nav__link">
     <span class="md-ellipsis">
       One-Shot Mode (0)
@@ -1014,11 +983,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#continuous-mode-1" class="md-nav__link">
     <span class="md-ellipsis">
@@ -1026,8 +990,7 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Continuous Mode (1)">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#continuous-mode-timer-period" class="md-nav__link">
@@ -1060,8 +1023,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#registers" class="md-nav__link">
     <span class="md-ellipsis">
       Registers
@@ -1077,11 +1040,6 @@
       Register Details
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1107,216 +1065,240 @@
 
   <h1>Wake-Up Timer (WUT)</h1>
 
-<h2 id="wake-up-timer-wut">Wake-Up Timer (WUT)</h2>
 <p>The WUT is a unique instance of a 32-bit timer.</p>
 <ul>
+<li>The wake-up timer uses the is 32.768kHz RTC source.</li>
+<li>Programmable prescaler with values from 1 to 4096.</li>
 <li>
-<p>The wake-up timer uses the is 32.768kHz RTC source.</p>
+<p>Supports three timer modes, all of which can wake the device from low-power modes:</p>
 </li>
 <li>
-<p>Programmable prescaler with values from 1 to 4096.</p>
+<p>One-Shot: The timer counts up to the terminal value, generates a wake-up timer event then halts.</p>
 </li>
 <li>
-<p>Supports three timer modes, all of which can wake the device from
-    low-power modes:</p>
-<ul>
-<li>
-<p>One-Shot: The timer counts up to the terminal value, generates a
-    wake-up timer event then halts.</p>
+<p>Continuous: The timer counts up to the terminal value, generates a wake-up timer event then continues counting.</p>
 </li>
 <li>
-<p>Continuous: The timer counts up to the terminal value, generates
-    a wake-up timer event then continues counting.</p>
-</li>
-<li>
-<p>Compare: The timer counts up to the terminal value, generates a
-    wake-up timer event, resets the count and continues counting.</p>
-</li>
-</ul>
+<p>Compare: The timer counts up to the terminal value, generates a wake-up timer event, resets the count and continues counting.</p>
 </li>
 <li>
 <p>Independent interrupt handler (WUT_IRQn).</p>
 </li>
 </ul>
-<h3 id="basic-operation">Basic Operation</h3>
-<p>The timer modes operate by incrementing the <em>WUT_CNT</em> register. The
-<em>WUT_CNT</em> register is always readable, even while the timer is enabled
-and counting.</p>
+<h2 id="basic-operation">Basic Operation</h2>
+<p>The timer modes operate by incrementing the <a href="#table20-3">WUT_CNT</a> register. The <a href="#table20-3">WUT_CNT</a>register is always readable, even while the timer is enabled and counting.</p>
 <p>Each timer mode has a user-configurable timer period, which terminates
 on the timer clock cycle following the end of the timer period
 condition. The end of a timer period always sets the corresponding
 interrupt flag and generates a wake-up timer interrupt (WUT_IRQn) if
 enabled.</p>
-<p>The timer peripheral automatically sets <em>WUT_CNT</em> to 1 at the end of a
-timer period, but <em>WUT_CNT</em> is set to 0 following a system reset. This
+<p>The timer peripheral automatically sets <a href="#table20-3">WUT_CNT</a> to 1 at the end of a
+timer period, but <a href="#table20-3">WUT_CNT</a> is set to 0 following a system reset. This
 means the first timer period following a system reset is one timer clock
-longer than subsequent timer periods if <em>WUT_CNT</em> is not initialized to
+longer than subsequent timer periods if <a href="#table20-3">WUT_CNT</a> is not initialized to
 1 during the timer configuration step.</p>
-<p>The timer clock frequency, <em>f~CNT_CLK~</em>, is a divided version of the
-32.768kHz RTC clock, as shown in <em>Equation 20‑1</em>.</p>
-<p>Equation ‑: Wake-Up Timer Clock Frequency</p>
-<div class="arithmatex">\[f_{CNT\text{\_}CLK} = \frac{f_{RTC\text{\_}CLK}}{prescaler}\]</div>
-<p>The divisor (prescaler) can be set from 1 to 4096 using the concatenated
-fields <em>WUT_CTRL</em>.<em>pres3</em>:<em>WUT_CTRL</em>.<em>pres,</em> as shown in <em>Table 20‑1</em>.</p>
-<hr />
-<p><em>WUT_CTRL</em>.<em>pres3</em>   <em>WUT_CTRL</em>.<em>pres</em>   Prescaler            <em>f~CNT_CLK~</em>
-                                                                (Hz)</p>
-<hr />
-<p>0                    0b000               1                    32,768</p>
-<p>0                    0b001               2                    16,384</p>
-<p>0                    0b010               4                    8,192</p>
-<p>0                    0b011               8                    4,096</p>
-<p>0                    0b100               16                   2,048</p>
-<p>0                    0b101               32                   1,024</p>
-<p>0                    0b110               64                   512</p>
-<p>0                    0b111               128                  256</p>
-<p>1                    0b000               256                  128</p>
-<p>1                    0b001               512                  64</p>
-<p>1                    0b010               1024                 32</p>
-<p>1                    0b011               2048                 16</p>
-<p>1                    0b100               4096                 8</p>
-<p>1                    0b101               Reserved             Reserved</p>
-<p>1                    0b110               Reserved             Reserved</p>
-<p>1                    0b111               Reserved             Reserved</p>
-<hr />
-<p>: : MAX78000 WUT Clock Period</p>
-<h3 id="one-shot-mode-0">One-Shot Mode (0)</h3>
-<p>In one-shot mode, the timer peripheral increments the <em>WUT_CNT</em> register
-until it matches the <em>WUT_CMP</em> register and then stops incrementing and
-disables the timer. In this mode, the timer must be re-enabled to start
-another one-shot mode event.</p>
-<figure>
-<img src="media/image1.emf" />
-<figcaption><p>: One-Shot Mode Diagram</p></figcaption>
-</figure>
+<p>The timer clock frequency, <em>f<sub>CNT_CLK</sub></em>, is a divided version
+of the 32.768kHz RTC clock, as shown in <a href="#equation20-1">Equation 20‑1</a>.</p>
+<p><em>Equation 20-1: Wake-Up Timer Clock Frequency</em>
+<a name="equation20-1"></a></p>
+<div class="arithmatex">\[
+f_{CNT\text{_CLK}} = \frac{f_{RTC\text{_CLK}}}{prescaler}
+\]</div>
+<p>The divisor (prescaler) can be set from 1 to 4096 using the concatenated fields <a href="#table20-7">WUT_CTRL</a>.<em>pres3</em>:<a href="#table20-7">WUT_CTRL</a>.<em>pres,</em> as shown in <a href="#table20-1">Table 20‑1</a>.</p>
+<p><em>Table 20-1: MAX78000 WUT Clock Period</em>
+<a name="table20-1"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th><a href="#table20-7">WUT_CTRL</a>.<em>pres3</em></th>
+        <th><a href="#table20-7">WUT_CTRL</a>.<em>pres</em></th>
+        <th>Prescaler</th>
+        <th><em>f<sub>CNT_CLK</sub></em>(Hz)</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>0</td>
+        <td>0b000</td>
+        <td>1</td>
+        <td>32,768</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>0b001</td>
+        <td>2</td>
+        <td>16,384</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>0b010</td>
+        <td>4</td>
+        <td>8,192</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>0b011</td>
+        <td>8</td>
+        <td>4,096</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>0b100</td>
+        <td>16</td>
+        <td>2,048</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>0b101</td>
+        <td>32</td>
+        <td>1,024</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>0b110</td>
+        <td>64</td>
+        <td>512</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>0b111</td>
+        <td>128</td>
+        <td>256</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>0b000</td>
+        <td>256</td>
+        <td>128</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>0b001</td>
+        <td>512</td>
+        <td>64</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>0b010</td>
+        <td>1024</td>
+        <td>32</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>0b011</td>
+        <td>2048</td>
+        <td>16</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>0b100</td>
+        <td>4096</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>0b101</td>
+        <td>Reserved</td>
+        <td>Reserved</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>0b110</td>
+        <td>Reserved</td>
+        <td>Reserved</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>0b111</td>
+        <td>Reserved</td>
+        <td>Reserved</td>
+    </tr>
+</tbody>
+</table>
 
-<h4 id="one-shot-mode-timer-period">One-Shot Mode Timer Period</h4>
-<p>The timer period ends on the timer clock when <em>WUT_CNT</em> = <em>WUT_CMP</em>.</p>
-<p>The timer peripheral automatically performs the following actions at the
-end of the timer period:</p>
+<h2 id="one-shot-mode-0">One-Shot Mode (0)</h2>
+<p>In one-shot mode, the timer peripheral increments the <a href="#table20-3">WUT_CNT</a> register until it matches the <a href="#table20-4">WUT_CMP</a> register and then stops incrementing and disables the timer. In this mode, the timer must be re-enabled to start another one-shot mode event.</p>
+<p><em>Figure 20-1: One-Shot Mode Diagram</em>
+<a name="figure20-1"></a></p>
+<p><img alt="Figure 20-1" src="../assets/images/figure20-1.svg" /></p>
+<h3 id="one-shot-mode-timer-period">One-Shot Mode Timer Period</h3>
+<p>The timer period ends on the timer clock when <a href="#table20-3">WUT_CNT</a> = <a href="#table20-4">WUT_CMP</a>.</p>
+<p>The timer peripheral automatically performs the following actions at the end of the timer period:</p>
 <ol>
-<li>
-<p>1. <em>WUT_CNT</em> is reset to 1.</p>
-</li>
-<li>
-<p>2. The timer is disabled by setting <em>WUT_CTRL</em>.<em>ten</em> = 0.</p>
-</li>
-<li>
-<p>3. The timer interrupt bit <em>WUT_INTR</em>.<em>irq_clr</em> is set and wakes up
-    the device if the wake-up timer is enabled as a wake-up event,
-    generating an interrupt.</p>
-</li>
+<li><a href="#table20-3">WUT_CNT</a> is reset to 1.</li>
+<li>The timer is disabled by setting <a href="#table20-7">WUT_CTRL</a>.<em>ten</em> = 0.</li>
+<li>The timer interrupt bit <a href="#table20-6">WUT_INTR</a>.<em>irq_clr</em> is set and wakes up the device if the wake-up timer is enabled as a wake-up event, generating an interrupt.</li>
 </ol>
-<h4 id="one-shot-mode-configuration">One-Shot Mode Configuration</h4>
+<h3 id="one-shot-mode-configuration">One-Shot Mode Configuration</h3>
 <p>Configure the timer for one-shot mode by performing the following steps:</p>
 <ol>
+<li>Set <a href="#table20-7">WUT_CTRL</a>.<em>ten</em> = 0 to disable the timer.</li>
+<li>Set <a href="#table20-7">WUT_CTRL</a>.<em>tmode</em> to 0 to select one-shot mode.</li>
+<li>Set <a href="#table20-7">WUT_CTRL</a>.<em>pres3</em>:<a href="#table20-7">WUT_CTRL</a>.<em>pres</em> to determine the timer period.</li>
 <li>
-<p>1. Set <em>WUT_CTRL</em>.<em>ten</em> = 0 to disable the timer.</p>
+<p>Enable the wake-up timer as a wake-up source by setting <em>GCR_PM</em>.<em>wut_we</em> to 1.</p>
+<p>a. If desired, register a wake-up interrupt handler (WUT_IRQn).</p>
 </li>
 <li>
-<p>2. Set <em>WUT_CTRL</em>.<em>tmode</em> to 0 to select one-shot mode.</p>
+<p>Write an initial value to the <a href="#table20-3">WUT_CNT</a> register, if desired. This effects only the first period; subsequent timer periods always reset the <a href="#table20-3">WUT_CNT</a> register to 1.</p>
 </li>
-<li>
-<p>3. Set <em>WUT_CTRL</em>.<em>pres3</em>:<em>WUT_CTRL</em>.<em>pres</em> to determine the timer
-    period.</p>
-</li>
-<li>
-<p>4. Enable the wake-up timer as a wake-up source by setting
-    <em>GCR_PM</em>.<em>wut_we</em> to 1.</p>
-<ol>
-<li>a. If desired, register a wake-up interrupt handler (WUT_IRQn).</li>
-</ol>
-</li>
-<li>
-<p>5. Write an initial value to the <em>WUT_CNT</em> register, if desired.
-    This effects only the first period; subsequent timer periods always
-    reset the <em>WUT_CNT</em> register to 1.</p>
-</li>
-<li>
-<p>6. Write the compare value to the <em>WUT_CMP</em> register.</p>
-</li>
-<li>
-<p>7. Clear the wake-up timer interrupt flag by writing 0 to
-    <em>WUT_INTR</em>.<em>irq_clr</em>.</p>
-</li>
-<li>
-<p>8. Set <em>WUT_CTRL</em>.<em>ten</em> to 1 to enable the timer.</p>
-</li>
-<li>
-<p>9. Enter a low-power sleep mode. See <em>Low-Power Modes</em> for details.</p>
-</li>
+<li>Write the compare value to the <a href="#table20-4">WUT_CMP</a> register.</li>
+<li>Clear the wake-up timer interrupt flag by writing 0 to <a href="#table20-6">WUT_INTR</a>.<em>irq_clr</em>.</li>
+<li>Set <em>WUT_CTRL</em>.<em>ten</em> to 1 to enable the timer.</li>
+<li>Enter a low-power sleep mode. See <em>Low-Power Modes</em> for details.</li>
 </ol>
 <p>The timer period is calculated using the following equation:</p>
-<p>Equation ‑: One-Shot Mode Timer Period</p>
-<div class="arithmatex">\[One\text{-}Shot\ mode\ timer\ period\ in\ seconds = \ \frac{WUT\text{\_}CMP - WUT\text{\_}CNT_{INITIAL\text{\_}VALUE} + 1}{f_{CNT\text{\_}CLK}\ (Hz)}\]</div>
+<p><em>Equation 20-2: One-Shot Mode Timer Period</em></p>
+<div class="arithmatex">\[
+\text{One-Shot mode timer period in seconds} = 
+\frac{
+\text{WUT_CMP} - \text{WUT_CNT}_{\text{INITIAL VALUE}} + 1
+}{
+f_{\text{CNT_CLK}} \, (\text{Hz})
+}
+\]</div>
 <h3 id="continuous-mode-1">Continuous Mode (1)</h3>
-<p>In continuous mode, the wake-up timer increments <em>WUT_CNT</em> until it
-matches <em>WUT_CMP,</em> and hardware resets <em>WUT_CNT</em> to 1 and continues
-incrementing.</p>
-<figure>
-<img src="media/image2.emf" />
-<figcaption><p>: Continuous Mode Diagram</p></figcaption>
-</figure>
-
-<h4 id="continuous-mode-timer-period">Continuous Mode Timer Period</h4>
-<p>The wake-up timer period ends on the timer clock following <em>WUT_CNT</em>
-= <em>WUT_CMP</em>.</p>
-<p>The wake-up timer peripheral automatically performs the following
-actions at the end of the timer period:</p>
+<p>In continuous mode, the wake-up timer increments <a href="#table20-3">WUT_CNT</a> until it matches <a href="#table20-4">WUT_CMP</a>, and hardware resets <a href="#table20-3">WUT_CNT</a> to 1 and continues incrementing.</p>
+<p><em>Figure 20-2: Continuous Mode Diagram</em>
+<a name="figure20-2"></a></p>
+<p><img alt="Figure 20-2" src="../assets/images/figure20-2.svg" /></p>
+<h3 id="continuous-mode-timer-period">Continuous Mode Timer Period</h3>
+<p>The wake-up timer period ends on the timer clock following <a href="#table20-3">WUT_CNT</a> = <a href="#table20-4">WUT_CMP</a>.</p>
+<p>The wake-up timer peripheral automatically performs the following actions at the end of the timer period:</p>
 <ol>
-<li>
-<p>1. <em>WUT_CNT</em> is reset to 1. The wake-up timer remains enabled and
-    continues incrementing.</p>
-</li>
-<li>
-<p>2. The timer interrupt bit <em>WUT_INTR</em>.<em>irq_clr</em> is set. An
-    interrupt is generated if enabled.</p>
-</li>
+<li><a href="#table20-3">WUT_CNT</a> is reset to 1. The wake-up timer remains enabled and continues incrementing.</li>
+<li>The timer interrupt bit <a href="#table20-6">WUT_INTR</a>.<em>irq_clr</em> is set. An interrupt is generated if enabled.</li>
 </ol>
-<h4 id="continuous-mode-configuration">Continuous Mode Configuration</h4>
-<p>Configure the timer for continuous mode by performing the steps
-following:</p>
+<h3 id="continuous-mode-configuration">Continuous Mode Configuration</h3>
+<p>Configure the timer for continuous mode by performing the steps following:</p>
 <ol>
+<li>Set <a href="#table20-7">WUT_CTRL</a>.<em>ten</em> = 0 to disable the timer.</li>
+<li>Set <a href="#table20-7">WUT_CTRL</a>.<em>tmode</em> to 1 to select continuous mode.</li>
+<li>Set <a href="#table20-7">WUT_CTRL</a>.<em>pres3</em>:<a href="#table20-7">WUT_CTRL</a>.<em>pres</em> to determine the timer period.</li>
 <li>
-<p>1. Set <em>WUT_CTRL</em>.<em>ten</em> = 0 to disable the timer.</p>
+<p>Enable the wake-up timer as a wake-up source by setting <em>GCR_PM</em>.<em>wut_we</em> to 1.</p>
+<p>a. If desired, register a wake-up interrupt handler (WUT_IRQn).</p>
 </li>
 <li>
-<p>2. Set <em>WUT_CTRL</em>.<em>tmode</em> to 1 to select continuous mode.</p>
+<p>Write an initial value to the <a href="#table20-3">WUT_CNT</a> register, if desired. The initial value is only used for the first period; subsequent timer periods always reset the <a href="#table20-3">WUT_CNT</a> register to 1.</p>
 </li>
-<li>
-<p>3. Set <em>WUT_CTRL</em>.<em>pres3</em>:<em>WUT_CTRL</em>.<em>pres</em> to determine the timer
-    period.</p>
-</li>
-<li>
-<p>4. Enable the wake-up timer as a wake-up source by setting
-    <em>GCR_PM</em>.<em>wut_we</em> to 1.</p>
-<ol>
-<li>a. If desired, register a wake-up interrupt handler (WUT_IRQn).</li>
+<li>Write the compare value to the <a href="#table20-4">WUT_CMP</a> register.</li>
+<li>Clear the wake-up timer interrupt flag by writing 0 to <a href="#table20-6">WUT_INTR</a>.<em>irq_clr</em>.</li>
+<li>Set <a href="#table20-7">WUT_CTRL</a>.<em>ten</em> to 1 to enable the timer.</li>
+<li>Enter a low-power sleep mode. See <em>Low-Power Modes</em> for details.</li>
 </ol>
-</li>
-<li>
-<p>5. Write an initial value to the <em>WUT_CNT</em> register, if desired.
-    The initial value is only used for the first period; subsequent
-    timer periods always reset the <em>WUT_CNT</em> register to 1.</p>
-</li>
-<li>
-<p>6. Write the compare value to the <em>WUT_CMP</em> register.</p>
-</li>
-<li>
-<p>7. Clear the wake-up timer interrupt flag by writing 0 to
-    <em>WUT_INTR</em>.<em>irq_clr</em>.</p>
-</li>
-<li>
-<p>8. Set <em>WUT_CTRL</em>.<em>ten</em> to 1 to enable the timer.</p>
-</li>
-<li>
-<p>9. Enter a low-power sleep mode. See <em>Low-Power Modes</em> for details.</p>
-</li>
-</ol>
-<p>The Continuous Mode Timer Period is calculated using <em>Equation 20‑3</em>.</p>
-<p>Equation ‑: Continuous Mode Timer Period</p>
-<div class="arithmatex">\[Continuous\ Mode\ Timer\ Period\ in\ seconds = \ \frac{WUT\text{\_}CMP - WUT\text{\_}CNT_{INITIAL\text{\_}VALUE} + 1}{f_{CNT\text{\_}CLK}\ (Hz)}\]</div>
-<h4 id="compare-mode-5">Compare Mode (5)</h4>
+<p>The Continuous Mode Timer Period is calculated using <a href="#equation20-3">Equation 20‑3</a>.</p>
+<p><em>Equation 20-3: Continuous Mode Timer Period</em>
+<a name="equation20-3"></a></p>
+<div class="arithmatex">\[
+\text{Continuous mode timer period in seconds} = 
+\frac{
+\text{WUT_CMP} - \text{WUT_CNT}_{\text{INITIAL VALUE}} + 1
+}{
+f_{\text{CNT_CLK}} \, (\text{Hz})
+}
+\]</div>
+<h3 id="compare-mode-5">Compare Mode (5)</h3>
 <p>In compare mode, the timer peripheral increments continually from
 0x0000 0000 (after the first timer period) to the maximum value, then
 rolls over to 0x0000 0000 and continues incrementing. The end of timer
@@ -1324,419 +1306,327 @@ period event occurs when the timer value matches the compare value, but
 the timer continues to increment until the count reaches 0xFFFF FFFF.
 The timer counter then rolls over and continues counting from
 0x0000 0000.</p>
-<p>The timer period ends on the timer clock following <em>WUT_CNT</em> =
-<em>WUT_CNT</em>.</p>
-<p>The timer peripheral automatically performs the following actions when a
-timer period event ends:</p>
+<p>The timer period ends on the timer clock following <a href="#table20-3">WUT_CNT</a> = <a href="#table20-3">WUT_CNT</a>.</p>
+<p>The timer peripheral automatically performs the following actions when a timer period event ends:</p>
 <ul>
-<li>
-<p><em>WUT_CNT</em> is reset to 0x0000 00000.</p>
-</li>
-<li>
-<p>The <em>WUT_INTR</em>.<em>irq_clr</em> field is set to 1 to indicate a timer
-    interrupt event occurred.</p>
-</li>
-<li>
-<p>The timer remains enabled and continues incrementing.</p>
-</li>
+<li><a href="#table20-3">WUT_CNT</a> is reset to 0x0000 00000.</li>
+<li>The <a href="#table20-6">WUT_INTR</a>.<em>irq_clr</em> field is set to 1 to indicate a timer interrupt event occurred.</li>
+<li>The timer remains enabled and continues incrementing.</li>
 </ul>
-<p>The initial compare mode timer period is calculated using <em>Equation
-20‑4</em>. Subsequent compare mode timer periods are always 0xFFFF FFFF.</p>
-<p>Equation 20‑4: Compare Mode Timer Initial Period</p>
-<div class="arithmatex">\[Compare\ mode\ timer\ period\ in\ seconds = \frac{(WUT\text{\_}CMP - WUT\text{\_}CNT_{INITIAL\text{\_}VALUE} + 1)}{f_{CNT\text{\_}CLK}(Hz)}\]</div>
-<figure>
-<img src="media/image3.emf" />
-<figcaption><p>Figure 20‑3: Compare Mode Diagram</p></figcaption>
-</figure>
-
+<p>The initial compare mode timer period is calculated using <a href="#equation20-4">Equation 20‑4</a>. Subsequent compare mode timer periods are always 0xFFFF FFFF.</p>
+<p><em>Equation 20‑4: Compare Mode Timer Initial Period</em>
+<a name="equation20-4"></a></p>
+<div class="arithmatex">\[
+\text{Compare mode timer period in seconds} = 
+\frac{
+\text{WUT_CMP} - \text{WUT_CNT}_{\text{INITIAL VALUE}} + 1
+}{
+f_{\text{CNT_CLK}} \, (\text{Hz})
+}
+\]</div>
+<p><em>Figure 20-3: Compare Mode Diagram</em>
+<a name="figure20-3"></a></p>
+<p><img alt="Figure 20-3" src="../assets/images/figure20-3.svg" /></p>
 <p>Configure the timer for compare mode by doing the following:</p>
 <ol>
+<li>Set <a href="#table20-7">WUT_CTRL</a>.<em>ten</em> = 0 to disable the timer.</li>
+<li>Set <a href="#table20-7">WUT_CTRL</a>.<em>tmode</em> to 1 to select continuous mode.</li>
+<li>Set <a href="#table20-7">WUT_CTRL</a>.<em>pres3</em>:<a href="#table20-7">WUT_CTRL</a>.<em>pres</em> to determine the timer period.</li>
 <li>
-<p>1. Set <em>WUT_CTRL</em>.<em>ten</em> = 0 to disable the timer.</p>
+<p>Enable the wake-up timer as a wake-up source by setting <em>GCR_PM</em>.<em>wut_we</em> to 1.</p>
+<p>a. If desired, register a wake-up interrupt handler (WUT_IRQn).</p>
 </li>
 <li>
-<p>2. Set <em>WUT_CTRL</em>.<em>tmode</em> to 1 to select continuous mode.</p>
+<p>Write the compare value to the <a href="#table20-4">WUT_CMP</a> register.</p>
 </li>
-<li>
-<p>3. Set <em>WUT_CTRL</em>.<em>pres3</em>:<em>WUT_CTRL</em>.<em>pres</em> to determine the timer
-    period.</p>
-</li>
-<li>
-<p>4. Enable the wake-up timer as a wake-up source by setting
-    <em>GCR_PM</em>.<em>wut_we</em> to 1.</p>
-<ol>
-<li>a. If desired, register a wake-up interrupt handler (WUT_IRQn).</li>
+<li>If desired, write an initial value to <a href="#table20-3">WUT_CNT</a> register.</li>
+<li>Clear the wake-up timer interrupt flag by writing 0 to <a href="#table20-6">WUT_INTR</a>.<em>irq_clr</em>.</li>
+<li>Set <em>WUT_CTRL</em>.<em>ten</em> to 1 to enable the timer.</li>
+<li>Enter a low-power sleep mode. See <em>Low-Power Modes</em> for details.</li>
 </ol>
-</li>
-<li>
-<p>5. Write the compare value to the <em>WUT_CMP</em> register.</p>
-</li>
-<li>
-<p>6. If desired, write an initial value to <em>WUT_CNT</em> register.</p>
-</li>
-<li>
-<p>7. Clear the wake-up timer interrupt flag by writing 0 to
-    <em>WUT_INTR</em>.<em>irq_clr</em>.</p>
-</li>
-<li>
-<p>8. Set <em>WUT_CTRL</em>.<em>ten</em> to 1 to enable the timer.</p>
-</li>
-<li>
-<p>9. Enter a low-power sleep mode. See <em>Low-Power Modes</em> for details.</p>
-</li>
-</ol>
-<h3 id="registers">Registers</h3>
-<p>See <em>Table 3‑3</em> for the base address of this peripheral/module. See
-<em>Table 1‑1</em> for an explanation of the read and write access of each
-field. Unless specified otherwise, all fields are reset on a system
-reset, soft reset, POR, and the peripheral-specific resets.</p>
-<hr />
-<p>Offset       Register Name  Description</p>
-<hr />
-<p>[0x0000]   <em>WUT_CNT</em>      Wake-Up Timer Counter Register</p>
-<p>[0x0004]   <em>WUT_CMP</em>      Wake-Up Timer Compare Register</p>
-<p>[0x0008]   <em>WUT_PWM</em>      Wake-Up Timer PWM Register</p>
-<p>[0x000C]   <em>WUT_INTR</em>     Wake-Up Timer Interrupt Register</p>
-<p>[0x0010]   <em>WUT_CTRL</em>     Wake-Up Timer Control Register</p>
-<p>[0x0014]   <em>WUT_NOLCMP</em>   Wake-Up Timer Non-Overlapping Compare Register</p>
-<hr />
-<p>: : Wake-Up Timer Register Summary</p>
-<h4 id="register-details">Register Details</h4>
-<p>+---+--------+----+---+---+-----------------+-------------------------+
-| W |        |    |   | # |                 | [0x0000]              |
-| a |        |    |   | # |                 |                         |
-| k |        |    |   | # |                 |                         |
-| e |        |    |   | # |                 |                         |
-| - |        |    |   | # |                 |                         |
-| U |        |    |   |   |                 |                         |
-| p |        |    |   | W |                 |                         |
-| T |        |    |   | U |                 |                         |
-| i |        |    |   | T |                 |                         |
-| m |        |    |   | _ |                 |                         |
-| e |        |    |   | C |                 |                         |
-| r |        |    |   | N |                 |                         |
-| C |        |    |   | T |                 |                         |
-| o |        |    |   |   |                 |                         |
-| u |        |    |   |   |                 |                         |
-| n |        |    |   |   |                 |                         |
-| t |        |    |   |   |                 |                         |
-+===+========+====+===+===+=================+=========================+
-| B | Name   | Ac | R |   | Description     |                         |
-| i |        | ce | e |   |                 |                         |
-| t |        | ss | s |   |                 |                         |
-| s |        |    | e |   |                 |                         |
-|   |        |    | t |   |                 |                         |
-+---+--------+----+---+---+-----------------+-------------------------+
-| 3 | count  | R  | 0 |   | Timer Count     |                         |
-| 1 |        | /W |   |   | Value           |                         |
-| : |        |    |   |   |                 |                         |
-| 0 |        |    |   |   | The current     |                         |
-|   |        |    |   |   | count value for |                         |
-|   |        |    |   |   | the timer. This |                         |
-|   |        |    |   |   | field           |                         |
-|   |        |    |   |   | increments as   |                         |
-|   |        |    |   |   | the timer       |                         |
-|   |        |    |   |   | counts. Reads   |                         |
-|   |        |    |   |   | of this         |                         |
-|   |        |    |   |   | register are    |                         |
-|   |        |    |   |   | always valid.   |                         |
-|   |        |    |   |   | Before writing  |                         |
-|   |        |    |   |   | this field,     |                         |
-|   |        |    |   |   | disable the     |                         |
-|   |        |    |   |   | timer by        |                         |
-|   |        |    |   |   | clearing the    |                         |
-|   |        |    |   |   | bit             |                         |
-|   |        |    |   |   | <em>W              |                         |
-|   |        |    |   |   | UT_CTRL</em>.<em>ten</em>. |                         |
-+---+--------+----+---+---+-----------------+-------------------------+</p>
-<p>: : Wake-Up Timer Count Register</p>
-<p>+---+--------+----+---+---+-----------------+-------------------------+
-| W |        |    |   | # |                 | [0x0004]              |
-| a |        |    |   | # |                 |                         |
-| k |        |    |   | # |                 |                         |
-| e |        |    |   | # |                 |                         |
-| - |        |    |   | # |                 |                         |
-| U |        |    |   |   |                 |                         |
-| p |        |    |   | W |                 |                         |
-| T |        |    |   | U |                 |                         |
-| i |        |    |   | T |                 |                         |
-| m |        |    |   | _ |                 |                         |
-| e |        |    |   | C |                 |                         |
-| r |        |    |   | M |                 |                         |
-| C |        |    |   | P |                 |                         |
-| o |        |    |   |   |                 |                         |
-| m |        |    |   |   |                 |                         |
-| p |        |    |   |   |                 |                         |
-| a |        |    |   |   |                 |                         |
-| r |        |    |   |   |                 |                         |
-| e |        |    |   |   |                 |                         |
-+===+========+====+===+===+=================+=========================+
-| B | Name   | Ac | R |   | Description     |                         |
-| i |        | ce | e |   |                 |                         |
-| t |        | ss | s |   |                 |                         |
-| s |        |    | e |   |                 |                         |
-|   |        |    | t |   |                 |                         |
-+---+--------+----+---+---+-----------------+-------------------------+
-| 3 | c      | R  | 0 |   | Timer Compare   |                         |
-| 1 | ompare | /W |   |   | Value           |                         |
-| : |        |    |   |   |                 |                         |
-| 0 |        |    |   |   | The value in    |                         |
-|   |        |    |   |   | this register   |                         |
-|   |        |    |   |   | is used as the  |                         |
-|   |        |    |   |   | compare value   |                         |
-|   |        |    |   |   | for the timer's |                         |
-|   |        |    |   |   | count value.    |                         |
-|   |        |    |   |   | The specific    |                         |
-|   |        |    |   |   | mode of the     |                         |
-|   |        |    |   |   | timer           |                         |
-|   |        |    |   |   | determines the  |                         |
-|   |        |    |   |   | compare field   |                         |
-|   |        |    |   |   | meaning. See    |                         |
-|   |        |    |   |   | the timer       |                         |
-|   |        |    |   |   | mode's detailed |                         |
-|   |        |    |   |   | configuration   |                         |
-|   |        |    |   |   | section for the |                         |
-|   |        |    |   |   | usage of this   |                         |
-|   |        |    |   |   | field and its   |                         |
-|   |        |    |   |   | meaning.        |                         |
-+---+--------+----+---+---+-----------------+-------------------------+</p>
-<p>: : Wake-Up Timer Compare Register</p>
-<p>+---+--------+----+---+---+-----------------+-------------------------+
-| W |        |    |   | # |                 | [0x0008]              |
-| a |        |    |   | # |                 |                         |
-| k |        |    |   | # |                 |                         |
-| e |        |    |   | # |                 |                         |
-| - |        |    |   | # |                 |                         |
-| U |        |    |   |   |                 |                         |
-| p |        |    |   | W |                 |                         |
-| T |        |    |   | U |                 |                         |
-| i |        |    |   | T |                 |                         |
-| m |        |    |   | _ |                 |                         |
-| e |        |    |   | P |                 |                         |
-| r |        |    |   | W |                 |                         |
-| P |        |    |   | M |                 |                         |
-| W |        |    |   |   |                 |                         |
-| M |        |    |   |   |                 |                         |
-+===+========+====+===+===+=================+=========================+
-| B | Name   | Ac | R |   | Description     |                         |
-| i |        | ce | e |   |                 |                         |
-| t |        | ss | s |   |                 |                         |
-| s |        |    | e |   |                 |                         |
-|   |        |    | t |   |                 |                         |
-+---+--------+----+---+---+-----------------+-------------------------+
-| 3 | -     | RO | 0 |   | Reserved        |                         |
-| 1 |        |    |   |   |                 |                         |
-| : |        |    |   |   |                 |                         |
-| 0 |        |    |   |   |                 |                         |
-+---+--------+----+---+---+-----------------+-------------------------+</p>
-<p>: : Wake-Up Timer PWM Register</p>
-<p>+---+--------+----+---+---+-----------------+-------------------------+
-| W |        |    |   | # |                 | [0x000C]              |
-| a |        |    |   | # |                 |                         |
-| k |        |    |   | # |                 |                         |
-| e |        |    |   | # |                 |                         |
-| - |        |    |   | # |                 |                         |
-| U |        |    |   |   |                 |                         |
-| p |        |    |   | W |                 |                         |
-| T |        |    |   | U |                 |                         |
-| i |        |    |   | T |                 |                         |
-| m |        |    |   | _ |                 |                         |
-| e |        |    |   | I |                 |                         |
-| r |        |    |   | N |                 |                         |
-| I |        |    |   | T |                 |                         |
-| n |        |    |   | R |                 |                         |
-| t |        |    |   |   |                 |                         |
-| e |        |    |   |   |                 |                         |
-| r |        |    |   |   |                 |                         |
-| r |        |    |   |   |                 |                         |
-| u |        |    |   |   |                 |                         |
-| p |        |    |   |   |                 |                         |
-| t |        |    |   |   |                 |                         |
-+===+========+====+===+===+=================+=========================+
-| B | Name   | Ac | R |   | Description     |                         |
-| i |        | ce | e |   |                 |                         |
-| t |        | ss | s |   |                 |                         |
-| s |        |    | e |   |                 |                         |
-|   |        |    | t |   |                 |                         |
-+---+--------+----+---+---+-----------------+-------------------------+
-| 3 | -     | RO | 0 |   | Reserved        |                         |
-| 1 |        |    |   |   |                 |                         |
-| : |        |    |   |   |                 |                         |
-| 1 |        |    |   |   |                 |                         |
-+---+--------+----+---+---+-----------------+-------------------------+
-| 0 | i      | R  | 0 |   | Timer Interrupt |                         |
-|   | rq_clr | /W |   |   | Flag            |                         |
-|   |        |    |   |   |                 |                         |
-|   |        |    |   |   | If set, this    |                         |
-|   |        |    |   |   | field indicates |                         |
-|   |        |    |   |   | a wake-up timer |                         |
-|   |        |    |   |   | interrupt       |                         |
-|   |        |    |   |   | condition       |                         |
-|   |        |    |   |   | occurred.       |                         |
-|   |        |    |   |   | Writing any     |                         |
-|   |        |    |   |   | value to this   |                         |
-|   |        |    |   |   | bit clears the  |                         |
-|   |        |    |   |   | wake-up timer's |                         |
-|   |        |    |   |   | interrupt.      |                         |
-|   |        |    |   |   |                 |                         |
-|   |        |    |   |   | 0: Wake-up      |                         |
-|   |        |    |   |   | timer interrupt |                         |
-|   |        |    |   |   | is not active.  |                         |
-|   |        |    |   |   |                 |                         |
-|   |        |    |   |   | 1: Wake-up      |                         |
-|   |        |    |   |   | timer interrupt |                         |
-|   |        |    |   |   | occurred.       |                         |
-+---+--------+----+---+---+-----------------+-------------------------+</p>
-<p>: : Wake-Up Timer Interrupt Register</p>
-<p>+---+--------+----+---+---+-----------------+-------------------------+
-| W |        |    |   | # |                 | [0x0010]              |
-| a |        |    |   | # |                 |                         |
-| k |        |    |   | # |                 |                         |
-| e |        |    |   | # |                 |                         |
-| - |        |    |   | # |                 |                         |
-| U |        |    |   |   |                 |                         |
-| p |        |    |   | W |                 |                         |
-| T |        |    |   | U |                 |                         |
-| i |        |    |   | T |                 |                         |
-| m |        |    |   | _ |                 |                         |
-| e |        |    |   | C |                 |                         |
-| r |        |    |   | T |                 |                         |
-| C |        |    |   | R |                 |                         |
-| o |        |    |   | L |                 |                         |
-| n |        |    |   |   |                 |                         |
-| t |        |    |   |   |                 |                         |
-| r |        |    |   |   |                 |                         |
-| o |        |    |   |   |                 |                         |
-| l |        |    |   |   |                 |                         |
-+===+========+====+===+===+=================+=========================+
-| B | Name   | Ac | R |   | Description     |                         |
-| i |        | ce | e |   |                 |                         |
-| t |        | ss | s |   |                 |                         |
-| s |        |    | e |   |                 |                         |
-|   |        |    | t |   |                 |                         |
-+---+--------+----+---+---+-----------------+-------------------------+
-| 3 | -     | D  | 0 |   | Reserved, Do    |                         |
-| 1 |        | NM |   |   | Not Modify      |                         |
-| : |        |    |   |   |                 |                         |
-| 9 |        |    |   |   |                 |                         |
-+---+--------+----+---+---+-----------------+-------------------------+
-| 8 | pres3  | R  | 0 |   | Timer Prescaler |                         |
-|   |        | /W |   |   | Select MSB      |                         |
-|   |        |    |   |   |                 |                         |
-|   |        |    |   |   | See             |                         |
-|   |        |    |   |   | <em>W              |                         |
-|   |        |    |   |   | UT_CTRL</em>.<em>pres</em> |                         |
-|   |        |    |   |   | for details on  |                         |
-|   |        |    |   |   | this field's    |                         |
-|   |        |    |   |   | usage.          |                         |
-+---+--------+----+---+---+-----------------+-------------------------+
-| 7 | ten    | R  | 0 |   | Timer Enable    |                         |
-|   |        | /W |   |   |                 |                         |
-|   |        |    |   |   | 0: Disabled     |                         |
-|   |        |    |   |   |                 |                         |
-|   |        |    |   |   | 1: Enabled      |                         |
-+---+--------+----+---+---+-----------------+-------------------------+
-| 6 | tpol   | D  | 0 |   | Reserved, Do    |                         |
-|   |        | NM |   |   | Not Modify      |                         |
-+---+--------+----+---+---+-----------------+-------------------------+
-| 5 | pres   | R  | 0 |   | Timer Prescaler |                         |
-| : |        | /W |   |   | Select          |                         |
-| 3 |        |    |   |   |                 |                         |
-|   |        |    |   |   | This field sets |                         |
-|   |        |    |   |   | the timer's     |                         |
-|   |        |    |   |   | prescaler       |                         |
-|   |        |    |   |   | value. The      |                         |
-|   |        |    |   |   | prescaler       |                         |
-|   |        |    |   |   | divides the RTC |                         |
-|   |        |    |   |   | 's 32.768KHz    |                         |
-|   |        |    |   |   | input clock.    |                         |
-|   |        |    |   |   | Sets the        |                         |
-|   |        |    |   |   | timer's count   |                         |
-|   |        |    |   |   | clock as shown  |                         |
-|   |        |    |   |   | in <em>Equation    |                         |
-|   |        |    |   |   | 20‑1</em>. The      |                         |
-|   |        |    |   |   | wake-up timer's |                         |
-|   |        |    |   |   | prescaler       |                         |
-|   |        |    |   |   | setting is a    |                         |
-|   |        |    |   |   | 4-bit value     |                         |
-|   |        |    |   |   | with <em>pres3</em> as |                         |
-|   |        |    |   |   | the most        |                         |
-|   |        |    |   |   | significant bit |                         |
-|   |        |    |   |   | and <em>pres</em> as   |                         |
-|   |        |    |   |   | the three least |                         |
-|   |        |    |   |   | significant     |                         |
-|   |        |    |   |   | bits. See       |                         |
-|   |        |    |   |   | <em>Table 20‑1</em>    |                         |
-|   |        |    |   |   | for details.    |                         |
-+---+--------+----+---+---+-----------------+-------------------------+
-| 2 | tmode  | R  | 0 |   | Timer Mode      |                         |
-| : |        | /W |   |   | Select          |                         |
-| 0 |        |    |   |   |                 |                         |
-|   |        |    |   |   | This field sets |                         |
-|   |        |    |   |   | the timer's     |                         |
-|   |        |    |   |   | operating mode. |                         |
-|   |        |    |   |   |                 |                         |
-|   |        |    |   |   |   --            |                         |
-|   |        |    |   |   | -- ------------ |                         |
-|   |        |    |   |   |   0:   One-shot |                         |
-|   |        |    |   |   |                 |                         |
-|   |        |    |   |   |                 |                         |
-|   |        |    |   |   | 1:   Continuous |                         |
-|   |        |    |   |   |                 |                         |
-|   |        |    |   |   |   2 -- Reserved |                         |
-|   |        |    |   |   |   7:            |                         |
-|   |        |    |   |   |   --            |                         |
-|   |        |    |   |   | -- ------------ |                         |
-+---+--------+----+---+---+-----------------+-------------------------+</p>
-<p>: : Wake-Up Timer Control Register</p>
-<p>+---+--------+----+---+---+-----------------+-------------------------+
-| W |        |    |   | # |                 | [0x0014]              |
-| a |        |    |   | # |                 |                         |
-| k |        |    |   | # |                 |                         |
-| e |        |    |   | # |                 |                         |
-| - |        |    |   | # |                 |                         |
-| U |        |    |   |   |                 |                         |
-| p |        |    |   | W |                 |                         |
-| T |        |    |   | U |                 |                         |
-| i |        |    |   | T |                 |                         |
-| m |        |    |   | _ |                 |                         |
-| e |        |    |   | N |                 |                         |
-| r |        |    |   | O |                 |                         |
-| N |        |    |   | L |                 |                         |
-| o |        |    |   | C |                 |                         |
-| n |        |    |   | M |                 |                         |
-| - |        |    |   | P |                 |                         |
-| O |        |    |   |   |                 |                         |
-| v |        |    |   |   |                 |                         |
-| e |        |    |   |   |                 |                         |
-| r |        |    |   |   |                 |                         |
-| l |        |    |   |   |                 |                         |
-| a |        |    |   |   |                 |                         |
-| p |        |    |   |   |                 |                         |
-| p |        |    |   |   |                 |                         |
-| i |        |    |   |   |                 |                         |
-| n |        |    |   |   |                 |                         |
-| g |        |    |   |   |                 |                         |
-| C |        |    |   |   |                 |                         |
-| o |        |    |   |   |                 |                         |
-| m |        |    |   |   |                 |                         |
-| p |        |    |   |   |                 |                         |
-| a |        |    |   |   |                 |                         |
-| r |        |    |   |   |                 |                         |
-| e |        |    |   |   |                 |                         |
-+===+========+====+===+===+=================+=========================+
-| B | Name   | Ac | R |   | Description     |                         |
-| i |        | ce | e |   |                 |                         |
-| t |        | ss | s |   |                 |                         |
-| s |        |    | e |   |                 |                         |
-|   |        |    | t |   |                 |                         |
-+---+--------+----+---+---+-----------------+-------------------------+
-| 3 | -     | D  | 0 |   | Reserved, Do    |                         |
-| 1 |        | NM |   |   | Not Modify      |                         |
-| : |        |    |   |   |                 |                         |
-| 0 |        |    |   |   |                 |                         |
-+---+--------+----+---+---+-----------------+-------------------------+</p>
-<p>: : Wake-Up Timer Non-Overlapping Compare Register</p>
+<h2 id="registers">Registers</h2>
+<p>See <a href="../memory-register-mapping-access/#apb-peripheral-base-address-map">Table 3-3</a> for the base address of this peripheral/module. See <a href="../#table1-1-field-access-definitions">Table 1-1</a> for an explanation of the read and write access of each field. Unless specified otherwise, all fields are reset on a system reset, soft reset, POR, and the peripheral-specific resets.</p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th>Offset</th>
+        <th>Register Name</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>[0x0000]</td>
+        <td><a href="#table20-3">WUT_CNT</a></td>
+        <td>Wake-Up Timer Counter Register</td>
+    </tr>
+    <tr>
+        <td>[0x0004]</td>
+        <td><a href="#table20-4">WUT_CMP</a></td>
+        <td>Wake-Up Timer Compare Register</td>
+    </tr>
+    <tr>
+        <td>[0x0008]</td>
+        <td><a href="#table20-5">WUT_PWM</a></td>
+        <td>Wake-Up Timer PWM Register</td>
+    </tr>
+    <tr>
+        <td>[0x000C]</td>
+        <td><a href="#table20-6">WUT_INTR</a></td>
+        <td>Wake-Up Timer Interrupt Register</td>
+    </tr>
+    <tr>
+        <td>[0x0010]</td>
+        <td><a href="#table20-7">WUT_CTRL</a></td>
+        <td>Wake-Up Timer Control Register</td>
+    </tr>
+    <tr>
+        <td>[0x0014]</td>
+        <td><a href="#table20-8">WUT_NOLCMP</a></td>
+        <td>Wake-Up Timer Non-Overlapping Compare Register</td>
+    </tr>
+</tbody>
+</table>
+
+<h3 id="register-details">Register Details</h3>
+<p><em>Table 20-3: Wake-Up Timer Count  Register</em>
+<a name="table20-3"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+</colgroup>
+<thead>
+    <tr>
+        <th colspan="3">Wake-Up Timer Count</th>
+        <th colspan="1">WUT_CNT</th>
+        <th>[0x0000]</th>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>31:0</td>
+        <td>count</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>Timer Count Value</strong><br> The current count value for the timer. This field increments as the timer counts. Reads of this register are always valid. Before writing this field, disable the timer by clearing the bit <a href="#table20-7">WUT_CTRL</a>.<em>ten</em>.
+        </td>
+    </tr>
+</tbody>
+</table>
+
+<p><em>Table 20-4: Wake-Up Timer Compare Register</em>
+<a name="table20-4"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th colspan="3">Wake-Up Timer Compare</th>
+        <th colspan="1">WUT_CMP</th>
+        <th>[0x0004]</th>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>31:0</td>
+        <td>compare</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>Timer Compare Value</strong><br> The value in this register is used as the compare value for the timer’s count value. The specific mode of the timer determines the
+        compare field meaning. See the timer mode’s detailed configuration section for the usage of this field and its meaning.</td>
+    </tr>
+</tbody>
+</table>
+
+<p><em>Table 20-5: Wake-Up Timer PWM Register</em>
+<a name="table20-5"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th colspan="3">Wake-Up Timer PWM</th>
+        <th colspan="1">WUT_PWM</th>
+        <th>[0x0008]</th>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>31:0</td>
+        <td>-</td>
+        <td>RO</td>
+        <td>0</td>
+        <td><strong>Reserved</strong></td>
+    </tr>
+</tbody>
+</table>
+
+<p><em>Table 20-6: Wake-Up Timer Interrupt Register</em>
+<a name="table20-6"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th colspan="3">Wake-Up Timer Interrupt</th>
+        <th colspan="1">WUT_INTR</th>
+        <th>[0x000C]</th>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>31:1</td>
+        <td>-</td>
+        <td>RO</td>
+        <td>0</td>
+        <td><strong>Reserved</strong></td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>irq_clr</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>Timer Interrupt Flag</strong><br> If set, this field indicates a wake-up timer interrupt condition occurred. Writing any value to this bit clears the wake-up timer’s
+        interrupt.
+        <div style="margin-left: 20px">
+        0: Wake-up timer interrupt is not active.<br>
+        1: Wake-up timer interrupt occurred.</div>
+        </td>
+    </tr>
+</tbody>
+</table>
+
+<p><em>Table 20-7: Wake-Up Timer Control Register</em>
+<a name="table20-7"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th colspan="3">Wake-Up Timer Control</th>
+        <th colspan="1">WUT_CTRL</th>
+        <th>[0x0010]</th>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>31:9</td>
+        <td>-</td>
+        <td>DNM</td>
+        <td>0</td>
+        <td><strong>Reserved, Do Not Modify</strong></td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>pres3</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>Timer Prescaler Select MSB</strong><br> See <a href="#table20-7">WUT_CTRL</a>.<em>pres</em> for details on this field’s usage.</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>ten</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>Timer Enable</strong>
+        0: Disabled<br>
+        1: Enabled</div>
+        </td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>tpol</td>
+        <td>DNM</td>
+        <td>0</td>
+        <td><strong>Reserved, Do Not Modify</strong></td>
+    </tr>
+    <tr>
+        <td>5:3</td>
+        <td>pres</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>Timer Prescaler Select</strong><br>This field sets the timer’s prescaler value. The prescaler divides the RTC ‘s 32.768KHz input clock. Sets the timer’s count clock as shown in <em>Equation 20‑1</em>. The wake-up timer’s prescaler setting is a 4-bit value with <em>pres3</em> as the most significant bit and <em>pres</em> as the three least significant bits. See <em>Table 20‑1</em> for details.
+        </td>
+    </tr>
+    <tr>
+        <td>2:0</td>
+        <td>tmode</td>
+        <td>R/W</td>
+        <td>0</td>
+        <td><strong>Timer Mode Select</strong><br> This field sets the timer’s operating mode.
+        <table border="0">
+        <tbody>
+        <tr>
+            <td>0:</td>
+            <td>One-shot</td>
+        </tr>
+        <tr>
+            <td>1:</td>
+            <td>Continuous</td>
+        </tr>
+        <tr>
+            <td>2 – 7:</td>
+            <td>Reserved</td>
+        </tr>
+        </tbody>
+        </table>
+        </td>
+        </tr>
+</tbody>
+</table>
+
+<p><em>Table 20-8: Wake-Up Timer Non-Overlapping Compare Register</em>
+<a name="table20-8"></a></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th colspan="3">Wake-Up Timer Non-Overlapping Compare</th>
+        <th colspan="1">WUT_NOLCMP</th>
+        <th>[0x0014]</th>
+    </tr>
+    <tr>
+        <th>Bits</th>
+        <th>Name</th>
+        <th>Access</th>
+        <th>Reset</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>31:0</td>
+        <td>-</td>
+        <td>DNM</td>
+        <td>0</td>
+        <td><strong>Reserved, Do Not Modify</strong></td>
+    </tr>
+</tbody>
+</table>
 
 
 
