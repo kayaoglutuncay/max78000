@@ -354,7 +354,7 @@ The transmit FIFO half-empty event occurs when [UARTn_STATUS](#uart-status-regis
 <a name="equation12-1"></a>
 
 $$
-\left(\frac{C{\_}TX{\_}FIFO{\_}DEPTH}{2} + 1 \right)\ \overset{Transistions\ from}{\rightarrow}\ \left(\frac{C{\_}TX{\_}FIFO{\_}DEPTH}{2} \right)
+\left(\frac{C{\_}TX{\_}FIFO{\_}DEPTH}{2} + 1 \right)\ \overset{Transitions\ from}{\rightarrow}\ \left(\frac{C{\_}TX{\_}FIFO{\_}DEPTH}{2} \right)
 $$
 
 ## LPUART Wakeup Events

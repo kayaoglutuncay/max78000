@@ -328,8 +328,8 @@ state of the timer pin for that mode. Consult the GPIO section for
 details on how to configure the electrical characteristics for the pin.
 
 The TimerA output controls for modes 0, 1, 3, and 5 output signals are
-shown in *Figure 19‑1*. The TimerA input controls for modes 2, 4, 6, 7,
-8, and 14 input signals are shown in *Figure 19‑2*.
+shown in [Figure 19‑1](#figure19-1). The TimerA input controls for modes 2, 4, 6, 7,
+8, and 14 input signals are shown in [Figure 19‑2](#figure19-2).
 
 *Figure 19-1: MAX78000 TimerA Output Functionality, Modes 0/1/3/5*
 <a name="figure19-1"></a>
@@ -350,13 +350,13 @@ up the clock control logic and re-enable the system clock.
 
 Programming Sequence Example:
 
-1.  Disable the timer peripheral and set the timer clock source as described in *Timer Clock Sources*.
-2.  Configure the timer operating mode as described in the section *Operating Modes*.
+1.  Disable the timer peripheral and set the timer clock source as described in [Timer Clock Sources](#timer-clock-sources).
+2.  Configure the timer operating mode as described in the section [Operating Modes](#operating-modes).
 3.  Enable the timer by setting <a href="#table19-13">TMRn_CTRL0</a>.*en* to 1.
 4.  Poll <a href="#table19-15">TMRn_CTRL1</a>.*clkrdy* until it reads 1.
 5. Set the <a href="#table19-15">TMRn_CTRL1</a>.*we* field to 1 to enable wake-up events for the timer.
 6. If desired, enable the timer interrupt and provide a TMRn_IRQn for the timer.
-7. Enter a low-power mode as described in the *Operating Modes* section.
+7. Enter a low-power mode as described in the [Operating Modes](#operating-modes) section.
 8. When the device wakes up from the low-power mode, check the <a href="#table19-16">TMRn_WKFL</a> register to determine if the timer caused the wake-up event.
 
 
@@ -704,7 +704,7 @@ In [Table 19‑5](#table19-5), [Table 19‑6](#table19-6), and [Table 19‑7](#t
         <td>-</td>
     </tr>
     <tr>
-        <td><sup>✝</sup> See <em>Figure 19‑3</em> for details on the
+        <td><sup>✝</sup> See <a href="#figure19-3">Figure 19‑3</a> for details on the
         timer I/O signal naming convention and the device data sheet for the
         alternate functions.</td>
     </tr>
@@ -727,51 +727,51 @@ In [Table 19‑5](#table19-5), [Table 19‑6](#table19-6), and [Table 19‑7](#t
 </thead>
 <tbody>
     <tr>
-        <td><em>One-Shot Mode (0)</em></td>
+        <td><a href="#one-shot-mode-0">One-Shot Mode (0)</a></td>
         <td>TimerA Output Signal</td>
         <td>LPTMR<em>ny</em>_IOB</td>
         <td>Optional</td>
     </tr>
     <tr>
-        <td><em>Continuous Mode (1)</em></td>
+        <td><a href="#continuous-mode-1">Continuous Mode (1)</a></td>
         <td>TimerA Output Signal</td>
         <td>LPTMR<em>ny</em>_IOB</td>
         <td>Optional</td>
     </tr>
     <tr>
-        <td><em>Counter Mode (2)</em></td>
+        <td><a href="#counter-mode-2">Counter Mode (2)</a></td>
         <td>TimerA Input Signal</td>
         <td>LPTMR<em>ny</em>_IOB</td>
         <td>Yes</td>
     </tr>
     <tr>
-        <td><p><em>Figure 19‑7: PWM</em> Mode Diagram</p>
+        <td><p><a href="#figure19-7">Figure 19‑7</a>:<a href="#pwm-mode-3">PWM Mode Diagram</a></p>
         <p><img src="media/image4.emf" /></p>
-        <p>Capture Mode (4)</p></td>
+        <p><a href="#capture-mode-4">Capture Mode (4)</a></td>
         <td>TimerA Input Signal</td>
         <td>LPTMR<em>ny</em>_IOB</td>
         <td>Yes</td>
     </tr>
     <tr>
-        <td><em>Compare Mode (5)</em></td>
+        <td><a href="#compare-mode-5">Compare Mode (5)</a></td>
         <td>TimerA Output Signal</td>
         <td>LPTMR<em>ny</em>_IOB</td>
         <td>Optional</td>
     </tr>
     <tr>
-        <td><em>Gated Mode (6)</em></td>
+        <td><a href="#gated-mode-6">Gated Mode (6)</a></td>
         <td>TimerA Input Signal</td>
         <td>LPTMR<em>ny</em>_IOB</td>
         <td>Yes</td>
     </tr>
     <tr>
-        <td><em>Capture/Compare Mode (7)</em></td>
+        <td><a href="#capturecompare-mode-7">Capture/Compare Mode (7)</a></td>
         <td>TimerA Input Signal</td>
         <td>LPTMR<em>ny</em>_IOB</td>
         <td>Yes</td>
     </tr>
     <tr>
-        <td><em>Dual Edge Capture Mode (8)</em></td>
+        <td><a href="#dual-edge-capture-mode-8">Dual Edge Capture Mode (8)</a></td>
         <td>TimerA Input Signal</td>
         <td>LPTMR<em>ny</em>_IOB</td>
         <td>Yes</td>
@@ -783,7 +783,7 @@ In [Table 19‑5](#table19-5), [Table 19‑6](#table19-6), and [Table 19‑7](#t
         <td>-</td>
     </tr>
     <tr>
-        <td><em>Inactive Gated Mode (14)</em></td>
+        <td><a href="#inactive-gated-mode-14">Inactive Gated Mode (14)</a></td>
         <td>TimerA Input Signal</td>
         <td>LPTMR<em>ny</em>_IOB</td>
         <td>Yes</td>
@@ -795,7 +795,7 @@ In [Table 19‑5](#table19-5), [Table 19‑6](#table19-6), and [Table 19‑7](#t
         <td>-</td>
     </tr>
     <tr>
-        <td><sup>✝</sup> See <em>Figure 19‑3</em> for details on the
+        <td><sup>✝</sup> See <a href="#figure19-3">Figure 19‑3</a> for details on the
         timer I/O signal naming convention and the device data sheet for the
         alternate functions.</td>
     </tr>
@@ -862,7 +862,7 @@ Configure the timer for one-shot mode by performing the following steps:
 
     a. This affects only the first period; subsequent timer periods always reset the <a href="#table19-9">TMRn_CNT</a> field to 0x0000 0001.
 
-9. Enable the timer peripheral as described in *Timer Clock Sources*.
+9. Enable the timer peripheral as described in [Timer Clock Sources](#timer-clock-sources).
 
 ### Continuous Mode (1)
 In continuous mode, the <a href="#table19-9">TMRn_CNT</a> field increments until it matches the
@@ -895,7 +895,7 @@ $$
 
 Configure the timer for continuous mode by performing the following steps:
 
-1. Disable the timer peripheral and set the timer clock as described in *Timer Clock Sources*.
+1. Disable the timer peripheral and set the timer clock as described in [Timer Clock Sources](#timer-clock-sources).
 2. Set the <a href="#table19-13">TMRn_CTRL0</a>.*mode* field to 1 to select continuous mode.
 3. Set the <a href="#table19-13">TMRn_CTRL0</a>.*clkdiv* field to set the prescaler that determines the timer frequency.
 4. If using the timer output function:
@@ -920,10 +920,11 @@ Configure the timer for continuous mode by performing the following steps:
 
     a. This affects only the first period; subsequent timer periods always reset the <a href="#table19-9">TMRn_CNT</a> field to 0x0000 0001.
 
-9. Enable the timer peripheral as described in *Timer Clock Sources*.
+9. Enable the timer peripheral as described in [Timer Clock Sources](#timer-clock-sources).
 
 ### Counter Mode (2)
 In counter mode, the timer peripheral increments the <a href="#table19-9">TMRn_CNT</a> each time a transition occurs on the timer input signal. The transition must be greater than 4 × *PCLK* for a count to occur. When the <a href="#table19-9">TMRn_CNT</a>  reaches the <a href="#table19-10">TMRn_CMP</a> field, the hardware automatically sets the interrupt bit to 1 (<a href="#table19-12">TMRn_INTFL</a>.*irq)*, sets the <a href="#table19-9">TMRn_CNT</a> field to 0x0000 0001, and continues incrementing.
+
 The timer can be configured to increment on either the timer's input signal's rising edge or falling edge, but not both. Use the <a href="#table19-13">TMRn_CTRL0</a>.*pol\_* field to select which edge is used for the timer's input signal count.
 
 The timer prescaler setting has no effect in this mode. The timer's input signal (*f<sub>CTR_CLK</sub>*) frequency must not exceed 25 percent of the PCLK frequency, as shown in *Equation 19‑4*.
@@ -969,8 +970,8 @@ during a period is equal to the <a href="#table19-10">TMRn_CMP</a> field's setti
 
 Configure the timer for counter mode by performing the following:
 
-1. Disable the timer peripheral as described in *Timer Clock Sources*.
-2. If desired, change the timer clock source as described in *Timer Clock Sources*.
+1. Disable the timer peripheral as described in [Timer Clock Sources](#timer-clock-sources).
+2. If desired, change the timer clock source as described in [Timer Clock Sources](#timer-clock-sources).
 3. Set <a href="#table19-13">TMRn_CTRL0</a>.*mode* 0x2 to select Counter mode.
 4. Configure the timer input function:
 
@@ -978,13 +979,13 @@ Configure the timer for counter mode by performing the following:
 
     b. Configure the GPIO electrical characteristics as desired.
 
-    c. Set <a href="#table19-15">TMRn_CTRL1</a>.*outen_a* and <a href="#table19-15">TMRn_CTRL1</a>.*outben* to the values shown in the *Operating Modes* section.
+    c. Set <a href="#table19-15">TMRn_CTRL1</a>.*outen_a* and <a href="#table19-15">TMRn_CTRL1</a>.*outben* to the values shown in the [Operating Modes](#operating-modes) section.
 
     d. Select the correct alternate function mode for the timer input pin.
 
 5. Write the compare value to <a href="#table19-10">TMRn_CMP</a>.
 6. If desired, write an initial value to <a href="#table19-9">TMRn_CNT</a>. This affects only the first period; subsequent timer periods always reset <a href="#table19-9">TMRn_CNT</a> = 0x0000 0001.
-7. Enable the timer peripheral as described in *Timer Clock Sources*.
+7. Enable the timer peripheral as described in [Timer Clock Sources](#timer-clock-sources).
 
 ### PWM Mode (3)
 In PWM mode, the timer sends a PWM output using the timer's output
@@ -1017,8 +1018,8 @@ the <a href="#table19-9">TMRn_CNT</a> value resetting to 0x0000 0001.
 
 Complete the following steps to configure a timer for PWM mode and initiate the PWM operation:
 
-1. Disable the timer peripheral as described in *Timer Clock Sources*.
-2. If desired, change the timer clock source as described in *Timer Clock Sources*.
+1. Disable the timer peripheral as described in [Timer Clock Sources](#timer-clock-sources).
+2. If desired, change the timer clock source as described in [Timer Clock Sources](#timer-clock-sources).
 3. Set the <a href="#table19-13">TMRn_CTRL0</a>.*mode field* to 3 to select PWM mode.
 4. Set the <a href="#table19-13">TMRn_CTRL0</a>.*clkdiv* field to set the prescaler that determines the timer frequency.
 5. Configure the pin as a timer input and configure the electrical characteristics as needed.
@@ -1031,7 +1032,7 @@ Complete the following steps to configure a timer for PWM mode and initiate the 
 9. Set the *TMRn_PWM* value to the transition period count.
 10. Set the <a href="#table19-10">TMRn_CMP</a> value for the PWM second transition period. Note: <a href="#table19-10">TMRn_CMP</a> must be greater than the *TMRn_PWM* value.
 11. If using the timer interrupt, set the interrupt priority and enable the interrupt.
-12. Enable the timer peripheral as described in *Timer Clock Sources*.
+12. Enable the timer peripheral as described in [Timer Clock Sources](#timer-clock-sources).
 
 [Equation 19‑6](#equation19-6) shows the formula for calculating the timer PWM period.
 
@@ -1140,8 +1141,8 @@ following actions during the next timer clock period:
 
 Configure the timer for capture mode by doing the following:
 
-1. Disable the timer peripheral as described in *Timer Clock Sources*.
-2. If desired, change the timer clock source as described in *Timer Clock Sources*.
+1. Disable the timer peripheral as described in [Timer Clock Sources](#timer-clock-sources).
+2. If desired, change the timer clock source as described in [Timer Clock Sources](#timer-clock-sources).
 3. Set <a href="#table19-13">TMRn_CTRL0</a>.*mode* to 4 to select capture mode.
 4. Configure the timer input function:
 
@@ -1157,7 +1158,7 @@ Configure the timer for capture mode by doing the following:
 
 6. Write the compare value to the <a href="#table19-10">TMRn_CMP</a> field.
 7. Select the capture event by setting <a href="#table19-15">TMRn_CTRL1</a>.*capeventsel*.
-8. Enable the timer peripheral as described in *Timer Clock Sources*.
+8. Enable the timer peripheral as described in [Timer Clock Sources](#timer-clock-sources).
 
 The timer period is calculated using the following equation:
 
@@ -1217,8 +1218,8 @@ $$
 
 Configure the timer for compare mode by doing the following:
 
-1. Disable the timer peripheral as described in *Timer Clock Sources*.
-2. If desired, change the timer clock source as described in *Timer Clock Sources*.
+1. Disable the timer peripheral as described in [Timer Clock Sources](#timer-clock-sources).
+2. If desired, change the timer clock source as described in [Timer Clock Sources](#timer-clock-sources).
 3. Set <a href="#table19-13">TMRn_CTRL0</a>.*mode* to 5 to select Compare mode.
 4. Set <a href="#table19-13">TMRn_CTRL0</a>.*clkdiv* to set the prescaler that determines the timer frequency.
 5. If using the timer output function:
@@ -1243,7 +1244,7 @@ Configure the timer for compare mode by doing the following:
 
     a. This affects only the first period; subsequent timer periods always reset <a href="#table19-9">TMRn_CNT</a> = 0x0000 0001.
 
-10. Enable the timer peripheral as described in *Timer Clock Sources*.
+10. Enable the timer peripheral as described in [Timer Clock Sources](#timer-clock-sources).
 
 ### Gated Mode (6)
 Gated mode is similar to continuous mode, except that <a href="#table19-9">TMRn_CNT</a> only increments when the timer input signal is in its active state.
@@ -1270,8 +1271,8 @@ The timer peripheral automatically performs the following actions at the end of 
 
 Configure the timer for gated mode by performing the following steps:
 
-1. Disable the timer peripheral as described in *Timer Clock Sources*.
-2. If desired, change the timer clock source as described in *Timer Clock Sources*.
+1. Disable the timer peripheral as described in [Timer Clock Sources](#timer-clock-sources).
+2. If desired, change the timer clock source as described in [Timer Clock Sources](#timer-clock-sources).
 3. Set <a href="#table19-13">TMRn_CTRL0</a>.*mode* to 6 to select gated mode.
 4. Configure the timer input function:
 
@@ -1286,7 +1287,7 @@ Configure the timer for gated mode by performing the following steps:
     a. This only effects the first period; subsequent timer periods always reset <a href="#table19-9">TMRn_CNT</a> = 0x0000 0001.
 
 6. Write the compare value to <a href="#table19-10">TMRn_CMP</a>.
-7. Enable the timer peripheral as described in *Timer Clock Sources*.
+7. Enable the timer peripheral as described in [Timer Clock Sources](#timer-clock-sources).
 
 ### Capture/Compare Mode (7)
 In capture/compare mode, the timer starts counting after the first
@@ -1343,8 +1344,8 @@ $$
 
 Configure the timer for capture/compare mode by doing the following:
 
-1. Disable the timer peripheral as described in *Timer Clock Sources*.
-2. If desired, change the timer clock source as described in *Timer Clock Sources*.
+1. Disable the timer peripheral as described in [Timer Clock Sources](#timer-clock-sources).
+2. If desired, change the timer clock source as described in [Timer Clock Sources](#timer-clock-sources).
 3. Set <a href="#table19-13">TMRn_CTRL0</a>.*mode* to 7 to select Capture/Compare mode.
 4. Configure the timer input function:
 
@@ -1361,7 +1362,7 @@ Configure the timer for capture/compare mode by doing the following:
     a. This effects only the first period; subsequent timer periods always reset <a href="#table19-9">TMRn_CNT</a> = 0x0000 0001.
 
 6. Write the compare value to <a href="#table19-10">TMRn_CMP</a>.
-7. Enable the timer peripheral as described in *Timer Clock Sources*.
+7. Enable the timer peripheral as described in [Timer Clock Sources](#timer-clock-sources).
 
 *Note: No interrupt is generated by the first transition of the input signal.*
 

@@ -76,7 +76,7 @@ Code stored in the SRAM is accessed directly for execution (using the system bus
 *Table 3-1: System SRAM Configuration*
 <a name="system-sram-configuration"></a>
 
-<table>
+<table border="1" cellpadding="5" cellspacing="0">
     <tr>
         <th>System RAM Block #</th>
         <th>Size</th>

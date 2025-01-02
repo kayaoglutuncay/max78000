@@ -248,7 +248,8 @@ See [Table 3-3](memory-register-mapping-access.md#apb-peripheral-base-address-ma
 
 *Table 7-3: Flash Controller Register Summary*
 <a name="flash-controller-register-summary"></a>
-<table>
+
+<table border="1" cellpadding="5" cellspacing="0">
   <thead>
     <tr>
       <th>Offset</th>

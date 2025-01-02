@@ -173,19 +173,19 @@ the following sections.
 
 In this mode, the CAMERAIF waits for one image from the sensor, then
 stops reading data. Configure the CAMERAIF for this mode by setting the
-*CAMERAIF_CTRL*.*read_mode* field to 1. The *CAMERAIF_CTRL*.*read_mode*
+<a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*read_mode* field to 1. The <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*read_mode*
 field remains set to 1 before and while receiving image data from the
 camera. Once the image is complete, the hardware automatically sets the
-*CAMERAIF_CTRL*.*read_mode* field to 0 and sets the
-*CAMERAIF_INT_FL*.*img_done* status to 1.
+<a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*read_mode* field to 0 and sets the
+<a href="#cameraif-status-flag-register">CAMERAIF_INT_FL</a>.*img_done* status to 1.
 
 ### Continuous Capture
 
 In this mode, the CAMERAIF continues to read image data as long as the
 connected camera sensor continues to provide image data. Configure the
 CAMERAIF for continuous capture mode by setting the
-*CAMERAIF_CTRL*.*read_mode* field to 2. Disable continuous mode capture
-by setting the *CAMERAIF_CTRL*.*read_mode* field to 0.
+<a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*read_mode* field to 2. Disable continuous mode capture
+by setting the <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*read_mode* field to 0.
 
 ## Timing Modes
 
@@ -205,7 +205,7 @@ signal is used to frame a complete set of pixel data. Re-assertion of
 the PCIF_VSYNC signal indicates to the CAMERAIF that the image is
 complete.
 
-Set the bit *CAMERAIF_CTRL*.*ds_timing_en* to 0 to configure the
+Set the bit <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*ds_timing_en* to 0 to configure the
 CAMERAIF for horizontal and vertical synchronization mode.
 
 ### Data Stream Timing Mode
@@ -213,10 +213,10 @@ CAMERAIF for horizontal and vertical synchronization mode.
 In this timing mode, the PCIF_HSYNC and PCIF_VSYNC input pins are
 ignored. The CAMERAIF uses embedded timing codes to determine the start
 and end of a single image or continuous stream. These codes can be
-configured by setting the SAV code (*CAMERAIF_DS_TIMING_CODES*.*sav*)
-and the EAV code (*CAMERAIF_DS_TIMING_CODES*.*eav*). These two codes
+configured by setting the SAV code (<a href="#cameraif-timing-code-register">CAMERAIF_DS_TIMING_CODES</a>.*sav*)
+and the EAV code (<a href="#cameraif-timing-code-register">CAMERAIF_DS_TIMING_CODES</a>.*eav*). These two codes
 must match the codes sent by the connected camera respectively and
-cannot be identical. Set *CAMERAIF_CTRL*.*ds_timing_en* to 1 to
+cannot be identical. Set <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*ds_timing_en* to 1 to
 configure the CAMERAIF for embedded timing codes mode.
 
 ## Data Width
@@ -228,7 +228,7 @@ changes on the negative edge of PCIF_PCLK.
 
 ### 8-Bit Width
 
-Setting *CAMERAIF_CTRL*.*data_width* to 0 sets the recognized pixel
+Setting <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*data_width* to 0 sets the recognized pixel
 width on the PCIF_Dx bus to 8 bits. The upper 4 bits of PCIF_Dx inputs
 are ignored. Pixel data is framed as 32-bit words before these words are
 transferred to the 32-bit wide data FIFO and made ready to be read. The
@@ -239,17 +239,21 @@ recently received 8-bit PCIF_Dx data. See *Figure 16‑1* and
 *Figure 16-1: Horizontal and Vertical Synchronization Timing Mode with 8-Bit Data Width*
 <a name="figure16-1"></a>
 
+![Figure 16-1](assets/images/figure16-1.svg)
+
 *Figure 16-2: Data Stream Timing Mode with 8-Bit Data Width*
-<a name="table16-2"></a>
+<a name="figure16-2"></a>
+
+![Figure 16-2](assets/images/figure16-2.svg)
 
 #### 10 and 12-bit Width
 
-Setting *CAMERAIF_CTRL*.*data_width* to 1 sets the recognized pixel
-width on the PCIF_Dx bus to 10-bits. Set *CAMERAIF_CTRL*.*data_width* to
+Setting <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*data_width* to 1 sets the recognized pixel
+width on the PCIF_Dx bus to 10-bits. Set <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*data_width* to
 2 to set the recognized pixel width on the PCIF_Dx bus to 12-bits. As
 with the 8-bit width setting, the pixel data is framed as 32-bit words
 before these words are transferred to the 32-bit wide data FIFO
-*CAMERAIF_FIFO_DATA* and made ready to be read. These pixel widths are
+<a href="#cameraif-fifo-data-register">CAMERAIF_FIFO_DATA</a> and made ready to be read. These pixel widths are
 MSB zero-padded to 16-bits, and two 16-bit pixels are concatenated to
 form the 32-bit word. The most recently received PCIF_Dx data is the
 most significant 16-bits of the FIFO data. See *Figure 16‑3* for a
@@ -261,50 +265,50 @@ PCIF_VSYNC/PCIF_HSYNC timing example.
 
 ### Data FIFO
 
-The data FIFO *CAMERAIF_FIFO_DATA* is a 32-bit wide 8-word deep buffer
+The data FIFO <a href="#cameraif-fifo-data-register">CAMERAIF_FIFO_DATA</a> is a 32-bit wide 8-word deep buffer
 that contains data read from the PCIF_Dx pixel data input pins. The data
 FIFO threshold can be configured by setting
-*CAMERAIF_CTRL*.*fifo_thrsh*. The *CAMERAIF_INT_FL*.*fifo_thresh* is set
+<a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*fifo_thrsh*. The <a href="#cameraif-status-flag-register">CAMERAIF_INT_FL</a>.*fifo_thresh* is set
 if the data FIFO depth becomes greater than or equal to
-*CAMERAIF_CTRL*.*fifo_thrsh*. An interrupt can be generated when this
-condition happens if *CAMERAIF_INT_EN*.*fifo_thresh* is set. The data
+<a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*fifo_thrsh*. An interrupt can be generated when this
+condition happens if <a href="#cameraif-interrupt-enable-register">CAMERAIF_INT_EN</a>.*fifo_thresh* is set. The data
 FIFO also provides status flags for FIFO full
-(*CAMERAIF_INT_FL*.*fifo_full*)and FIFO not empty
-(*CAMERAIF_INT_FL*.*fifo_not_empty*). Both status flags have associated
-interrupts (*CAMERAIF_INT_EN*.*fifo_full* and
-*CAMERAIF_INT_EN*.*fifo_not_empty*) that can be enabled and triggered
+(<a href="#cameraif-status-flag-register">CAMERAIF_INT_FL</a>.*fifo_full*)and FIFO not empty
+(<a href="#cameraif-status-flag-register">CAMERAIF_INT_FL</a>.*fifo_not_empty*). Both status flags have associated
+interrupts (<a href="#cameraif-interrupt-enable-register">CAMERAIF_INT_EN</a>.*fifo_full* and
+<a href="#cameraif-interrupt-enable-register">CAMERAIF_INT_EN</a>.*fifo_not_empty*) that can be enabled and triggered
 when the status flags are set.
 
 ### Usage
 
 #### DMA
 
-1.  Set *CAMERAIF_CTRL*.*data_width* and *CAMERAIF_CTRL*.*ds_timing_en* as required by the camera sensor attached.
-2.  Enable the *CAMERAIF_INT_EN*.*img_done* to generate an interrupt once the image is complete.
-3.  Set *CAMERAIF_CTRL*.*read_mode* for a single image or continuous capture. Triggering the camera sensor to output an image starts the PCI automatically.
-4.  Set the *CAMERAIF_CTRL*.*rx_dma_thrsh* field to the desired FIFO level required to trigger a DMA threshold event.
-5.  Enable the receive DMA by setting the *CAMERAIF_CTRL*.*rx_dma* field to 1.
-6.  Enable the CAMERAIF by setting the *CAMERAIF_CTRL*.*pcif_sys* field to 1.
-7.  As data is read from the camera sensor by the CAMERAIF, it triggers a read request whenever it has a full 32-bit word in the data FIFO. Once the camera sensor has finished transmitting data, signaled by a rising edge on PCIF_VSYNC or a data stream EAV code, the CAMERAIF triggers the *CAMERAIF_INT_EN*.*img_done* interrupt.
-8.  The interrupt handler can then reset the interrupt flag by writing 1 to *CAMERAIF_INT_FL*.*img_done.*
+1.  Set <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*data_width* and <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*ds_timing_en* as required by the camera sensor attached.
+2.  Enable the <a href="#cameraif-interrupt-enable-register">CAMERAIF_INT_EN</a>.*img_done* to generate an interrupt once the image is complete.
+3.  Set <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*read_mode* for a single image or continuous capture. Triggering the camera sensor to output an image starts the PCI automatically.
+4.  Set the <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*rx_dma_thrsh* field to the desired FIFO level required to trigger a DMA threshold event.
+5.  Enable the receive DMA by setting the <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*rx_dma* field to 1.
+6.  Enable the CAMERAIF by setting the <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*pcif_sys* field to 1.
+7.  As data is read from the camera sensor by the CAMERAIF, it triggers a read request whenever it has a full 32-bit word in the data FIFO. Once the camera sensor has finished transmitting data, signaled by a rising edge on PCIF_VSYNC or a data stream EAV code, the CAMERAIF triggers the <a href="#cameraif-interrupt-enable-register">CAMERAIF_INT_EN</a>.*img_done* interrupt.
+8.  The interrupt handler can then reset the interrupt flag by writing 1 to <a href="#cameraif-status-flag-register">CAMERAIF_INT_FL</a>.*img_done.*
 
 #### Interrupts
 
-9.  Set *CAMERAIF_CTRL*.*data_width* and *CAMERAIF_CTRL*.*ds_timing_en* as required by the camera sensor attached.
+9.  Set <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*data_width* and <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*ds_timing_en* as required by the camera sensor attached.
 
-10. Set *CAMERAIF_CTRL*.*fifo_thrsh* to the desired level to allow the interrupt to service the FIFO before it fills.
+10. Set <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*fifo_thrsh* to the desired level to allow the interrupt to service the FIFO before it fills.
 
-11. Enable the *CAMERAIF_INT_EN*.*img_done* and the *CAMERAIF_INT_EN*.*fifo_thresh* interrupts, generating an interrupt when the image is complete or the FIFO has been filled to the threshold level set in the *CAMERAIF_CTRL*.*fifo_thrsh* field.
+11. Enable the <a href="#cameraif-interrupt-enable-register">CAMERAIF_INT_EN</a>.*img_done* and the <a href="#cameraif-interrupt-enable-register">CAMERAIF_INT_EN</a>.*fifo_thresh* interrupts, generating an interrupt when the image is complete or the FIFO has been filled to the threshold level set in the <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*fifo_thrsh* field.
 
-12. Set *CAMERAIF_CTRL*.*read_mode* for a single image or continuous capture. When the camera sensor is triggered to output an image, the CAMERAIF automatically starts receiving data.
+12. Set <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*read_mode* for a single image or continuous capture. When the camera sensor is triggered to output an image, the CAMERAIF automatically starts receiving data.
 
-13. Enable the CAMERAIF by setting the *CAMERAIF_CTRL*.*pcif_sys* field to 1.
+13. Enable the CAMERAIF by setting the <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*pcif_sys* field to 1.
 
-    As data is read from the camera sensor by the PCIF, the hardware triggers an interrupt when the FIFO threshold *CAMERAIF_CTRL*.*fifo_thrsh* is met. The interrupt handler should perform a burst read from the FIFO (*CAMERAIF_FIFO_DATA*.*data*). When the camera sensor finishes transmitting image data, signaled either by a rising edge on PCIF_VSYNC or a data stream EAV code, the hardware generates a *CAMERAIF_INT_EN*.*img_done* interrupt.
+    As data is read from the camera sensor by the PCIF, the hardware triggers an interrupt when the FIFO threshold <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*fifo_thrsh* is met. The interrupt handler should perform a burst read from the FIFO (<a href="#cameraif-fifo-data-register">CAMERAIF_FIFO_DATA</a>.*data*). When the camera sensor finishes transmitting image data, signaled either by a rising edge on PCIF_VSYNC or a data stream EAV code, the hardware generates a <a href="#cameraif-interrupt-enable-register">CAMERAIF_INT_EN</a>.*img_done* interrupt.
 
-14. After servicing an image done interrupt, the interrupt handler must reset the image done interrupt flag by writing 1 to the *CAMERAIF_INT_FL*.*img_done.*
+14. After servicing an image done interrupt, the interrupt handler must reset the image done interrupt flag by writing 1 to the <a href="#cameraif-status-flag-register">CAMERAIF_INT_FL</a>.*img_done.*
 
-15. The software should check *CAMERAIF_INT_FL*.*fifo_not_empty* and perform a read of *CAMERAIF_FIFO_DATA*.*data* to receive the remainder of the words of data that occupy the FIFO less than *CAMERAIF_CTRL*.*fifo_thrsh*. When all of the data is read from the FIFO, hardware clears the *CAMERAIF_INT_FL*.*fifo_not_empty* flag automatically.
+15. The software should check <a href="#cameraif-status-flag-register">CAMERAIF_INT_FL</a>.*fifo_not_empty* and perform a read of <a href="#cameraif-fifo-data-register">CAMERAIF_FIFO_DATA</a>.*data* to receive the remainder of the words of data that occupy the FIFO less than <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.*fifo_thrsh*. When all of the data is read from the FIFO, hardware clears the <a href="#cameraif-status-flag-register">CAMERAIF_INT_FL</a>.*fifo_not_empty* flag automatically.
 
 ## Register
 
@@ -621,7 +625,7 @@ when the status flags are set.
         <td>0</td>
         <td>
             <strong>FIFO Not Empty Interrupt Enable</strong><br>
-            Generates an interrupt when the FIFO is not empty (<em>CAMERAIF_INT_FL</em>.<em>fifo_not_empty</em> = 1), indicating data is available to read.
+            Generates an interrupt when the FIFO is not empty (<a href="#cameraif-status-flag-register">CAMERAIF_INT_FL</a>.<em>fifo_not_empty</em> = 1), indicating data is available to read.
             <div style="margin-left: 20px;">
             0: Interrupt disabled<br>
             1: Interrupt enabled
@@ -635,7 +639,7 @@ when the status flags are set.
         <td>0</td>
         <td>
             <strong>FIFO Threshold Interrupt Enable</strong><br>
-            Generates an interrupt when the FIFO threshold is reached (<em>CAMERAIF_INT_FL</em>.<em>fifo_thresh</em> = 1).
+            Generates an interrupt when the FIFO threshold is reached (<a href="#cameraif-status-flag-register">CAMERAIF_INT_FL</a>.<em>fifo_thresh</em> = 1).
             <div style="margin-left: 20px;">
             0: Interrupt disabled<br>
             1: Interrupt enabled
@@ -649,7 +653,7 @@ when the status flags are set.
         <td>0</td>
         <td>
             <strong>FIFO Full Interrupt Enable</strong><br>
-            Generates an interrupt when the FIFO is full (<em>CAMERAIF_INT_FL</em>.<em>fifo_full</em> = 1).
+            Generates an interrupt when the FIFO is full (<a href="#cameraif-status-flag-register">CAMERAIF_INT_FL</a>.<em>fifo_full</em> = 1).
             <div style="margin-left: 20px;">
             0: Interrupt disabled<br>
             1: Interrupt enabled
@@ -663,7 +667,7 @@ when the status flags are set.
         <td>0</td>
         <td>
             <strong>Image Complete Interrupt Enable</strong><br>
-            Generates an interrupt when the image is complete (<em>CAMERAIF_INT_FL</em>.<em>img_done</em> = 1).<br>
+            Generates an interrupt when the image is complete (<a href="#cameraif-status-flag-register">CAMERAIF_INT_FL</a>.<em>img_done</em> = 1).<br>
             <div style="margin-left: 20px;">
             0: Interrupt disabled<br>
             1: Interrupt enabled
@@ -717,7 +721,7 @@ when the status flags are set.
         <td>0</td>
         <td>
             <strong>FIFO Threshold Status Flag</strong><br>
-            Set by hardware when the FIFO level meets or exceeds the threshold in <em>CAMERAIF_CTRL</em>.<em>fifo_thrsh</em>. Cleared when the level falls below the threshold.
+            Set by hardware when the FIFO level meets or exceeds the threshold in <a href="#cameraif-configuration-register">CAMERAIF_CTRL</a>.<em>fifo_thrsh</em>. Cleared when the level falls below the threshold.
             <div style="margin-left: 20px;">
             0: FIFO threshold not exceeded<br>
             1: FIFO threshold exceeded
@@ -745,7 +749,7 @@ when the status flags are set.
         <td>0</td>
         <td>
             <strong>Image Complete Status Flag</strong><br>
-            Set by hardware when a PCIF_VSYNC transition or EAV code (<em>CAMERAIF_DS_TIMING_CODES</em>.<em>eav</em>) is detected.<br>
+            Set by hardware when a PCIF_VSYNC transition or EAV code (<a href="#cameraif-timing-code-register">CAMERAIF_DS_TIMING_CODES</a>.<em>eav</em>) is detected.<br>
             0: End of the image not detected<br>
             1: End of the image detected
             </div>
