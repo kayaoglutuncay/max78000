@@ -38,6 +38,8 @@ theme:
     - search.suggest
     - search.highlight
     - navigation.tracking
+    - navigation.top
+    - navigation.footer
   palette:
     # Dark Mode
     - scheme: slate
